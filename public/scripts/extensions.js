@@ -336,21 +336,24 @@ function addExtensionsButtonAndMenu() {
     });
 
     $(button).on('click', function () {
-        if (dropdown.is(':visible')) {
-            dropdown.fadeOut(animation_duration);
-        } else {
-            dropdown.fadeIn(animation_duration);
-        }
-        popper.update();
+        //一键重新生成
+        $('#option_regenerate').trigger('click');
+        $('#options').hide();
+        // if (dropdown.is(':visible')) {
+        //     dropdown.fadeOut(animation_duration);
+        // } else {
+        //     dropdown.fadeIn(animation_duration);
+        // }
+        // popper.update();
     });
 
-    $('html').on('click', function (e) {
-        const clickTarget = $(e.target);
-        const noCloseTargets = ['#sd_gen', '#extensionsMenuButton'];
-        if (dropdown.is(':visible') && !noCloseTargets.some(id => clickTarget.closest(id).length > 0)) {
-            $(dropdown).fadeOut(animation_duration);
-        }
-    });
+    // $('html').on('click', function (e) {
+    //     const clickTarget = $(e.target);
+    //     const noCloseTargets = ['#sd_gen', '#extensionsMenuButton'];
+    //     if (dropdown.is(':visible') && !noCloseTargets.some(id => clickTarget.closest(id).length > 0)) {
+    //         $(dropdown).fadeOut(animation_duration);
+    //     }
+    // });
 }
 
 function notifyUpdatesInputHandler() {

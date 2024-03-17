@@ -3,7 +3,7 @@ const fetch = require('node-fetch').default;
 const { Readable } = require('stream');
 
 const { jsonParser } = require('../../express-common');
-const { CHAT_COMPLETION_SOURCES, GEMINI_SAFETY, BISON_SAFETY, OPENROUTER_HEADERS } = require('../../constants');
+const { CHAT_COMPLETION_SOURCES, GEMINI_SAFETY, BISON_SAFETY } = require('../../constants');
 const { forwardFetchResponse, getConfigValue, tryParse, uuidv4, mergeObjectWithYaml, excludeKeysByYaml, color } = require('../../util');
 const { convertClaudePrompt, convertGooglePrompt, convertTextCompletionPrompt } = require('../prompt-converters');
 
@@ -12,7 +12,7 @@ const { getTokenizerModel, getSentencepiceTokenizer, getTiktokenTokenizer, sente
 
 const API_OPENAI = 'https://api.openai.com/v1';
 const API_CLAUDE = 'https://api.anthropic.com/v1';
-const API_MISTRAL = 'https://api.mistral.ai/v1';
+
 /**
  * Sends a request to Claude API.
  * @param {express.Request} request Express request
@@ -23,7 +23,8 @@ async function sendClaudeRequest(request, response) {
     const apiUrl = new URL(request.body.reverse_proxy || API_CLAUDE).toString();
     const apiKey = request.body.reverse_proxy ? request.body.proxy_password : readSecret(SECRET_KEYS.CLAUDE);
     const divider = '-'.repeat(process.stdout.columns);
-
+    console.log("apiKey")
+    console.log(apiKey)
     if (!apiKey) {
         console.log(color.red(`Claude API key is missing.\n${divider}`));
         return response.status(400).send({ error: true });
@@ -37,10 +38,9 @@ async function sendClaudeRequest(request, response) {
         });
 
         const isSysPromptSupported = request.body.model === 'claude-2' || request.body.model === 'claude-2.1';
-        const requestPrompt = convertClaudePrompt(request.body.messages, !request.body.exclude_assistant, request.body.assistant_prefill, isSysPromptSupported, request.body.claude_use_sysprompt, request.body.human_sysprompt_message, request.body.claude_exclude_prefixes);
+        const requestPrompt = convertClaudePrompt(request.body.messages, !request.body.exclude_assistant, request.body.assistant_prefill, isSysPromptSupported, request.body.claude_use_sysprompt, request.body.human_sysprompt_message);
 
         // Check Claude messages sequence and prefixes presence.
-        let sequenceError = [];
         const sequence = requestPrompt.split('\n').filter(x => x.startsWith('Human:') || x.startsWith('Assistant:'));
         const humanFound = sequence.some(line => line.startsWith('Human:'));
         const assistantFound = sequence.some(line => line.startsWith('Assistant:'));
@@ -58,20 +58,20 @@ async function sendClaudeRequest(request, response) {
         }
 
         if (!humanFound) {
-            sequenceError.push(`${divider}\nWarning: No 'Human:' prefix found in the prompt.\n${divider}`);
+            console.log(color.red(`${divider}\nWarning: No 'Human:' prefix found in the prompt.\n${divider}`));
         }
         if (!assistantFound) {
-            sequenceError.push(`${divider}\nWarning: No 'Assistant: ' prefix found in the prompt.\n${divider}`);
+            console.log(color.red(`${divider}\nWarning: No 'Assistant: ' prefix found in the prompt.\n${divider}`));
         }
-        if (sequence[0] && !sequence[0].startsWith('Human:')) {
-            sequenceError.push(`${divider}\nWarning: The messages sequence should start with 'Human:' prefix.\nMake sure you have '\\n\\nHuman:' prefix at the very beggining of the prompt, or after the system prompt.\n${divider}`);
+        if (!sequence[0].startsWith('Human:')) {
+            console.log(color.red(`${divider}\nWarning: The messages sequence should start with 'Human:' prefix.\nMake sure you have 'Human:' prefix at the very beggining of the prompt, or after the system prompt.\n${divider}`));
         }
         if (humanErrorCount > 0 || assistantErrorCount > 0) {
-            sequenceError.push(`${divider}\nWarning: Detected incorrect Prefix sequence(s).`);
-            sequenceError.push(`Incorrect "Human:" prefix(es): ${humanErrorCount}.\nIncorrect "Assistant: " prefix(es): ${assistantErrorCount}.`);
-            sequenceError.push('Check the prompt above and fix it in the SillyTavern.');
-            sequenceError.push('\nThe correct sequence in the console should look like this:\n(System prompt msg) <-(for the sysprompt format only, else have \\n\\n above the first human\'s  message.)');
-            sequenceError.push(`\\n +      <-----(Each message beginning with the "Assistant:/Human:" prefix must have \\n\\n before it.)\n\\n +\nHuman: \\n +\n\\n +\nAssistant: \\n +\n...\n\\n +\nHuman: \\n +\n\\n +\nAssistant: \n${divider}`);
+            console.log(color.red(`${divider}\nWarning: Detected incorrect Prefix sequence(s).`));
+            console.log(color.red(`Incorrect "Human:" prefix(es): ${humanErrorCount}.\nIncorrect "Assistant: " prefix(es): ${assistantErrorCount}.`));
+            console.log(color.red('Check the prompt above and fix it in the SillyTavern.'));
+            console.log(color.red('\nThe correct sequence should look like this:\nSystem prompt  <-(for the sysprompt format only, else have 2 empty lines above the first human\'s  message.)'));
+            console.log(color.red(`       <-----(Each message beginning with the "Assistant:/Human:" prefix must have one empty line above.)\nHuman:\n\nAssistant:\n...\n\nHuman:\n\nAssistant:\n${divider}`));
         }
 
         // Add custom stop sequences
@@ -91,15 +91,11 @@ async function sendClaudeRequest(request, response) {
             stream: request.body.stream,
         };
 
-        console.log('Claude request:', requestBody);
+        //console.log('Claude request:', requestBody);
         var keys=apiKey.split(',')
         var key=keys[num]
         console.log(key)
         num=(num+1) % keys.length
-        sequenceError.forEach(sequenceError => {
-            console.log(color.red(sequenceError));
-        });
-
         const generateResponse = await fetch(apiUrl + '/complete', {
             method: 'POST',
             signal: controller.signal,
@@ -206,7 +202,6 @@ async function sendMakerSuiteRequest(request, response) {
     const isGemini = model.includes('gemini');
     const isText = model.includes('text');
     const stream = Boolean(request.body.stream) && isGemini;
-
     const generationConfig = {
         stopSequences: request.body.stop,
         candidateCount: 1,
@@ -215,7 +210,6 @@ async function sendMakerSuiteRequest(request, response) {
         topP: request.body.top_p,
         topK: request.body.top_k || undefined,
     };
-
     function getGeminiBody() {
         return {
             contents: convertGooglePrompt(request.body.messages, model),
@@ -257,7 +251,10 @@ async function sendMakerSuiteRequest(request, response) {
     }
 
     const body = isGemini ? getGeminiBody() : getBisonBody();
-    console.log('MakerSuite request:', body);
+    // console.log('MakerSuite request:', body);
+    console.log(body.contents[0].parts)
+    var a=body.contents.length - 1
+    console.log(body.contents[a].parts)
 
     try {
         const controller = new AbortController();
@@ -271,7 +268,7 @@ async function sendMakerSuiteRequest(request, response) {
             ? (stream ? 'streamGenerateContent' : 'generateContent')
             : (isText ? 'generateText' : 'generateMessage');
 
-        const generateResponse = await fetch(`https://generativelanguage.googleapis.com/${apiVersion}/models/${model}:${responseType}?key=${apiKey}${stream ? '&alt=sse' : ''}`, {
+        const generateResponse = await fetch(`https://generativelanguage.googleapis.com/${apiVersion}/models/${model}:${responseType}?key=${apiKey}`, {
             body: JSON.stringify(body),
             method: 'POST',
             headers: {
@@ -283,8 +280,36 @@ async function sendMakerSuiteRequest(request, response) {
         // have to do this because of their busted ass streaming endpoint
         if (stream) {
             try {
-                // Pipe remote SSE stream to Express response
-                forwardFetchResponse(generateResponse, response);
+                let partialData = '';
+                generateResponse.body.on('data', (data) => {
+                    const chunk = data.toString();
+                    if (chunk.startsWith(',') || chunk.endsWith(',') || chunk.startsWith('[') || chunk.endsWith(']')) {
+                        partialData = chunk.slice(1);
+                    } else {
+                        partialData += chunk;
+                    }
+                    while (true) {
+                        let json;
+                        try {
+                            json = JSON.parse(partialData);
+                        } catch (e) {
+                            break;
+                        }
+                        response.write(JSON.stringify(json));
+                        partialData = '';
+                    }
+                });
+
+                request.socket.on('close', function () {
+                    if (generateResponse.body instanceof Readable) generateResponse.body.destroy();
+                    response.end();
+                });
+
+                generateResponse.body.on('end', () => {
+                    console.log('Streaming request finished');
+                    response.end();
+                });
+
             } catch (error) {
                 console.log('Error forwarding streaming response:', error);
                 if (!response.headersSent) {
@@ -310,7 +335,7 @@ async function sendMakerSuiteRequest(request, response) {
             }
 
             const responseContent = candidates[0].content ?? candidates[0].output;
-            const responseText = typeof responseContent === 'string' ? responseContent : responseContent?.parts?.[0]?.text;
+            const responseText = typeof responseContent === 'string' ? responseContent : responseContent.parts?.[0]?.text;
             if (!responseText) {
                 let message = 'MakerSuite Candidate text empty';
                 console.log(message, generateResponseJson);
@@ -412,8 +437,7 @@ async function sendAI21Request(request, response) {
  * @param {express.Response} response Express response
  */
 async function sendMistralAIRequest(request, response) {
-    const apiUrl = new URL(request.body.reverse_proxy || API_MISTRAL).toString();
-    const apiKey = request.body.reverse_proxy ? request.body.proxy_password : readSecret(SECRET_KEYS.MISTRALAI);
+    const apiKey = readSecret(SECRET_KEYS.MISTRALAI);
 
     if (!apiKey) {
         console.log('MistralAI API key is missing.');
@@ -423,12 +447,9 @@ async function sendMistralAIRequest(request, response) {
     try {
         //must send a user role as last message
         const messages = Array.isArray(request.body.messages) ? request.body.messages : [];
-        //large seems to be throwing a 500 error if we don't make the first message a user role, most likely a bug since the other models won't do this
-        if (request.body.model.includes('large'))
-            messages[0].role = 'user';
         const lastMsg = messages[messages.length - 1];
         if (messages.length > 0 && lastMsg && (lastMsg.role === 'system' || lastMsg.role === 'assistant')) {
-            if (lastMsg.role === 'assistant' && lastMsg.name) {
+            if (lastMsg.role === 'assistant') {
                 lastMsg.content = lastMsg.name + ': ' + lastMsg.content;
             } else if (lastMsg.role === 'system') {
                 lastMsg.content = '[INST] ' + lastMsg.content + ' [/INST]';
@@ -463,7 +484,7 @@ async function sendMistralAIRequest(request, response) {
             'top_p': request.body.top_p,
             'max_tokens': request.body.max_tokens,
             'stream': request.body.stream,
-            'safe_prompt': request.body.safe_prompt,
+            'safe_mode': request.body.safe_mode,
             'random_seed': request.body.seed === -1 ? undefined : request.body.seed,
         };
 
@@ -480,7 +501,7 @@ async function sendMistralAIRequest(request, response) {
 
         console.log('MisralAI request:', requestBody);
 
-        const generateResponse = await fetch(apiUrl + '/chat/completions', config);
+        const generateResponse = await fetch('https://api.mistral.ai/v1/chat/completions', config);
         if (request.body.stream) {
             forwardFetchResponse(generateResponse, response);
         } else {
@@ -520,12 +541,11 @@ router.post('/status', jsonParser, async function (request, response_getstatus_o
     } else if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.OPENROUTER) {
         api_url = 'https://openrouter.ai/api/v1';
         api_key_openai = readSecret(SECRET_KEYS.OPENROUTER);
-        // OpenRouter needs to pass the Referer and X-Title: https://openrouter.ai/docs#requests
-        headers = { ...OPENROUTER_HEADERS };
+        // OpenRouter needs to pass the referer: https://openrouter.ai/docs
+        headers = { 'HTTP-Referer': request.headers.referer };
     } else if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.MISTRALAI) {
-        api_url = new URL(request.body.reverse_proxy || API_MISTRAL).toString();
-        api_key_openai = request.body.reverse_proxy ? request.body.proxy_password : readSecret(SECRET_KEYS.MISTRALAI);
-        headers = {};
+        api_url = 'https://api.mistral.ai/v1';
+        api_key_openai = readSecret(SECRET_KEYS.MISTRALAI);
     } else if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.CUSTOM) {
         api_url = request.body.custom_url;
         api_key_openai = readSecret(SECRET_KEYS.CUSTOM);
@@ -685,21 +705,12 @@ router.post('/generate', jsonParser, function (request, response) {
     let apiKey;
     let headers;
     let bodyParams;
-    const isTextCompletion = Boolean(request.body.model && TEXT_COMPLETION_MODELS.includes(request.body.model)) || typeof request.body.messages === 'string';
 
     if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.OPENAI) {
         apiUrl = new URL(request.body.reverse_proxy || API_OPENAI).toString();
         apiKey = request.body.reverse_proxy ? request.body.proxy_password : readSecret(SECRET_KEYS.OPENAI);
         headers = {};
-        bodyParams = {
-            logprobs: request.body.logprobs,
-        };
-
-        // Adjust logprobs params for Chat Completions API, which expects { top_logprobs: number; logprobs: boolean; }
-        if (!isTextCompletion && bodyParams.logprobs > 0) {
-            bodyParams.top_logprobs = bodyParams.logprobs;
-            bodyParams.logprobs = true;
-        }
+        bodyParams = {};
 
         if (getConfigValue('openai.randomizeUserId', false)) {
             bodyParams['user'] = uuidv4();
@@ -707,21 +718,9 @@ router.post('/generate', jsonParser, function (request, response) {
     } else if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.OPENROUTER) {
         apiUrl = 'https://openrouter.ai/api/v1';
         apiKey = readSecret(SECRET_KEYS.OPENROUTER);
-        // OpenRouter needs to pass the Referer and X-Title: https://openrouter.ai/docs#requests
-        headers = { ...OPENROUTER_HEADERS };
+        // OpenRouter needs to pass the referer: https://openrouter.ai/docs
+        headers = { 'HTTP-Referer': request.headers.referer };
         bodyParams = { 'transforms': ['middle-out'] };
-
-        if (request.body.min_p !== undefined) {
-            bodyParams['min_p'] = request.body.min_p;
-        }
-
-        if (request.body.top_a !== undefined) {
-            bodyParams['top_a'] = request.body.top_a;
-        }
-
-        if (request.body.repetition_penalty !== undefined) {
-            bodyParams['repetition_penalty'] = request.body.repetition_penalty;
-        }
 
         if (request.body.use_fallback) {
             bodyParams['route'] = 'fallback';
@@ -730,16 +729,7 @@ router.post('/generate', jsonParser, function (request, response) {
         apiUrl = request.body.custom_url;
         apiKey = readSecret(SECRET_KEYS.CUSTOM);
         headers = {};
-        bodyParams = {
-            logprobs: request.body.logprobs,
-        };
-
-        // Adjust logprobs params for Chat Completions API, which expects { top_logprobs: number; logprobs: boolean; }
-        if (!isTextCompletion && bodyParams.logprobs > 0) {
-            bodyParams.top_logprobs = bodyParams.logprobs;
-            bodyParams.logprobs = true;
-        }
-
+        bodyParams = {};
         mergeObjectWithYaml(bodyParams, request.body.custom_include_body);
         mergeObjectWithYaml(headers, request.body.custom_include_headers);
     } else {
@@ -757,6 +747,7 @@ router.post('/generate', jsonParser, function (request, response) {
         bodyParams['stop'] = request.body.stop;
     }
 
+    const isTextCompletion = Boolean(request.body.model && TEXT_COMPLETION_MODELS.includes(request.body.model)) || typeof request.body.messages === 'string';
     const textPrompt = isTextCompletion ? convertTextCompletionPrompt(request.body.messages) : '';
     const endpointUrl = isTextCompletion && request.body.chat_completion_source !== CHAT_COMPLETION_SOURCES.OPENROUTER ?
         `${apiUrl}/completions` :
@@ -782,7 +773,6 @@ router.post('/generate', jsonParser, function (request, response) {
         'stop': isTextCompletion === false ? request.body.stop : undefined,
         'logit_bias': request.body.logit_bias,
         'seed': request.body.seed,
-        'n': request.body.n,
         ...bodyParams,
     };
 
@@ -829,7 +819,7 @@ router.post('/generate', jsonParser, function (request, response) {
                 let json = await fetchResponse.json();
                 response.send(json);
                 console.log(json);
-                console.log(json?.choices?.[0]?.message);
+                console.log(json?.choices[0]?.message);
             } else if (fetchResponse.status === 429 && retries > 0) {
                 console.log(`Out of quota, retrying in ${Math.round(timeout / 1000)}s`);
                 setTimeout(() => {
