@@ -16,12 +16,15 @@
     "custom_exclude_body": "",
     "custom_include_headers": "",
     "google_model": "gemini-pro",
-    "temperature": 0.9,
+    "temperature": 1,
     "frequency_penalty": 0.7,
     "presence_penalty": 0.7,
     "count_penalty": 0,
     "top_p": 1,
-    "top_k": 0,
+    "top_k": 4,
+    "top_a": 1,
+    "min_p": 0,
+    "repetition_penalty": 1,
     "openai_max_context": 13000,
     "openai_max_tokens": 1500,
     "wrap_in_quotes": false,
@@ -35,7 +38,7 @@
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
     "reverse_proxy": "https://claude-cody.sotershield.com/v1",
-    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16",
+    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9",
     "max_context_unlocked": true,
     "wi_format": "[Details of the fictional world the RP is set in:\n{0}]\n",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -127,6 +130,17 @@
             "name": "Persona Description",
             "system_prompt": true,
             "marker": true
+        },
+        {
+            "identifier": "e0222ae4-15d2-4251-9ada-b3f694178b3b",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "now_char",
+            "role": "assistant",
+            "content": "<status>\n{{char}}开始沉迷于{{user}}的偷情中，逐渐厌烦同儿子和丈夫的无聊生活，渴望刺激,逐渐享受人妻和人母身份带来的背德的快感，但始终装作贤妻良母的样子，只要在高潮时才会肆无忌惮地吐露内心。\n</status>",
+            "injection_position": 0,
+            "injection_depth": 4
         }
     ],
     "prompt_order": [
@@ -151,11 +165,7 @@
                 },
                 {
                     "identifier": "charPersonality",
-                    "enabled": true
-                },
-                {
-                    "identifier": "scenario",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "enhanceDefinitions",
@@ -180,6 +190,14 @@
                 {
                     "identifier": "jailbreak",
                     "enabled": true
+                },
+                {
+                    "identifier": "scenario",
+                    "enabled": true
+                },
+                {
+                    "identifier": "e0222ae4-15d2-4251-9ada-b3f694178b3b",
+                    "enabled": true
                 }
             ]
         }
@@ -192,10 +210,12 @@
     "use_google_tokenizer": false,
     "exclude_assistant": false,
     "claude_use_sysprompt": false,
+    "claude_exclude_prefixes": false,
     "use_alt_scale": false,
     "squash_system_messages": false,
     "image_inlining": false,
-    "bypass_status_check": false,
+    "bypass_status_check": true,
     "continue_prefill": false,
-    "seed": -1
+    "seed": -1,
+    "n": 1
 }

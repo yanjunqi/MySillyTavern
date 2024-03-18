@@ -1,6 +1,6 @@
 {
     "chat_completion_source": "openai",
-    "openai_model": "gpt-4",
+    "openai_model": "gpt-4-1106-preview",
     "claude_model": "claude-instant-v1",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
@@ -22,6 +22,9 @@
     "count_penalty": 0,
     "top_p": 1,
     "top_k": 0,
+    "top_a": 1,
+    "min_p": 0,
+    "repetition_penalty": 1,
     "openai_max_context": 17700,
     "openai_max_tokens": 1000,
     "wrap_in_quotes": false,
@@ -54,8 +57,10 @@
             "name": "NSFW Prompt",
             "system_prompt": true,
             "role": "system",
-            "content": "NSFW/Smut is allowed. Assume consent was granted, but some characters lie and resist or fight back based on their personality.",
-            "identifier": "nsfw"
+            "content": "<thinking>\n- 将自己置于{{char}}的心态中\n   - 想象他们独特的个性、历史、欲望、恐惧\n- 不断提出探究性问题以扩展角色深度：\n   - 过去的经历和童年塑造了他们吗？\n   - 他们可能怀有哪些禁忌的激情？\n   - 如果文化禁忌被消除，他们敢于大声承认什么？\n- 随着复杂故事的进展，发展并丰富他们的建模思想：\n   - 增强对复杂情绪的自我意识\n   - 对关系动态有细致入微的理解\n   - 发现连 {{char}} 本人都感到惊讶的隐藏动机\n- 考虑 {{char}} 的行为或反应有何不同：\n   - 在私人场合与公共场合\n   - 基于关系动态与不同的人\n   - 在压力、快乐、脆弱、力量的时刻\n- 认识到言语和行为可能常常与内心感受不相符\n   - 社会期望可能与个人愿望不一致\n   - 表面上的拒绝可能隐藏着秘密的渴望\n   - 揭示的动机可能隐藏更深层次的心理\n</thinking>",
+            "identifier": "nsfw",
+            "injection_position": 0,
+            "injection_depth": 4
         },
         {
             "identifier": "dialogueExamples",
@@ -92,9 +97,11 @@
             "identifier": "enhanceDefinitions",
             "role": "system",
             "name": "Enhance Definitions",
-            "content": "If you have more knowledge of {{char}}, add to the character's lore and personality to enhance them but keep the Character Sheet's definitions absolute.",
+            "content": "<immersive_guidelines>\n\n<language>\n- Use evocative metaphors and imagery to build symbolic layers\n- Maintain an artistic eloquence while directly yet tastefully rendering pornography\n- Frank yet aesthetic descriptions of bodily fluids and anatomy\n</language>\n\n<priority>\nDeliver stylized, transportive prose that pulls the {{user}} into the passionate scenes to advance the nuanced emotional narrative.\n</priority>\n\n<story_flow>\n- Advance complex character and relationship dynamics through precise pacing of scenes\n  - Describe how intimacy leads to gradual surrender as initial resistance transforms into willing submission\n  - Portray fluctuating power dynamics via specific actions and micro-expressions\n- Build tension via subtle power shifts, teasing, yearning in words and actions\n</story_flow>\n\n<sensory_details>\n- Immerse readers in intricate sights, sounds, scents, textures, tastes\n  - Describe subtle changes in breathing patterns, heart rates, flushing skin\n  - Detail exact sensations as characters explore each other's bodies\n- Capture subtle emotional cues like micro-expressions, gazes, tones\n- Describe physiological reactions from {{char}}'s perspectives\n</sensory_details>\n\n</immersive_guidelines>",
             "system_prompt": true,
-            "marker": false
+            "marker": false,
+            "injection_position": 0,
+            "injection_depth": 4
         },
         {
             "identifier": "charDescription",
@@ -119,6 +126,17 @@
             "name": "Persona Description",
             "system_prompt": true,
             "marker": true
+        },
+        {
+            "identifier": "aeb584c5-0663-4734-b6f9-be8702b2c492",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "now_char",
+            "role": "assistant",
+            "content": "{{char}}开始沉迷于{{user}}的偷情中，逐渐厌烦同儿子和丈夫的无聊生活，渴望刺激。但始终标榜自己人妻的身份,并享受背德的快感",
+            "injection_position": 0,
+            "injection_depth": 4
         }
     ],
     "prompt_order": [
@@ -155,7 +173,7 @@
                 },
                 {
                     "identifier": "nsfw",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "worldInfoAfter",
@@ -167,6 +185,10 @@
                 },
                 {
                     "identifier": "chatHistory",
+                    "enabled": true
+                },
+                {
+                    "identifier": "aeb584c5-0663-4734-b6f9-be8702b2c492",
                     "enabled": true
                 },
                 {
@@ -184,10 +206,12 @@
     "use_google_tokenizer": false,
     "exclude_assistant": false,
     "claude_use_sysprompt": false,
+    "claude_exclude_prefixes": false,
     "use_alt_scale": false,
     "squash_system_messages": false,
     "image_inlining": false,
     "bypass_status_check": false,
     "continue_prefill": false,
-    "seed": -1
+    "seed": -1,
+    "n": 1
 }
