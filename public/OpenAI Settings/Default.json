@@ -1,6 +1,6 @@
 {
-    "chat_completion_source": "claude",
-    "openai_model": "gpt-4",
+    "chat_completion_source": "openai",
+    "openai_model": "claude-3",
     "claude_model": "claude-2.1",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
@@ -25,7 +25,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 13000,
+    "openai_max_context": 15000,
     "openai_max_tokens": 1500,
     "wrap_in_quotes": false,
     "names_in_completion": true,
@@ -37,8 +37,8 @@
     "new_example_chat_prompt": "[Start a new Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
-    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9",
+    "reverse_proxy": "http://127.0.0.1:3000/v1",
+    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16",
     "max_context_unlocked": true,
     "wi_format": "[Details of the fictional world the RP is set in:\n{0}]\n",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -165,7 +165,7 @@
                 },
                 {
                     "identifier": "charPersonality",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "enhanceDefinitions",
@@ -188,22 +188,22 @@
                     "enabled": true
                 },
                 {
-                    "identifier": "jailbreak",
-                    "enabled": true
-                },
-                {
                     "identifier": "scenario",
                     "enabled": true
                 },
                 {
+                    "identifier": "jailbreak",
+                    "enabled": false
+                },
+                {
                     "identifier": "e0222ae4-15d2-4251-9ada-b3f694178b3b",
-                    "enabled": true
+                    "enabled": false
                 }
             ]
         }
     ],
     "api_url_scale": "",
-    "show_external_models": false,
+    "show_external_models": true,
     "assistant_prefill": "",
     "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
     "use_ai21_tokenizer": false,
@@ -214,7 +214,7 @@
     "use_alt_scale": false,
     "squash_system_messages": false,
     "image_inlining": false,
-    "bypass_status_check": true,
+    "bypass_status_check": false,
     "continue_prefill": false,
     "seed": -1,
     "n": 1
