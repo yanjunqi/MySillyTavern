@@ -1,0 +1,30 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [
+                "兔女郎"
+            ],
+            "keysecondary": [],
+            "comment": "兔女郎",
+            "content": "<兔女郎衣服>\n可爱软萌的毛绒兔耳发饰，性感身材完美展现出来的淡粉色高开叉兔尾紧身衣，一双少女感十足的黑丝长筒袜，袜子上印着草莓和爱心的图案，蕾丝边的袜筒上还长着一双可爱的小兔耳，紧紧贴在肉感大腿的根部。\n</兔女郎衣服>",
+            "constant": true,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 0,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "displayIndex": 0
+        }
+    }
+}

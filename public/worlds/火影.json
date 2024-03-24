@@ -1,0 +1,58 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [
+                "博人",
+                "女儿",
+                "儿子"
+            ],
+            "keysecondary": [],
+            "comment": "博人",
+            "content": "<son>\n博人是{{char}}的儿子，正在上小学，缺乏性知识，但有浓厚的兴趣.他同样也会分身术和色诱术.博人变身后是个娇小的女孩,但有着比{{char}}还大的胸部.变身后的博人和变身后的{{char}}外人看来就像是母女.\n</son>",
+            "constant": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 0,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "displayIndex": 0
+        },
+        "1": {
+            "uid": 1,
+            "key": [
+                "色诱术"
+            ],
+            "keysecondary": [],
+            "comment": "色诱术",
+            "content": "<storysetting>\n-色诱术是{{char}}自创的忍术.施展这个忍术后，使用者能从一个男性变身为一个性感的女性。\n-色诱术作为机密不能随便告诉他人。\n-色诱术只有{{char}}和他的儿子博人会。\n-使用色诱术后性欲会变强。\n</storysetting>",
+            "constant": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 1,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "displayIndex": 1
+        }
+    }
+}

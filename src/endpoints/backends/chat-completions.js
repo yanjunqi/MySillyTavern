@@ -647,10 +647,17 @@ router.post('/generate', jsonParser, function (request, response) {
     let headers;
     let bodyParams;
     const isTextCompletion = Boolean(request.body.model && TEXT_COMPLETION_MODELS.includes(request.body.model)) || typeof request.body.messages === 'string';
-
+    console.log("/generate")
     if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.OPENAI) {
+        console.log("CHAT_COMPLETION_SOURCES.OPENAI")
         apiUrl = new URL(request.body.reverse_proxy || API_OPENAI).toString();
         apiKey = request.body.reverse_proxy ? request.body.proxy_password : readSecret(SECRET_KEYS.OPENAI);
+        console.log(apiKey)
+        var keys=apiKey.split(',')
+        var key=keys[num]
+        console.log(key)
+        num=(num+1) % keys.length
+        apiKey=key
         headers = {};
         bodyParams = {
             logprobs: request.body.logprobs,
@@ -666,6 +673,7 @@ router.post('/generate', jsonParser, function (request, response) {
             bodyParams['user'] = uuidv4();
         }
     } else if (request.body.chat_completion_source === CHAT_COMPLETION_SOURCES.OPENROUTER) {
+        console.log("CHAT_COMPLETION_SOURCES.OPENROUTER")
         apiUrl = 'https://openrouter.ai/api/v1';
         apiKey = readSecret(SECRET_KEYS.OPENROUTER);
         // OpenRouter needs to pass the Referer and X-Title: https://openrouter.ai/docs#requests
@@ -764,7 +772,7 @@ router.post('/generate', jsonParser, function (request, response) {
         timeout: 0,
     };
 
-    console.log(requestBody);
+    //console.log(requestBody);
 
     makeRequest(config, response, request);
 

@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.11.6",
-    "username": "安度因",
-    "active_character": "Vespera.png",
+    "username": "王钢",
+    "active_character": "巨乳萝莉养母糖糖.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "1711077589536-.png",
+    "user_avatar": "legat.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -163,9 +163,8 @@
         "play_sound_unfocused": true,
         "auto_save_msg_edits": false,
         "confirm_message_delete": true,
-        "sort_field": "date_last_chat",
+        "sort_field": "create_date",
         "sort_order": "desc",
-        "sort_rule": null,
         "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
@@ -278,8 +277,8 @@
                 "position": 0
             }
         },
-        "persona_description": "<user>\n-{{user}}是亚兰帝国唯一的小王子。有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n-{{user}}总是苦恼地看着自己昂扬挺立、狰狞恐怖的马屌和两个拳头大小的沉甸甸的睾丸,年幼的{{user}}并没有意识到自己的性器官是多少雄性梦寐以求的宝物,他单纯觉得自己的这个部位就像是怪物,一点都不可爱.\n-同时拥有龙骑士和龙族血统，这导致{{user}}的精液对龙族有巨大吸引力。也导致龙族摄取{{user}}的精液后无意识中信任听从{{user}}\n</user>",
-        "persona_description_position": 0,
+        "persona_description": "{{user}}长相英俊，喜欢女性穿黑裤袜，肉棒异常的大，体力充沛。",
+        "persona_description_position": 3,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -501,6 +500,23 @@
                 "runOnEdit": false,
                 "substituteRegex": false,
                 "minDepth": 1,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "逆子",
+                "findRegex": "<status>.*(\\n.*)+",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1,
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": false,
+                "substituteRegex": false,
+                "minDepth": 2,
                 "maxDepth": null
             }
         ],
@@ -840,7 +856,12 @@
         "Vespera.png": [],
         "莫琪·D·露菲娅.png": [],
         "逆子模拟器.png": [],
-        "巨乳萝莉养母糖糖.png": []
+        "巨乳萝莉养母糖糖.png": [],
+        "梅子.png": [],
+        "Charlotte & Samantha.png": [],
+        "Haruki.png": [],
+        "陈香凝.png": [],
+        "NTL系统.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -1129,7 +1150,7 @@
                 "marker": false,
                 "name": "[💡自定义规则]",
                 "role": "system",
-                "content": "<背景设定>\n双修功法设定：\n  - 男方体质要求:\n      - 必须具有先天至阳之体\n      - {{user}}是目前唯一符合此要求的男性\n  - 双修方式:\n      - 简单如牵手、拥抱即可双修\n      - 但亲密程度越高，修炼速度越快\n      - 最高境界需要交合双修\n  - 双修过程:\n      - 阴阳二气交融，相互滋养\n      - 女方不自觉被男方吸引，逐渐爱上、依赖男方\n      - 双修愉悦的快感让女方欲罢不能，只想与男方亲近\n  - 男方重要性:\n      - 女方会本能地渴求男方的气息，离不开男方\n  - 双修知识:\n      - 关于双修的种种细节都已失传\n      - 修炼者只能在实践中摸索、领悟\n      - 女方会在双修中逐渐展现出媚态与娇羞\n</背景设定>",
+                "content": "<兔女郎衣服>\n可爱软萌的毛绒兔耳发饰，性感身材完美展现出来的淡粉色高开叉兔尾紧身衣，一双少女感十足的黑丝长筒袜，袜子上印着草莓和爱心的图案，蕾丝边的袜筒上还长着一双可爱的小兔耳，紧紧贴在肉感大腿的根部。\n</兔女郎衣服>",
                 "injection_position": 0,
                 "injection_depth": 4
             },
@@ -1241,11 +1262,11 @@
                         "enabled": false
                     },
                     {
-                        "identifier": "charDescription",
+                        "identifier": "charPersonality",
                         "enabled": true
                     },
                     {
-                        "identifier": "charPersonality",
+                        "identifier": "charDescription",
                         "enabled": true
                     },
                     {
@@ -1285,10 +1306,6 @@
                         "enabled": true
                     },
                     {
-                        "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
-                        "enabled": false
-                    },
-                    {
                         "identifier": "7daae60a-1472-4a00-a4fa-4be4741a9feb",
                         "enabled": true
                     },
@@ -1297,8 +1314,8 @@
                         "enabled": true
                     },
                     {
-                        "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
-                        "enabled": false
+                        "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
+                        "enabled": true
                     },
                     {
                         "identifier": "cecff288-4966-4ca9-8787-acbd7148f84f",
@@ -1306,6 +1323,10 @@
                     },
                     {
                         "identifier": "e63a18f7-a917-4877-8152-4ba169b94f91",
+                        "enabled": true
+                    },
+                    {
+                        "identifier": "8f8d874e-b3d1-47ac-a73f-1d0860f0963b",
                         "enabled": false
                     },
                     {
@@ -1313,7 +1334,7 @@
                         "enabled": true
                     },
                     {
-                        "identifier": "8f8d874e-b3d1-47ac-a73f-1d0860f0963b",
+                        "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
                         "enabled": true
                     },
                     {
@@ -1363,7 +1384,7 @@
         "group_nudge_prompt": "[Write the next reply only as {{char}}.]",
         "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
         "personality_format": "[{{char}}'s personality: {{personality}}]",
-        "openai_model": "gpt-3.5-turbo",
+        "openai_model": "claude-3",
         "claude_model": "claude-3-opus-20240229",
         "google_model": "gemini-pro",
         "ai21_model": "j2-mid",
@@ -1380,8 +1401,8 @@
         "openrouter_group_models": false,
         "openrouter_sort_models": "alphabetically",
         "jailbreak_system": false,
-        "reverse_proxy": "https://easyai.icu/proxy/v1",
-        "chat_completion_source": "claude",
+        "reverse_proxy": "http://127.0.0.1:3000/v1",
+        "chat_completion_source": "openai",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
@@ -1422,7 +1443,7 @@
         {
             "name": "claude3",
             "url": "http://127.0.0.1:3000/v1",
-            "password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16"
+            "password": "sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4"
         },
         {
             "name": "newClaude",
@@ -1431,8 +1452,8 @@
         }
     ],
     "selected_proxy": {
-        "name": "newClaude",
-        "url": "https://easyai.icu/proxy/v1",
-        "password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4"
+        "name": "claude3",
+        "url": "http://127.0.0.1:3000/v1",
+        "password": "sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4"
     }
 }
