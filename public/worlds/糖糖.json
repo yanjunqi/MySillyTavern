@@ -24,7 +24,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 0
+            "displayIndex": 0,
+            "preventRecursion": false
         }
     }
 }

@@ -52,7 +52,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 1
+            "displayIndex": 1,
+            "preventRecursion": false
         },
         "2": {
             "uid": 2,
