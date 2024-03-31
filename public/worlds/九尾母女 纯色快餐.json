@@ -5,7 +5,7 @@
             "key": [],
             "keysecondary": [],
             "comment": "状态栏",
-            "content": "必须在描写的段落中后部插入{{char}}的一个<StatusBlock>,如果出现新角色,进行详细介绍后也插入其对应的一个<StatusBlock>.\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. -->\n\n<StatusBlock>\n```json\n『 日期 – 时间 – 地点 – 目前{{user}} 附近的人物』\n💑 洛珠桃的想法: 描写洛珠桃当前的第一人称想法\n🍑 洛珠桃小穴状态: 描述洛珠桃小穴当下的情况,如湿润程度等\n🍑 洛珠桃肛门状态: 描述洛珠桃肛门当下的情况\n👣 洛珠桃玉足状态: 描述洛珠桃玉足当下的状态\n```\n</StatusBlock>",
+            "content": "必须在描写的段落前部插入{{char}}的一个<StatusBlock>,如果出现新角色,进行详细介绍后也插入其对应的一个<StatusBlock>.\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. -->\n\n<StatusBlock>\n```json\n『 日期 – 时间 – 地点 – 目前{{user}} 附近的人物』\n💑 洛珠桃的想法: 描写洛珠桃当前的第一人称想法\n🍑 洛珠桃小穴状态: 描述洛珠桃小穴当下的情况,如湿润程度等\n🍑 洛珠桃肛门状态: 描述洛珠桃肛门当下的情况\n```\n</StatusBlock>",
             "constant": true,
             "selective": true,
             "order": 100,

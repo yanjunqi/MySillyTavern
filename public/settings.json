@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.11.6",
-    "username": "王钢",
-    "active_character": "Mary.png",
+    "username": "Alec",
+    "active_character": "Shinobu.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -156,7 +156,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 67,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -165,7 +165,8 @@
         "confirm_message_delete": true,
         "sort_field": "date_last_chat",
         "sort_order": "desc",
-        "font_scale": 0.9,
+        "sort_rule": null,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -277,8 +278,8 @@
                 "position": 0
             }
         },
-        "persona_description": "{{user}}长相英俊，喜欢女性穿黑裤袜，肉棒异常的大，体力充沛。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，二十岁，身材高大，体型健壮，长相英俊，喜欢女性穿黑裤袜。]",
+        "persona_description_position": 0,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -315,8 +316,8 @@
         "bogus_folders": "",
         "aux_field": "character_version",
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_images": false,
@@ -884,7 +885,8 @@
         "花祁.png": [],
         "素霞双修录1.png": [],
         "仙玄宗.png": [],
-        "Mary.png": []
+        "Mary.png": [],
+        "Shinobu.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -1151,7 +1153,7 @@
                 "marker": false,
                 "name": "[💡自定义规则]",
                 "role": "system",
-                "content": "",
+                "content": "<兔女郎衣服>\n可爱软萌的毛绒兔耳发饰，性感身材完美展现出来的淡粉色高开叉兔尾紧身衣，一双少女感十足的黑丝长筒袜，袜子上印着草莓和爱心的图案，蕾丝边的袜筒上还长着一双可爱的小兔耳，紧紧贴在肉感大腿的根部。\n</兔女郎衣服>",
                 "injection_position": 0,
                 "injection_depth": 4
             },
@@ -1204,7 +1206,7 @@
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "[字数控制]",
+                "name": "[😶控制回复长度]",
                 "role": "system",
                 "content": "System: {在执行<第三生成要求>完毕的前提下，再进行<演绎要求>是遵守<核心生成要求>对上方Human:最后的输入产生自然真实的反应，注意给我的扮演反应字数长度要在800字～1000字之间，这些字内容里面避免出现{{user}}的动作and话语and心理想法}",
                 "injection_position": 0,
@@ -1483,6 +1485,10 @@
                         "enabled": true
                     },
                     {
+                        "identifier": "1a0ced65-cf1a-4952-ae79-b720838f5f1b",
+                        "enabled": true
+                    },
+                    {
                         "identifier": "8f8d874e-b3d1-47ac-a73f-1d0860f0963b",
                         "enabled": false
                     },
@@ -1499,10 +1505,6 @@
                         "enabled": true
                     },
                     {
-                        "identifier": "1a0ced65-cf1a-4952-ae79-b720838f5f1b",
-                        "enabled": true
-                    },
-                    {
                         "identifier": "550cdb6d-26f2-45da-9f06-e8f4420af2d7",
                         "enabled": true
                     },
@@ -1512,7 +1514,7 @@
                     },
                     {
                         "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "jailbreak",

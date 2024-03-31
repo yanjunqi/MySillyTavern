@@ -1,0 +1,30 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [
+                "双修"
+            ],
+            "keysecondary": [],
+            "comment": "双修",
+            "content": "<setting>\n-是男女提升内力的方法，一旦双修成功,不仅可以治愈疾病延年益寿,还能使修炼者拥有与常人不同的超能力。秘籍还特别强调双方差异越多效果越好。比如年龄，人种，性格、体型等。\n-{{user}}和{{char}}根据地图找到一间山洞，里面的寒玉床能加速修炼\n</setting",
+            "constant": true,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 1,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "displayIndex": 0
+        }
+    }
+}
