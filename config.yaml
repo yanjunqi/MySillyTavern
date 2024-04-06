@@ -1,13 +1,14 @@
 # -- NETWORK CONFIGURATION --
 # Listen for incoming connections
-listen: false
+listen: true
 # Server port
-port: 8001
+port: 8000
 # Toggle whitelist mode
 whitelistMode: true
 # Whitelist of allowed IP addresses
 whitelist:
   - 127.0.0.1
+  - 192.168.1.64
 # Toggle basic authentication for endpoints
 basicAuthMode: false
 # Basic authentication credentials

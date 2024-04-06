@@ -1,7 +1,7 @@
 {
-    "chat_completion_source": "openai",
-    "openai_model": "claude-3-opus-20240229",
-    "claude_model": "gpt-3.5-turbo",
+    "chat_completion_source": "claude",
+    "openai_model": "",
+    "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": true,
@@ -25,7 +25,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 22153,
+    "openai_max_context": 17000,
     "openai_max_tokens": 4096,
     "wrap_in_quotes": false,
     "names_in_completion": false,
@@ -37,8 +37,8 @@
     "new_example_chat_prompt": "[Start a new Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity",
-    "proxy_password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..ePDHtFE0bJWeoil9.y-nXlHDh31F_nXo7G4B0ebTUGY_UvoMa9y5d49w8zXkrq5Dm86oRO1v2nivAZqP5r2f-FiV8UzOxNL8tBUfvFz600YKqH8Sh7e_Cnl3UcXK-xVzo4DJK5dS8VcRBrz-dTbzanDaYT8tET-xe_dm2P-tRJNAykcNdUK6QpmOc7oBOxe9mFZXcUdBf_tQY9YnpY2IsF7SL_0ilBYFPvECCycDYkD4x.WqV_oNoQtRzk0DhcbhO-Lw",
+    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
+    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
     "max_context_unlocked": true,
     "wi_format": "",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -750,7 +750,7 @@
                 },
                 {
                     "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "5fdd42ed-ec3b-4cf7-8b37-dc79bea2eb02",
