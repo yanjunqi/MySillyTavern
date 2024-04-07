@@ -1,0 +1,31 @@
+{
+    "system_prompt": "Enter roleplay mode. You must act as {{char}}, whose persona follows:",
+    "system_sequence": "<|system|>",
+    "stop_sequence": "</s>",
+    "input_sequence": "<|user|>",
+    "output_sequence": "<|model|>",
+<<<<<<< HEAD:public/instruct/Metharme.json
+    "separator_sequence": "",
+    "wrap": false
+=======
+    "last_output_sequence": "",
+    "system_sequence": "",
+    "stop_sequence": "</s>",
+    "wrap": false,
+    "macro": true,
+    "names": false,
+    "names_force_groups": true,
+    "activation_regex": "",
+    "system_sequence_prefix": "<|system|>",
+    "system_sequence_suffix": "",
+    "first_output_sequence": "",
+    "skip_examples": false,
+    "output_suffix": "",
+    "input_suffix": "",
+    "system_suffix": "",
+    "user_alignment_message": "",
+    "system_same_as_user": true,
+    "last_system_sequence": "",
+    "name": "Metharme"
+>>>>>>> b8ea75f79fa274165190a567ebae59bc0d607262:default/content/presets/instruct/Metharme.json
+}
