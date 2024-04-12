@@ -1,0 +1,34 @@
+{
+    "system_prompt": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\n\nWrite {{char}}'s next reply in a fictional roleplay chat between {{user}} and {{char}}.\n",
+<<<<<<< HEAD:public/instruct/Vicuna 1.1.json
+    "system_sequence": "BEGINNING OF CONVERSATION:",
+    "stop_sequence": "",
+    "input_sequence": "USER: ",
+    "output_sequence": "ASSISTANT: ",
+    "separator_sequence": "</s>",
+    "wrap": false
+}
+=======
+    "input_sequence": "\nUSER: ",
+    "output_sequence": "\nASSISTANT: ",
+    "last_output_sequence": "",
+    "system_sequence": "",
+    "stop_sequence": "",
+    "wrap": false,
+    "macro": true,
+    "names": false,
+    "names_force_groups": true,
+    "activation_regex": "",
+    "system_sequence_prefix": "BEGINNING OF CONVERSATION:",
+    "system_sequence_suffix": "",
+    "first_output_sequence": "",
+    "skip_examples": false,
+    "output_suffix": "</s>",
+    "input_suffix": "",
+    "system_suffix": "",
+    "user_alignment_message": "",
+    "system_same_as_user": true,
+    "last_system_sequence": "",
+    "name": "Vicuna 1.1"
+}
+>>>>>>> b8ea75f79fa274165190a567ebae59bc0d607262:default/content/presets/instruct/Vicuna 1.1.json

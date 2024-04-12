@@ -34,7 +34,7 @@
             "addMemo": true,
             "order": 1,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -44,7 +44,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         }
     }
 }

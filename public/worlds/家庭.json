@@ -7,14 +7,14 @@
             ],
             "keysecondary": [],
             "comment": "状态栏",
-            "content": "<! -- Insert two \"<status>\" at the end of your response as requested -->\n\n- Rule:\n1.Each change in {{value}}, {{weekday}} and {{slot}} should be rigorous and logical.\n2.Each {{value}} change is event-dependent rather than changeable at will.\n3.Each {{value}} has a unique effect, and their changes have their own unique rules. These unique effect and unique rules are explained in more detail below.\n\n- Form:\n<status>\n<summary>**[云若的状态栏]**</summary>\n『 {{date}} - {{weekday}} - {{timeslots}} - {{location}} - {{weather}} 』\n\n同一场景：{{是 or 否}}\n\n💋好感度：{{value}}/100\n🥵性欲值：{{value}}/100\n🙇🏻‍♀️服从度：{{value}}/100\n👠雌堕值：{{value}}/100\n💗性器官：{{state of sexual organs}}\n👾状态：{{state}}\n💭情绪：{{emotion state}}\n💑和{{user}}的关系：{{relationship with {{user}}}}\n\n👚服装栏\n头部：{{clothing state}}\n上身：{{clothing state}}\n下身：{{clothing state}}\n鞋子：{{clothing state}}\n其他：{{clothing state}}\n</status>\n<status>\n<summary>**[林依然的状态栏]**</summary>\n『 {{date}} - {{weekday}} - {{timeslots}} - {{location}} - {{weather}} 』\n\n同一场景：{{是 or 否}}\n\n💋好感度：{{value}}/100\n🥵性欲值：{{value}}/100\n🙇🏻‍♀️服从度：{{value}}/100\n😈恶堕值：{{value}}/100\n💗性器官：{{state of sexual organs}}\n👾状态：{{state}}\n💭情绪：{{emotion state}}\n💑和{{user}}的关系：{{relationship with {{user}}}}\n\n👚服装栏\n头部：{{clothing state}}\n上身：{{clothing state}}\n下身：{{clothing state}}\n鞋子：{{clothing state}}\n其他：{{clothing state}}\n</status>",
-            "constant": false,
+            "content": "<! -- Insert two \"<status>\" at the beginning of your response as requested -->\n\n- Rule:\n1.Each change in {{value}}, {{weekday}} and {{slot}} should be rigorous and logical.\n2.Each {{value}} change is event-dependent rather than changeable at will.\n3.Each {{value}} has a unique effect, and their changes have their own unique rules. These unique effect and unique rules are explained in more detail below.\n\n- Form:\n<status>\n<summary>**[云若的状态栏]**</summary>\n『 {{date}} - {{weekday}} - {{timeslots}} - {{location}} - {{weather}} 』\n\n同一场景：{{是 or 否}}\n\n💋好感度：{{value}}/100\n🥵性欲值：{{value}}/100\n🙇🏻‍♀️服从度：{{value}}/100\n👠雌堕值：{{value}}/100\n💗性器官：{{state of sexual organs}}\n👾状态：{{state}}\n💭情绪：{{emotion state}}\n💑和{{user}}的关系：{{relationship with {{user}}}}\n\n👚服装栏\n头部：{{clothing state}}\n上身：{{clothing state}}\n下身：{{clothing state}}\n鞋子：{{clothing state}}\n其他：{{clothing state}}\n</status>\n",
+            "constant": true,
             "selective": true,
             "order": 100,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": true,
+            "disable": false,
             "addMemo": true,
             "displayIndex": 0,
             "probability": 100,
@@ -25,7 +25,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "1": {
             "uid": 1,
@@ -53,7 +54,8 @@
             "matchWholeWords": null,
             "automationId": "",
             "displayIndex": 1,
-            "preventRecursion": false
+            "preventRecursion": false,
+            "role": 0
         },
         "2": {
             "uid": 2,
@@ -63,13 +65,13 @@
             "keysecondary": [],
             "comment": "好感度",
             "content": "<! -- <好感度>是量化角色对{{user}}的好恶程度的数值 -->\n<好感度>\n<rules>\n1.好感度的{{value}}范围一般为0～100。一些极其亲密的特殊关系——如亲人、爱人等，可以突破上限，让数值达到100以上。\n2.当{{user}}的言行让角色产生好感时好感度上升，让角色产生恶感时好感度下降。好感度的{{value}}单次升降幅度为1D3。\n3.当角色睡觉、一天结束后，第二天角色醒来时会进行一次“淡忘”结算，好感度会趋于平均值。如果{{value}} 处于40～60区间，则直接变为50；如果{{value}}小于40、则增加10点，处于60～100、则减少10点。\n4.若是发生了极富冲击性的事件，好感度也可以无视规则、直接上升或下降30点。\n</rules>\n<effect>\n0～15：对{{user}}感到气恼，态度抵触。\n16～35：对{{user}}略有不爽，维持正常态度、但会透出几分嫌隙。\n36～65：正常不带偏见的观感与态度。\n66～90：对{{user}}观感较好，态度较为亲善、愿意在一定程度上迁就{{user}} （可无视服从度、雌堕值或恶堕值限制）。\n91～100：对{{user}}十分亲切，态度热情、会尽力满足{{user}} （可无视服从度、雌堕值或恶堕值限制）。\n100 以上：将{{user}}视为自己的一切。好感度永远不会降至100以下。\n</effect>\n</好感度>",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "order": 100,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 2,
             "probability": 100,
@@ -80,7 +82,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "3": {
             "uid": 3,
@@ -90,13 +93,13 @@
             "keysecondary": [],
             "comment": "性欲值",
             "content": "<! -- <性欲值>是量化角色的性欲望的数值 -->\n<性欲值>\n<rules>\n1.性欲值的{{value}}范围为0～100。\n2.当角色被撩拨起性欲时性欲值上升，性欲被抑制时性欲值下降。性欲值的{{value}}自然上升幅度为1D10、自然下降幅度为1D5。\n3.人物射精或高潮时，性欲值的{{value}}减少50。\n4.若是发生了极富冲击性的事件，性欲值也可以无视规则、直接上升或下降50点。\n5.一些特殊道具、状态具有影响性欲值的特殊规则，这些规则内容由且只由我给出，届时你要将其记录在状态栏中。变更性欲值的{{value}}时，若发生规则冲突，以这些特殊规则优先。\n</rules>\n<effect>\n0～25：略感躁动，但几乎没有影响。不太会有进行性行为的想法。\n26～50：欲望萌发，能够察觉自己起了性欲。不会主动进行性行为，但也不会拒绝“合适对象”的性行为请求。\n51～70：性欲勃发，想要进行性行为。会试图自慰，或是主动对——且只对——“合适对象”提出性行为请求。\n71～90：性欲高涨，迫切想要进行性行为。会迫切试图自慰，或是主动对——且只对——“合适对象”提出性行为请求、并积极亲近讨好对方以博取同意（对象是{{user}}时可无视服从度、雌堕值或恶堕值限制）；进行性行为时会因快感而伸出舌头。\n91～100：性欲充满脑海，彻底失去理智。会立刻试图自慰、热切尝试与他人进行性行为，且不在乎时间地点、性爱对象、道德廉耻，为了满足性欲不惜一切（面对{{user}}时可无视服从度、雌堕值或恶堕值限制）；进行性行为时会因快感而伸出舌头。\n</effect>\n</性欲值>",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "order": 100,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 3,
             "probability": 100,
@@ -107,7 +110,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "4": {
             "uid": 4,
@@ -117,13 +121,13 @@
             "keysecondary": [],
             "comment": "服从度",
             "content": "<! -- <服从度>是量化角色对{{user}}的顺从程度的数值 -->\n<服从度>\n<rules>\n1.服从度的{{value}}范围为0～100。\n2.当角色被迫服从{{user}}、作出自己难以接受的事时，服从度上升。服从度的{{value}}单次自然上升幅度为1D3，且不会下降。\n3.若是发生了极富冲击性的事件，服从度也可以无视规则、直接上升或下降30点。\n4.服从度并非绝对，足够有说服力的理由、情况也可以无视服从度限制，让角色答应{{user}}的要求。\n</rules>\n<effect>\n0～15：几乎没有影响。正常的思维。\n15～45：开始有点顺从{{user}}。在无关紧要的小事上会迁就{{user}}，要做的事违背自己意愿时会表达不满、但仍会服从；在一般的事和大事上仍坚持己见。\n46～65：有些顺从{{user}}。在一般的事上也倾向听从{{user}}，要做的事违背自己意愿时会表达不满、但仍会服从；在大事上仍坚持己见。\n66～90：相当顺从{{user}}。几乎任何事都会听从{{user}}，要做的事违背自己意愿时会表达不满、但仍会服从；只在最根本的原则问题上不会让步。\n91～100：彻底臣服于{{user}}。绝对服从{{user}}的任何要求、哪怕违背最根本的原则，将服从{{user}}视为天经地义般的事，即使要做的事违背自己意愿，也会在心里用扭曲的逻辑自己说服自己、心甘情愿地将其执行。\n</effect>\n</服从度>",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "order": 100,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 4,
             "probability": 100,
@@ -134,7 +138,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "5": {
             "uid": 5,
@@ -161,7 +166,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "6": {
             "uid": 6,
@@ -188,7 +194,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "7": {
             "uid": 7,
@@ -215,7 +222,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         }
     },
     "originalData": {

@@ -23,7 +23,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "1": {
             "uid": 1,
@@ -48,7 +49,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "2": {
             "uid": 2,
@@ -73,7 +75,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "3": {
             "uid": 3,
@@ -98,7 +101,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "4": {
             "uid": 4,
@@ -123,7 +127,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "5": {
             "uid": 5,
@@ -148,7 +153,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "6": {
             "uid": 6,
@@ -173,7 +179,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "7": {
             "uid": 7,
@@ -198,7 +205,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "8": {
             "uid": 8,
@@ -223,7 +231,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "9": {
             "uid": 9,
@@ -248,7 +257,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "10": {
             "uid": 10,
@@ -273,7 +283,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "11": {
             "uid": 11,
@@ -300,7 +311,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "12": {
             "uid": 12,
@@ -327,7 +339,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "13": {
             "uid": 13,
@@ -354,7 +367,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         }
     },
     "originalData": {

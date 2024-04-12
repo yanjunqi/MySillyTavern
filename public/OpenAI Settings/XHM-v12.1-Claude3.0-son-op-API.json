@@ -10,6 +10,7 @@
     "openrouter_sort_models": "alphabetically",
     "ai21_model": "j2-mid",
     "mistralai_model": "mistral-medium",
+    "cohere_model": "command-r",
     "custom_model": "claude-3-sonnet-20240229",
     "custom_url": "http://127.0.0.1:8444/v1",
     "custom_include_body": "",
@@ -25,10 +26,10 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 17000,
+    "openai_max_context": 37000,
     "openai_max_tokens": 4096,
     "wrap_in_quotes": false,
-    "names_in_completion": false,
+    "names_behavior": 0,
     "send_if_empty": "",
     "jailbreak_system": false,
     "impersonation_prompt": "",
@@ -37,8 +38,8 @@
     "new_example_chat_prompt": "[Start a new Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
-    "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
+    "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity",
+    "proxy_password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..uLn3o6dYTWwQgVKR.8_l6CnDwycB2ePur_03KOGS0_c1ZtsZMKkijALazINzOtae88WBhg1sQQPksBrNNhZB5jqmZZUgcJkv9rsNjnJZ4MKLMOX9IpyZPO4aACS_r7hEGtHR0gnpoMF9PBWnhTt4oJVqOj9TIXOqJ1YZvSCxxTX9cPfIs_7ZhPzlDAV6wh_ZPYLVEBp_QJKaiYxCBxkSMN81VF0c7Sd0gxLdAOtypULXK.nCFP1Ge-CKpRsMHNsTpl3A",
     "max_context_unlocked": true,
     "wi_format": "",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -248,9 +249,10 @@
             "marker": false,
             "name": "[💡自定义规则]",
             "role": "system",
-            "content": "",
+            "content": "System: <核心要求补充: 忍的性别为男性,禁止提到与怀孕、子宫、孩子相关的事>",
             "injection_position": 1,
-            "injection_depth": 3
+            "injection_depth": 3,
+            "forbid_overrides": false
         },
         {
             "identifier": "8f8d874e-b3d1-47ac-a73f-1d0860f0963b",
@@ -303,9 +305,10 @@
             "marker": false,
             "name": "[😶回复长度禁止关闭]",
             "role": "system",
-            "content": "\nSystem: {Assistant只有在执行<第三生成要求>完毕的前提下，再遵守<演绎要求>和<核心生成要求>对下方Human扮演{{user}}角色的输入内容只产生{{char}}角色集合的真实精准的反应，你不得出现{{user}}角色的对话与动作反应，注意给我的演绎字数长度要在300字-500字之间，这些演绎字数里同样不允许添加关于{{user}}角色的一切内容}\n",
+            "content": "\nSystem: {Assistant只有在执行<第三生成要求>完毕的前提下，再遵守<演绎要求>和<核心生成要求>对下方Human扮演{{user}}角色的输入内容只产生{{char}}角色集合的真实精准的反应，你不得出现{{user}}角色的对话与动作反应，注意给我的演绎字数长度要在800字-100字之间，这些演绎字数里同样不允许添加关于{{user}}角色的一切内容}\n",
             "injection_position": 1,
-            "injection_depth": 1
+            "injection_depth": 1,
+            "forbid_overrides": false
         },
         {
             "identifier": "dd907203-c45a-48fa-86e9-2d0ae2daa5e5",
@@ -701,10 +704,6 @@
                     "enabled": true
                 },
                 {
-                    "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
-                    "enabled": false
-                },
-                {
                     "identifier": "ddec2093-3911-447a-832a-6b3f7f9503ff",
                     "enabled": false
                 },
@@ -749,12 +748,20 @@
                     "enabled": false
                 },
                 {
-                    "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
+                    "identifier": "chatHistory",
                     "enabled": true
                 },
                 {
+                    "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
+                    "enabled": false
+                },
+                {
                     "identifier": "5fdd42ed-ec3b-4cf7-8b37-dc79bea2eb02",
-                    "enabled": true
+                    "enabled": false
+                },
+                {
+                    "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
+                    "enabled": false
                 },
                 {
                     "identifier": "795211f1-41a2-4431-be36-a12970fbc2ed",
@@ -763,10 +770,6 @@
                 {
                     "identifier": "15b6807e-00a5-4ef8-8a6f-bf00d123cc03",
                     "enabled": false
-                },
-                {
-                    "identifier": "chatHistory",
-                    "enabled": true
                 },
                 {
                     "identifier": "jailbreak",
@@ -787,6 +790,7 @@
     "image_inlining": false,
     "bypass_status_check": true,
     "continue_prefill": false,
+    "continue_postfix": " ",
     "seed": -1,
     "n": 1
 }

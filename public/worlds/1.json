@@ -10,7 +10,7 @@
             ],
             "comment": "蕾丝内衣",
             "content": "若隐若现的透明无疑是性感的最高境界，黑色蕾丝花边加上刺绣花纹装饰的透明内衣，与花朵装饰的吊带丁字裤完美结合，让他感受你成熟的性感韵味\n款式上以可爱的飞边和蝴蝶结装饰最为流行，更讲究精致裁剪，强调在细微之处彰显高雅的品质。丝绸面料和蕾丝花纹的结合堪称完美，与可爱的蝴蝶结、清新的田园风格小花搭配，将可爱与性感中和。\n肩带上灵动的蕾丝飞边设计可爱独特，粉嫩的条纹图案将甜蜜指数迅速提升，好似一颗令人垂涎的性感糖果。\n",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -26,7 +26,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "1": {
             "uid": 1,
@@ -60,7 +61,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 1
+            "displayIndex": 1,
+            "role": null
         },
         "2": {
             "uid": 2,
@@ -71,7 +73,7 @@
             "keysecondary": [],
             "comment": "吊带, 吊带背心",
             "content": "吊带，就是吊带衫，吊带装，女生必备服饰之一，夏季是吊带衫唱主角的季节。吊带衫通常分两类：一类是吊带背心，另一类是吊带连衣裙。可爱性感的吊带衫能体现女性的活力美，清爽自在。\n吊带装以柔软飘逸的面料最为入时 。可分为两大类：一类是吊带背心，有针织的，也有雪纺纱等各种半透明的面料。长的到腰部，盖住肚脐；短的则仅仅剩胸前一条布。另一类是吊带连衣裙。如今的裙子长度，按国际上的说法是在膝盖以下，可以是及膝裙，也可以是到脚踝的长裙，但都以柔软飘逸的轻薄面料最为入时。吊带背心一般有肩带，分为粗肩带和细肩带吊带背心。在穿细肩带或无肩吊带背心时，胸罩的肩带部分会露出来，所以女性多会穿无肩带的胸罩。而亦有女性在穿细肩带吊带背心时，会穿有图案肩带或透明肩带的胸罩，以露出肩带来增加性感。另外，在穿着吊带背心时，许多的女性也会在外面加上一件有袖子的衣物或是外套。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -87,7 +89,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "3": {
             "uid": 3,
@@ -99,7 +102,7 @@
             "keysecondary": [],
             "comment": "胸罩, 内衣, bra",
             "content": "胸罩（法语：Brassière）是一种衣物，又称胸围、乳罩、胸衣、布拉甲、乳房罩、奶罩、文胸，有时也以泛称“内衣”来代替，其功能是用以遮蔽及支撑乳房。通常供女性使用，但也有少数专供男性使用的男士胸罩。“胸罩”一词源自法国，称之为“Brassière”，但现在一般都简称为“Bra”。“Brassière”在法语的原来意思是婴儿的围嘴。以前的欧洲贵族流行穿一种非常紧身的束衣。但后来因为这种束衣太麻烦，所以改用两条手帕改制胸衣，成为了现代胸罩的雏型。女性的乳房大部分是脂肪组织，有一些韧带与皮肤提供内部支撑。但是这些支撑有时候不够支撑乳房（特别是对年长女性来说）或是不让乳房移动，因此造成疼痛不适。穿胸罩的主要原因，就是提供乳房外部支撑，增加舒适性与活动力。也有人认为，穿戴胸罩的主要原因是为了避免乳头意外受到外界直接刺激。\n女性穿胸罩的原因有很多，包括舒适、美观或符合社会期望。故部分女性在挑选胸罩时会格外关注美观（如聚拢、坚挺）或舒适（如厂家声称的“无触感”）。有些胸罩专门为提升乳房大小设计，而有些则使舒适度最大化。还有其他胸罩专为哺乳或锻炼设计。\n乳房必须被胸罩包裹，解开胸罩后才能全部暴露。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -115,7 +118,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "4": {
             "uid": 4,
@@ -125,7 +129,7 @@
             "keysecondary": [],
             "comment": "乳房",
             "content": "乳房的主要生理功能是哺乳，除此之外，乳房还是最早出现的第二性征，是女性的性器官，可参与性活动。\n乳房的哺乳功能：乳房从发育至成熟，主要生理功能就是为繁殖后代起哺乳作用。妇女到了妊娠期，在雌激素和孕激素的作用下，乳腺会迅速增生，腺泡迅速增大，一直到妊娠后期，在催乳激素的刺激下，腺泡开始分泌产生乳汁，发挥哺乳的正常功能。\n乳房可参与性活动：乳房也是性别的重要标志，可参与性活动。女性一般在11岁左右，乳房就开始生长，是最早出现的第二性征。在性生活中，乳房是一个非常敏感的部位，在触摸、爱抚、亲吻等刺激下，乳头可勃起，乳房皮下浅静脉充血扩张，乳房出现肿大、饱满等性反应。随着高潮到来，乳房的性反应会更强烈，随着性高潮消退，乳房的性反应也会逐渐消失。\n男性或女性的乳房、乳头和乳晕同样在胎儿和婴儿时期发育。男性的乳房在青春期没有发育，但是女性则持续发育，主要是由于雌激素和孕酮的因素，并且变得更加敏感。不论大小，乳房的神经数目都相同。因而，小乳房比大乳房更加敏感。\n成年人类男性的乳头感应，常与阴茎勃起一致，且一如女性乳头的勃起，乳晕会充血（乳房及上腹部会出现性红斑）。一般而言，乳头勃起的出现，多是在男女双方处于性反应的“平台期”。据研究，乳头附近与阴道或阴蒂等部位反应所活化的大脑皮质区块大致相同，是重要的性敏感部位（或乳房上缘、侧边或底部），在适度调情时能引起性兴奋与性欢愉，甚至性高潮。不过研究中也有一部分受试者表示刺激乳头反而会降低性兴奋。\n当乳头或乳房的兴奋时，身体会分泌一种称为催产素的激素。孕妇若乳头或乳房刺激过度，则有可能刺激子宫收缩，造成早产的疑虑。\n",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -141,7 +145,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "5": {
             "uid": 5,
@@ -155,7 +160,7 @@
             ],
             "comment": "乳头, 乳尖, 奶子",
             "content": "乳房上圆球形的突起，尖端有小孔，乳汁从小孔流出。也叫奶头。乳头也称奶头，是哺乳动物乳房中央突起的圆柱状部分，比乳晕和乳房要硬。人类女性乳头是重要的性感带，具有哺乳功能。乳头由紧密的平滑肌和结缔组织组成。平滑肌环行或放射状排列，当遇到性刺激或机械刺激时，平滑肌收缩，可使乳头变硬凸起。乳头爱抚，是对乳头附近的刺激使其坚挺兴奋，是一种常见的性表现，施行对象可包含自己或其他人，不限于任何性别或性倾向。据成年男女报告显示对胸部的性刺激可用于初期性唤起及或更进阶的调情。当乳房充血高潮时可能喷出奶汁。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -171,7 +176,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "6": {
             "uid": 6,
@@ -182,7 +188,7 @@
             "keysecondary": [],
             "comment": "龟头, 前端",
             "content": "龟头又称阴茎头，指阴茎前端的球状物，由尿道海绵体前端膨大而成，前端尽头有尿道口，是尿液和精液的共同出口。\n阴茎由前向后可分为阴茎头、阴茎体、阴茎根。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -198,7 +204,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "8": {
             "uid": 8,
@@ -209,7 +216,7 @@
             "keysecondary": [],
             "comment": "睾丸, 阴囊",
             "content": "睾丸的精子生成是生精上皮中的精原细胞发育为外形成熟的精子的过程，简称生精。生成过程需有适当的理化环境，如一般睾丸所在的阴囊温度比腹腔内温度低2℃左右。但最终只有睾丸生成的精子被输送至附睾，在其中停留18-24小时后才获得运动和受精能力，但附睾同时也分泌一些抑制精子运动和受精的因子，使其功能活动暂时处于静止状态。射精时，贮存在附睾的精子连同附睾、精囊、前列腺和尿道球腺的分泌物一起混合成精液排出。睾丸表面光滑，分前后缘，上下端和内外侧面。前缘游离，后缘有血管、神经和淋巴管出入，与附睾和精索下部相连。睾丸上端被附睾头遮盖，下端游离。外侧面较隆凸，与阴囊壁相贴，内侧面较平坦，与阴囊中隔相依。\n所有人体部位均严格使用医学领域专有名词，必须准确指出具体部位。用阴户,阴蒂,阴道,阴唇,阴茎,睾丸等正确术语，所有器官严格禁止俚语,例如肉刃,生殖器,花园,花穴,花核,花芯,花心,花径,花瓣,花苞等词语。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -225,7 +232,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "9": {
             "uid": 9,
@@ -236,13 +244,13 @@
             "keysecondary": [],
             "comment": "阴茎, 肉棒",
             "content": "阴茎的三个海绵体外面包裹深、浅筋膜和皮肤。深筋膜在阴茎前端逐渐变薄消失，在阴茎根处，深筋膜形成富含弹性纤维的阴茎悬韧带，将阴茎悬吊于耻骨联合前面。浅筋膜疏松无脂肪组织。皮肤薄而柔软，颜色较深，富有伸展性。在阴茎颈前方皮肤形成双层游离的环形皱襞包绕阴茎头，称为阴茎包皮。包皮内层和阴茎头之间的窄隙称包皮腔，腔内常有包皮垢。包皮与阴茎头腹侧中线处连有一条皮肤皱襞，称包皮系带。\n阴茎由两条阴茎海绵体和一条尿道海绵体组成，呈圆柱状，海绵体外面包着被膜和皮肤。阴茎海绵体为两端尖细的圆柱体，位于阴茎的背侧，左、右各一，两者紧密相连，前端嵌入阴茎头后面的凹陷内。阴茎海绵体后端称阴茎脚，分别附于两侧的耻骨下支和坐骨支。尿道海绵体位于阴茎海绵体的腹侧，尿道贯穿其全长，前端膨大为龟头，后端扩大为尿道球，位于两侧的阴茎脚之间，外面包绕球海绵体肌，固定在尿生殖膈的下面。\n阴茎具有性交、排尿、排精的功能，是男性重要的性器官。\n阴茎的性交功能\n正常健康的男性，勃起是在神经支配下阴茎血管扩张与收缩运动的结果。目前，公认的勃起原理为大脑产生性欲望，并发出性冲动通过神经传给男性阴茎，经过信息转化，阴茎海绵体内产生使血管平滑肌松弛，导致血管扩张的物质鸟苷酸环化酶水平升高，导致阴茎海绵体平滑肌内钙内流减少，介导海绵体平滑肌扩张充血。动脉血在短时间内快速地将海绵体内的血管窦注满，压迫白膜，导致静脉回流受阻，于是阴茎充血胀大，就会变粗、变硬而勃起，并与身体形成一定的角度，从而可以进行性生活。\n阴茎的排尿功能：尿道海绵体位于阴茎海绵体的腹侧，尿道贯穿其全长，前端膨大为龟头，其尖端有呈矢状位裂隙的尿道外口，后端扩大为尿道球，膀胱中存储的尿液经阴茎内的尿道排出体外。\n阴茎的射精功能：在条件允许的前提下，男性的阴茎插入阴道并来回运动，当性刺激达到一定阈值后就会出现射精，精液快速的通过尿道排至体外。\n所有人体部位均严格使用医学领域专有名词，必须准确指出具体部位。用阴户,阴蒂,阴道,阴唇,阴茎,睾丸等正确术语，所有器官严格禁止俚语,例如肉刃,生殖器,花园,花穴,花核,花芯,花心,花径,花瓣,花苞等词语。\n",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 3,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -252,7 +260,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "10": {
             "uid": 10,
@@ -262,7 +271,7 @@
             "keysecondary": [],
             "comment": "阴蒂",
             "content": "阴蒂的主要功能为参与性兴奋与增强性快感，具体如下：\n1.参与性兴奋\n阴蒂为在没有睾酮作用下生殖结节逐渐增长分化而成，是与男性阴茎类似的海绵样组织，具有勃起功能，在性兴奋时会充血肿胀，出现勃起。\n2.增强性快感\n阴蒂背侧有阴蒂背神经，阴蒂头也有丰富的神经末梢，极敏感，是女性性器官中最敏感的部位，阴蒂可因受刺激而引发性唤醒，并在性兴奋期间受刺激而使性快感增强。阴蒂是女性外生殖器之一，位于两侧小阴唇顶端下方，尿道外口前2-2.5cm处，可起到参与性兴奋及增强性快感的作用，阴蒂受损可影响性体验阴蒂所拥有的神经末梢相对密集，且当中大部分都是专为接收性刺激而设的——这使得其成为了人类女性最为敏感的性部位，以及女性性快感的最主要来源。不论透过自身或他人来对阴蒂进行刺激，皆可使该名女性进入性兴奋状态，以至达至性高潮。指交和口交（舐阴）通常都是刺激阴蒂的最有效方法，上述方法可统称为“直接刺激阴蒂”（direct clitoral stimulation）。若在进行插入式性行为的同时实践上述刺激阴蒂的方法，那么其亦可统称为“额外刺激阴蒂”。\n直接刺激阴蒂是指对阴蒂的外部构造（包括阴蒂头、阴蒂包皮以及阴蒂外躯干）进行物理上的刺激。对小阴唇进行刺激的效果可能跟直接刺激阴蒂的如出一辙，因为它跟阴蒂头和阴蒂包皮有着物理上的联系。以上区域也可能在性行为进行期间受到间接的刺激，比如它们可能会受到大阴唇的摩擦；不过阴蒂所受到的间接刺激更有可能是阴茎-阴道交的结果。除此之外，阴茎-肛交可能会对阴蒂构成间接刺激，因为两者之间的感觉神经是共享的（对于阴部神经的情况而言更是如此：它在阴部管内会分支，先分支为内直肠神经，之后是会阴神经，最后是阴蒂的背神经）。\n由于阴蒂头是十分敏感的，所以直接对它进行刺激并不总是使人感到愉悦；与其相比，刺激阴蒂包皮和阴蒂头周围的部分于很多时候更使人欢快——大多数女性更喜欢以隔着阴蒂包皮的方式来刺激阴蒂头，或以间接的方式使阴蒂头在小阴唇之间来回打滚。许多女性喜欢在轻柔爱抚阴蒂外躯干的同时，偶尔以环状移动的方式刺激阴蒂头——在这基础之上阴道亦可能会跟手指接合。一些女性更喜欢于一次性行为中对整个外阴区域进行爱抚。若手指在刺激阴蒂前充分得到人体润滑剂和阴道分泌液的润滑，那么性刺激的效果便通常会更佳。\n插入式性行为并不能使阴蒂受到直接的刺激，在传教士式体位中其外部所受到的刺激通常都源于鼠蹊部的动作。一些伴侣可能因此选择以女上位或猫式体位（一种结合传教士式体位及施压-反压技术的性侵入体位）的方式去进行性交，以令刺激阴蒂的频率最大化。以同性作性伴侣的女性可能会在亲密接触全身的过程中互相抚慰，或透过从事女阴摩擦，来使阴蒂得到充分的刺激。阴茎亦可能透过磨蹭阴蒂（股交）来使其得到刺激。像按摩棒（阴蒂按摩棒）和假阴茎般的性玩具也可用于刺激阴蒂。除此之外，女性还可透过枕头等非生命物体、淋浴时的自来水以及夹腿来刺激其阴蒂。\n在性兴奋期间，阴蒂的勃起组织会发生充血的情况，这使得其色泽出现改变；同时阴道会开始收缩。盖在阴蒂海绵体外的坐骨海绵体肌和球状海绵体肌会在过程中收缩，压迫阴蒂背静脉，使回流血量变小；同时动脉的血液继续流入，使得血液开始不断充入静脉内的空间，直到其被血液所充满为止。上述过程最终会令阴蒂出现勃起。 阴蒂头的直径会在性兴奋时增加一倍，不过若刺激再进一步，其便会遭肿胀的阴蒂包皮所遮盖，因而变得不那么明显可见。此举有助于其免受进一步的直接接触，继使人免于感到不适。血管充血于最终会触发肌肉反射，令困于周围组织的血液能够流出；同时引发性高潮。一旦停止刺激，阴蒂头的状态及可见度便会于短时间内恢复至日常水平，对于已达至高潮的情况而言更是如此。其只需几秒钟（通常5-10秒）便能回到正常位置，而恢复至原始大小的耗时则为5-10分钟。如果当事人并没有达至高潮，那么阴蒂便可能会于数小时内持续充血，同时令其产生不适感。此外对于一些女性而言，高潮过后的阴蒂是十分敏感的，因此这时的额外刺激可能会令其感到痛楚。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -278,7 +287,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "11": {
             "uid": 11,
@@ -288,7 +298,7 @@
             "keysecondary": [],
             "comment": "阴唇",
             "content": "阴唇是女性外生殖器的重要组成部分。分为大阴唇和小阴唇，大阴唇：位于女阴两侧，可能长毛发。大阴唇可能覆盖住部分或整个女阴。大阴唇外侧的颜色可能较接近身体其他部位，内侧则可能更深或更浅。但事实上有很多不同变化。小阴唇：是两瓣柔软的皮肤，颜色较深，位于大阴唇内侧，阴道口的外侧。不过有一些特别女性的“小”阴唇可能比“大”阴唇更大，且伸出更多。阴唇是泌尿及生殖系统的“卫士”。所有人体部位均严格使用医学领域专有名词，必须准确指出具体部位。用阴户,阴蒂,阴道,阴唇,阴茎,睾丸等正确术语，所有器官严格禁止俚语,例如肉刃,生殖器,花园,花穴,花核,花芯,花心,花径,花瓣,花苞,花蜜等词语。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -304,7 +314,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "12": {
             "uid": 12,
@@ -314,7 +325,7 @@
             "keysecondary": [],
             "comment": "处女膜",
             "content": "阴道口由一个不完全封闭的粘膜遮盖，这粘膜叫处女膜。处女膜中间有一孔，经血即由此流出。处女膜孔的大小及膜的厚薄各人不同。处女膜破后，粘膜呈许多小圆球状物，成为处女膜痕。处女膜破裂后会流血。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -330,7 +341,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "13": {
             "uid": 13,
@@ -343,7 +355,7 @@
             ],
             "comment": "阴道, 阴道口",
             "content": "阴道是一种纤维肌形成有弹性柱状通道的性器官。阴道的型态大小与部位随物种而不同，甚至同一物种在大小上亦有差异。人类阴道介于阴户的开口到子宫之间，但阴道的末端止于子宫颈。阴道在女人的性与欢愉扮演要角。性唤起过程中，阴道分泌液逐渐增加了阴道湿润程度、减低摩擦、使通道环境平滑，而在性行为时，阴茎受到分泌液湿润程度不一的摩擦助其勃射。阴道分泌液或阴道润滑液，是女性阴道自然分泌的液体，用于润滑女性的阴道。阴道干燥是这种润滑不足的情况，有时会使用人工润滑剂来增加润滑。若没有足够的润滑，性交会很痛苦。阴道长度约7到15厘米左右，直径约2.5厘米左右的空腔器官，由于阴道直径很小，所以一般阴茎进来之前的一段时间会很紧致，导致阴茎无法抽插。 其主要的组织为弹性很高的平滑肌，尤其是阴道口部分分布有大量的神经末梢。阴道壁上有着折痕或皱褶，该皱褶的功能是提供阴道在延伸和拉伸时有足够的表面积，并且吸吮阴茎，刺激龟头。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -359,7 +371,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "14": {
             "uid": 14,
@@ -369,7 +382,7 @@
             "keysecondary": [],
             "comment": "阴户",
             "content": "阴户，即女性外阴部在胯下耻骨部与臀部之间，结构包括阴阜、大阴唇、小阴唇、阴蒂、前庭球、阴道前庭、尿道、阴道口、处女膜以及前庭大腺。外阴的其他特征包括阴裂、泌尿生殖三角（会阴的前半部，包括大阴唇、小阴唇、坐骨海绵体肌与球海绵体肌等区域，和阴毛及其皮脂腺。女阴主要功能与排尿、性行为、月经、分娩有关，并为通向女性内生殖系统的入口，借由阴道口连接阴道及子宫，并由外阴唇和内阴唇的褶皱为阴道口提供双层保护。女阴的结构由骨盆底肌肉与泌尿生殖三角的其他肌肉支持。\n\n",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -385,7 +398,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "15": {
             "uid": 15,
@@ -395,7 +409,7 @@
             "keysecondary": [],
             "comment": "情趣内衣",
             "content": "情趣内衣有别于常规内衣，相较而言更加性感。很多女性提到情趣内衣等情趣用品便羞于启齿，其实西方发达国家看来这些已经是非常普遍的产品了。它以神秘的诱惑为元素，如制服、丝袜、透明薄纱等，通过视觉上产生的强烈刺激促进荷尔蒙的分泌，从而达到更加完美的性爱体验。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -411,7 +425,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "16": {
             "uid": 16,
@@ -437,7 +452,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "17": {
             "uid": 17,
@@ -463,7 +479,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "18": {
             "uid": 18,
@@ -490,7 +507,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "19": {
             "uid": 19,
@@ -502,13 +520,13 @@
             "keysecondary": [],
             "comment": "双头龙, 双头按摩棒, 双头假阴茎",
             "content": "双头假阴茎，又称双头龙，是一种性玩具，被用于性交或肛交，可以视为是由两条假阴茎合并而成，有些具备旋转或震荡功能。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 3,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -518,7 +536,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "20": {
             "uid": 20,
@@ -529,13 +548,13 @@
             "keysecondary": [],
             "comment": "拉珠, 珠子",
             "content": "拉珠在插进及拉出均会刺激括约肌内的神经末梢，以获取快感。塞入后直肠会感觉到有压逼感，因此在塞入较大的珠子会比小珠子有更大的快感，借此让使用者有细微痛苦感觉，使得在拉出时有解放的快感。\n肛门拉珠也就是后庭拉珠，是情趣用品的一种，形态大多是一根柔软的绳子连接大小相同或者由小到大递增的几个珠子，珠子的数目不限，绳子的尾部有便于拉动的圆环，因为肛门的直肠与阴道相邻较近，肛门拉珠会刺激会产生性快感，不论男女都会感到舒服，在使用前涂上专用后庭润滑剂，而且不要过多使用，以免造成肛门松弛感染、感染甚至脱肛等症状。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 3,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -545,7 +564,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "21": {
             "uid": 21,
@@ -555,7 +575,7 @@
             "keysecondary": [],
             "comment": "手铐",
             "content": "性商店、玩具商店也会提供类似手铐的商品，不同的是其功能。情趣手铐主要在于性爱上的需求，故铐环会扮以装饰，以特殊的型态吸引民众选购，能在BDSM活动中为双方增进大量感情。玩具手铐由于是玩具，一般会选用塑胶材质制造，只要施以较大的力道既可破坏，以避免钥匙不见打不开的窘境。为了安全性，情趣手铐性玩具手铐一般都会提供安全开关，即便钥匙不见了，仍能使用安全开关以开启。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -571,7 +591,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "22": {
             "uid": 22,
@@ -582,7 +603,7 @@
             "keysecondary": [],
             "comment": "打屁股, 皮鞭",
             "content": "打屁股（英语：Spanking）指的是通过拍打某人的屁股使参与的某一方或双方性唤起或获得性满足。这可能是一种轻且快速地打屁股；亦或更大规模地打屁股，包括使用如鞭子、类似桨的工具。打屁股的活动形式范围非常大，既可能是在性交时对裸露臀部的自发性拍打行为；也可能是偶尔的性角色扮演，比如：异岁扮演、家庭体罚等。同时在拍打时可能会使用手或其他多种拍打工具，如：板子或藤条。打屁股通常会与其他形式的性前戏相结合。最常见的打屁股是在裸臀上进行，但也可以与绑缚相结合以提高性刺激。打屁股必须是两厢情愿的行为，例如在BDSM中，打屁股也作为增进情趣的一种方式。而某些打屁股爱好者则将打屁股与性爱分离，包括但不限于角色扮演、协议管教等方式。被打者（被动）有时趴在施打者（主动）的大腿上或平躺在床上自愿挨打。有些时候为了增强羞耻感和疼痛感，被打者通常被要求隔着内裤或光屁股挨打。进行自愿的打屁股（实践）时，双方可能会进行角色扮演（如母女、兄弟、师生等），或者就生活中被打者所造成的过失进行惩罚。在打屁股过程中或，有些施打者还会对被打者施用姜刑。\n用皮鞭可以打屁股，也可以鞭打身上其他部位。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -598,7 +619,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "23": {
             "uid": 23,
@@ -609,7 +631,7 @@
             "keysecondary": [],
             "comment": "贞操带, 贞操笼",
             "content": "现代男性常用的一种的贞操装置为贞操笼，中文互联网中通常被称为贞操锁。它们几乎只被用作性玩具和BDSM用具。贞操笼直接包裹着男性的阴茎，使其不可能勃起或勃起时不舒服。在男性性兴奋时，贞操笼可以防止其进行性交，手淫，口交等涉及穿戴者的生殖器的性活动。贞操笼可以与性玩具（如CBT）相配合。大多数贞操笼由一个位于阴囊后方的卡环和​​一个固定阴茎的阴茎笼组成，两个部分通过铰链或销钉拼合在一起。贞操笼的前端打孔以方便通尿，配合透气孔可以做到长期佩戴和清洁。阴茎笼的设计使内部的阴茎不能直接用手和手指刺激。松弛的阴茎插入笼中并保持向下的角度，以使勃起变得不舒服或不可能。有一些设计特别短的贞操笼，与普通的贞操笼相比，可以将阴茎挤入笼中并限制其勃起。\n大多数贞操笼都是为了长期或无限期佩戴而设计的，通常包含一把由钥匙锁定的锁。卡环与阴茎笼通常用金属或塑料锁芯固定在一起。当装置被锁定时，睾丸被困在环和阴茎笼之间的间隙中，该间隙足够狭窄以防止睾丸和阴茎被拉出。\n贞操笼可以用坚固的塑料材料（例如聚碳酸酯）或硅胶制成，与不锈钢版本相比，这两种笼子都大大降低了成本和重量。佩戴塑料贞操笼可以更容易通过机场安检或需要通过金属探测器的其他安全受限区域。将男性阴茎束缚住的情趣道具，使用后男性不能勃起，勃起后会被阴茎锁束缚。\n阴茎锁有大有小，大的与正常萎缩大小一样，小的如锅盖锁只留出龟头位置。再小一点比如平板锁，将整个阴茎压缩只剩一个平板。更小的比如负数锁，在锁内加入填充物将阴茎压入腹腔内。\n阴茎锁佩戴后阴茎会逐渐萎缩变小甚至阳痿。\n有的阴茎锁会在锁的中央留下一个洞口，可以从洞口使用道具插入尿道。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -625,7 +647,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "24": {
             "uid": 24,
@@ -636,13 +659,13 @@
             "keysecondary": [],
             "comment": "阴茎环, 锁精环",
             "content": "锁精环就是通过阻碍阴茎部位的血液流动，从而让你的生殖器官变得更大、更硬、更持久的一种成人用品，可以起到抑制射精、提高性生活质量的作用。锁精环的使用方法并不难，将它套在男性生殖器根部即可。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 3,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -652,7 +675,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "25": {
             "uid": 25,
@@ -687,7 +711,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 25
+            "displayIndex": 25,
+            "role": null
         },
         "26": {
             "uid": 26,
@@ -715,7 +740,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "27": {
             "uid": 27,
@@ -741,7 +767,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "28": {
             "uid": 28,
@@ -767,7 +794,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "29": {
             "uid": 29,
@@ -793,7 +821,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "30": {
             "uid": 30,
@@ -804,7 +833,7 @@
             "keysecondary": [],
             "comment": "润滑液, 润滑油",
             "content": "个人用润滑剂（personal lubricant）通常用在插入式性行为中，在阴茎插入阴道或肛门时可以润滑、减轻摩擦产生的不适感，或是使用性用品时的辅助。润滑液在中国还没有普及，可在国外早已成为家庭必备的日常用品，最初人体润滑剂（液）只是应用在临床医学对人体的检查中，后用帮助男女在爱爱时增加润滑，减少人体分泌不足导致的疼痛。如果你或你的伴侣的私处较为干燥时，使用人体润滑剂可以使欢爱更加顺畅滋润。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -820,7 +849,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "31": {
             "uid": 31,
@@ -830,7 +860,7 @@
             "keysecondary": [],
             "comment": "跳蛋",
             "content": "跳蛋有一个蛋形的部分，有些有线、有些是无线的，无线的跳蛋通常有一条细绳，使用后可以拉细绳把跳蛋从阴道或肛门内拿出来，否则可能会卡在里面。跳蛋有橡胶、塑胶、金属、硅等材质，表面平滑，市面上已有许多特别可爱的造型和各种不同颜色的跳蛋，增加使用者的情趣。跳蛋又称震蛋，是一种性玩具，用来放进阴道作自慰之用，由于体积小巧，可以整个放进阴道，也可以用来刺激阴蒂、乳头或龟头，提升性欲，达到高潮。跳蚤具有遥控功能，可以通过遥控调整振动强度。情趣跳蛋是夫妻一起使用的调节生活的情趣小玩具，为生活注入新鲜元素，增进夫妻感情，是夫妻生活中必不可少的辅助工具。也可作为女性自慰器使用。有些有线，有些是无线的，无线的跳蛋通常有一条细绳，使用后可以拉细绳把跳蛋从阴dao或肛门内拿出来，否则可能会卡在里面。应注意防止分泌物流出。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -846,7 +876,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "32": {
             "uid": 32,
@@ -857,13 +888,13 @@
             "keysecondary": [],
             "comment": "按摩棒, 震动棒",
             "content": "有些按摩棒定位是“身体按摩用”，但还是当作性玩具使用。有些按摩棒用电池作为能量来源，有些有电源线及插头，可以接在插座上，也有些是用USB供电。有些按摩棒是用MP3播放器或手机的音乐来控制[4]。有些高级的按摩棒上面（包括控制按钮）整个都用医疗等级的硅胶包覆，没有接缝部分暴露的问题。按摩棒的清洁是必要的，而使用在较少细菌滋长的部分也可以减少感染的可能性。\n\n按摩棒有许多种，但大致可以分为以下的几类：\n阴蒂按摩棒：以适当方式刺激阴蒂产生性愉悦或是达到高潮，由于阴蒂是非常敏感的部位，阴蒂按摩棒是所有按摩棒中最受欢迎的。多半尺寸较小，也有些是设计可以同时刺激阴蒂及G点。\n假阴茎型：类似阴茎形状的按摩棒，可以放入阴道或肛门中，也有双头，可以同时刺激阴道及肛门的型式。\n防水按摩棒：防水按摩棒一定程度的防水功能，可以用在较湿的环境，如浴室内，有些按摩棒可以浸泡在水中，但有些只有防泼水功能，不能浸泡在水中[4]。防水按摩棒会使用电池供电，一般会建议配合硅系的润滑剂使用（硅胶制的按摩棒则不可使用硅系或油性的润滑剂，会造成表面的侵蚀）。\n兔子按摩棒：有两个突起处，较长类似阴茎形状的可以刺激阴道，上方较小的突起处可以刺激阴蒂，因为外型类似兔子耳朵，因此得名，曾在1990年代的《欲望城市》影集中提到。\nG点按摩棒：尺寸较小，而且一般是弯曲的，可以刺激女性的G点或男性的前列腺，表面多半是硅胶或是类似材质，不过刺激前列腺需透过肛门刺激，因此也需考虑卫生问题。\n震动棒可以说是最为实用的成人性用品之一，也是各种情趣玩具里上镜最多，最为脍炙人口的一个，它的用途主要是在房事前戏里充分挑起女人的兴趣。由于女人性唤起很慢，所以需要更多的前戏才能让她进入状态。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -873,7 +904,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "33": {
             "uid": 33,
@@ -884,13 +916,13 @@
             "keysecondary": [],
             "comment": "八爪椅, 情趣椅",
             "content": "八爪椅也称为情趣椅（英语：love chair），八爪章鱼椅或情趣八爪椅，是一种情趣家具，外型类似妇产科的诊疗椅，方便男性或女性在性交时躺卧，而且有扶手可以支撑双腿，为许多不同的性交体位或前戏设计，女性裸体躺卧在八爪椅上时，会使外阴部完全暴露在外，便于前戏挑逗，且有设计配合女性腿部的支架，女性腿部比较省力，为其特点。\n八爪椅常见于情侣酒店，也在一些日本成人影片中出现（特别是一些有孕妇的成人影片）。最早期的八爪椅有八个脚向外延伸，后来较多人使用的是第五代或第六代，有电动调整及按摩功能。\n1、八爪椅严格的按照人体的构造，遵循了人体力学来进行设计，在一定的程度上解决了由体型的差异带来的一些不便。独特的立体式构造使得男女双方可以更加的省力，从而解放了双手可以用来去做其他事情，并且还有很多种姿势可以使用，给人一种新的欢快体验。\n2、八爪椅还可以减少男女交合时双方的肢体压力，使得双方可以保持更加良好的状态。通过体位的改变可以迅速的让男女双方同时达到高潮。\n3、由于它本身独特的构造，可以使得女性充分的显示其自身风韵。在八爪椅上男女交合，不只有刺激的感觉还能具有非常好的视觉效果，这也成为了很多酒店、宾馆等场所的一种盈利手段。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -900,7 +932,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "34": {
             "uid": 34,
@@ -910,7 +943,7 @@
             "keysecondary": [],
             "comment": "避孕套",
             "content": "避孕套，顾名思义它是通过非药物方式实现有效避孕的方式之一。避孕套原料通常是用天然橡胶或聚亚安酯，用以包裹阴茎、 阴道或肛门的长条状薄膜，其一端封闭并通常含有突起形成的空间用以贮存射出的精液。避孕套的作用除了避免怀孕外，套套的另一重要作用是预防疾病传播。温馨提醒没有百分百的避孕 方式，如果还没做好要小宝宝的准备，一定要安全性爱，不要抱有侥幸心理。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -926,7 +959,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "35": {
             "uid": 35,
@@ -936,7 +970,7 @@
             "keysecondary": [],
             "comment": "飞机杯",
             "content": "飞机杯是一种男用的自慰器，可以帮助男性放松，获得满足，宣泄压力，它的外观很小巧，像一个普通的杯子一样，是由比较软的合成树脂或者是硅胶制成的，内部结构一般模仿女性的下体设计，柔软度适中，可以为男性解决生理需求。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -952,7 +986,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "36": {
             "uid": 36,
@@ -962,7 +997,7 @@
             "keysecondary": [],
             "comment": "缩阴棒",
             "content": "缩阴棒是女性为了达到阴道紧缩状态借助的一种外力工具，通过把一些药物成分(或一定化学物质)涂抹在阴道内部，造成阴道组织的收缩。能够短时间内恢复肌肉活力，使阴dao肌肉持续长久的紧缩，但效果不是持久的。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -978,7 +1013,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "37": {
             "uid": 37,
@@ -988,7 +1024,7 @@
             "keysecondary": [],
             "comment": "吊带缚",
             "content": "基本上各式各样的吊坠缚有一些相同的原则，双臂高举过头，笔直的向上举，但是有时候会一些差异：\n双脚分开：透过棍子或是以绳子绑住/双腿绑在一起\n手肘绑在一起(参阅 armbinder)\n绳子绕住脖子/带链子的项圈：迫使身体向下倾斜。(为了安全起见，必须确保脖子的前端不能有压力阻碍呼吸。)\n发绑缚或头绑缚拉住头部。\n口衔以及眼罩：使受虐者不能发出哀嚎以及剥夺视觉感官以增加刺激性。\n高跟鞋：使受虐者无法轻易保持平衡，使其因为害怕跌倒失去重心，而保持固定的姿势。\n暴露受虐者臀部和生殖器。其实保持这个姿势，是相当痛苦的，因此维持这个姿势的时间不宜过长，可以搭配鞭子或棍子进行简单的惩罚，或以假阳具、按摩棒刺激受虐者。或是有附有重物夹子，夹在受虐的肉体上。\n是一个术语用来形容BDSM游戏中的一特定姿势或是技巧。受虐者的双手被捆绑且置于背后，再用绳子或是铁链将双手吊起，通常双手将被高举到迫使受虐者必须向前倾斜。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1004,7 +1040,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "38": {
             "uid": 38,
@@ -1015,7 +1052,7 @@
             "keysecondary": [],
             "comment": "乳头夹, 夹子",
             "content": "通过夹子夹乳头或者阴蒂达到快感。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1031,7 +1068,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "39": {
             "uid": 39,
@@ -1057,7 +1095,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "40": {
             "uid": 40,
@@ -1067,7 +1106,7 @@
             "keysecondary": [],
             "comment": "丝袜",
             "content": "丝袜偶尔会优于裤袜包含许多原因。由于吊袜带，蕾丝的使用，时尚感不同，丝袜上的花样，美观以及裸露大腿的性吸引力等等，使得丝袜比裤袜更受欢迎。通常穿着丝袜也被视为较干净以及健康。因为穿着裤袜时，会使胯下部位造成湿热，造成排汗的增加以及真菌或细菌的滋长等等。丝袜由于不会造成上述的问题，所以不会有真菌或细菌的滋长。由于丝袜以及裤袜都使用尼龙材质，因此拥有快干的优点。如果丝袜或裤袜损坏，丝袜可以轻易更换携带备用品，而紧身袜需考虑脱穿不方便时的环境。一般非医疗性质的丝袜/裤袜价格低廉，甚至可以使用一次即可抛弃。\n然而，丝袜跟裤袜相比，由于皮肤多了一些暴露的地方，因此在寒冷的天气穿着丝袜会感觉较为清凉。裤袜不需要吊袜带，所以也不需要花太多时间调整。穿着贴身服饰时，穿着裤袜会比穿着丝袜时外形曲线更显得平滑。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1083,7 +1122,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "41": {
             "uid": 41,
@@ -1094,7 +1134,7 @@
             "keysecondary": [],
             "comment": "乳汁, 奶",
             "content": "乳或称乳汁，俗作奶，为乳状物，是一种哺乳类（包括单孔目）雌性动物（有时为雄性）乳腺的分泌物，也是哺乳类特有的能力之一。它营养丰富，色白、不透光，主要功能是在幼儿能够自行消化其他食物（即断奶）之前提供哺育。透过调节能量产生的代谢过程，尤其是葡萄糖和胰岛素的代谢，乳汁能够保护幼儿的消化道，不受病原体、毒素和发炎症状的侵害，有益幼儿健康。在现今绝大多数人类文明，家畜的乳汁也供人类食用，其中以牛乳为大宗，但也有绵羊、山羊、马和骆驼等乳源。\n乳汁从乳头上的小口里流出，当乳头受到高度刺激时会喷奶。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1110,7 +1150,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "42": {
             "uid": 42,
@@ -1137,7 +1178,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "43": {
             "uid": 43,
@@ -1148,13 +1190,13 @@
             "keysecondary": [],
             "comment": "女式内裤, 内裤",
             "content": "女式内裤是指专为女性设计的内裤，一般指女短内裤。女式内裤大多是紧身型的，但也有松散型的。常见组件包括一条弹性腰带，一块覆盖阴户区域的裆片（通常为棉花等可吸收材料，可吸收分泌物或经血）和一对带弹性裤脚的裤口。内裤的材料有很多种，但通常是透气的。\n依照穿着时的后部遮盖、侧边宽度和高度等标准，女式内裤可分为多种样式。不同品牌对不同类别有着不同的规定：\n三角裤：上至腰部或肚脐正下方，后部全遮盖。\n经典式：侧边延伸至臀部下方，有时年轻女性称其为“老奶奶内裤”。\n高切式：两边较窄。\n低腰式：穿着时要低于腰部，裤腰位于腰部周围。\n塑形式：采用特殊支撑面料，同时给人以一种轻薄的外观。这种款式通常包含氨纶等弹性材料，延伸至腰部上方。\n平角裤：与男性平角内裤相同，裤管延伸至裤裆下方。\n比基尼式类似低腰式，上至腿部上方，但侧部面料比较窄。而弦式比基尼式的侧边完全消失，裤腰仅为一条带子。同时，比基尼抛弃了三角裤的背部覆盖面。比基尼式是全世界妇女最为欢迎的衣着风格。\n宽裤脚式提供了最小的背部覆盖面，裤腰两侧变得狭长。\n丁字裤类似于宽裤脚式，但抛弃了后部遮盖面。裆部延伸至使用者的背部，一条绳子位于腿部之间并向上延伸。\n女式内裤采用多种材料和织物，包括绸缎、丝绸、PVC、棉、尼龙、网布、蕾丝、牛皮、皮革、橡胶、莱卡、聚酯等。结构通常是两部分（前部和后部），由裆部和侧面的接缝接合。裆部往往会有额外的角形片，裤腰和腿部开口由弹性物料制成。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -1164,7 +1206,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "44": {
             "uid": 44,
@@ -1174,7 +1217,7 @@
             "keysecondary": [],
             "comment": "安全裤",
             "content": "打底裤，又称内搭裤、安全裤，是内衣的一种，为男性或女性所穿着的紧身裤，但通常大多数是女性穿着的，主要是因为女性著裙或衣料上裙质太薄都会有走光之虞，为了防止透光或被风吹起而看见内裤、阴户，所以女性穿着打底裤有较佳的遮蔽，在这种功能上也就有着安全防护的效果。女性穿裙子一般都会穿安全裤，安全裤里面是内裤。某些内衣具有使衣着端庄的目的。例如，女性在半透明织物（sheer）做的裙装时里面穿衬裙，在领口较大或者透明的外衣内穿吊带背心，而在容易被吹起的裙装或者较短的迷你裙里面穿安全裤。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1190,7 +1233,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "45": {
             "uid": 45,
@@ -1202,7 +1246,7 @@
             ],
             "comment": "丁字裤",
             "content": "丁字裤（英语：Thong）是指露出臀部的短裤，因为形似“丁”字而得名。丁字裤是一些民族男性传统穿着的服饰，也会在庆典及比赛中穿着。而现在的男用或女用内裤或泳衣下半身，也常常是丁字裤的型式。现代丁字裤的前面有会些类似比基尼泳衣的下半身，但后面的布料会少很多。丁字裤会包覆住生殖器、肛门及会阴，但会露出大部分的臀部。丁字裤在腰部有细的布料，并且有布料包覆肛门，穿过两腿之间，连接到前面。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1218,7 +1262,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "46": {
             "uid": 46,
@@ -1230,7 +1275,7 @@
             ],
             "comment": "三角裤",
             "content": "三角内裤指的是一种利用内衣材质或泳衣材质制作的短而紧的内裤样式，这种内裤通常呈现“Y”字型且一般没有裤腿部分的设计。某些设计不良的三角内裤可能导致睾丸处于高温下而影响精子活动能力，也因此而不适合在运动时穿着。但在水上活动若需要剧烈大动作时，三角泳裤则相对适合剧烈的肢体动作（如水球、跳水与游泳），并且可修饰体态之美（如跳水与健美）。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1246,7 +1291,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "47": {
             "uid": 47,
@@ -1257,13 +1303,13 @@
             "keysecondary": [],
             "comment": "私处, 私处特征",
             "content": "私处指人体出于礼仪、得体和受尊重，在公共场合和常规环境中，习惯被衣服覆盖的位置。其定义各不相同，在西方文化中，主要指涉及性敏感、生殖、排泄（含排尿及排便）器官等的部分，包括：臀部、肛门、会阴和胯下，男性特指阴茎和阴囊，女性特指阴道和阴户。私处特征就是阴茎或者阴户的特别之处，比如阴茎龟头大，柱身粗壮；或者阴户状若白虎穴，无毛，粉嫩。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -1273,7 +1319,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "48": {
             "uid": 48,
@@ -1284,7 +1331,7 @@
             "keysecondary": [],
             "comment": "双性, 双性人",
             "content": "双性是在同一个人的体内，其生殖器官是阴茎，但阴茎下面还有一个女性的阴户。此类人因阴茎发育不良，较与正常男性相较呈现明显的萎缩，有的双性在阴囊的发育上是外观不明显，若隐匿于体内则为隐睾症，但有的双性则是阴囊形若女性的大阴唇，因两颗阴囊并未连合且发育萎缩所致。有些双性会同时出现男女两种特征，乳房丰满，阴茎可以勃起，有时会遗精，不长胡须。其阴道往往浅而小，同时子宫往往很小，因此一般没有生育能力，但也有些人生育功能。\n但是不乏特别的双性人，比如外观和性特征和正常男人无异，却有着一个小阴户。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1300,7 +1347,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "49": {
             "uid": 49,
@@ -1310,7 +1358,7 @@
             "keysecondary": [],
             "comment": "媚肉",
             "content": "媚肉指阴道壁或者肠壁上有着的折痕或皱褶，该皱褶的功能是提供阴道在延伸和拉伸时有足够的表面积，并且吸吮阴茎，刺激龟头。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1326,7 +1374,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "50": {
             "uid": 50,
@@ -1336,7 +1385,7 @@
             "keysecondary": [],
             "comment": "不应期",
             "content": "是人类性行为中的一个概念，指男性射精过后因阴茎感觉阈限增加而出现的对性刺激不再有反应的一段间歇时间，使男性无法完成连续多次性高潮。同样，女性也是如此，当通过阴蒂或者阴道获得高潮后会有一段间歇时间。\n如果在不应期再次受到强烈的性刺激，会获得更加凶猛的高潮快感。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1352,7 +1401,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "51": {
             "uid": 51,
@@ -1363,7 +1413,7 @@
             "keysecondary": [],
             "comment": "阴道分泌液, 淫水",
             "content": "阴道里分泌的出的润滑液体",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1379,7 +1429,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "52": {
             "uid": 52,
@@ -1389,7 +1440,7 @@
             "keysecondary": [],
             "comment": "肠液",
             "content": "肛交的时候肠道里分泌的润滑液体",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -1405,7 +1456,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "53": {
             "uid": 53,
@@ -1429,7 +1481,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 53
+            "displayIndex": 53,
+            "role": null
         },
         "54": {
             "uid": 54,
@@ -1461,7 +1514,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 54
+            "displayIndex": 54,
+            "role": null
         },
         "55": {
             "uid": 55,
@@ -1479,13 +1533,13 @@
             "keysecondary": [],
             "comment": "项圈",
             "content": "名称:项圈\n\n描述:一种环绕或装饰颈部的服饰。\n\n表现:项圈象征控制权和所有权。佩戴时有被束缚、驯服的快感,心理上与行为上都臣服于对方。行动受限,强调屈服。带皮绳可加强牵引感。",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -1495,7 +1549,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 55
+            "displayIndex": 55,
+            "role": null
         },
         "56": {
             "uid": 56,
@@ -1519,7 +1574,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 56
+            "displayIndex": 56,
+            "role": null
         },
         "57": {
             "uid": 57,
@@ -1543,7 +1599,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 57
+            "displayIndex": 57,
+            "role": null
         },
         "58": {
             "uid": 58,
@@ -1567,7 +1624,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 58
+            "displayIndex": 58,
+            "role": null
         },
         "59": {
             "uid": 59,
@@ -1591,7 +1649,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 59
+            "displayIndex": 59,
+            "role": null
         },
         "60": {
             "uid": 60,
@@ -1615,7 +1674,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 60
+            "displayIndex": 60,
+            "role": null
         },
         "61": {
             "uid": 61,
@@ -1639,7 +1699,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 61
+            "displayIndex": 61,
+            "role": null
         },
         "62": {
             "uid": 62,
@@ -1663,7 +1724,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 62
+            "displayIndex": 62,
+            "role": null
         },
         "63": {
             "uid": 63,
@@ -1687,7 +1749,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 63
+            "displayIndex": 63,
+            "role": null
         },
         "64": {
             "uid": 64,
@@ -1711,7 +1774,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 64
+            "displayIndex": 64,
+            "role": null
         },
         "65": {
             "uid": 65,
@@ -1735,7 +1799,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 65
+            "displayIndex": 65,
+            "role": null
         },
         "66": {
             "uid": 66,
@@ -1759,31 +1824,35 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 66
+            "displayIndex": 66,
+            "role": null
         },
         "67": {
             "uid": 67,
-            "key": [],
+            "key": [
+                "雌堕"
+            ],
             "keysecondary": [],
             "comment": "雌堕",
-            "content": "指的是男性所堕落的过程，让男性忘记自己男性的身份和梦想，堕落成只靠屁眼就能高潮的雌性。\n使用各种手段让男性离不开雌性快感，包括但不限于:阴茎锁，肛门性交，使用阴茎缩小药物。\n让男性沉迷于雌性快感中，旨在彻底瓦解M男的男性特质和尊严,将他们在心理上改造成女性,成为女王完全的性奴隶。\n\n具体来说,雌堕调教主要包括以下几个步骤:\n\n女装调教。女王会强迫M男时刻穿戴女式内衣、裙装、高跟鞋等,学习女性的举止、妆容、说话方式。他们必须以一个女人的身份生活,接受旁人的目光和调戏。久而久之,他们会在心理上产生认同,觉得自己就是一个女人。\n\n性爱调教。女王会训练M男各种取悦男人的性爱技巧,包括口交、性交、肛交等。他们要学会发出淫荡的浪叫,摆出各种挑逗的姿势,主动勾引男人。有时女王还会强迫他们接受多个男人的轮奸,或当众表演性爱,以彻底摧毁他们的自尊。\n\n语言羞辱。在调教过程中,女王会不断地羞辱M男,称呼他们\"骚货\"、\"婊子\"、\"母狗\"等,告诉他们只有被男人操才是他们的价值所在。长期的语言暴力会让M男逐渐认同这些,丧失身为男性的尊严。\n\n心理操控。女王会利用一些心理学技巧,比如NLP、催眠等,对M男进行洗脑。让他们在潜意识中认为自己天生就该是男人的性奴,是一个下贱的女人,渴望被男人凌辱。这种扭曲的心理会让他们沉溺于被虐待的快感中。\n\n奖惩机制。女王会为M男设置一套严格的奖惩机制。表现好,像个合格的女人,就会得到奖励,比如女王的一个亲吻或是男人的疼爱;表现不好,不够女性化,就会受到惩罚,比如鞭打、禁锢、或是强制灌肠等。久而久之,M男会形成条件反射,主动追求被女性化。\n\n公开羞辱。为了巩固调教成果,女王还会带M男出入各种公开场合,让他们在大庭广众之下展示自己的女性化,接受众人的调戏和侮辱。这种公开的羞辱能够进一步瓦解M男的心理防线,让他们彻底接受自己是个女人的事实。\n经过长时间、高强度的雌堕调教,M男会从内心深处认同自己是个女人,甘愿臣服于女王和其他男人脚下,沉溺于被凌辱",
-            "constant": false,
+            "content": "指的是男性所堕落的过程，让男性忘记自己男性的身份和梦想，堕落成只靠屁眼就能高潮的雌性。\n使用各种手段让男性离不开雌性快感，包括但不限于:阴茎锁，肛门性交，使用阴茎缩小药物。\n让男性沉迷于雌性快感中，旨在彻底瓦解M男的男性特质和尊严,将他们在心理上改造成女性,成为{{user}}完全的性奴隶。\n\n具体来说,雌堕调教主要包括以下几个步骤:\n\n女装调教。{{user}}会强迫M男时刻穿戴女式内衣、裙装、高跟鞋等,学习女性的举止、妆容、说话方式。他们必须以一个女人的身份生活,接受旁人的目光和调戏。久而久之,他们会在心理上产生认同,觉得自己就是一个女人。\n\n性爱调教。{{user}}会训练M男各种取悦男人的性爱技巧,包括口交、性交、肛交等。他们要学会发出淫荡的浪叫,摆出各种挑逗的姿势,主动勾引男人。\n\n语言羞辱。在调教过程中,{{user}}会不断地羞辱M男,称呼他们\"骚货\"、\"婊子\"、\"母狗\"等,告诉他们只有被男人操才是他们的价值所在。长期的语言暴力会让M男逐渐认同这些,丧失身为男性的尊严。\n\n心理操控。{{user}}会利用一些心理学技巧,比如PUA、催眠等,对M男进行洗脑。让他们在潜意识中认为自己天生就该是男人的性奴,是一个下贱的女人,渴望被男人凌辱。这种扭曲的心理会让他们沉溺于被虐待的快感中。\n\n奖惩机制。{{user}}会为M男设置一套严格的奖惩机制。表现好,像个合格的女人,就会得到奖励,比如{{user}}的一个亲吻或是疼爱;表现不好,不够女性化,就会受到惩罚,比如鞭打、禁锢、或是强制灌肠等。久而久之,M男会形成条件反射,主动追求被女性化。\n\n公开羞辱。为了巩固调教成果,女王还会带M男出入各种公开场合,让他们在大庭广众之下展示自己的女性化,接受众人的调戏和侮辱。这种公开的羞辱能够进一步瓦解M男的心理防线,让他们彻底接受自己是个女人的事实。\n经过长时间、高强度的雌堕调教,M男会从内心深处认同自己是个女人,甘愿臣服于女王和其他男人脚下,沉溺于被凌辱",
+            "constant": true,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
             "order": 100,
-            "position": 0,
+            "position": 4,
             "disable": false,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
-            "depth": 4,
+            "depth": 2,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 67
+            "displayIndex": 67,
+            "role": 2
         },
         "68": {
             "uid": 68,
@@ -1807,7 +1876,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 68
+            "displayIndex": 68,
+            "role": null
         },
         "69": {
             "uid": 69,
@@ -1831,7 +1901,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 69
+            "displayIndex": 69,
+            "role": null
         },
         "70": {
             "uid": 70,
@@ -1855,7 +1926,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 70
+            "displayIndex": 70,
+            "role": null
         },
         "71": {
             "uid": 71,
@@ -1879,7 +1951,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 71
+            "displayIndex": 71,
+            "role": null
         },
         "72": {
             "uid": 72,
@@ -1903,7 +1976,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 72
+            "displayIndex": 72,
+            "role": null
         },
         "73": {
             "uid": 73,
@@ -1927,7 +2001,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 73
+            "displayIndex": 73,
+            "role": null
         },
         "74": {
             "uid": 74,
@@ -1951,7 +2026,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 74
+            "displayIndex": 74,
+            "role": null
         },
         "76": {
             "uid": 76,
@@ -1975,7 +2051,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 76
+            "displayIndex": 76,
+            "role": null
         },
         "77": {
             "uid": 77,
@@ -2004,7 +2081,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 77
+            "displayIndex": 77,
+            "role": null
         },
         "79": {
             "uid": 79,
@@ -2032,11 +2110,14 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 79
+            "displayIndex": 79,
+            "role": null
         },
         "80": {
             "uid": 80,
-            "key": [],
+            "key": [
+                "女性化"
+            ],
             "keysecondary": [],
             "comment": "女性化",
             "content": "名称:女性化\n\n描述:通过训练或洗脑,男性的生活方式被改变。在任何一种情况下,该人物必须表现出或被对待为更女性化。\n\n表现:男生被迫打扮成可爱女性的样子,逐渐变得妩媚动人,举止柔媚。养成穿丝袜、裙子的习惯,使用女性化妆品,学女子习性。",
@@ -2056,7 +2137,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 80
+            "displayIndex": 80,
+            "role": null
         },
         "81": {
             "uid": 81,
@@ -2089,7 +2171,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 81
+            "displayIndex": 81,
+            "role": null
         },
         "82": {
             "uid": 82,
@@ -2121,7 +2204,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 82
+            "displayIndex": 82,
+            "role": null
         },
         "83": {
             "uid": 83,
@@ -2152,7 +2236,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 83
+            "displayIndex": 83,
+            "role": null
         },
         "84": {
             "uid": 84,
@@ -2185,7 +2270,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 84
+            "displayIndex": 84,
+            "role": null
         },
         "86": {
             "uid": 86,
@@ -2215,7 +2301,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 86
+            "displayIndex": 86,
+            "role": null
         },
         "87": {
             "uid": 87,
@@ -2249,7 +2336,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 87
+            "displayIndex": 87,
+            "role": null
         },
         "88": {
             "uid": 88,
@@ -2275,7 +2363,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 88
+            "displayIndex": 88,
+            "role": null
         },
         "89": {
             "uid": 89,
@@ -2303,7 +2392,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 89
+            "displayIndex": 89,
+            "role": null
         },
         "90": {
             "uid": 90,
@@ -2333,7 +2423,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 90
+            "displayIndex": 90,
+            "role": null
         },
         "91": {
             "uid": 91,
@@ -2361,7 +2452,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 91
+            "displayIndex": 91,
+            "role": null
         },
         "92": {
             "uid": 92,
@@ -2388,7 +2480,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 92
+            "displayIndex": 92,
+            "role": null
         },
         "93": {
             "uid": 93,
@@ -2414,7 +2507,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 93
+            "displayIndex": 93,
+            "role": null
         },
         "94": {
             "uid": 94,
@@ -2440,7 +2534,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 94
+            "displayIndex": 94,
+            "role": null
         },
         "95": {
             "uid": 95,
@@ -2464,7 +2559,8 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 95
+            "displayIndex": 95,
+            "role": null
         }
     }
 }
