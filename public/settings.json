@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.11.7",
     "username": "王钢",
-    "active_character": "引子_1.png",
+    "active_character": "世界调制模式-正式版.png",
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
     "user_avatar": "legat.png",
@@ -163,7 +163,7 @@
             "target_length": 400
         },
         "markdown_escape_strings": "",
-        "chat_truncation": 100,
+        "chat_truncation": 0,
         "streaming_fps": 30,
         "smooth_streaming": false,
         "smooth_streaming_speed": 50,
@@ -171,7 +171,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 62,
+        "chat_width": 64,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -180,6 +180,7 @@
         "confirm_message_delete": true,
         "sort_field": "date_last_chat",
         "sort_order": "desc",
+        "sort_rule": null,
         "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
@@ -198,7 +199,7 @@
         "movingUI": false,
         "movingUIState": {},
         "movingUIPreset": "",
-        "noShadows": false,
+        "noShadows": true,
         "theme": "Default (Dark) 1.7.1",
         "gestures": true,
         "auto_swipe": false,
@@ -214,10 +215,10 @@
         "allow_name1_display": false,
         "allow_name2_display": false,
         "hotswap_enabled": true,
-        "timer_enabled": true,
-        "timestamps_enabled": true,
+        "timer_enabled": false,
+        "timestamps_enabled": false,
         "timestamp_model_icon": "",
-        "mesIDDisplay_enabled": true,
+        "mesIDDisplay_enabled": false,
         "max_context_unlocked": false,
         "message_token_count_enabled": "",
         "expand_message_actions": true,
@@ -1049,7 +1050,7 @@
         "repetition_penalty_openai": 1,
         "stream_openai": true,
         "openai_max_context": 35000,
-        "openai_max_tokens": 4096,
+        "openai_max_tokens": 16384,
         "wrap_in_quotes": false,
         "prompts": [
             {
@@ -1762,7 +1763,7 @@
                     },
                     {
                         "identifier": "5fdd42ed-ec3b-4cf7-8b37-dc79bea2eb02",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
@@ -1833,7 +1834,7 @@
         "openrouter_group_models": false,
         "openrouter_sort_models": "alphabetically",
         "jailbreak_system": false,
-        "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity",
+        "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
         "chat_completion_source": "claude",
         "max_context_unlocked": true,
         "api_url_scale": "",
@@ -1886,13 +1887,13 @@
         },
         {
             "name": "Perplexity",
-            "url": "https://easyai.icu/proxy/v1/custom/perplexity",
+            "url": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
             "password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..uLn3o6dYTWwQgVKR.8_l6CnDwycB2ePur_03KOGS0_c1ZtsZMKkijALazINzOtae88WBhg1sQQPksBrNNhZB5jqmZZUgcJkv9rsNjnJZ4MKLMOX9IpyZPO4aACS_r7hEGtHR0gnpoMF9PBWnhTt4oJVqOj9TIXOqJ1YZvSCxxTX9cPfIs_7ZhPzlDAV6wh_ZPYLVEBp_QJKaiYxCBxkSMN81VF0c7Sd0gxLdAOtypULXK.nCFP1Ge-CKpRsMHNsTpl3A"
         }
     ],
     "selected_proxy": {
         "name": "Perplexity",
-        "url": "https://easyai.icu/proxy/v1/custom/perplexity",
+        "url": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
         "password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..uLn3o6dYTWwQgVKR.8_l6CnDwycB2ePur_03KOGS0_c1ZtsZMKkijALazINzOtae88WBhg1sQQPksBrNNhZB5jqmZZUgcJkv9rsNjnJZ4MKLMOX9IpyZPO4aACS_r7hEGtHR0gnpoMF9PBWnhTt4oJVqOj9TIXOqJ1YZvSCxxTX9cPfIs_7ZhPzlDAV6wh_ZPYLVEBp_QJKaiYxCBxkSMN81VF0c7Sd0gxLdAOtypULXK.nCFP1Ge-CKpRsMHNsTpl3A"
     }
 }

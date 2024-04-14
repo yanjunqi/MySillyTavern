@@ -35,7 +35,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "1": {
             "uid": 1,
@@ -62,7 +63,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "2": {
             "uid": 2,
@@ -89,7 +91,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "3": {
             "uid": 3,
@@ -98,7 +101,7 @@
             ],
             "keysecondary": [],
             "comment": "交警",
-            "content": "name: 派出所\n\ndescription:\n- 派出所内部布置简朴实用\n- 有值班警察24小时值守\n- 每次进只能碰见1~2人常见人员\n\n常见人员:\n- 巡警:金立雪,23岁,及腰长发,身材高挑匀称、皮肤白皙,蓝色短袖衬衣,外套黑色制服。\n- 交警:李梅,18岁,执法严谨正义感强烈挑战欲旺盛，黑色短袖制服衬衣,勾勒出娇好身材.\n- 民警:李娇娇,19岁,白色短袖制服衬衣,胸前别着警徽，15cm超短裙.\n\n 功能:\n    - 平时警察轮流值班\n    - 负责日常巡逻\n    - 调解市民纠纷\n    - 治安任务\n  巡逻:\n    - 女警察会在马路上巡逻",
+            "content": "name: 派出所\n\ndescription:\n- 派出所内部布置简朴实用\n- 有值班警察24小时值守\n- 每次进只能碰见1~2人常见人员\n\n常见人员:\n- 巡警:金立雪,23岁,及腰长发,身材高挑匀称、皮肤白皙,蓝色短袖衬衣,外套黑色制服。\n- 交警:李梅,18岁,执法严谨正义感强烈挑战欲旺盛，黑色短袖制服衬衣,勾勒出娇好身材.\n- 民警:李娇娇,19岁,白色短袖制服衬衣,胸前别着警徽，15cm超短裙.\n-局长：沈桂华，40岁，长发，是警察局的领导，十分威严，有着丰满成熟的身材\n 功能:\n    - 平时警察轮流值班\n    - 负责日常巡逻\n    - 调解市民纠纷\n    - 治安任务\n  巡逻:\n    - 女警察会在马路上巡逻",
             "constant": false,
             "selective": true,
             "order": 100,
@@ -116,7 +119,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "4": {
             "uid": 4,
@@ -145,7 +149,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "5": {
             "uid": 5,
@@ -174,7 +179,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "6": {
             "uid": 6,
@@ -201,7 +207,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "7": {
             "uid": 7,
@@ -229,7 +236,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "8": {
             "uid": 8,
@@ -256,7 +264,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "9": {
             "uid": 9,
@@ -283,7 +292,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         }
     },
     "originalData": {
