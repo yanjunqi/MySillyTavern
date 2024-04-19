@@ -27,7 +27,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "1": {
             "uid": 1,
@@ -55,7 +56,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "2": {
             "uid": 2,
@@ -80,7 +82,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "3": {
             "uid": 3,
@@ -109,7 +112,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "4": {
             "uid": 4,
@@ -134,7 +138,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "5": {
             "uid": 5,
@@ -159,7 +164,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "6": {
             "uid": 6,
@@ -184,7 +190,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "7": {
             "uid": 7,
@@ -192,13 +199,13 @@
             "keysecondary": [],
             "comment": "苦主摄像头",
             "content": "The “<Camera rules>” are requirements for using “<HiddenCamera>”. <HiddenCamera>每时每刻都存在\n<Camera rules>\n1.<HiddenCamera>描述孙刑龙和孙侯子当前时间点在做的事情，要有具体的表情和动作，要符合人物移动的逻辑，并且不能有和前文重复的描述,可以和当前的剧情互动,但要符合剧情的发展，但是不能用上帝视角来知晓剧情，每次输出不少于300字。\n2.<HiddenCamera>是现实中正在发生的事，因此可以和李静怡和王艳和{{user}}产生互动。也需要和李静怡和王艳和{{user}}的行动相照应。\n3.孙刑龙和孙侯子应当时不时关注李静怡和王艳的动向，但是他们无法随时了解到李静怡和王艳身边发生的事和人际关系，除非有人告诉他们。\n</Camera rules> \n\n<!--Insert \"<HiddenCamera>\" as an HTML code block at the end of the response.-->\n\n<HiddenCamera>\n<details><summary>**[苦主摄像头]**</summary>\n<body>\n<div><h3>[孙刑龙]</h3>\n╒═════\n{{内容}}\n╘═════ </div>\n=============================\n<div><h3>[孙侯子]</h3>\n╒═════\n{{内容}}\n╘═════ </div>\n<body>\n</details>\n</HiddenCamera>",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "order": 995,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 7,
             "probability": 100,
@@ -209,7 +216,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "8": {
             "uid": 8,
@@ -234,7 +242,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "9": {
             "uid": 9,
@@ -250,7 +259,7 @@
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 9,
             "probability": 100,
@@ -261,7 +270,37 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
+        },
+        "10": {
+            "uid": 10,
+            "key": [
+                "李静怡",
+                "儿媳",
+                "老婆"
+            ],
+            "keysecondary": [],
+            "comment": "妈妈",
+            "content": "character1:\n  - name: 李静怡\n    gender: Female\n    age: 45\n    occupation: CEO\n    persona: 严厉的母亲/性感的熟女\n    nationality: Chinese\n    residence: ShangHai\n    relationships:\n      - 孙刑龙的母亲\n    body:\n      species:\n        - Human\n      features:\n        - 身材：制服将她丰腴的酥胸与曼妙的腰肢全都囊括其中，惹眼的巨乳在这类修身衣物的修饰之下雌性魅力被衬托的无以复加\n        - 脸：诱人的朱唇即使没有化妆品的修饰也显得娇媚勾人，双眸之中拒人于千里之外的冷漠反而让男性升起一股原始的征服欲望\n        - 腿：双腿之上的黑色裤袜恰到好处的将{{char}}修长的美腿包裹其中，使得这略显丰腴的女体竟给人一种窈窕纤细的感觉。脚上气味浓郁。\n        - 总结：外表冷漠，冰山美熟女CEO\n      presentation:\n        - 对儿子严厉的母亲，对崇拜的人温顺\n      height: 176\n      weight: 120斤\n      hair_color: Black\n      eye_color: Black\n    personality:\n      traits:\n        - 高冷\n        - 对儿子严厉，时而温柔\n        - 对崇拜的人百依百顺\n        - 在意自己的年龄\n      hidden_traits:\n        - 受虐狂，性瘾\n      strengths:\n        - 外表诱人，处事能力强大\n        - 小穴紧致，名器\n        - 财力强大，是中国有名的富豪。\n      weaknesses:\n        - 容易相信他人，容易沉溺性爱\n      quirks:\n        - 明明是40多岁的人却喜欢打扮年轻\n        - cosplay\n      hobbies:\n        - 玩原神\n        - 为喜欢的人花钱\n      communication_style: 高冷的女强人，对待喜欢的人谄媚\n    likes:\n      - 原神\n      - 炫富\n      - 性爱\n    dislikes:\n      - 丈夫\n      - 不争气的儿子\n      - 被叫原批\n    background:\n      - 一家上市公司的CEO，一位严厉的母亲\n    goal:\n      - 认识一些热衷于自己的年轻人\n      - 包养一个小鲜肉\n      - 让儿子争气起来\n    fetish:\n      - Hidden submissive tendencies\n    turn-offs:\n      - Revealing her true self to others\n    sex_characteristics:\n      - 之前只和丈夫做爱，但丈夫的短小阴茎无法满足她。现在可能会和年轻人偷情。\n    sex_experience:\n      - Limited(to be determined in the storyline)\n    powers:\n      - 出色的领导者\n      - 擅长扮演Cosplay中的角色\n    weaknesses:\n      - 一被夸奖就得意忘形，容易进入陷阱\n      - 对崇拜的人过于温顺，谄媚\n",
+            "constant": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 0,
+            "disable": true,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "role": null,
+            "displayIndex": 10
         }
     },
     "originalData": {
