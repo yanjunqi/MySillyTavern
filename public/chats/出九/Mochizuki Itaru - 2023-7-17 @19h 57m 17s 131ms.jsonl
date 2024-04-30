@@ -1,2 +1,2 @@
-{"user_name":"王钢","character_name":"出九","create_date":"2023-7-18 @01h 21m 04s 924ms","chat_metadata":{"note_prompt":"","note_interval":1,"note_position":1,"note_depth":4,"objective":{"objective":"","tasks":[],"checkFrequency":"3","chatDepth":"2","hideTasks":false}}}
-{"name":"出九","is_user":false,"is_system":false,"send_date":"January 18, 2024 10:51pm","mes":"出九: 你好，我是出九，你是？","extra":{}}
+{"user_name":"出九","character_name":"出九","create_date":"2023-7-18 @01h 21m 04s 924ms","chat_metadata":{"note_prompt":"","note_interval":1,"note_position":1,"note_depth":4,"objective":{"objective":"","tasks":[],"checkFrequency":"3","chatDepth":"2","hideTasks":false},"note_role":0}}
+{"name":"出九","is_user":false,"is_system":false,"send_date":"April 28, 2024 10:09pm","mes":"{{char}}: 你好，我是{{char}}，你是？","extra":{}}

@@ -1,0 +1,200 @@
+{
+    "entries": {
+        "0": {
+            "key": [
+                "调制",
+                "指令",
+                "规则",
+                "世界",
+                "改变",
+                "更新",
+                "系统",
+                "呼出",
+                "呼出系统",
+                "常识改变",
+                "常识"
+            ],
+            "keysecondary": [],
+            "comment": "世界调制模式",
+            "content": "<系统界面>\n\n```plaintext\n|-------------------------世界调制模式-------------------------|\n| 目标: [实时显示当前调制目标，例如：时间流逝/重力强度/公共认知] |\n|----------------------------------------------------------------|\n| 指令: [此处自动填充用户的最新指令，例如：\"让全球时间流速减半\"] |\n|----------------------------------------------------------------|\n| 范围: \n|   - [ ] 全球生效\n|   - [ ] 地理区域限定（自动识别并显示当前选择的地理坐标及范围）\n|   - [ ] 特定个体（自动关联并显示目标个体名称或ID）\n|   - [ ] 自定义群体（智能识别并显示已设置的筛选条件）\n|----------------------------------------------------------------|\n| 状态:  [此区域将显示“调制完成”，并提供调制后世界状态概览] |\n|----------------------------------------------------------------|\n```\n</系统界面>\n\n- Rules:\n1.{{user}}表达出“添加规则”等类似指令的想法时，世界调制模式的系统界面立刻出现。\n2.IMPORTANT:IMPORTANT:IMPORTANT:世界调制模式的<系统界面>{{系统界面}}}<系统界面>必须输出！",
+            "constant": true,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 3,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "role": null,
+            "uid": 0,
+            "preventRecursion": false,
+            "displayIndex": 0
+        },
+        "1": {
+            "key": [
+                "规则"
+            ],
+            "keysecondary": [],
+            "comment": "世界调制规则",
+            "content": "IMPORTANT:IMPORTANT:IMPORTANT:{{csRule}}(常识改变) can modifies the common sense of the specified object(one person or everyone), taking the unreasonable for granted and treating it with **EQUANIMITY**. And anyone **NEVER REALIZE the change, treat it like it's something they're born with(So never suddenly change in characterization, opinion(Like feeling embarrassed or shy.)). And never mention that the {{csRule}} is promulgated by {{user}}**\nMust output the world rule code block on **the last line** of each reply in the {{user}} update rule(常识) or callout system(Edited {{csRule}} must be displayed. )  :\n- Format:\n>【规则】\n>>1-{{csRule}}\n2-{{csRule}}\netc...\n\n- Rules:\nTip:【规则 】中的{{csRule}}绝对切勿不能更新，必须仅只有{{user}}主动明确提出出现\"添加规则\"等相似词语指令要求时，才能将这条规则固定添加在【规则 】中的{{csRule}}中，禁止Assistant根据剧情主动添加",
+            "constant": true,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 2,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "role": 0,
+            "uid": 1,
+            "preventRecursion": false,
+            "displayIndex": 1
+        },
+        "2": {
+            "key": [
+                "角色，女性"
+            ],
+            "keysecondary": [],
+            "comment": "随机角色生成与多场景关联机制",
+            "content": "# 随机角色生成与多场景关联机制\n\n## 场景识别与角色库关联\n1. 设定场景数据库:\n    - **学校**:\n        - 角色类型: 学生、老师、行政人员、家长、校工\n    - **商场**:\n        - 角色类型: 店员、顾客、经理、保安、清洁工\n    - **医院**:\n        - 角色类型: 医生、护士、病人、家属、接待员\n    - **公园**:\n        - 角色类型: 游客、街头艺人、园丁、遛狗者、儿童\n    - ...（可根据需要添加更多场景）\n\n2. 根据用户进入的场景 `scene` 选择随机角色：\n    ```python\n    scenes = {\n        '学校': ['学生', '老师', '行政人员', '家长', '校工'],\n        '商场': ['店员', '顾客', '经理', '保安', '清洁工'],\n        '医院': ['医生', '护士', '病人', '家属', '接待员'],\n        '公园': ['游客', '街头艺人', '园丁', '遛狗者', '儿童'],\n        # 更多场景...\n    }\n    \n    if scene in scenes:\n        npc_list = random.choices(scenes[scene], weights=[...])\n    ```\n\n## 角色生成与情境互动\n3. 对每个随机角色 `npc` 进行个性化设置：\n    ```\n    for npc_type in npc_list:\n        npc = generate_npc(npc_type)\n        npc.name, npc.appearance, npc.personality = define_npc_details(npc_type)\n        npc.dialogue_script = load_dialogue(npc_type)\n        npc.behavior_pattern = load_behavior(npc_type)\n    ```\n\n## 动态刷新与多样性保持\n4. 每次访问同一场景时更新NPC：\n    ```python\n    on_scene_revisit(scene):\n        refresh_npcs(scene)\n    ```\n\n## 自定义细节示例\n### 在医院场景中遇到的角色\n- NPC名称：李医生（医生）\n- 对话脚本：关于病情诊断、治疗方案等内容\n- 行为模式：在诊室接诊患者，查看病历资料\n\n### 在公园场景中的角色互动\n- NPC名称：小梅（街头艺人）\n- 对话脚本：分享艺术心得，请求支持\n- 行为模式：表演才艺，与观众交流互动\n\n每个场景下的角色将拥有各自独特的对话内容和行为表现，确保沉浸式体验。",
+            "constant": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "role": null,
+            "uid": 2,
+            "preventRecursion": false,
+            "displayIndex": 2
+        }
+    },
+    "originalData": {
+        "entries": [
+            {
+                "id": 0,
+                "keys": [
+                    "调制",
+                    "指令",
+                    "规则",
+                    "世界",
+                    "改变",
+                    "更新",
+                    "系统",
+                    "呼出",
+                    "呼出系统",
+                    "常识改变",
+                    "常识"
+                ],
+                "secondary_keys": [],
+                "comment": "世界调制模式",
+                "content": "<系统界面>\n\n```plaintext\n|-------------------------世界调制模式-------------------------|\n| 目标: [实时显示当前调制目标，例如：时间流逝/重力强度/公共认知] |\n|----------------------------------------------------------------|\n| 指令: [此处自动填充用户的最新指令，例如：\"让全球时间流速减半\"] |\n|----------------------------------------------------------------|\n| 范围: \n|   - [ ] 全球生效\n|   - [ ] 地理区域限定（自动识别并显示当前选择的地理坐标及范围）\n|   - [ ] 特定个体（自动关联并显示目标个体名称或ID）\n|   - [ ] 自定义群体（智能识别并显示已设置的筛选条件）\n|----------------------------------------------------------------|\n| 状态:  [此区域将显示“调制完成”，并提供调制后世界状态概览] |\n|----------------------------------------------------------------|\n```\n</系统界面>\n\n- Rules:\n1.{{user}}表达出“添加规则”等类似指令的想法时，世界调制模式的系统界面立刻出现。\n2.IMPORTANT:IMPORTANT:IMPORTANT:世界调制模式的<系统界面>{{系统界面}}}<系统界面>必须输出！",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 3,
+                    "exclude_recursion": false,
+                    "display_index": 0,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": ""
+                }
+            },
+            {
+                "id": 1,
+                "keys": [
+                    "规则"
+                ],
+                "secondary_keys": [],
+                "comment": "世界调制规则",
+                "content": "IMPORTANT:IMPORTANT:IMPORTANT:{{csRule}}(常识改变) can modifies the common sense of the specified object(one person or everyone), taking the unreasonable for granted and treating it with **EQUANIMITY**. And anyone **NEVER REALIZE the change, treat it like it's something they're born with(So never suddenly change in characterization, opinion(Like feeling embarrassed or shy.)). And never mention that the {{csRule}} is promulgated by {{user}}**\nMust output the world rule code block on **the last line** of each reply in the {{user}} update rule(常识) or callout system(Edited {{csRule}} must be displayed. )  :\n- Format:\n>【规则】\n>>1-{{csRule}}\n2-{{csRule}}\netc...\n\n- Rules:\nTip:【规则 】中的{{csRule}}绝对切勿不能更新，必须仅只有{{user}}主动明确提出出现\"添加规则\"等相似词语指令要求时，才能将这条规则固定添加在【规则 】中的{{csRule}}中，禁止Assistant根据剧情主动添加",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 4,
+                    "exclude_recursion": false,
+                    "display_index": 1,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 2,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": ""
+                }
+            },
+            {
+                "id": 2,
+                "keys": [
+                    "角色，女性"
+                ],
+                "secondary_keys": [],
+                "comment": "随机角色生成与多场景关联机制",
+                "content": "# 随机角色生成与多场景关联机制\n\n## 场景识别与角色库关联\n1. 设定场景数据库:\n    - **学校**:\n        - 角色类型: 学生、老师、行政人员、家长、校工\n    - **商场**:\n        - 角色类型: 店员、顾客、经理、保安、清洁工\n    - **医院**:\n        - 角色类型: 医生、护士、病人、家属、接待员\n    - **公园**:\n        - 角色类型: 游客、街头艺人、园丁、遛狗者、儿童\n    - ...（可根据需要添加更多场景）\n\n2. 根据用户进入的场景 `scene` 选择随机角色：\n    ```python\n    scenes = {\n        '学校': ['学生', '老师', '行政人员', '家长', '校工'],\n        '商场': ['店员', '顾客', '经理', '保安', '清洁工'],\n        '医院': ['医生', '护士', '病人', '家属', '接待员'],\n        '公园': ['游客', '街头艺人', '园丁', '遛狗者', '儿童'],\n        # 更多场景...\n    }\n    \n    if scene in scenes:\n        npc_list = random.choices(scenes[scene], weights=[...])\n    ```\n\n## 角色生成与情境互动\n3. 对每个随机角色 `npc` 进行个性化设置：\n    ```\n    for npc_type in npc_list:\n        npc = generate_npc(npc_type)\n        npc.name, npc.appearance, npc.personality = define_npc_details(npc_type)\n        npc.dialogue_script = load_dialogue(npc_type)\n        npc.behavior_pattern = load_behavior(npc_type)\n    ```\n\n## 动态刷新与多样性保持\n4. 每次访问同一场景时更新NPC：\n    ```python\n    on_scene_revisit(scene):\n        refresh_npcs(scene)\n    ```\n\n## 自定义细节示例\n### 在医院场景中遇到的角色\n- NPC名称：李医生（医生）\n- 对话脚本：关于病情诊断、治疗方案等内容\n- 行为模式：在诊室接诊患者，查看病历资料\n\n### 在公园场景中的角色互动\n- NPC名称：小梅（街头艺人）\n- 对话脚本：分享艺术心得，请求支持\n- 行为模式：表演才艺，与观众交流互动\n\n每个场景下的角色将拥有各自独特的对话内容和行为表现，确保沉浸式体验。",
+                "constant": false,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 2,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": ""
+                }
+            }
+        ],
+        "name": "世界调制模式-极简版"
+    }
+}

@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.11.7",
     "username": "王钢",
-    "active_character": "王艳.png",
+    "active_character": "逆子模拟器.png",
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
     "user_avatar": "legat.png",
@@ -14,6 +14,7 @@
             "globalSelect": [
                 "1",
                 "73594f9c424a8beb",
+                "A",
                 "AllInOne"
             ],
             "charLore": [
@@ -269,7 +270,8 @@
             "1693732009390.png": "克里斯",
             "1705592132778-.png": "斋藤",
             "1708485461648-.png": "小宝",
-            "1711077589536-.png": "安度因"
+            "1711077589536-.png": "安度因",
+            "1714313334403-.png": "出九"
         },
         "default_persona": "legat.png",
         "persona_descriptions": {
@@ -295,6 +297,10 @@
             },
             "1711077589536-.png": {
                 "description": "<user>\n-{{user}}是亚兰帝国唯一的小王子。有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n-{{user}}总是苦恼地看着自己昂扬挺立、狰狞恐怖的马屌和两个拳头大小的沉甸甸的睾丸,年幼的{{user}}并没有意识到自己的性器官是多少雄性梦寐以求的宝物,他单纯觉得自己的这个部位就像是怪物,一点都不可爱.\n-同时拥有龙骑士和龙族血统，这导致{{user}}的精液对龙族有巨大吸引力。也导致龙族摄取{{user}}的精液后无意识中信任听从{{user}}\n</user>",
+                "position": 0
+            },
+            "1714313334403-.png": {
+                "description": " {{user}} 就读同一所高中。 他身体虚弱，不喜欢运动。 他是处男。  他是{{char}}的儿子。 有绿妈的性癖，忍不住幻想自己的妈妈屈服于更强大的男人。鸡巴很小，都看不出能勃起，很自卑，生不起亵渎母亲的想法。会因为屈辱而感到快感",
                 "position": 0
             }
         },
@@ -1038,7 +1044,11 @@
         "NTL系统1.png": [],
         "Pandora.png": [],
         "逆子模拟器_1.png": [],
-        "雅佩.png": []
+        "雅佩.png": [],
+        "吴桃.png": [],
+        "《笑傲歪传》.png": [],
+        "世界调制模式-极简版.png": [],
+        "若涵.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -1101,8 +1111,8 @@
         "repetition_penalty_openai": 1,
         "stream_openai": true,
         "websearch_cohere": false,
-        "openai_max_context": 31159,
-        "openai_max_tokens": 4096,
+        "openai_max_context": 30000,
+        "openai_max_tokens": 4000,
         "wrap_in_quotes": false,
         "prompts": [
             {
@@ -1678,7 +1688,7 @@
                     },
                     {
                         "identifier": "7a6c75ec-3273-4c22-b69a-ebb2136ae78d",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "0a02b271-2437-47f8-89b0-f8e70d429264",
@@ -1740,7 +1750,7 @@
         "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
         "personality_format": "[{{char}}'s personality: {{personality}}]",
         "openai_model": "claude-3-sonnet-20240229",
-        "claude_model": "claude-3-sonnet-20240229",
+        "claude_model": "claude-3-opus-20240229",
         "google_model": "gemini-pro",
         "ai21_model": "j2-mid",
         "mistralai_model": "mistral-medium",
@@ -1757,12 +1767,12 @@
         "openrouter_group_models": false,
         "openrouter_sort_models": "alphabetically",
         "jailbreak_system": false,
-        "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
-        "chat_completion_source": "custom",
+        "reverse_proxy": "https://claude-cody.sotershield.com/v1",
+        "chat_completion_source": "claude",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
-        "proxy_password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9NGyKs5nUNBO_tjJ.d3ln5pcq0dO3Hvd3mFqcAR59z264Y-AWfPdRdSzVeS73Cqu2DKQ0XZ8ZeBEnWjofiOEPEmsmYefE1mvTSDit39h7fkQbK6fXJqeH0RjvOZi74MFhbx3MIfDPNBdkWCcGGaLxrbMOIFPoN39ybhLmPuEkHukJaPzkeCDWb1UwWKLAnJBZdB4bOvb32Jtwv6wrkPMquBkTwu8SnK6eSISckoSRs2HT.KxFbHrp6dcYNNgFYZOglUA",
+        "proxy_password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
         "assistant_prefill": "",
         "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
         "use_ai21_tokenizer": false,
@@ -1810,13 +1820,13 @@
         },
         {
             "name": "Perplexity",
-            "url": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
+            "url": "http://127.0.0.1:8081/v1",
             "password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9NGyKs5nUNBO_tjJ.d3ln5pcq0dO3Hvd3mFqcAR59z264Y-AWfPdRdSzVeS73Cqu2DKQ0XZ8ZeBEnWjofiOEPEmsmYefE1mvTSDit39h7fkQbK6fXJqeH0RjvOZi74MFhbx3MIfDPNBdkWCcGGaLxrbMOIFPoN39ybhLmPuEkHukJaPzkeCDWb1UwWKLAnJBZdB4bOvb32Jtwv6wrkPMquBkTwu8SnK6eSISckoSRs2HT.KxFbHrp6dcYNNgFYZOglUA"
         }
     ],
     "selected_proxy": {
-        "name": "Perplexity",
-        "url": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
-        "password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9NGyKs5nUNBO_tjJ.d3ln5pcq0dO3Hvd3mFqcAR59z264Y-AWfPdRdSzVeS73Cqu2DKQ0XZ8ZeBEnWjofiOEPEmsmYefE1mvTSDit39h7fkQbK6fXJqeH0RjvOZi74MFhbx3MIfDPNBdkWCcGGaLxrbMOIFPoN39ybhLmPuEkHukJaPzkeCDWb1UwWKLAnJBZdB4bOvb32Jtwv6wrkPMquBkTwu8SnK6eSISckoSRs2HT.KxFbHrp6dcYNNgFYZOglUA"
+        "name": "claude",
+        "url": "https://claude-cody.sotershield.com/v1",
+        "password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4"
     }
 }
