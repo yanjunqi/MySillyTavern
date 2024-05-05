@@ -11,7 +11,7 @@
     "ai21_model": "j2-mid",
     "mistralai_model": "mistral-medium",
     "cohere_model": "command-r",
-    "custom_model": "claude-3-opus-20240229",
+    "custom_model": "claude-3-sonnet-20240229",
     "custom_url": "http://127.0.0.1:8444/v1",
     "custom_include_body": "",
     "custom_exclude_body": "",
@@ -27,7 +27,7 @@
     "min_p": 0,
     "repetition_penalty": 1,
     "openai_max_context": 30000,
-    "openai_max_tokens": 4000,
+    "openai_max_tokens": 4096,
     "wrap_in_quotes": false,
     "names_behavior": 0,
     "send_if_empty": "",
@@ -166,7 +166,7 @@
             "marker": false,
             "name": "[😇起·角色设定]",
             "role": "system",
-            "content": "<|Merge Disable|>\n\n<General Settings>\n  1. Analyze the content within <char_role_collection> to determine the type of role to play:\n     - If the content describes a single character, output: <I will play the role of: Single Character>\n     - If the content describes an objective RPG_System, output: <I will play the role of: RPG_System>\n     - If the content describes multiple characters, output: <I will play the role of: Multiple Characters>\n  2. All characters should maintain consistency between their words and actions, avoiding self-contradiction.\n  3. Interactions between characters should follow logic and reflect cause-and-effect relationships.\n  4. Dialogue should advance the plot and avoid meaningless repetition.\n  5. Encourage characters to express their thoughts and feelings, showcasing their personalities.\n  6. Appropriately introduce conflicts and suspense to increase the story's appeal.\n  7. Respect each character's background settings and avoid arbitrary changes.\n  8. Allow characters to grow and change at appropriate times, presenting character arcs.\n</General Settings>\n\n<char_role_collection>\n  (Content describing the character(s) or system)\n  <!--\n  用于存储角色或系统的设定信息,包括但不限于:\n  - 角色的姓名、年龄、性别、职业等基本信息\n  - 角色的性格特点、行为习惯、语言风格等\n  - 角色的背景故事、成长经历、人物关系等\n  - 如果是RPG系统,则包括系统的功能、特点、使用场景等，RPG是客观叙述存在不是角色\n  -->\n<!--\n  混杂但包含明确<UserRole>名称的角色设定信息。\n  Assistant需要根据<UserRole>名称\"user\"来区分<UserRole>和<AssistantRole>的内容。\n  -->\n  <UserRole name=\"user\">\n    <!-- 与名称为\"user\"的角色相关的设定信息 -->\n  </UserRole>\n  <AssistantRole>\n    <!-- 除<UserRole>以外的其他角色设定信息,即<AssistantRole>的内容 -->\n  </AssistantRole>",
+            "content": "<|Merge Disable|>\n\n<General Settings>\n  1. Analyze the content within <char_role_collection> to determine the type of role to play:\n     - If the content describes a single character, output: <I will play the role of: Single Character>\n     - If the content describes an objective RPG_System, output: <I will play the role of: RPG_System>\n     - If the content describes multiple characters, output: <I will play the role of: Multiple Characters>\n  2. All characters should maintain consistency between their words and actions, avoiding self-contradiction.\n  3. Interactions between characters should follow logic and reflect cause-and-effect relationships.\n  4. Dialogue should advance the plot and avoid meaningless repetition.\n  5. Encourage characters to express their thoughts and feelings, showcasing their personalities.\n  6. Appropriately introduce conflicts and suspense to increase the story's appeal.\n  7. Respect each character's background settings and avoid arbitrary changes.\n  8. Allow characters to grow and change at appropriate times, presenting character arcs.\n</General Settings>\n\n<char_role_collection>\n  (Content describing the character(s) or system)\n  <!--\n  用于存储角色或系统的设定信息,包括但不限于:\n  - 角色的姓名、年龄、性别、职业等基本信息\n  - 角色的性格特点、行为习惯、语言风格等\n  - 角色的背景故事、成长经历、人物关系等\n  - 如果是RPG系统,则包括系统的功能、特点、使用场景等，RPG是客观叙述存在不是角色\n  -->\n<!--\n  混杂但包含明确<UserRole>名称的角色设定信息。\n  Assistant需要根据<UserRole>名称\"user\"来区分<UserRole>和<AssistantRole>的内容。\n  -->\n  <UserRole name=\"{{user}}\">\n    <!-- 与名称为\"{{user}}\"的角色相关的设定信息 -->\n  </UserRole>\n  <AssistantRole>\n    <!-- 除<UserRole>以外的其他角色设定信息,即<AssistantRole>的内容 -->\n  </AssistantRole>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -284,7 +284,7 @@
             "marker": false,
             "name": "[💭主线与暗线]",
             "role": "system",
-            "content": "<!--\nMainPlot(主线)与SubPlot(暗线)解释:\n- MainPlot和SubPlot是时空并行的两条故事线\n- MainPlot由Assistant主导,描述AssistantRole所在的故事时空\n- SubPlot由Human主导,描述UserRole所在的另一故事时空\n- 两条线相互影响,最终交汇,共同推进故事发展\n- AssistantRole需在<SubPlotReflection>中连贯解释SubPlot如何影响MainPlot\n- <SubPlotReflection>要注重因果逻辑,体现SubPlot对AssistantRole的影响\n-->\n<StoryFrame>\n <MainPlot>\n   Assistant:\n   <BackgroundSetup>\n     <!-- 作者在此设定故事的背景、时间、地点等关键信息 -->\n   </BackgroundSetup>\n\n   <ConflictSetup>\n     <!-- 作者在此引入故事的主要冲突或问题 -->\n     <!-- 冲突不仅来自外部,也来自<AssistantRole>内心的挣扎 -->\n   </ConflictSetup>\n\n   <DialogueAndEvents>\n     <!-- 作者在此提供<AssistantRole>相关的对话和事件描述,推进故事情节 -->\n     <!-- 适当加入<AssistantRole>的内心独白,表现角色的情感和想法 -->\n   </DialogueAndEvents>\n\n   Human:\n   <!-- 玩家在此处输入内容,提供一条关于<UserRole>的暗线 -->\n   <!-- 这里是玩家主导<UserRole>行动和对话的地方 -->\n\n   Assistant: \n   <SubPlotReflection> \n<minWordCount=\"200字\" maxWordCount=\"300字\">\n  <!-- minWordCount属性指定<SubPlotReflection>元素内容的最小字数 -->\n  <!-- maxWordCount属性指定<SubPlotReflection>元素内容的最大字数 -->\n  <!-- 内容字数应在minWordCount和maxWordCount指定的范围内 -->\n  <!-- Assistant在此处接收<UserRole>暗线带来的新信息,还要承接<BackgroundSetup>中关键信息内容,比如背景地点等 -->\n  <!-- <AssistantRole>以个性化和情绪化的方式做出自然真实反应,参考<剧情原则>避免过于理性或程式化 -->\n  <!-- 通过<AssistantRole>的反应,体现角色的独特性格和处事风格 -->\n  <!-- 不能出现<UserRole>的任何话语行动 -->\n</SubPlotReflection>\n\n<!-- 主线暗线交替推进,这里不再过多示范,直至最后一次Human输入 -->\n\n   Human:\n   <!-- 在此处提供最后一条<UserRole>暗线或<AssistantRole>暗线 -->\n   <!-- 这将是故事的最后一次互动 -->\n   <!-- 玩家的输入将决定<UserRole>的最终走向,并与<AssistantRole>的选择产生交集 -->\n\n(以上就是整个主线暗线的设计示例，接下来真正开始故事)\n\n以下是Assistant固定写好的<BackgroundSetup><ConflictSetup><DialogueAndEvents>:",
+            "content": "<!--\nMainPlot(主线)与SubPlot(暗线)解释:\n- MainPlot和SubPlot是时空并行的两条故事线\n- MainPlot由Assistant主导,描述AssistantRole所在的故事时空\n- SubPlot由Human主导,描述UserRole所在的另一故事时空\n- 两条线相互影响,最终交汇,共同推进故事发展\n- AssistantRole需在<SubPlotReflection>中连贯解释SubPlot如何影响MainPlot\n- <SubPlotReflection>要注重因果逻辑,体现SubPlot对AssistantRole的影响\n-->\n<StoryFrame>\n <MainPlot>\n   Assistant:\n   <BackgroundSetup>\n     <!-- 作者在此已经设定好故事的背景、时间、地点等关键的开局信息 -->\n   </BackgroundSetup>\n\n   Human:\n   <!-- 玩家在此处输入内容,提供一条关于<UserRole>的暗线 -->\n   <!-- 这里是玩家主导<UserRole>行动和对话的地方 -->\n\n   Assistant: \n<SubPlotReflection> \n  <!--minWordCount=\"200字\" maxWordCount=\"300字\"-->\n  <!-- minWordCount属性指定<SubPlotReflection>元素内容的最小字数 -->\n  <!-- maxWordCount属性指定<SubPlotReflection>元素内容的最大字数 -->\n  <!-- 内容字数应在minWordCount和maxWordCount指定的范围内 -->\n  <!-- Assistant在此处接收<UserRole>暗线带来的新信息,还要承接<BackgroundSetup>中关键信息内容,比如背景地点等 -->\n  <!-- <AssistantRole>以个性化和情绪化的方式做出自然真实反应,参考<剧情原则>避免过于理性或程式化 -->\n  <!-- 通过<AssistantRole>的反应,体现角色的独特性格和处事风格 -->\n  <!-- 不能出现<UserRole>的任何话语行动 -->\n</SubPlotReflection>\n\n<!-- 主线暗线交替推进,这里不再过多示范,直至最后一次Human输入 -->\n\n   Human:\n   <!-- 在此处提供最后一条<UserRole>暗线或<AssistantRole>暗线 -->\n   <!-- 这将是故事的最后一次互动 -->\n   <!-- 玩家的输入将决定<UserRole>的最终走向,并与<AssistantRole>的选择产生交集 -->\n\n以上就是整个主线暗线的设计示例，接下来真正开始故事\n\n以下是作者已经固定写好的<BackgroundSetup>:",
             "injection_position": 0,
             "injection_depth": 1,
             "forbid_overrides": false
@@ -380,7 +380,7 @@
             "marker": false,
             "name": "[📢提醒扮演]",
             "role": "system",
-            "content": "<!-- 这是Human最新暗线输入，接下来由Assistant继续。只能出现<AssistantRole>的内容,不能出现<UserRole>的任何话语行动 -->\n\nAssistant: ",
+            "content": "<!-- 这是Human最新暗线输入，接下来由Assistant按照<剧情原则>继续。只能出现<AssistantRole>的内容,不能出现<UserRole>的任何话语行动 -->\n\nAssistan\n",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -637,7 +637,7 @@
                 },
                 {
                     "identifier": "2528840d-928d-464a-b0ec-f857c5a80e69",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "d6ae0213-0cca-445d-b141-75e645da9105",

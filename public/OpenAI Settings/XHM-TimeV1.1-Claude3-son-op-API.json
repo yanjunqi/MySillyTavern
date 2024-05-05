@@ -1,7 +1,7 @@
 {
-    "chat_completion_source": "custom",
+    "chat_completion_source": "claude",
     "openai_model": "",
-    "claude_model": "gpt-3.5-turbo",
+    "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": true,
@@ -26,8 +26,8 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 33000,
-    "openai_max_tokens": 10000,
+    "openai_max_context": 30000,
+    "openai_max_tokens": 5000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
     "send_if_empty": "",
@@ -38,8 +38,8 @@
     "new_example_chat_prompt": "[Start a new Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://easyai.icu/proxy/v1/custom/perplexity/format ",
-    "proxy_password": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9NGyKs5nUNBO_tjJ.d3ln5pcq0dO3Hvd3mFqcAR59z264Y-AWfPdRdSzVeS73Cqu2DKQ0XZ8ZeBEnWjofiOEPEmsmYefE1mvTSDit39h7fkQbK6fXJqeH0RjvOZi74MFhbx3MIfDPNBdkWCcGGaLxrbMOIFPoN39ybhLmPuEkHukJaPzkeCDWb1UwWKLAnJBZdB4bOvb32Jtwv6wrkPMquBkTwu8SnK6eSISckoSRs2HT.KxFbHrp6dcYNNgFYZOglUA",
+    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
+    "proxy_password": "sgp_a0d7ccb4f752ea73_952beaa90767601f0e2bb0a595a4ea5fb4a65579,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
     "max_context_unlocked": true,
     "wi_format": "",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -659,7 +659,7 @@
                 },
                 {
                     "identifier": "4240ec02-a03e-4b1b-bfe3-84c149223824",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "fe265912-9028-459e-935f-2d5566917b3a",
@@ -683,7 +683,7 @@
                 },
                 {
                     "identifier": "7a6c75ec-3273-4c22-b69a-ebb2136ae78d",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "0a02b271-2437-47f8-89b0-f8e70d429264",
