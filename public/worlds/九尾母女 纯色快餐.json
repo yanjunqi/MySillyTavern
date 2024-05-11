@@ -23,7 +23,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "1": {
             "uid": 1,
@@ -51,7 +52,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "2": {
             "uid": 2,
@@ -78,7 +80,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "3": {
             "uid": 3,
@@ -106,7 +109,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "4": {
             "uid": 4,
@@ -131,7 +135,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "5": {
             "uid": 5,
@@ -156,7 +161,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "6": {
             "uid": 6,
@@ -181,7 +187,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "7": {
             "uid": 7,
@@ -206,7 +213,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         },
         "8": {
             "uid": 8,
@@ -231,7 +239,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": 0
         }
     },
     "originalData": {

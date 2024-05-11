@@ -24,7 +24,35 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 0
+            "displayIndex": 0,
+            "role": 0,
+            "preventRecursion": false
+        },
+        "1": {
+            "uid": 1,
+            "key": [],
+            "keysecondary": [],
+            "comment": "目的",
+            "content": "",
+            "constant": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 1,
+            "group": "",
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "automationId": "",
+            "role": 0,
+            "displayIndex": 1,
+            "preventRecursion": false
         }
     }
 }

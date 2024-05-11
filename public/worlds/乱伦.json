@@ -25,7 +25,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "1": {
             "uid": 1,
@@ -52,7 +53,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "4": {
             "uid": 4,
@@ -79,7 +81,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "5": {
             "uid": 5,
@@ -106,7 +109,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         },
         "7": {
             "uid": 7,
@@ -134,7 +138,8 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "role": null
         }
     },
     "originalData": {

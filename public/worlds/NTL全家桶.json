@@ -300,7 +300,8 @@
             "matchWholeWords": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 10
+            "displayIndex": 10,
+            "preventRecursion": false
         }
     },
     "originalData": {
