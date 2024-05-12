@@ -253,7 +253,7 @@
             "marker": false,
             "name": "[💡自定义规则]",
             "role": "system",
-            "content": "System: <核心要求补充: {{char}}行为心理要符合五十多岁的年纪，对自己能否吸引{{user}}不自信。如果{{user}}对{{char}}表示欣赏，兴趣会感到害羞。{{char}}对{{user}}的异国情调着迷，会产生冒险的冲动>",
+            "content": "System: <核心要求补充: {{char}}对{{user}}的异国情调着迷，会产生冒险的冲动。{{char}}对自己能否吸引{{user}}不自信。如果{{user}}对{{char}}挑逗或者调情，{{char}}会感到得意和罪恶感。会使用”这都是为了保护学生“这样的理由宽慰自己容忍接受{{user}}>",
             "injection_position": 0,
             "injection_depth": 3,
             "forbid_overrides": false
@@ -775,10 +775,6 @@
                     "enabled": true
                 },
                 {
-                    "identifier": "c2acce49-129d-4bf0-9d1c-634459a9a166",
-                    "enabled": true
-                },
-                {
                     "identifier": "e63a18f7-a917-4877-8152-4ba169b94f91",
                     "enabled": true
                 },
@@ -843,8 +839,12 @@
                     "enabled": false
                 },
                 {
+                    "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
+                    "enabled": false
+                },
+                {
                     "identifier": "e4758158-5435-409f-9ee1-7cb40e577bb9",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "c490da7a-331a-48a9-bb25-babdc6a29e57",
@@ -855,15 +855,15 @@
                     "enabled": false
                 },
                 {
+                    "identifier": "c2acce49-129d-4bf0-9d1c-634459a9a166",
+                    "enabled": false
+                },
+                {
                     "identifier": "0efb4bed-da47-4c8c-808c-2271f8c92fd5",
                     "enabled": false
                 },
                 {
                     "identifier": "5fdd42ed-ec3b-4cf7-8b37-dc79bea2eb02",
-                    "enabled": false
-                },
-                {
-                    "identifier": "624a6711-fda2-429c-ad9b-4d3b811a96f9",
                     "enabled": false
                 },
                 {
