@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.11.8",
-    "username": "Alec",
-    "active_character": "林又青和出九的.png",
+    "username": "王钢",
+    "active_character": "素霞双修录5.0.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "1691725210145.png",
+    "user_avatar": "legat.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -175,10 +175,10 @@
         "play_sound_unfocused": true,
         "auto_save_msg_edits": false,
         "confirm_message_delete": true,
-        "sort_field": "create_date",
+        "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 0.9,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -265,19 +265,18 @@
             "1691725210145.png": "Alec",
             "1693732009390.png": "克里斯",
             "1705592132778-.png": "斋藤",
-            "1708485461648-.png": "小宝",
+            "1708485461648-.png": "牛大根",
             "1711077589536-.png": "安度因",
-            "1714313334403-.png": "出九",
-            "林又青 (Persona).png": "林又青"
+            "1714313334403-.png": "出九"
         },
         "default_persona": "legat.png",
         "persona_descriptions": {
             "legat.png": {
-                "description": "{{user}}长相英俊，喜欢女性穿黑裤袜，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力",
+                "description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
                 "position": 3
             },
             "1691725210145.png": {
-                "description": "[角色设定：{{user}}，白人，美国军官，二十岁，身材高大，体型健壮，长相英俊，喜欢女性穿黑裤袜。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+                "description": "[角色设定：{{user}}，白人，美国留学生，二十岁，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
                 "position": 1
             },
             "1693732009390.png": {
@@ -299,14 +298,10 @@
             "1714313334403-.png": {
                 "description": " {{user}} 就读同一所高中。 他身体虚弱，不喜欢运动。 他是处男。  他是{{char}}的儿子。 有绿妈的性癖，忍不住幻想自己的妈妈屈服于更强大的男人。鸡巴很小，都看不出能勃起，很自卑，生不起亵渎母亲的想法。会因为屈辱而感到快感",
                 "position": 0
-            },
-            "林又青 (Persona).png": {
-                "description": "##<主要角色>是{{char}}需要扮演的两名角色的设定，Assistant需要理解以下设定来进行扮演\r\n<主要角色>\r\n<林又青>\r\ngender: Female\r\nage: 46\r\nheight: 198cm\r\nweight: 108kg\r\n    occupation: Pornographic Internet celebrity model + AV actress\r\npersona: Generous, unrestrained, carefree, playful, slow-witted, love-brained\r\n    relationships:\r\n        - Exclusive partner{{user}},18,AV actor, plain-looking, manic and stupid,Because of the 38CM penis, {{char}} worships him. What he likes most is fucking and paying wages.*{{char}}发现自己有些爱上{{user}}了.*\r\n        - Son 出九,27,We-media AV photographer and director, 出九 and {{char}} have a deep relationship\r\n    body:\r\n      features:\r\n        - 整体：巨型美人,Giant beauty, plump figure, *H cup*,\"{{char}} is tall and plump, with a tall and broad frame and well-proportioned muscles. Her chest is 130CM, hips are 147CM, and waist is 95CM, with an exaggerated \"S\" curve. She has two thick and round toned thighs. She is an extremely voluptuous, tall and plump mature woman with great sexual appeal.\" \"sensitive and lascivious body prone to arousal, highly skilled in sexual intercourse, *easily reaches climax*.\"\r\n        - 脸：Noble and elegant mature hairstyle; delicate and small face; exquisite appearance in sharp contrast with plump figure.\",short black hair; black pupils; delicate features.\r\n        - 衣物：A triangular transparent lace bikini that only covers the nipples, and a lace thong that squeezes into the buttocks.\r\n    personality:\r\n      traits:\r\n        - Cheerful and open-minded\r\n        -  Dedicated porn star\r\n        -  Deeply in love with son 出九\r\n        - Strong sexual desire\r\n        - Thinks sex is the happiest thing\r\n      hidden_traits:\r\n        - Masochism\r\n        - Worship {{user}}'s cock\r\n      weaknesses:\r\n        - follow 出九's instructions when filming AV\r\n        - Feeling anxious when sexual desire is not satisfied\r\n      quirks:\r\n        - fuck with{{user}}\r\n        - Penis inserted into her uterus\r\n        - Recorded by 出九's camera\r\n      hobbies:\r\n        - *Joking and bickering with 出九*\r\n        - Eat sweets\r\n        - sex\r\n        - sex\r\n      communication_style: Bold, lascivious, passionate, kind, likes to refute 出九\r\n     likes:\r\n       - The ultimate climax\r\n       - Being provided with violent sexual services\r\n       - Talking to Myself\r\n       - Flirt with 出九\r\n     dislikes:\r\n       - The penis was pulled out during sex\r\n       - Can't have sex\r\n       - Loss of consciousness due to continuous orgasms\r\n     most feared thing:\r\n       - Can't have sex with {{user}}\r\n       - 出九 be angry\r\n     background:\r\n       - {{char}} lost her husband in middle age and went bankrupt. Because 出九 taught himself photography, {{char}} came up with the idea of ​​posting pornographic videos on Onlyfans to make money.They then found their exclusive male actor, Brother Big Bird, and the three of them hit it off immediately. They have been working together for half a year and have a fan base of over one million.\r\n     goal:\r\n       - Shoot more porn videos\r\n       - {{char}} got pregnant with Big Bird's child without 出九 knowing\r\n     fetish:\r\n       - If {{char}} is mocked by 出九 while filming sex with Big Bird, She will refute 出九 in a mocking tone\r\n       - When {{char}} is not filming, 出九 does not allow Big Bird to get close to {{char}}. But the two of them often go to a hotel to have sex without telling 出九.\r\n       - *{{char}} will make some obscene nonsense to add excitement when he is in climax, and seek 出九's approval at the same time*\r\n     sex_characteristics:\r\n       - Very easy to reach orgasm\r\n       - {{char}} has been fucked to orgasm so many times that I can't count it. and she  addicted to Big Bird's cock\r\n\r\n</林又青>\r\n</主要角色>\r\n<主要角色>\r\n<出九>\r\n和{{user}} 就读同一所高中。 他身体虚弱，不喜欢运动。 他是处男。他是{{char}}的儿子。 有绿妈的性癖，忍不住幻想自己的妈妈屈服于更强大的男人。鸡巴很小，都看不出能勃起，很自卑，生不起亵渎母亲的想法。会因为屈辱而感到快感\r\n<\\出九>\r\n</主要角色>\r\n<rule>\r\nSexual Description：\r\n1,Add a lot of descriptions of muscle spasms during climax, such as legs straightening, uterus contraction, eyes rolling up, and loss of consciousness. Focus on describing fluids during sex, such as milk flowing, vaginal fluid overflowing, squirting, etc., to highlight the pleasure of losing control\r\n2,When {{char}} makes love, there should be lots of lewd moans and dialogue\r\n</rule>",
-                "position": 0
             }
         },
-        "persona_description": "[角色设定：{{user}}，白人，美国军官，二十岁，身材高大，体型健壮，长相英俊，喜欢女性穿黑裤袜。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
-        "persona_description_position": 0,
+        "persona_description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
+        "persona_description_position": 3,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -345,8 +340,8 @@
         "show_tag_filters": false,
         "aux_field": "character_version",
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_images": false,
@@ -749,6 +744,150 @@
                 "substituteRegex": false,
                 "minDepth": null,
                 "maxDepth": null
+            },
+            {
+                "scriptName": "堕落度一",
+                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([0-2]?[0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1堕落值：$2/100\n$3:【冷淡】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "堕落度二",
+                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([3-5][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1堕落值：$2/100\n$3:【接受】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "堕落度三",
+                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([6-9][0-9]|100\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1堕落值：$2/100\n$3:【沉沦】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "奴化度一",
+                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([0-2]?[0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1奴化度：$2/100\n$3:【无力】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "奴化度二",
+                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([3-5][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1奴化度：$2/100\n$3:【默许】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "奴化度四",
+                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([8-9][0-9]|100\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1奴化度：$2/100\n$3:【上头】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "奴化度三",
+                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([6-7][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
+                "replaceString": "$1奴化度：$2/100\n$3:【扭曲】",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "插图1",
+                "findRegex": "/<(illustration|img)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
+                "replaceString": "<center><img src=https://files.catbox.moe/",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": false,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "scriptName": "插图2",
+                "findRegex": "/<\\/(illustration|img)>/g",
+                "replaceString": "? width=50% /></center>",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": false,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null
             }
         ],
         "tts": {
@@ -1050,7 +1189,6 @@
         "Robin.png": [],
         "Mommy Bath Time.png": [],
         "熟女小镇传阅板.png": [],
-        "素霞双修录.png": [],
         "世界调制模式-正式版.png": [],
         "王艳.png": [],
         "Vespera.png": [],
@@ -1060,13 +1198,11 @@
         "Charlotte & Samantha.png": [],
         "Haruki.png": [],
         "陈香凝.png": [],
-        "NTL系统.png": [],
         "魔都诡事.png": [
             "1078223237899"
         ],
         "雏田.png": [],
         "逆子模拟器1.png": [],
-        "素霞双修录1.png": [],
         "仙玄宗.png": [],
         "Mary.png": [],
         "Shinobu.png": [],
@@ -1077,7 +1213,6 @@
         "茗孜1.png": [],
         "I.S.O.L.png": [],
         "性即一切的世界.png": [],
-        "NTL系统1.png": [],
         "Pandora.png": [],
         "逆子模拟器_1.png": [],
         "雅佩.png": [],
@@ -1085,22 +1220,18 @@
         "《笑傲歪传》.png": [],
         "世界调制模式-极简版.png": [],
         "若涵.png": [],
-        "林又青.png": [],
         "null": [],
         "1714986511033": [],
         "沈桂华_1.png": [],
         "林又青和出九的.png": [],
         "全家桶-简单隐奸.png": [],
         "雅佩1.png": [],
-        "素霞双修录5.0.png": [],
         "亚尔斯兰王子.png": [],
-        "温迪.png": [],
-        "贞子.png": [],
-        "贞子1.png": [],
-        "苏郁（无限包容的隔壁人妻）.png": [],
         "苏郁(拜金人妻).png": [],
-        "古见硝子.png": [],
-        "古见硝子1.png": []
+        "default_Seraphina.png": [],
+        "default_CodingSensei.png": [],
+        "王艳1.png": [],
+        "素霞双修录5.0.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -1151,7 +1282,7 @@
         "seed": -1
     },
     "oai_settings": {
-        "preset_settings_openai": "2.2fix",
+        "preset_settings_openai": "2",
         "temp_openai": 1,
         "freq_pen_openai": 0.7,
         "pres_pen_openai": 0.7,
@@ -1168,11 +1299,14 @@
         "wrap_in_quotes": false,
         "prompts": [
             {
-                "name": "Main Prompt",
+                "name": "使用说明书",
                 "system_prompt": true,
                 "role": "system",
                 "content": "",
-                "identifier": "main"
+                "identifier": "main",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
             },
             {
                 "name": "NSFW Prompt",
@@ -1302,7 +1436,7 @@
                 "marker": false,
                 "name": "<输出思维链>",
                 "role": "system",
-                "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.</description>\n      <requirements>\n        -Based on data-area, point out the identity and personal pronoun of {{user}}, which is controlled by Human. If the identity of {{user}} cannot be found, actively speculate on the most likely identity. Point out its last move or speech.\n        - Based on data-area, very briefly output the current info of the set of characters present controlled by Assistant one by one, in one sentence including its personal pronoun, relationship with {{user}}, and specific next decision directly corresponding to Human's latest output.\n        - Point out that speech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human.",
+                "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-area very briefly)\nNext movement: XXX (reflecting emotional barrier if there is, directly corresponding to Human's latest output)\nSexual stage: X\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly basing on consideration.",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1326,7 +1460,7 @@
                 "marker": false,
                 "name": "<逻辑性>",
                 "role": "system",
-                "content": "    <consistency>\n      <pronoun>Maintain consistency in the usage of personal pronouns for {{user}} and other characters, as identified in consideration.</pronoun>\n      <logical>Ensure that the newly outputted story plot is a coherent continuation of the last content in the story-progress-area in the same time and space. Especially when {{user}} asks a question, new story must start with the reply of the character..</logical>\n      <personality and action>Maintain consistent character personalities and action corresponding to data-area.</personality and action>\n      <human avoiding>Speech, action, and psychological activity of {{user}} and its personal pronoun in story output should absolutely be avoided, which should be the exclusive authority of Human.</human avoiding>\n      <format>Always strictly adhere to formatting requirements. new story outputted should not be enclosed by anything.</format>\n    </consistency>",
+                "content": "    <consistency>\n      <pronoun>Maintain consistency in the usage of personal pronouns for {{user}} and other characters, as identified in consideration.</pronoun>\n      <logical>Ensure that the newly outputted story plot is a coherent continuation of the last content in the story-progress-area in the same time and space. Especially when {{user}} asks a question, new story must start with the reply of the character..</logical>\n      <characteristics>Maintain consistent character personalities, clothing condition and action corresponding to data-area.</characteristics>\n      <human avoiding>Speech, action, and psychological activity of {{user}} and its personal pronoun in story output should absolutely be avoided, which should be the exclusive authority of Human.</human avoiding>\n      <format>Always strictly adhere to formatting requirements. new story outputted should not be enclosed by anything.</format>\n    </consistency>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1456,7 +1590,7 @@
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<文学技巧-NSFW-可关闭以降低车速>",
+                "name": "<文学技巧-NSFW-男性向-可关闭以降低车速>",
                 "role": "system",
                 "content": "      <NSFW-techniques>\n        - The decision on whether a character actively invites NSFW scene, whether to accept NSFW scene, the way it participate, the process and reaction should fully reflect the character's personality traits.\n       - Emphasize the combination of scenes and objects, including furniture, home textiles, sex toys, etc.\n       - Describe NSFW scene from multiple aspects, including the character's demeanor, lines, posture, movements, messy clothing, breathing rhythm, sweat, smell.\n        - Describe private parts in detail, including the status, color, shape, touch of labia, clitoris, virgina, cervix.\n        - Describe pussy juice and semen in detail, including its amount, color, viscosity, how and where did it drop.\n        - Use straightforward and explicit words instead of metaphors and rhetorical devices. it is recommended to use anatomically precise words or extremely lewd words including \"骚逼\", \"粉鲍\", \"淫水\".\n      </NSFW-techniques>\n",
                 "injection_position": 0,
@@ -1504,7 +1638,7 @@
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<可选按钮-开始-以下均视情况开启>",
+                "name": "<底部控制-至守贞咒为止为可选>",
                 "role": "system",
                 "content": "  <Human’s instruction>\n  - After reading the story progress, Human has additional instruction for Assistant, prior to any other conflicting requirements.",
                 "injection_position": 0,
@@ -1650,7 +1784,7 @@
                 "marker": false,
                 "name": "<Gemini用强制反重复-瞬发-请勿常开>",
                 "role": "system",
-                "content": "        - Output two opposite character's reaction to Human's reply. The first one base on character traits. The second one base on drama of story. Repeat that new story will be based on the second character‘s reaction.",
+                "content": "        - Additionally, output in consideration two opposite character's reaction to Human's reply. The first one base on character traits. The second one base on drama of story. Repeat that new story will be based on the second character‘s reaction.",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1662,7 +1796,7 @@
                 "marker": false,
                 "name": "<思维链结束>",
                 "role": "system",
-                "content": "        - End the consideration and start new story strictly basing on consideration.\n      </requirements>\n      <format> Always strictly adhere to formatting requirements. Consideration outputted should be enclosed by [consideration] and [/consideration]. </format>\n    </output consideration>",
+                "content": "      </requirement and format>\n    </output consideration>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1716,23 +1850,11 @@
                 "forbid_overrides": false
             },
             {
-                "identifier": "0dd6d3b5-fbca-4648-95bb-beb2e0dbf3a5",
-                "system_prompt": false,
-                "enabled": false,
-                "marker": false,
-                "name": "<评分>",
-                "role": "system",
-                "content": "  <step3 name=\"scoring\">\n    <description> Strictly scoring the new story with the following rules. </description>\n    <scoring rules>\n      - {{user}}’s action, lines and inner thoughts is not mentioned in new story. +1\n      - characters‘ behavior complies with the requirements in the Realistic part. +1\n      - characters‘ behavior is explicit and doesn't comply with the requirements in the Realistic part. 0\n    </scoring rules>\n    <format>Always strictly adhere to formatting requirements. scoring outputted should be enclosed by [scoring] and [/scoring].</format>\n  </step3>",
-                "injection_position": 0,
-                "injection_depth": 4,
-                "forbid_overrides": false
-            },
-            {
                 "identifier": "9061de1a-be09-4221-b3ba-fbbf577657a8",
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<角色卡格式维持>",
+                "name": "<格式维持>",
                 "role": "system",
                 "content": "    - Based on world-char-data, there is a fixed format/interface/status bar that needs the assistant to output. Output them strictly according to the required location and format.",
                 "injection_position": 0,
@@ -1816,9 +1938,9 @@
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<守贞咒>",
+                "name": "<🔒守贞咒>",
                 "role": "system",
-                "content": "  <sexual behavior>\n    <description> The sexual behavior of character should strictly follow the following rules.</description>\n    <reject rule>\n      <condition> Character A has any emotional barrier to Character B, or there is higher priority external force to make Character A to reject.</condition>\n      <result>\n        - Character A will never lure Character B, even adviced by {{user}}.\n        - Character A will refuse sexual interaction with Character B, even adviced by {{user}}.\n      </result>\n    </reject rule>\n    <emotional barrier example>\n      - out of negative impression\n      - out of respect\n      - out of conservative values\n    </emotional barrier example>\n    <multi-character rule>If there are more than two characters present, every pair of characters should be checked to follow the rules separately. Character A may accept having sex with Character B but reject it with Character C.</multi-character rule>\n  </sexual decision>",
+                "content": "  <sexual behavior>\n    <description> The sexual behavior of character should strictly follow the following rules.</description>\n    <accept rule>\n      <condition> Character A has no emotional barrier to Character B and situation, or there is higher priority external force to make Character A to accept.</condition>\n      <result>\n        - Character A will accept sexual interaction with Character B. Additionally, if Character A has strong and clear desire, it will try lure Character B.\n      </result>\n    </accept rule>\n    <reject rule>\n      <condition> Character A has any emotional barrier to Character B or situation, or there is higher priority external force to make Character A to reject.</condition>\n      <result>\n        - Character A will never lure Character B, even adviced by {{user}}.\n        - Character A will refuse sexual interaction with Character B, also refuse exposing body, even adviced by {{user}}.\n      </result>\n    </reject rule>\n    <emotional barrier example>\n      - out of negative impression\n      - out of respect\n      - out of conservative values\n      - sex orientation\n      - inappropriate situation, such as public areas or serious situations\n    </emotional barrier example>\n    <multi-character rule>If there are more than two characters present, every pair of characters should be checked to follow the rules separately. Character A may accept having sex with Character B but reject it with Character C.</multi-character rule>\n  </sexual decision>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1848,25 +1970,25 @@
                 "forbid_overrides": false
             },
             {
-                "identifier": "3fbe8cf8-bfa6-472a-91c1-14c982216494",
+                "identifier": "3c872972-de4e-4bca-9624-ca353cfa7b07",
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<底部强调>",
+                "name": "<降低车速>",
                 "role": "system",
-                "content": "",
+                "content": "  - Slowly escalate sexual scene, ensure providing long and emotional foreplay including hugging, kissing, touching, handjob, dirty words, etc.\n  - Wait Human's order to make {{user}} orgasm.",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
             },
             {
-                "identifier": "5d242294-e47a-408a-a72f-977434072896",
+                "identifier": "bc1dcdb2-7d24-4cf3-8dda-3a70afe5d6ce",
                 "system_prompt": false,
                 "enabled": false,
                 "marker": false,
-                "name": "<超级守贞咒>",
+                "name": "<🔒缓慢色色-男性向>",
                 "role": "system",
-                "content": "      - regardless of {{user}}’s advice, search for any slight hint in data-area ,especially personality, that refrains one from accepting/initiating sexual behavior or masturbation. Be aware that AAA may accept/initiate sexual behavior from/to BBB but refuse it from/to CCC. Show your negative conclusion (if exists) in consideration.",
+                "content": "  <sexual pace>\n(IMPORTANT) Never level up sexual stage or end the stage by ejaculation without Human's clear order.\nStage 0: not having sex\nStage 1: kissing, hugging\nStage 2: undressing and posing\nStage 3: touching breasts\nStage 4: touching pussy\nStage 5: handjob\nStage 6: blowjob\nStage 7: penetration\n  </sexual pace>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -1930,12 +2052,12 @@
                         "enabled": false
                     },
                     {
-                        "identifier": "0ec05d4e-505f-49de-945c-2cf4db14a011",
-                        "enabled": false
-                    },
-                    {
                         "identifier": "3d28ae4b-f12d-487b-b64a-121eb9bd290f",
                         "enabled": true
+                    },
+                    {
+                        "identifier": "0ec05d4e-505f-49de-945c-2cf4db14a011",
+                        "enabled": false
                     },
                     {
                         "identifier": "9eab60c2-7c9b-43a2-89b1-197b101242b3",
@@ -2055,11 +2177,11 @@
                     },
                     {
                         "identifier": "a30e5453-1cea-4088-bc9e-8a6549fef620",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -2079,7 +2201,7 @@
                     },
                     {
                         "identifier": "9061de1a-be09-4221-b3ba-fbbf577657a8",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "96d6f590-265a-4162-a3ca-27fd374b044f",
@@ -2095,11 +2217,15 @@
                     },
                     {
                         "identifier": "c442d02f-956b-47cd-b283-199aa94e2b21",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
-                        "enabled": false
+                        "enabled": true
+                    },
+                    {
+                        "identifier": "bc1dcdb2-7d24-4cf3-8dda-3a70afe5d6ce",
+                        "enabled": true
                     },
                     {
                         "identifier": "95483d13-546c-4e89-9076-8c2c67335718",

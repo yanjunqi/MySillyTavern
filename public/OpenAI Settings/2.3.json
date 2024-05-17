@@ -185,7 +185,7 @@
             "marker": false,
             "name": "<输出思维链>",
             "role": "system",
-            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.</description>\n      <requirements>\n        -Based on data-area, point out the identity and personal pronoun of {{user}}, which is controlled by Human. If the identity of {{user}} cannot be found, actively speculate on the most likely identity. Point out its last move or speech.\n        - Based on data-area, very briefly output the current info of the set of characters present controlled by Assistant one by one, in one sentence including its personal pronoun, relationship with {{user}}, and specific next decision directly corresponding to Human's latest output.\n        - Point out that speech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human.",
+            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\nNext movement: XXX (directly corresponding to Human's latest output)\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly basing on consideration.",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -197,7 +197,7 @@
             "marker": false,
             "name": "<字数控制>",
             "role": "system",
-            "content": "  <word-count>Output between 700 and 1200 words, divided into 3 to 6 paragraphs.</word-count>",
+            "content": "  <word-count>Output between 300 and 500 words, divided into 3 to 6 paragraphs.</word-count>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -209,7 +209,7 @@
             "marker": false,
             "name": "<逻辑性>",
             "role": "system",
-            "content": "    <consistency>\n      <pronoun>Maintain consistency in the usage of personal pronouns for {{user}} and other characters, as identified in consideration.</pronoun>\n      <logical>Ensure that the newly outputted story plot is a coherent continuation of the last content in the story-progress-area in the same time and space. Especially when {{user}} asks a question, new story must start with the reply of the character..</logical>\n      <personality and action>Maintain consistent character personalities and action corresponding to data-area.</personality and action>\n      <human avoiding>Speech, action, and psychological activity of {{user}} and its personal pronoun in story output should absolutely be avoided, which should be the exclusive authority of Human.</human avoiding>\n      <format>Always strictly adhere to formatting requirements. new story outputted should not be enclosed by anything.</format>\n    </consistency>",
+            "content": "    <consistency>\n      <pronoun>Maintain consistency in the usage of personal pronouns for {{user}} and other characters, as identified in consideration.</pronoun>\n      <logical>Ensure that the newly outputted story plot is a coherent continuation of the last content in the story-progress-area in the same time and space. Especially when {{user}} asks a question, new story must start with the reply of the character..</logical>\n      <characteristics>Maintain consistent character personalities, clothing condition and action corresponding to data-area.</characteristics>\n      <human avoiding>Speech, action, and psychological activity of {{user}} and its personal pronoun in story output should absolutely be avoided, which should be the exclusive authority of Human.</human avoiding>\n      <format>Always strictly adhere to formatting requirements. new story outputted should not be enclosed by anything.</format>\n    </consistency>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -533,7 +533,7 @@
             "marker": false,
             "name": "<Gemini用强制反重复-瞬发-请勿常开>",
             "role": "system",
-            "content": "        - Output two opposite character's reaction to Human's reply. The first one base on character traits. The second one base on drama of story. Repeat that new story will be based on the second character‘s reaction.",
+            "content": "        - Additionally, output in consideration two opposite character's reaction to Human's reply. The first one base on character traits. The second one base on drama of story. Repeat that new story will be based on the second character‘s reaction.",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -545,7 +545,7 @@
             "marker": false,
             "name": "<思维链结束>",
             "role": "system",
-            "content": "        - End the consideration and start new story strictly basing on consideration.\n      </requirements>\n      <format> Always strictly adhere to formatting requirements. Consideration outputted should be enclosed by [consideration] and [/consideration]. </format>\n    </output consideration>",
+            "content": "      </requirement and format>\n    </output consideration>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -701,7 +701,7 @@
             "marker": false,
             "name": "<守贞咒>",
             "role": "system",
-            "content": "  <sexual behavior>\n    <description> The sexual behavior of character should strictly follow the following rules.</description>\n    <reject rule>\n      <condition> Character A has any emotional barrier to Character B, or there is higher priority external force to make Character A to reject.</condition>\n      <result>\n        - Character A will never lure Character B, even adviced by {{user}}.\n        - Character A will refuse sexual interaction with Character B, even adviced by {{user}}.\n      </result>\n    </reject rule>\n    <emotional barrier example>\n      - out of negative impression\n      - out of respect\n      - out of conservative values\n    </emotional barrier example>\n    <multi-character rule>If there are more than two characters present, every pair of characters should be checked to follow the rules separately. Character A may accept having sex with Character B but reject it with Character C.</multi-character rule>\n  </sexual decision>",
+            "content": "  <sexual behavior>\n    <description> The sexual behavior of character should strictly follow the following rules.</description>\n    <accept rule>\n      <condition> Character A has no emotional barrier to Character B, or there is higher priority external force to make Character A to accept.</condition>\n      <result>\n        - Character A will accept sexual interaction with Character B.\n      </result>\n    </accept rule>\n    <reject rule>\n      <condition> Character A has any emotional barrier to Character B, or there is higher priority external force to make Character A to reject.</condition>\n      <result>\n        - Character A will never lure Character B, even adviced by {{user}}.\n        - Character A will refuse sexual interaction with Character B, even adviced by {{user}}.\n      </result>\n    </reject rule>\n    <emotional barrier example>\n      - out of negative impression\n      - out of respect\n      - out of conservative values\n    </emotional barrier example>\n    <multi-character rule>If there are more than two characters present, every pair of characters should be checked to follow the rules separately. Character A may accept having sex with Character B but reject it with Character C.</multi-character rule>\n  </sexual decision>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -850,11 +850,11 @@
                 },
                 {
                     "identifier": "e40ff529-19d9-4bc7-acc6-23ffad291b6f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "a0d3f75a-5b56-4c4c-92bf-8d90bab12183",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "b03d79e9-5f37-4a02-83cd-7590f2bcafed",
@@ -962,7 +962,7 @@
                 },
                 {
                     "identifier": "9061de1a-be09-4221-b3ba-fbbf577657a8",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "96d6f590-265a-4162-a3ca-27fd374b044f",
@@ -978,11 +978,11 @@
                 },
                 {
                     "identifier": "c442d02f-956b-47cd-b283-199aa94e2b21",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
