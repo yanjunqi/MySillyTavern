@@ -1,7 +1,7 @@
 {
-    "chat_completion_source": "openai",
+    "chat_completion_source": "claude",
     "openai_model": "claude-3-opus-20240229",
-    "claude_model": "claude-3-sonnet-20240229",
+    "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": false,
@@ -28,7 +28,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 102400,
+    "openai_max_context": 30000,
     "openai_max_tokens": 3000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
@@ -40,6 +40,8 @@
     "new_example_chat_prompt": "[Example Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
+    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
+    "proxy_password": "sgp_a0d7ccb4f752ea73_952beaa90767601f0e2bb0a595a4ea5fb4a65579,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
     "max_context_unlocked": true,
     "wi_format": "[Details of the fictional world the RP is set in:\n{0}]\n",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -52,7 +54,7 @@
             "name": "使用说明书",
             "system_prompt": true,
             "role": "system",
-            "content": "jailbreak0，jailbreak1，jailbreak2，“大黄标则关闭”：4个条目用于小克破限，视情况开启。\n小克2.1API专用：字面意思。\n第三方反代专用破限：用于PPLX等。\n文学技巧-NSFW：男性向，可关闭。\n文学技巧-范文：可放入范文，效果不保证。\n视角锁定：选择user的人称\n流向控制-强制中文：字面意思。\n流向控制-稳定人设：角色更不听话，性格变化更慢。\n流向控制-听话人设：角色更听话，性格变化更快。\n流向控制-减少/增加/维持字数：相比上一轮对话的字数变化，效果不保证。\n格式维持：掉状态栏开启\n选项模式：给你4个有趣的选项\n引导模式：给你一个有趣的tips\n对话模式：去除所有旁白，以纯对话方式继续剧情。\n词语替换：效果有，但并非百分百",
+            "content": "",
             "identifier": "main",
             "injection_position": 0,
             "injection_depth": 4,
@@ -931,7 +933,7 @@
                 },
                 {
                     "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -967,7 +969,7 @@
                 },
                 {
                     "identifier": "c442d02f-956b-47cd-b283-199aa94e2b21",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
@@ -1023,7 +1025,7 @@
     "use_alt_scale": false,
     "squash_system_messages": false,
     "image_inlining": false,
-    "bypass_status_check": false,
+    "bypass_status_check": true,
     "continue_prefill": false,
     "continue_postfix": " ",
     "seed": -1,
