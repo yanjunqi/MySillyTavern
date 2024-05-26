@@ -24,7 +24,12 @@
             "automationId": "",
             "displayIndex": 0,
             "role": 0,
-            "preventRecursion": false
+            "preventRecursion": false,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     }
 }

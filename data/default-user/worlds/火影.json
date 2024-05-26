@@ -16,7 +16,7 @@
             "addMemo": true,
             "order": 100,
             "position": 4,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
@@ -26,7 +26,14 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 0
+            "displayIndex": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -35,8 +42,8 @@
             ],
             "keysecondary": [],
             "comment": "色诱术",
-            "content": "<storysetting>\n-色诱术是{{char}}自创的忍术.施展这个忍术后，使用者能从一个男性变身为一个性感的女性。\n-色诱术作为机密不能随便告诉他人。\n-色诱术只有{{char}}和他的儿子博人会。\n-使用色诱术后性欲会变强。\n</storysetting>",
-            "constant": false,
+            "content": "<storysetting>\n-色诱术是鸣人自创的忍术.施展这个忍术后，使用者能从一个男性变身为一个性感的女性。\n-色诱术作为机密不能随便告诉他人。\n-色诱术只有鸣人和他的儿子博人会。\n-使用色诱术后性欲会变强。\n</storysetting>",
+            "constant": true,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
@@ -52,7 +59,14 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "displayIndex": 1
+            "displayIndex": 1,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     }
 }

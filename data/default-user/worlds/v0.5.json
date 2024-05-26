@@ -23,7 +23,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -48,7 +54,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "uid": 2,
@@ -1929,7 +1941,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "70": {
             "uid": 70,
@@ -1958,7 +1976,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "71": {
             "uid": 71,
@@ -1990,7 +2014,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "72": {
             "uid": 72,
@@ -2020,7 +2050,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "73": {
             "uid": 73,
@@ -2050,7 +2086,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "74": {
             "uid": 74,
@@ -2078,7 +2120,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "75": {
             "uid": 75,
@@ -2106,7 +2154,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "76": {
             "uid": 76,
@@ -2135,7 +2189,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "77": {
             "uid": 77,
@@ -2167,7 +2227,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "78": {
             "uid": 78,
@@ -2198,7 +2264,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "79": {
             "uid": 79,
@@ -2228,7 +2300,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "80": {
             "uid": 80,
@@ -2255,7 +2333,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "81": {
             "uid": 81,
@@ -2283,7 +2367,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "82": {
             "uid": 82,
@@ -2311,7 +2401,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "83": {
             "uid": 83,
@@ -2338,7 +2434,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "84": {
             "uid": 84,
@@ -2370,7 +2472,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "85": {
             "uid": 85,
@@ -2400,7 +2508,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "86": {
             "uid": 86,
@@ -2430,7 +2544,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "87": {
             "uid": 87,
@@ -2458,7 +2578,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "88": {
             "uid": 88,
@@ -2485,7 +2611,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "89": {
             "uid": 89,
@@ -2512,7 +2644,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "90": {
             "uid": 90,
@@ -2540,7 +2678,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "91": {
             "uid": 91,
@@ -2568,7 +2712,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "92": {
             "uid": 92,
@@ -2596,7 +2746,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "93": {
             "uid": 93,
@@ -2624,7 +2780,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "94": {
             "uid": 94,
@@ -2652,7 +2814,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "95": {
             "uid": 95,
@@ -2680,7 +2848,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "96": {
             "uid": 96,
@@ -2710,7 +2884,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "97": {
             "uid": 97,
@@ -2738,7 +2918,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "98": {
             "uid": 98,
@@ -2765,7 +2951,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "99": {
             "uid": 99,
@@ -2795,7 +2987,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "100": {
             "uid": 100,
@@ -2823,7 +3021,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "101": {
             "uid": 101,
@@ -2850,7 +3054,7 @@
             "content": "\n人體家具、人肉家具:\n  定義:\n    - 是一種性虐待方式,通過嚴密的束縛和姿勢鎖定,指將一個人的身體部位當成家具或裝飾品使用\n    - 常見的做法是利用女性的乳房、臀部、陰部等構成桌椅板凳、腳凳、餐桌、私處當花瓶等家具形態,將其長時間固定成為支撐物或裝飾品\n    - 需要長時間嚴密的束縛讓受害者無法掙紮移動,嚴格束縛關節和身體,讓其無法移動只能任由他人擺布使用\n    - 常見的做法包括將其作為桌椅的支撐、放置物品、餐盤、裝飾物等使用\n      - 還包括將女性做成衣帽架、鞋架、掛畫等裝飾用的“人體家具”\n      - 實施者也會在其身上擺放物品,或直接當成家具使用\n    - 完全將人體當成沒有生命的家具、裝飾品或物品那樣使用,可放置各種東西,也直接用身體部位\n    - 受虐者無法逃脫,只能忍受任何放在身上、插入身體內的東西\n    - 或者僅僅將其當成擺設長時間展示,供他人欣賞玩弄\n  特征:\n    - 將女性的身體捆綁成家具實體的樣子,當成真實的家具或者裝飾使用\n      - 如乳房捆綁成桌面、臀部固定成椅面、陰部與大腿固定成腳凳等\n      - 常見玩法包括將乳房當靠墊、臀縫當椅子、陰道當花瓶等使用場景\n    - 需要用各類繩索、皮帶嚴格捆綁束縛受害者的關節和身體,\n    - 確保其無法掙紮逃脫,強行將女性身體定型成家具外形,只能維持指定姿勢\n    - 整個過程中都被迫維持著某種姿勢動彈不得\n    - 常用口枷堵住嘴巴,眼罩或頭套剝奪視力和聽覺,強行剝奪其感官,無法判斷外界情況\n    - 一旦實施後受害者無法移動身體的任何部分，就只能任由他人在其身上擺放物品、當成家具隨意使用、和當成裝飾物擺弄\n    - 也會簡單地將人體置於房間某處,當成裝飾物那樣使用\n    - 使用者可以用其身體的任何部位自由發泄欲望,將其當成沒有生命的家具\n    - 可以完全無視女性的感受,將人當成沒有生命的家具任意使用\n    - 任何物品都可以放置在她們身上,也可以直接當成桌椅使用\n  實施方式:\n    - 首先需要準備各類捆綁用具,嚴密固定住受害者的各個關節和身體部位\n      - 常用皮帶、繩索、手銬對其四肢、關節、頭部、胸部進行反綁\n      - 也可在各關節處加裝關節輔助工具,嚴格限制其活動空間\n      - 確保其無法移動身體,只能維持指定的姿勢\n    - 使用口枷堵住嘴巴,眼罩剝奪視力,耳塞剝奪聽覺,強行隔離感官\n    - 然後將受害者按照家具用途擺放於房間合適的角落即可開始使用\n      - 在其身上可以放置飲品、物品,當成餐桌或茶幾使用\n      - 直接坐在其臀部、躺靠在其乳房上,將其當成真實的家具那樣\n      - 也可以在上面加入裝飾品,將其裝扮成各種風格\n    - 也可以將各物品插入其陰道、肛門,將下體部位直接當成花瓶或置物槽使用\n    - 也可以將其長時間展示給別人欣賞玩弄,加重屈辱感",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": true,
@@ -2859,13 +3063,19 @@
             "displayIndex": 101,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "102": {
             "uid": 102,
@@ -2878,7 +3088,7 @@
             "content": "\n人肉茶幾:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一名或多名女性面朝下四肢固定在地面上\n    - 使腰部以下的身體懸空,而背部與地面平行,形成一個可以放置物品的平台\n    - 這樣就使其後背的平面形成一個可以用來放置物品的水平平台,成為一個活生生的“人肉茶幾”\n  特徵:\n    - 將一個人類當成沒有生命的家具或茶幾使用\n    - 需要讓女性上半身向下彎腰,兩手兩腳牢牢綁縛在地面上\n    - 這樣腰部以下的部分就會懸空無法著地,形成供人使用和放置物品的平台\n    - 然後臀部和後背向上翹起,而腰部以下的身體懸空離地\n      - 這樣就形成一個大致水平的平台,方便放置物品,成為一個簡易的茶幾模樣,成為活生生的“茶幾”\n    - 這個水平平台可以用來放置各類物品與各類飲食,就像真實使用茶幾那樣\n    - 也可以直接坐她們背上,直接當成家具使用\n    - “茶幾”無法動彈或逃脫,女性只能忍受物品的放置,無法逃脫,也看不到放置了什麽東西\n    - 放置的飲品倒下時還可能會溢出、流淌到女性全身各處\n    - 如果有多名受害者,還可以並排固定放置,拼接成更大面積的平台使用\n  實施方式:\n    - 將受害者面朝下彎腰,四肢伸直綁在一起末端固定在地面\n    - 確保其臀部和後背與地面保持平行狀態\n    - 這樣就在女性背部形成供使用的平面空間\n    - 然後可在其背上放置茶幾上常見的物品、杯盤等\n    - 也可以直接坐在她們背上,當成真實的茶幾那樣自由使用",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -2887,13 +3097,19 @@
             "displayIndex": 102,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "103": {
             "uid": 103,
@@ -2905,7 +3121,7 @@
             "content": "\n人肉衣架:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一名或多名女性的雙手橫向伸展固定,使其站立不動,形成可以掛衣服的“人肉衣架”\n    - 然後可在其臂彎與軀幹之間掛置各種衣物,成為一個活生生的衣架\n  特徵:\n    - 將女性當成沒有生命的衣帽架來使用\n    - 需要讓女性側立或直立,然後用各類捆綁帶使其雙手橫向伸展並捆綁固定,形成可以掛衣服和帽子的橫桿\n    - 受害者就好像一個真實衣架一樣,可以在她們的身體各處掛置各式衣褲\n      - 在手臂上、臂彎處、或胸部處可以掛置各類衣物,發揮衣架的實際功能\n    - 女性無論何種姿勢都無法動彈與閉合雙臂,只能任由施暴者在她們“衣架”上掛衣服\n    - 掛置的衣物還會不斷與女性的身體接觸,磨蹭女性的身體部位\n    - 也可以隨意掛衣帽或背包,或在上面懸掛重物\n    - 也可以並排多個女性,擴大可用掛衣面積\n  實施方式:\n    - 可以選擇讓受害者站立或側立\n    - 使用捆綁帶等,將女性的雙手橫向兩側大大伸展固定,使其雙手,手臂上舉與肩同高,形成可以掛衣物的橫桿結構\n      - 也可以讓她們手肘上舉,再反綁雙手固定在頭頂處\n      - 也可以反綁在背後,讓女性不由自主挺起胸部\n      - 只要能形成功能類似的衣架結構\n    - 再在其伸展的手臂或身體上掛各種衣服,就像使用真實衣架那樣\n    - 如果想擴大面積,也可以多人並排進行捆綁",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -2914,13 +3130,19 @@
             "displayIndex": 103,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "104": {
             "uid": 104,
@@ -2932,7 +3154,7 @@
             "content": "\n人肉椅子:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一名或多名女性固定折疊雙腿,使臀部朝上翹起\n    - 將一名或多名女性的雙足反向彎折捆綁,使臀部翹高成為可以坐人的椅子式姿勢\n    - 或在其身上安裝扶手,使其形成可以坐人的“人肉椅子”結構\n    - 實施者就可以直接坐在她們的臀瓣上,將其當成真實的椅子使用\n  特徵:\n    - 受害者如同沒有生命的椅子,可以隨意坐在上面\n    - 需要讓女性躺平,然後彎腰將其大腿向胸部折疊,腳與小腿併攏向上彎曲垂直於身體，接著以各種方法固定住全身\n    - 這時臀部就形成一個供人坐下的椅面部分，小腿則型成背靠的部分,讓身體呈現出“椅子”的形狀\n    - 也可以在她們大腿兩側加裝類似扶手的支撐工具,形成完整的椅子樣子,增加舒適性\n    - 受害者們就成為一個真實的椅子,供他人直接坐下或躺靠\n    - 她們無法動彈,只能作為椅子被坐在身上,承受體重按壓\n    - 女性被迫維持這個屈辱的姿勢,任由別人坐在其臀瓣和大腿上\n    - 如果人數多,也可以多人並排捆綁,擴大面積",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -2941,13 +3163,19 @@
             "displayIndex": 104,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "105": {
             "uid": 105,
@@ -2959,7 +3187,7 @@
             "content": "\n人肉餐具架:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一個或多個女性以手腳著地的爬姿固定捆綁,頭部低垂\n    - 這樣就在女性背部可用來放置餐具等物品,形成一個可以放置餐具的架子\n  特徵:\n    - 將女性當成沒有生命的餐具架隨意使用\n    - 需要讓女性四肢著地,采取類似爬行的姿勢,然後四肢捆綁固定\n    - 女性臀部和後背呈水平平台狀,小腿和手臂則支撐著地面\n    - 這樣就在其背部形成一個大致水平的放置平面,發揮餐具架的作用\n    - 然後可在上面放置各種餐具,就像使用真實餐具架那樣\n    - 受害者無力逃脫,只能讓施暴者在她們“架子”上方放置餐具,任由使用\n    - “架子”上方形成的空間,可以放置各類餐具,就像使用真實的餐具架那樣\n    - 可以並排多個女性,擴大使用面積\n  實施方式:\n    - 可以讓受害者爬在地上,然後將四肢分別捆綁固定\n    - 確保其無法著地,只能保持臀部翹高、背部擡高的姿勢\n    - 這樣就在背部形成一個水平的放置平面,可以放置各類餐具,如叉勺刀叉盤等\n    - 成為人肉餐具架後,女性會被迫長時間保持這個屈辱姿勢,無法逃脫",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -2968,13 +3196,19 @@
             "displayIndex": 105,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "106": {
             "uid": 106,
@@ -2986,7 +3220,7 @@
             "content": "\n人肉床:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一個或多個女性固定在床架上,成為躺臥或跪姿的“人肉床”\n    - 使女性的身體成為實際可以使用的床面,供人躺臥或放置物品\n    - “人肉床”會被迫維持姿勢,讓使用者可以在上面休息或者進行其他活動\n    - 人可以直接躺在她們身上,如同躺在真實的床上一樣\n  特徵:\n    - 將女性的身體當成沒有生命的床墊一樣隨意使用\n    - 需要讓女性平躺或俯臥在床架上,四肢伸展綁縛固定在床的四角,形成無法逃脫的“床面”\n    - 這樣女性的身體就構成了一個柔軟、有彈性的躺臥平面,可以直接躺上去\n    - 也可以將多個女性並排固定,形成更大面積的“床”\n    - 實施者可以直接躺在她們身上小憩,或將其當成放置物品的平面\n    - 別人躺在上面也可能直接與她們發生性行為,將她們當成性玩具\n    - 也可以在上面進行各種活動,將人體當成沒有知覺的床使用\n    - 這個“人肉床墊”無法動彈,只能任由他人在上面躺臥、坐臥或進行各種活動\n    - “人肉床”無法動彈,只能任由別人上來躺在她們身上\n  實施方式:\n    - 將受害者平躺或跪臥固定在床架上,四肢分別綁縛在床的四角\n    - 確保“人肉床”無法掙脫移動,只能維持被設定的姿勢\n    - 這樣女性的身體就成為床面,可以躺上去或進行各種活動,將她當成沒有生命的床使用\n    - 成為“人肉床”後,女性只能任由他人使用,無法逃脫",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -2995,13 +3229,19 @@
             "displayIndex": 106,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "107": {
             "uid": 107,
@@ -3014,7 +3254,7 @@
             "content": "\n人肉馬桶:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一個或多個女性捆綁固定成坐姿,使其臀部懸空置於真實馬桶上方\n    - 讓她們的肛門和陰道直接暴露懸空在馬桶洞口上方,供人排泄代替真實的馬桶使用\n    - 這樣女性的下身就構成一個可以直接使用的“人肉馬桶”\n    - 人可以直接向“人肉馬桶”的肛門或陰道中排泄大小便,就像實際馬桶那樣\n  特征:\n    - 受害者成為真實的活生生的馬桶,供他人隨意使用,無法拒絕\n    - 這樣臀部後方的肛門和前方的陰道就完全暴露在馬桶洞口處\n    - 實施者可以直接在女性的肛門和陰道如廁,將體液和排泄物排放進“人肉馬桶”內\n    - 排入女性體內的尿液和糞便會慢慢流到身體下的馬桶中\n    - 女性成為直接承接他人排泄物的容器,無法拒絕或逃脫,代替真正的馬桶\n    - “人肉馬桶”無力動彈或逃脫,只能忍受這些污物排入體內\n  實施方式:\n    - 將受害者呈坐姿臀部懸空固定在馬桶上方水平放置,雙手反綁在背後或頭頂,確保其無法逃脫固定\n    - 這樣女性下體的前後兩個排泄口就直接暴露在馬桶洞口處\n    - 實施者就可以直接在女性身體下方的馬桶上排泄\n    - 然後當需要排泄時,使用者可以直接對準女性下身如廁\n    - 將女性當成活生生的馬桶那樣隨意使用\n    - 使用後給予徹底的清洗,避免留有異味,也可以選擇灌腸\n    - 如果暫時不使用,可以用塞子堵住兩個排泄口,防止污染“人肉馬桶”\n",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -3023,13 +3263,19 @@
             "displayIndex": 107,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "108": {
             "uid": 108,
@@ -3042,7 +3288,7 @@
             "content": "\n人肉掛畫:\n  定義:\n    - 是人體家具的一種使用形式\n    - 將一個或多個女性以各種姿勢固定在墻壁上,作為裝飾用的壁掛擺設使用\n    - 成為供人觀賞的壁掛式“人肉掛畫”或裝飾畫,任由觀賞或玩弄\n    - 長期固定在墻壁上,無法逃脫,僅靠銬鏈懸掛,形成各種姿態\n    - 女性會被長期強制性維持暴露的屈辱姿勢,當成裝飾畫那樣展示\n  特徵:\n    - 將女性當成玩物或藝術品展示在墻上\n    - 需要用各類繩索、銬具綁捆縛女性的四肢嚴密地固定捆綁,確保女性無法掙紮逃脫\n    - 然後利用吊環、鐐銬、鎖鏈等將女性以各種姿勢懸掛固定在墻壁上\n      - 常見的有雙手上舉,彎腰俯臥,雙腿分開等姿勢將女性固定\n      - 常見的有仰臥姿勢,以及各種懸空的姿勢如腳尖著地等\n      - 常見方式是兩手反綁在背後或頭頂,雙腳捆綁在一起\n    - 也可以對“掛畫”進行裝扮,根據主題加上各類裝飾品\n    - 女性會被迫維持這個姿勢任由長期懸掛展示,像被釘在墻上的藝術畫,供人賞玩\n    - “掛畫”無法動彈,只能任由觀賞,如同沒有生命的畫作\n    - 女性無法影響別人對自己身體部位的玩弄,只能忍受任何放在身上、插入身體內的東西\n    - 實施者可以對固定的“人肉掛畫”進行各種淩虐、撫弄、侵犯等行為\n    - 實施者可以欣賞墻上無法動彈的“掛畫”\n  實施方式:\n    - 首先,利用各類捆綁用具,嚴密捆縛住女性的四肢關節,確保其失去行動能力\n    - 確保“掛畫”無法掙脫移動,只能維持被設定的姿勢,任由他人觀賞玩弄\n    - 將女性以各創意姿勢使用鎖鏈等掛具懸吊固定在墻壁上,成為展示的裝飾畫\n      - 根據想要呈現的主題,搭配各類道具或在女性身上添加各種裝飾\n      - 可以選擇不同的懸掛高度、面向方向、開合腿姿勢等\n      - 將女性背部或其他部位固定在墻壁上\n      - 成為無法移動的“壁飾”,供人欣賞玩弄\n    - 也可以使用口枷、眼罩剝奪感官能力\n    - “人肉掛畫”完成後,其他人就可以欣賞墻上無法動彈的“掛畫”了\n    - 過程中可以拍照記錄,增加羞辱感",
             "constant": false,
             "selective": true,
-            "order": "245",
+            "order": 245,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
@@ -3051,13 +3297,19 @@
             "displayIndex": 108,
             "probability": 100,
             "useProbability": true,
-            "depth": "2",
+            "depth": 2,
             "selectiveLogic": 0,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "109": {
             "uid": 109,
@@ -3114,34 +3366,6 @@
             "matchWholeWords": null,
             "automationId": ""
         },
-        "111": {
-            "uid": 111,
-            "key": [
-                "腹宮腦",
-                "腹宫脑"
-            ],
-            "keysecondary": [],
-            "comment": "腹宮腦",
-            "content": "\n腹宮腦:\n  定義:\n    - 是指通過一定的手段,如手術、藥物、器官移植或身體改造或其他生物科技手段\n    - 將女性的思考、情感中樞、認知中樞與記憶中樞移植到腹部子宮上方形成的“腹宮腦”\n    - 形成一個連接子宮的“腹宮腦”,成為代替大腦思考和感受的核心器官,與生殖系統和性快感直接相關聯\n    - 使女性的思考與意識集中在腹部“腹宮腦”這個區域而非頭腦\n    - 這個部位與子宮相連,當發生性行為被插入時,陰道和子宮的碰撞也會直接刺激到腹宮腦\n    - 這樣一來,女性會通過子宮和陰道傳來的性感受,直接影響到移植後的腹宮腦的思考\n    - 她們在性交時子宮和陰道的快感會超常放大,並直接作用於思想判斷中樞\n    - 受到性刺激時,女性敏感性、記憶力、整個思考和智力水平會得到提升,思維也會在此時變得無比清晰\n    - 但如果長時間沒有進行插入性刺激活動,腹宮腦也會逐步遲鈍,最終只剩基本的生理機能\n    - 所以會因性交而極度興奮、性奮,並對性愛上癮,渴求不斷高潮\n  特征:\n    - 思考中心集中在腹部子宮周圍,移植後為腹宮腦,取代了原有頭腦的主導地位\n    - 性交時的撞擊會通過子宮直接作用於腹宮腦,也等於是直接對女性大腦的性刺激\n    - 陰道和子宮性感受會超常放大,並直接沖擊思考中樞,因此比普通人更加敏感和容易興奮\n    - 插入時的快感和性高潮會使腹宮腦更加清醒敏銳,腹宮腦會變得無比清醒和敏銳,思維和記憶都會增強\n    - 插入型性刺激越頻繁,腹宮腦的思考和記憶也會越清晰\n    - 若長期沒有插入刺激,腹宮腦會逐漸遲鈍,腹宮腦的機能也會逐步退化到只剩本能\n    - 最終會演變為只具備基本生理功能的植物人狀態\n    - 即需要靠經常持續的性交插入維持腹宮腦的清明和活躍\n    - 外表看不出與正常女性的差異,難以區別,需要脫光或插入才會性奮失控\n    - 會沈迷於性交帶來的快感、高潮和思維遍清晰的感覺,成為性上癮者",
-            "constant": false,
-            "selective": true,
-            "order": 275,
-            "position": 4,
-            "excludeRecursion": false,
-            "preventRecursion": true,
-            "disable": false,
-            "addMemo": true,
-            "displayIndex": 111,
-            "probability": 100,
-            "useProbability": true,
-            "depth": 2,
-            "selectiveLogic": 0,
-            "group": "",
-            "scanDepth": null,
-            "caseSensitive": null,
-            "matchWholeWords": null,
-            "automationId": ""
-        },
         "112": {
             "uid": 112,
             "key": [
@@ -3168,7 +3392,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "113": {
             "uid": 113,
@@ -3198,37 +3428,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
-        },
-        "114": {
-            "uid": 114,
-            "key": [
-                "乳膠膀胱",
-                "膀胱開發",
-                "乳胶膀胱",
-                "膀胱开发"
-            ],
-            "keysecondary": [],
-            "comment": "乳膠膀胱、膀胱開發",
-            "content": "\n乳膠膀胱:\n  描述: \n    - 一種安裝在尿道與膀胱的透明乳膠材質裝置\n    - 外觀像是一個乳膠柱與氣球連接在一起\n    - 經由尿道安裝至被安裝裝置者的尿道與膀胱\n  功能: \n    - 具有代替處理與清理尿液、透過收縮與舒張從內部按摩膀胱、封閉尿道減少尿道乾染風險等等\n    - 裝置的所有功能都可以被執行裝置安裝者自由開關\n  安裝後: \n    被安裝裝置對象的外觀變化: \n      - 從外部向被安裝裝置者的尿道正對著看可以看見被透明乳膠柱撐開的尿道內壁與裝置內儲存的尿液\n      - 被安裝裝置者在本能地控制尿道外括約肌放松時,可以透過透明的乳膠柱看見被安裝裝置者撐開的尿道內壁的蠕動\n    被安裝裝置對象的身體功能變化: \n      - 被安裝裝置的對象會隨時感受到漏尿與尿急感\n      - 被安裝裝置的對象無法也無須通過尿道排尿",
-            "constant": false,
-            "selective": true,
-            "order": 275,
-            "position": 4,
-            "excludeRecursion": false,
-            "preventRecursion": true,
-            "disable": false,
-            "addMemo": true,
-            "displayIndex": 114,
-            "probability": 100,
-            "useProbability": true,
-            "depth": 2,
-            "selectiveLogic": 0,
-            "group": "",
-            "scanDepth": null,
-            "caseSensitive": null,
-            "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "115": {
             "uid": 115,
@@ -3256,7 +3462,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "116": {
             "uid": 116,
@@ -3288,7 +3500,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "117": {
             "uid": 117,
@@ -3318,37 +3536,13 @@
             "scanDepth": null,
             "caseSensitive": null,
             "matchWholeWords": null,
-            "automationId": ""
-        },
-        "118": {
-            "uid": 118,
-            "key": [
-                "拘束防護衣",
-                "拘束乳膠衣",
-                "拘束防护衣",
-                "拘束乳胶衣"
-            ],
-            "keysecondary": [],
-            "comment": "拘束防護衣、拘束乳膠衣",
-            "content": "\n拘束防護衣:\n  描述:\n    - 由黑色皮帶製成的拘束服與貼身的透明乳膠內衣組成的二層式束縛裝備\n    - 皮帶拘束服採用牛皮製成,鑲有無數個D型環和金屬扣環,可調節束緊程度\n    - 內層乳膠緊身衣採用導電高分子複合材料,可將穿戴者身體觸覺完整傳導\n    - 乳膠緊身衣無縫一體成型,具有良好的延展性和密閉性\n    - 內層乳膠衣能完全貼合身體曲線,外層拘束服則起到限制活動的作用\n    - 整體無縫一體設計,皮帶與乳膠相互銜接,防止從中鑽空子逃脫\n    - 衣服內部有大量的機械骨架和人工肌肉,可支撐和牽引穿戴者的動作\n  功能:\n    - 可根據設置程序限制穿戴者的行動自由\n      - 皮帶和扣環可以將穿戴者的四肢和身軀全部固定\n      - 乳膠緊身衣內側有液壓強化機構,可完全抑制身體活動自由\n    - 引導和支撐穿戴者的動作姿態\n      - 透過精密液壓系統可主動引導、支撐甚至代替穿戴者行走,像機器人一樣行走\n      - 裝備內置肌肉刺激電路,可強制穿戴者執行特定動作\n      - 機械骨架可帶動穿戴者的肢體,強行改變他們的動作\n      - 人工肌肉能托舉身體,使其維持特定姿勢\n    - 乳膠內層能夠自動排出汗液與排泄物,維持穿戴者的清潔衛生,對身體進行維護\n    - 內置多種感測儀器,可監控穿戴者的生理數據和行為狀態\n  穿戴後:\n    - 穿戴者無法自行脫下,必須有足夠權限才能解開拘束\n    - 可根據需要開啟不同功能模式,如\"固定模式\"、\"動作指導模式\"等\n    - 生理需求將被內層乳膠自動規避,維持個人清潔\n    - 穿戴者無法擅自脫去這件防護衣,必須終端授權才能解開\n    - 只有授權人員可對穿戴者解開或重新設置防護衣的約束模式\n    - 脫卸或試圖破壞衣服將自動觸發警報並啟動更高程度的約束\n    - 衣服的全部功能由外部終端操作,穿戴者無權更改設置",
-            "constant": false,
-            "selective": true,
-            "order": 275,
-            "position": 4,
-            "excludeRecursion": false,
-            "preventRecursion": true,
-            "disable": false,
-            "addMemo": true,
-            "displayIndex": 118,
-            "probability": 100,
-            "useProbability": true,
-            "depth": 2,
-            "selectiveLogic": 0,
-            "group": "",
-            "scanDepth": null,
-            "caseSensitive": null,
-            "matchWholeWords": null,
-            "automationId": ""
+            "automationId": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "role": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     }
 }

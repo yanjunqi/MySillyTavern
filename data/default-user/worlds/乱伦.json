@@ -26,7 +26,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -54,7 +59,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "4": {
             "uid": 4,
@@ -82,7 +92,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "5": {
             "uid": 5,
@@ -110,7 +125,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "7": {
             "uid": 7,
@@ -139,7 +159,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     },
     "originalData": {

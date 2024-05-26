@@ -27,7 +27,12 @@
             "role": 0,
             "uid": 0,
             "preventRecursion": false,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "key": [
@@ -57,7 +62,12 @@
             "role": null,
             "uid": 1,
             "preventRecursion": false,
-            "displayIndex": 1
+            "displayIndex": 1,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "key": [
@@ -85,7 +95,12 @@
             "role": null,
             "uid": 2,
             "preventRecursion": false,
-            "displayIndex": 2
+            "displayIndex": 2,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "3": {
             "key": [
@@ -113,7 +128,12 @@
             "role": null,
             "uid": 3,
             "preventRecursion": false,
-            "displayIndex": 3
+            "displayIndex": 3,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "4": {
             "key": [
@@ -141,7 +161,12 @@
             "role": null,
             "uid": 4,
             "preventRecursion": false,
-            "displayIndex": 4
+            "displayIndex": 4,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "5": {
             "key": [
@@ -169,7 +194,12 @@
             "role": null,
             "uid": 5,
             "preventRecursion": false,
-            "displayIndex": 5
+            "displayIndex": 5,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "6": {
             "key": [
@@ -197,7 +227,12 @@
             "role": null,
             "uid": 6,
             "preventRecursion": false,
-            "displayIndex": 6
+            "displayIndex": 6,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "7": {
             "key": [
@@ -225,7 +260,12 @@
             "role": null,
             "uid": 7,
             "preventRecursion": false,
-            "displayIndex": 7
+            "displayIndex": 7,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "8": {
             "key": [
@@ -253,7 +293,12 @@
             "role": null,
             "uid": 8,
             "preventRecursion": false,
-            "displayIndex": 8
+            "displayIndex": 8,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "9": {
             "key": [
@@ -281,7 +326,12 @@
             "role": null,
             "uid": 9,
             "preventRecursion": false,
-            "displayIndex": 9
+            "displayIndex": 9,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "10": {
             "key": [
@@ -309,7 +359,12 @@
             "role": null,
             "uid": 10,
             "preventRecursion": false,
-            "displayIndex": 10
+            "displayIndex": 10,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "11": {
             "key": [
@@ -337,7 +392,12 @@
             "role": null,
             "uid": 11,
             "preventRecursion": false,
-            "displayIndex": 11
+            "displayIndex": 11,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "12": {
             "key": [
@@ -365,7 +425,12 @@
             "role": null,
             "uid": 12,
             "preventRecursion": false,
-            "displayIndex": 12
+            "displayIndex": 12,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "13": {
             "key": [
@@ -393,7 +458,12 @@
             "role": null,
             "uid": 13,
             "preventRecursion": false,
-            "displayIndex": 13
+            "displayIndex": 13,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "14": {
             "key": [
@@ -421,7 +491,12 @@
             "role": null,
             "uid": 14,
             "preventRecursion": false,
-            "displayIndex": 14
+            "displayIndex": 14,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "15": {
             "key": [
@@ -449,7 +524,12 @@
             "role": null,
             "uid": 15,
             "preventRecursion": false,
-            "displayIndex": 15
+            "displayIndex": 15,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "16": {
             "key": [
@@ -477,7 +557,12 @@
             "role": null,
             "uid": 16,
             "preventRecursion": false,
-            "displayIndex": 16
+            "displayIndex": 16,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "17": {
             "key": [
@@ -505,7 +590,12 @@
             "role": null,
             "uid": 17,
             "preventRecursion": false,
-            "displayIndex": 17
+            "displayIndex": 17,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "18": {
             "key": [],
@@ -531,7 +621,12 @@
             "role": 0,
             "uid": 18,
             "preventRecursion": false,
-            "displayIndex": 18
+            "displayIndex": 18,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     },
     "originalData": {

@@ -29,7 +29,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -61,7 +67,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "uid": 2,
@@ -90,7 +102,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "3": {
             "uid": 3,
@@ -119,7 +137,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "4": {
             "uid": 4,
@@ -148,7 +172,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "5": {
             "uid": 5,
@@ -177,7 +207,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "6": {
             "uid": 6,
@@ -205,7 +241,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "7": {
             "uid": 7,
@@ -234,7 +276,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "8": {
             "uid": 8,
@@ -263,7 +311,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "9": {
             "uid": 9,
@@ -292,7 +346,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "10": {
             "uid": 10,
@@ -320,7 +380,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "11": {
             "uid": 11,
@@ -350,7 +416,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "12": {
             "uid": 12,
@@ -377,7 +449,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "13": {
             "uid": 13,
@@ -407,7 +485,13 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "14": {
             "uid": 14,
@@ -432,7 +516,13 @@
             "matchWholeWords": null,
             "automationId": "",
             "displayIndex": 14,
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     }
 }
