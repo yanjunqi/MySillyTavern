@@ -38,6 +38,7 @@ async function readCharacterData(inputFile, inputFormat = 'png') {
     }
 
     const result = characterCardParser.parse(inputFile, inputFormat);
+    if(result =='') return ''
     characterDataCache.set(cacheKey, result);
     return result;
 }
@@ -573,6 +574,7 @@ async function importFromJson(uploadPath, { request }) {
  */
 async function importFromPng(uploadPath, { request }, preservedFileName) {
     const imgData = await readCharacterData(uploadPath);
+    if(imgData =='') return ''
     if (imgData === undefined) throw new Error('Failed to read character data');
 
     let jsonData = JSON.parse(imgData);

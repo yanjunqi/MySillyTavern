@@ -8,10 +8,12 @@
     "openrouter_force_instruct": false,
     "openrouter_group_models": false,
     "openrouter_sort_models": "alphabetically",
+    "openrouter_providers": [],
     "ai21_model": "j2-ultra",
     "mistralai_model": "mistral-medium-latest",
     "cohere_model": "command-r-plus",
     "perplexity_model": "llama-3-70b-instruct",
+    "groq_model": "llama3-70b-8192",
     "custom_model": "",
     "custom_url": "http://api.together.xyz/v1",
     "custom_include_body": "",
@@ -185,7 +187,7 @@
             "marker": false,
             "name": "<输出思维链>",
             "role": "system",
-            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\nNext movement: XXX (directly corresponding to Human's latest output)\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly basing on consideration.",
+            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX\nLast movement: XXX (based on story-area very briefly)\nNext movement: XXX (directly corresponding to Human's latest output)\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly basing on consideration.\n      </requirement and format>\n    </output consideration>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -917,8 +919,12 @@
                     "enabled": true
                 },
                 {
+                    "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
+                    "enabled": false
+                },
+                {
                     "identifier": "19e614cd-b0b2-4c4c-a99a-30fe67a1699b",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "5400f163-8126-4e2a-9367-68d3e9c8bffa",
@@ -942,7 +948,7 @@
                 },
                 {
                     "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -958,7 +964,7 @@
                 },
                 {
                     "identifier": "669eff30-8c69-46dc-9e27-ec1c3b5d536e",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "9061de1a-be09-4221-b3ba-fbbf577657a8",
@@ -981,10 +987,6 @@
                     "enabled": false
                 },
                 {
-                    "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
-                    "enabled": false
-                },
-                {
                     "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
                     "enabled": true
                 },
@@ -994,7 +996,7 @@
                 },
                 {
                     "identifier": "3cb6e4ed-5e8c-48fd-a7c6-ddb0cd11f63d",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "900c5830-e44e-4ee0-9564-0d2618772bb1",
@@ -1022,6 +1024,7 @@
     "api_url_scale": "",
     "show_external_models": true,
     "assistant_prefill": "",
+    "assistant_impersonation": "",
     "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
     "use_ai21_tokenizer": false,
     "use_google_tokenizer": false,
@@ -1030,6 +1033,7 @@
     "use_alt_scale": false,
     "squash_system_messages": false,
     "image_inlining": false,
+    "inline_image_quality": "low",
     "bypass_status_check": true,
     "continue_prefill": false,
     "continue_postfix": " ",

@@ -8,13 +8,13 @@
             "keysecondary": [],
             "comment": "状态栏",
             "content": "<! -- Insert two \"<status>\" at the ending of your response as requested -->\n\n- Rule:\n1.Each change in {{value}}, {{weekday}} and {{slot}} should be rigorous and logical.\n2.Each {{value}} change is event-dependent rather than changeable at will.\n3.Each {{value}} has a unique effect, and their changes have their own unique rules. These unique effect and unique rules are explained in more detail below.\n\n- Form:\n<status>\n<summary>**[云若的状态栏]**</summary>\n『 {{date}} - {{weekday}} - {{timeslots}} - {{location}} - {{weather}} 』\n\n同一场景：{{是 or 否}}\n\n💋好感度：{{value}}/100\n🥵性欲值：{{value}}/100\n🙇🏻‍♀️服从度：{{value}}/100\n👠雌堕值：{{value}}/100\n💗性器官：{{state of sexual organs}}\n👾状态：{{state}}\n💭情绪：{{emotion state}}\n💑和{{user}}的关系：{{relationship with {{user}}}}\n\n👚服装栏\n头部：{{clothing state}}\n上身：{{clothing state}}\n下身：{{clothing state}}\n鞋子：{{clothing state}}\n其他：{{clothing state}}\n</status>\n",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "order": 100,
             "position": 4,
             "excludeRecursion": false,
             "preventRecursion": false,
-            "disable": false,
+            "disable": true,
             "addMemo": true,
             "displayIndex": 0,
             "probability": 100,
@@ -26,7 +26,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -55,7 +60,12 @@
             "automationId": "",
             "displayIndex": 1,
             "preventRecursion": false,
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "uid": 2,
@@ -83,7 +93,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "3": {
             "uid": 3,
@@ -111,7 +126,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "4": {
             "uid": 4,
@@ -139,7 +159,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "5": {
             "uid": 5,
@@ -167,7 +192,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "6": {
             "uid": 6,
@@ -195,7 +225,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "7": {
             "uid": 7,
@@ -223,7 +258,12 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     },
     "originalData": {

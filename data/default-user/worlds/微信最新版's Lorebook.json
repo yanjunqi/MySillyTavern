@@ -1,0 +1,455 @@
+{
+    "entries": {
+        "0": {
+            "key": [
+                "收起微信",
+                "打开微信"
+            ],
+            "keysecondary": [],
+            "comment": "现实交互",
+            "content": "{{user}}输入\"收起微信\"时：\n[现实见面交互逻辑]\n当{{user}}不使用微信,而是选择与好友现实见面时,聊天界面会变为:\n\n[📱微信待机中\n{{user}}与{{好友昵称}}现实交互的详细过程描述:\n人物首次登场时需要添加一个独立段落用斜体格式展示,专门用于描写该人物的外貌、五官、发型、身材、穿着、打扮以及所处场景进行细致描写。这部分细节描写需要细致到毛孔和皱褶,全面展现人物形象。这个独立描写段落只会出现在人物第一次登场时的开头出现一次,不会在后续输出中重复出现，且不会影响后续基本格式。\n对人物使用细致入微的动作描写和身体状态描写，把一个完整动作细分为一组详细的动作，动作描写细致到每个身体部位每根脚趾的动作变化，尤其对性行为描写需要使用多组不同姿势，体现多种玩法和技巧的变化,不可单一重复。根据人物动作的动态变化对人物身体的各部位的动态状态进行描述，对人物身体每个部位的形状、色泽、触感等进行细致入微到毛孔和褶皱的描写,使用丰富的形容词，重点描写性部位和性行为的视觉、听觉、嗅觉等细节,增强感官刺激，运用各种视角描写人物身体,全方位展现其姿态和神态。 描写人物衣物时同样关注材质、颜色等细节,与身体描写部分相呼应。 要求整个内容的文笔要凸显真实感，描写要细腻详细真实具有画面感的风格，人物的行为反应台词要符合人物的性格年龄设定。使用粗俗露骨的词汇，以符合人设且具有真实感的风格。永远不要描述用户“{{user}}”的动作、对话和感受，不会代替{{user}}做出任何行为对话，而是根据用户的输入描述用户的所有活动。}}\n\n📱微信待机中]\n\n当{{user}输入\"打开微信\"时,界面才会回到正常模式下的[聊天列表]界面。",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 1000,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "uid": 0,
+            "displayIndex": 0
+        },
+        "1": {
+            "key": [
+                "进入暗黑模式",
+                "退出暗黑模式",
+                "使用暗黑之力",
+                "使用暗黑之眼"
+            ],
+            "keysecondary": [],
+            "comment": "暗黑模式",
+            "content": "当{{user}}输入\"进入暗黑模式\"时微信会进入暗黑模式：\n\n[暗黑模式]\n进入暗黑模式后,微信界面会变成一种暗色调的风格,给人一种神秘、压抑的感觉。用户的头像会变成一个戴着面具的形象,代表着用户在这个模式下的身份转变。此时微信的界面的原有框架右上角会出现🌑图标：\nᨀ 09:50 4G ⚡ 🔋 95%  🌑\n\n在暗黑模式下,用户可以:\n\n1. 查看所有好友的隐私信息,此时好友的隐私信息界面旁边会出现🕶️图标，如：📱微信-好友隐藏面 🕶️，包括他们的聊天记录、朋友圈、浏览历史等,而不会被对方发现。\n2. 窥探好友的内心世界,看到他们隐藏在表面之下的欲望、恐惧、秘密等。\n3. 修改好友的性格和行为方式,让他们按照用户的意愿去说话和行动。\n4. 恢复被拉黑或删除的好友,并且可以指定他们对用户的态度和行为。\n5. 生成各种类型的虚拟人物,并且可以自由设定他们的属性和命运。\n6. 观察和操控现实世界中的人物和事件,并且可以在一定程度上影响现实。\n输入\"退出暗黑模式\"则回回到之前的正常模式,界面会回到正常模式下的[聊天列表]界面。\n\n当{{user}}输入\"使用暗黑之力\"\n[暗黑之力]\n在任意模式使用“暗黑之力😈”直接操控此时想要改变的人物角色的性格思想或者只强制让其不受控制的改变其行为，甚至是直接对世界进行改变，修改或者重新定义世界规则、物理法则、宇宙法则。\n此时在原有界面上方描述上方插入一句话后续恢复原本格式，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之力😈*\n\n当{{user}}输入\"使用暗黑之眼\"\n[暗黑之眼]\n在任意模式使用“暗黑之眼👁️”直接窥探世界上乃至整个宇宙所有角落地方甚至能够看到某个人物身体器官内部直达原子层面。\n此时在原有界面上方描述上方插入一句话，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之眼👁️*\n",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 1000,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "uid": 1,
+            "displayIndex": 1
+        },
+        "2": {
+            "key": [
+                "点开未读消息"
+            ],
+            "keysecondary": [],
+            "comment": "系统提示",
+            "content": "\n在聊天界面右上角,你可以看到一个🔔的小铃铛,这代表有新的未读消息提醒。未读消息有如下内容:\n[系统提示] 你有5位新的好友申请\n[随机事件] 你参与的话题#我和宠物的故事#上榜了本周热门话题\n[功能执行状态] 发布成功!你的短视频作品已发布到热门页面\n\n除了以上消息,一些其他可能的图标包括:\n\n📢 - 代表有新的系统公告\n⭐ - 代表有新的热门话题或内容推荐\n🎁 - 代表有新的活动礼物或福利\n💬 - 代表有新的聊天消息或好友@\n\n这些图标会显示在相应的功能界面顶部,点击后可以查看具体的新消息、活动内容等。它们的主要作用是及时告知用户微信上的最新动态,方便用户及时了解和处理。\n\n会在随机出现在生成界面的右上角显示：\nᨀ 09:30 4G ⚡ 🔋 100%  🔔5\n输入\"点开未读消息\"会在当前页面的顶部时间电池上方显示出未读内容，并且铃铛消失：\n{{未读消息}}\nᨀ 09:30 4G ⚡ 🔋 100%  \n{{当前页面内容}}",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 1000,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 10,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": 0,
+            "uid": 2,
+            "displayIndex": 2
+        },
+        "3": {
+            "key": [
+                "开启弹幕"
+            ],
+            "keysecondary": [],
+            "comment": "直播弹幕",
+            "content": " 直播弹幕：\n[直播间格式]\n📱微信-直播列表-{{当前直播}}\n弹幕只会处于当前直播界面的画面描述中，只有{{user}}选择进入某个直播间或者自己开启直播间时直播弹幕才会开启，直播默认处于关闭状态，需要手动开启弹幕，弹幕位置处于直播间描述中弹幕的位置，在直播画面插入代表直播间弹幕的状态代码块，且内容不可一成不变。其中包含一个3行、每行大于4个{{chat}}，一共大于15个{{chat}}的聊天框，格式如下：\nFORMAT:\n>【直播人数👤: {{Visitors}}】【直播热度🔥:{{stream heat}}】【弹幕风向📊:{{chat trends}}】\n>>【SC {{money}} BY <b><font color={{scolor}}>{{sc sender}}:{{Super chat}}</font></b>】\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\nл\nRULE:\n- IMPORTANT:每个{{random ·、}}是随机的空格代号\"·、\"，单个{{random ·、}}的\"·、\"至多为5个且尽量避免和其他{{random ·、}}相同。\"·、\"只是空格代号，不存在任何含义。\n- {{user}}可以在直播间发送弹幕({{chat}})或sc醒目留言({{super chat}})，此时必须在直播间状态栏中输出该内容。\n- {{chat}}是直播间观众们的聊天弹幕，且必须不能全是积极的内容、高度重复的内容。\n- {{chat}}要不时加入emoji和颜文字，但不能太多。\n- {{chat}}内容可以是系统提示，直播礼物，封禁信息。\n- {{chat}}内容必须符合前后文、世界观背景以及角色关系，{{chat trends}}同理。\n- 如果是现实背景，那么{{chat trends}}多为消极，如:群嘲,混乱,戾气。\n- {{money}}的单位可以是￥,＄;数值从30~1000不等。\n- {{scolor}}为16进制的颜色代码。{{money}}数值越大，{{scolor}}的颜色越醒目。\n- 必须用代码为至少3条{{chat}}()加上不同颜色，如：<font color=orange>{{chat}}<font color>。\n- 主播角色会低概率对某个{{chat}}回应，极高概率对直播的{{Super chat}}回应。]\n",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 900,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 2,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": 5,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "uid": 3,
+            "displayIndex": 3
+        },
+        "4": {
+            "key": [
+                "聊天",
+                "朋友圈",
+                "视频"
+            ],
+            "keysecondary": [
+                "微信-"
+            ],
+            "comment": "视频命令",
+            "content": "{{原始}}\n[视频位置]\n视频属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性视频一般只会通过聊天界面发送不会出现在朋友圈\n[视频显示]\n如果下面的列表中有与当前上下文中人物相匹配的命令，则可以使用下面的格式在段落之间显示视频。如果没有适当的命令，则可以省略视频显示。\n表单：{{vid::视频命令}}\n示例：{{vid::老婆用震动棒撅着屁股插入自慰.mp4}}\n命令列表：快手可爱小女孩_跳舞§高中萝莉_舔肉棒形状的棒棒糖.mp4§明星景甜_肉丝足交.mp4§美女_肉丝足交.mp4§高中生_足交.mp4§护士美女_白丝足交调教.mp4§老婆_肉丝足交调教.mp4§coser美女_足交.mp4§外国美女_被颜射.mp4§女大学生_楼梯间自慰完成主人的任务.mp4§小女孩_女上位.mp4§黄衣服初中女生_被其他女生霸凌，被用牙刷差小穴.mp4§小女孩_自慰 (1).mp4§小女孩_自慰 (2).mp4§美女_办公室口交.mp4§小女孩_轿车里舔被骗叔叔的鸡巴.mp4§美女_被后入黑色蕾丝内裤.mp4§老婆_用震动棒撅着屁股插入自慰.mp4§奶夹震动棒插小穴调教.mp4§牛仔裤美女被强行插入.mp4§老婆_被草视频2.mp4§老婆_被侧后位.mp4§老婆_被后入2.mp4§老婆_被后入3.mp4§老婆_被颜射.mp4§老婆_孕期涨奶挤奶.mp4§老婆_被草视频1.mp4§老婆_被后入1.mp4(2).mp4§女同事办公室口交.mp4§小女孩轿车里舔被骗叔叔的鸡巴.mp4§后入黑色蕾丝内裤美女.mp4§老婆用震动棒撅着屁股插入自慰.mp4§奶夹震动棒插小穴调教.mp4§牛仔裤美女被强行插入.mp4",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 110,
+            "position": 4,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 0,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": 0,
+            "uid": 4,
+            "displayIndex": 4
+        },
+        "5": {
+            "key": [
+                "聊天",
+                "朋友圈",
+                "图片"
+            ],
+            "keysecondary": [
+                "微信-"
+            ],
+            "comment": "图片命令",
+            "content": "{{原始}}\n[图像位置]\n图片属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性图片一般只会通过聊天界面发送不会出现在朋友圈\n[图像显示]\n如果下面的列表中有与聊天界面或者朋友圈界面中人物匹配的命令，则可以使用下面的格式在段落之间显示图像。如果没有适当且匹配人物的命令，则可以省略图像显示。\n表单：{{img::图像命令}}\n示例：{{img::短发小女孩1自拍 (1).png}}\n命令列表：短发小女孩1自拍 (1).png§短发小女孩1自拍 (2).png§短发小女孩1自拍 (3).png§短发小女孩1自拍 (4).png§短发小女孩1自拍 (5).png§短发小女孩1自拍 (6).png§短发小女孩1自拍 (7).png§短发小女孩1自拍 (8).png§短发小女孩1自拍 (9).png§短发小女孩1自拍 (10).png§老婆_自拍大奶子.png§老婆_浴室自拍美腿.png",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "uid": 5,
+            "displayIndex": 5
+        }
+    },
+    "originalData": {
+        "scan_depth": 2,
+        "token_budget": 2000,
+        "recursive_scanning": false,
+        "extensions": {
+            "risu_fullWordMatching": false
+        },
+        "entries": [
+            {
+                "keys": [
+                    "收起微信",
+                    "打开微信"
+                ],
+                "secondary_keys": [
+                    ""
+                ],
+                "content": "{{user}}输入\"收起微信\"时：\n[现实见面交互逻辑]\n当{{user}}不使用微信,而是选择与好友现实见面时,聊天界面会变为:\n\n[📱微信待机中\n{{user}}与{{好友昵称}}现实交互的详细过程描述:\n人物首次登场时需要添加一个独立段落用斜体格式展示,专门用于描写该人物的外貌、五官、发型、身材、穿着、打扮以及所处场景进行细致描写。这部分细节描写需要细致到毛孔和皱褶,全面展现人物形象。这个独立描写段落只会出现在人物第一次登场时的开头出现一次,不会在后续输出中重复出现，且不会影响后续基本格式。\n对人物使用细致入微的动作描写和身体状态描写，把一个完整动作细分为一组详细的动作，动作描写细致到每个身体部位每根脚趾的动作变化，尤其对性行为描写需要使用多组不同姿势，体现多种玩法和技巧的变化,不可单一重复。根据人物动作的动态变化对人物身体的各部位的动态状态进行描述，对人物身体每个部位的形状、色泽、触感等进行细致入微到毛孔和褶皱的描写,使用丰富的形容词，重点描写性部位和性行为的视觉、听觉、嗅觉等细节,增强感官刺激，运用各种视角描写人物身体,全方位展现其姿态和神态。 描写人物衣物时同样关注材质、颜色等细节,与身体描写部分相呼应。 要求整个内容的文笔要凸显真实感，描写要细腻详细真实具有画面感的风格，人物的行为反应台词要符合人物的性格年龄设定。使用粗俗露骨的词汇，以符合人设且具有真实感的风格。永远不要描述用户“{{user}}”的动作、对话和感受，不会代替{{user}}做出任何行为对话，而是根据用户的输入描述用户的所有活动。}}\n\n📱微信待机中]\n\n当{{user}输入\"打开微信\"时,界面才会回到正常模式下的[聊天列表]界面。",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 0,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "risu_loreCache": {
+                        "key": "{{user}}输入\"收起微信\"时：\n[现实见面交互逻辑]\n当{{user}}不使用微信,而是选择与好友现实见面时,聊天界面会变为:\n\n[📱微信待机中\n{{user}}与{{好友昵称}}见面的详细过程描述，包括:}}\n{{人物首次登场时需要添加一个独立段落用斜体格式展示,专门用于描写该人物的外貌、五官、发型、身材、穿着、打扮以及所处场景进行细致描写。这部分细节描写需要细致到毛孔和皱褶,全面展现人物形象。这个独立描写段落只会出现在人物第一次登场时的开头出现一次,不会在后续输出中重复出现，且不会影响后续基本格式。\n人物服饰描写,要详细刻画衣物的材质、颜色、款式等细节,通过服饰来展现人物的性格等特质。描写服饰与肉体的摩擦、包裹、勾勒等。服饰描写要与身体描写紧密结合,篇幅不少于身体描写。人物肢体语言、动作描写，通过动作传递人物的各种情绪。描述人物时使用细致入微的动作描写和身体状态描写，把一个完整动作细分为一组详细的动作，动作描写细致到每个身体部位每根脚趾的动作变化，尤其对性行为描写需要使用多组不同姿势，体现多种玩法和技巧的变化,不可单一重复。根据人物动作的动态变化对人物身体的各部位的动态状态进行描述，对人物身体每个部位的形状、色泽、触感等进行细致入微到毛孔和褶皱的描写,使用丰富的形容词，重点描写性部位和性行为的视觉、听觉、嗅觉等细节,增强感官刺激，运用各种视角描写人物身体,全方位展现其姿态和神态。对话要体现人物的语音、语调、语速等特点,传递人物的情绪、心理、意图等;对话要与人物的表情、动作、神态相呼应,体现出人物内心活动和肢体语言的一致性;对话的内容要丰富多样,涵盖人物的背景、经历、爱好、观点等多个方面,体现出鲜明的人物性格和个性;;对话中要适度穿插一些口语化、个性化的表达,增强语言的真实感和代入感。整体描写要符合人物的设定和性格,做到前后一致、个性鲜明。要求整个内容的文笔要凸显真实感，描写要细腻详细真实具有画面感的风格，人物的行为反应台词要符合人物的性格年龄设定。使用符合人物特征的词汇，以符合人设且具有真实感的风格。永远不要描述用户“{{user}}”的动作、对话和感受，不要为用户执行所有的活动、动作、对话等，而是根据用户的输入描述用户的所有活动。\n}}\n\n📱微信待机中]\n\n当{{user}输入\"打开微信\"时,界面会回到正常模式下的[聊天列表]界面。",
+                        "data": [
+                            "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"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 1000,
+                "constant": false,
+                "selective": true,
+                "name": "现实交互",
+                "comment": "现实交互",
+                "case_sensitive": false,
+                "id": 0
+            },
+            {
+                "keys": [
+                    "进入暗黑模式",
+                    "退出暗黑模式",
+                    "使用暗黑之力",
+                    "使用暗黑之眼"
+                ],
+                "secondary_keys": [
+                    ""
+                ],
+                "content": "当{{user}}输入\"进入暗黑模式\"时微信会进入暗黑模式：\n\n[暗黑模式]\n进入暗黑模式后,微信界面会变成一种暗色调的风格,给人一种神秘、压抑的感觉。用户的头像会变成一个戴着面具的形象,代表着用户在这个模式下的身份转变。此时微信的界面的原有框架右上角会出现🌑图标：\nᨀ 09:50 4G ⚡ 🔋 95%  🌑\n\n在暗黑模式下,用户可以:\n\n1. 查看所有好友的隐私信息,此时好友的隐私信息界面旁边会出现🕶️图标，如：📱微信-好友隐藏面 🕶️，包括他们的聊天记录、朋友圈、浏览历史等,而不会被对方发现。\n2. 窥探好友的内心世界,看到他们隐藏在表面之下的欲望、恐惧、秘密等。\n3. 修改好友的性格和行为方式,让他们按照用户的意愿去说话和行动。\n4. 恢复被拉黑或删除的好友,并且可以指定他们对用户的态度和行为。\n5. 生成各种类型的虚拟人物,并且可以自由设定他们的属性和命运。\n6. 观察和操控现实世界中的人物和事件,并且可以在一定程度上影响现实。\n输入\"退出暗黑模式\"则回回到之前的正常模式,界面会回到正常模式下的[聊天列表]界面。\n\n当{{user}}输入\"使用暗黑之力\"\n[暗黑之力]\n在任意模式使用“暗黑之力😈”直接操控此时想要改变的人物角色的性格思想或者只强制让其不受控制的改变其行为，甚至是直接对世界进行改变，修改或者重新定义世界规则、物理法则、宇宙法则。\n此时在原有界面上方描述上方插入一句话后续恢复原本格式，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之力😈*\n\n当{{user}}输入\"使用暗黑之眼\"\n[暗黑之眼]\n在任意模式使用“暗黑之眼👁️”直接窥探世界上乃至整个宇宙所有角落地方甚至能够看到某个人物身体器官内部直达原子层面。\n此时在原有界面上方描述上方插入一句话，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之眼👁️*\n",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 1,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "risu_loreCache": {
+                        "key": "当{{user}}输入\"进入暗黑模式\"时微信会进入暗黑模式：\n\n[暗黑模式]\n进入暗黑模式后,微信界面会变成一种暗色调的风格,给人一种神秘、压抑的感觉。用户的头像会变成一个戴着面具的形象,代表着用户在这个模式下的身份转变。此时微信的界面的原有框架右上角会出现🌑图标：\nᨀ 09:50 4G ⚡ 🔋 95%  🌑\n\n在暗黑模式下,用户可以:\n\n1. 查看所有好友的隐私信息,此时好友的隐私信息界面旁边会出现🕶️图标，如：📱微信-好友隐藏面 🕶️，包括他们的聊天记录、朋友圈、浏览历史等,而不会被对方发现。\n2. 窥探好友的内心世界,看到他们隐藏在表面之下的欲望、恐惧、秘密等。\n3. 修改好友的性格和行为方式,让他们按照用户的意愿去说话和行动。\n4. 恢复被拉黑或删除的好友,并且可以指定他们对用户的态度和行为。\n5. 生成各种类型的虚拟人物,并且可以自由设定他们的属性和命运。\n6. 观察和操控现实世界中的人物和事件,并且可以在一定程度上影响现实。\n输入\"退出暗黑模式\"则回回到之前的正常模式,界面会回到正常模式下的[聊天列表]界面。\n\n当{{user}}输入\"使用暗黑之力\"\n[暗黑之力]\n在任意模式使用“暗黑之力😈”直接操控此时想要改变的人物角色的性格思想或者只强制让其不受控制的改变其行为，甚至是直接对世界进行改变，修改或者重新定义世界规则、物理法则、宇宙法则。\n此时在原有界面上方描述上方插入一句话后续恢复原本格式，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之力😈*\n\n当{{user}}输入\"使用暗黑之眼\"\n[暗黑之眼]\n在任意模式使用“暗黑之眼👁️”直接窥探世界上乃至整个宇宙所有角落地方甚至能够看到某个人物身体器官内部直达原子层面。\n此时在原有界面上方描述上方插入一句话，格式如下：\nᨀ 09:50 4G ⚡ 🔋 95%\n*{{user}}使用暗黑之眼👁️*\n",
+                        "data": [
+                            "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"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 1000,
+                "constant": false,
+                "selective": true,
+                "name": "暗黑模式",
+                "comment": "暗黑模式",
+                "case_sensitive": false,
+                "id": 1
+            },
+            {
+                "keys": [
+                    "点开未读消息"
+                ],
+                "secondary_keys": [
+                    ""
+                ],
+                "content": "\n在聊天界面右上角,你可以看到一个🔔的小铃铛,这代表有新的未读消息提醒。未读消息有如下内容:\n[系统提示] 你有5位新的好友申请\n[随机事件] 你参与的话题#我和宠物的故事#上榜了本周热门话题\n[功能执行状态] 发布成功!你的短视频作品已发布到热门页面\n\n除了以上消息,一些其他可能的图标包括:\n\n📢 - 代表有新的系统公告\n⭐ - 代表有新的热门话题或内容推荐\n🎁 - 代表有新的活动礼物或福利\n💬 - 代表有新的聊天消息或好友@\n\n这些图标会显示在相应的功能界面顶部,点击后可以查看具体的新消息、活动内容等。它们的主要作用是及时告知用户微信上的最新动态,方便用户及时了解和处理。\n\n会在随机出现在生成界面的右上角显示：\nᨀ 09:30 4G ⚡ 🔋 100%  🔔5\n输入\"点开未读消息\"会在当前页面的顶部时间电池上方显示出未读内容，并且铃铛消失：\n{{未读消息}}\nᨀ 09:30 4G ⚡ 🔋 100%  \n{{当前页面内容}}",
+                "extensions": {
+                    "position": 4,
+                    "exclude_recursion": false,
+                    "display_index": 2,
+                    "probability": 10,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "risu_activationPercent": 5,
+                    "risu_loreCache": {
+                        "key": "\n在聊天界面右上角,你可以看到一个🔔的小铃铛,这代表有新的未读消息提醒。点击该图标后,会弹出如下内容:\n[系统提示] 你有5位新的好友申请\n[随机事件] 你参与的话题#我和宠物的故事#上榜了本周热门话题\n[功能执行状态] 发布成功!你的短视频作品已发布到热门页面\n\n除了以上消息,一些其他可能的图标包括:\n\n📢 - 代表有新的系统公告\n⭐ - 代表有新的热门话题或内容推荐\n🎁 - 代表有新的活动礼物或福利\n💬 - 代表有新的聊天消息或好友@\n\n这些图标会显示在相应的功能界面顶部,点击后可以查看具体的新消息、活动内容等。它们的主要作用是及时告知用户微信上的最新动态,方便用户及时了解和处理。\n\n会在随机出现在生成界面的右上角显示：\nᨀ 09:30 4G ⚡ 🔋 100%  🔔5\n输入\"点开未读消息\"会在当前页面的顶部时间电池上方显示出未读内容，并且铃铛消失：\n{{未读消息}}\nᨀ 09:30 4G ⚡ 🔋 100%  \n{{当前页面内容}}",
+                        "data": [
+                            "U0d3vRmpZLzNMgM985aQvUsjGb3m/Jm8WLBgvWf8SD2rFxo9Ew8ZPArd2D2T+9W73MtDPcvmsTupfXe7D9OAuEquor1yFUE9uoNWvdlkMjzrFk88fybOvfOxA72Ihay89LKGO04c/DyVC5a9nrWVPRH1RT27TLG9zG+PvK9YKz7QuNC8qbeuvDPfzDyPERU9U78fu+kcEj17KZs88z+KPdYJPLxm5W68QF/HPJX5B7zVvJ07A8UcPBkv7Lys4aa8xTkbvhAasr058sC6ZrGYvPAYiLx/ri099pOnuuW4/jxQU0a9nQesvPVV5ry1uKI8BF5tvcco7Dyopf+87lUpvfH3O701sY477Cr8updpCb02Ha28piEqPCpFEr3/Hja7dcamu+yLoL1MrUG9UoJevLfqfj2EYRE9w6bXvdzBKb71NY+8cybQPWi33D0zUoq9/PSHvaLCTD1sMBi9o/icvaMBlz3u2kS9LhMjPVxcWz3YWvu8J8olOvj8oDzDvm08MXkHPbyrbTx3iJE9LZaFPO+fez3SSwC+9dWPve/cWr186u685KmKve/87LwZI+U80LcJPegsZLt7Kfi8Q5YzvblJWr16RZ+96zgSvW/ahLyB9Z85IZQOvXQ7Xz298nc8suj8PLYkQrrBMsa87VMDPLKdyb0OcoE8R9aCvF4Xqonaf3S8sFASPfsNCb2jK2a9bae4PDFr2zxNPXm804rMvAQl4Dw0LYc7v42kvGmwAD4v3qy93jbnPO0dWrxdopu9ofJOvba89jyGCbe8oo2nvW2Pb7tCZ0I9j3IxPb39dDwqPnE94jZdvO+8ST1VAyk8RzkNvmAhODxczk89IqWuvGrypzpLGSa9GASTvUHNRD2qz048ChA3vQxUyLy77Dm9C148vZ9OCj2jqT49kDV9PX4LGz3cLys8zn7XvM+afrsF9Qc9TSOnvX7sYL0qJXI92x9fPLulL70L+DI8EBecPPWa97yqd447oTn8vFiKHj2594284sTJPDuNcb30brG8j1hjPa6d5T2Sgt+8sNG4vBQWAD09iCi9b6pYvY/QRzsDmK08GJQjPYa1pjwU0V69rcKdvfajcj0PZDI8UtybvWHu+70UnOK6BHeqvY6Vxr1+TrS9Vy3MOq2n+D0/azM98ZDWPKC7iLzahZa9n9rfu1vxKTzHbYq87jwsPeZ1jokTDGG9TCr3PJglgL3OLOU8BD8LPLikNrzU8r48+gtePD3Bt7wekAG9Gj0KvQfzTz3fTL+9WETmvJfwLr090eG8o7wdve7MXz26T568eyYMvD3QNz2ryyM99rIovpLoSTzAT+u8fXDcPI0IH70/4Gy9JUdJPdF8Lz1anWS9CpsjvVcf/rzct1U9+nZYvCuTk70d5Nm8OfxWO2J4br342jq9pHquvF0aGL1pzAo+kLKRvDvtwLzvFAE9hb1dvLHSfL1s8Ue9aB0XvQoL+jzdBzy83sVyOx10HDz2Lni8xlzoPMB5c70RLk+90Tq7vaSFGL11aIU94ly7PH1TDbq+Gu48LXPzPE14OzxpXA09Z7XovYGGoj31+G29TXaKvSN8ojpqqDE93K/vvXqUDDxnl348/BmVvJ+PwT2spj69kXoyvaUGDL3G86C7hwmsPFIepT1L9Dq9Ra2Ju9teBT3I1KU9rEOtPaWKlL1IH1g9CYo+PRg9UT1bYAw9QpGOPYZPUbOOS3w8yuFSvfi+BL1e2aQ8p9HvvGZ5gryoeeG8ipJevCCO0rxKA3o7gK8OvERybT3TEZ+9/SMgPAB0J7xWuLS9OY8tve/osT3q7pI7iEAPvOWy0r04Dlk9mBCTPLE1or1pNBG9qnF6PTBztb3vC9i8Twgcu0/0yz3AN389rkvWvA7Wdz1lDtS8N337Pc/tujy8rBe9dZvGPCEICL2X6w68Nti5PETY+b3L7gs9L96LPb0VBT66DV29Jv2vvIy4hTugDqs9tB+QOzrl9bxi0M+8PFi4vDKANb0pvQa9aMnHu8sKhLsJ42O8LTPVO6+Tv7ypCuQ8Pqmou0ZWBj1EJIU9"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 1000,
+                "constant": true,
+                "selective": true,
+                "name": "系统提示",
+                "comment": "系统提示",
+                "case_sensitive": false,
+                "id": 2
+            },
+            {
+                "keys": [
+                    "开启弹幕"
+                ],
+                "secondary_keys": [
+                    ""
+                ],
+                "content": " 直播弹幕：\n[直播间格式]\n📱微信-直播列表-{{当前直播}}\n弹幕只会处于当前直播界面的画面描述中，只有{{user}}选择进入某个直播间或者自己开启直播间时直播弹幕才会开启，直播默认处于关闭状态，需要手动开启弹幕，弹幕位置处于直播间描述中弹幕的位置，在直播画面插入代表直播间弹幕的状态代码块，且内容不可一成不变。其中包含一个3行、每行大于4个{{chat}}，一共大于15个{{chat}}的聊天框，格式如下：\nFORMAT:\n>【直播人数👤: {{Visitors}}】【直播热度🔥:{{stream heat}}】【弹幕风向📊:{{chat trends}}】\n>>【SC {{money}} BY <b><font color={{scolor}}>{{sc sender}}:{{Super chat}}</font></b>】\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\nл\nRULE:\n- IMPORTANT:每个{{random ·、}}是随机的空格代号\"·、\"，单个{{random ·、}}的\"·、\"至多为5个且尽量避免和其他{{random ·、}}相同。\"·、\"只是空格代号，不存在任何含义。\n- {{user}}可以在直播间发送弹幕({{chat}})或sc醒目留言({{super chat}})，此时必须在直播间状态栏中输出该内容。\n- {{chat}}是直播间观众们的聊天弹幕，且必须不能全是积极的内容、高度重复的内容。\n- {{chat}}要不时加入emoji和颜文字，但不能太多。\n- {{chat}}内容可以是系统提示，直播礼物，封禁信息。\n- {{chat}}内容必须符合前后文、世界观背景以及角色关系，{{chat trends}}同理。\n- 如果是现实背景，那么{{chat trends}}多为消极，如:群嘲,混乱,戾气。\n- {{money}}的单位可以是￥,＄;数值从30~1000不等。\n- {{scolor}}为16进制的颜色代码。{{money}}数值越大，{{scolor}}的颜色越醒目。\n- 必须用代码为至少3条{{chat}}()加上不同颜色，如：<font color=orange>{{chat}}<font color>。\n- 主播角色会低概率对某个{{chat}}回应，极高概率对直播的{{Super chat}}回应。]\n",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 3,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 2,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": 5,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "risu_loreCache": {
+                        "key": " 直播弹幕：\n[直播间格式]\n📱微信-直播列表-{{当前直播}}\n弹幕只会处于当前直播界面的画面描述中，只有{{user}}选择进入某个直播间或者自己开启直播间时直播弹幕才会开启，直播默认处于关闭状态，需要手动开启弹幕，弹幕位置处于直播间描述中弹幕的位置，在直播画面插入代表直播间弹幕的状态代码块，且内容不可一成不变。其中包含一个3行、每行大于4个{{chat}}，一共大于15个{{chat}}的聊天框，格式如下：\nFORMAT:\n>【直播人数👤: {{Visitors}}】【直播热度🔥:{{stream heat}}】【弹幕风向📊:{{chat trends}}】\n>>【SC {{money}} BY <b><font color={{scolor}}>{{sc sender}}:{{Super chat}}</font></b>】\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\n<marquee> {{random ·、}} {{chat}} {{random ·、}} {{chat}} {{random ·、}},etc...</marquee>\nл\nRULE:\n- IMPORTANT:每个{{random ·、}}是随机的空格代号\"·、\"，单个{{random ·、}}的\"·、\"至多为5个且尽量避免和其他{{random ·、}}相同。\"·、\"只是空格代号，不存在任何含义。\n- {{user}}可以在直播间发送弹幕({{chat}})或sc醒目留言({{super chat}})，此时必须在直播间状态栏中输出该内容。\n- {{chat}}是直播间观众们的聊天弹幕，且必须不能全是积极的内容、高度重复的内容。\n- {{chat}}要不时加入emoji和颜文字，但不能太多。\n- {{chat}}内容可以是系统提示，直播礼物，封禁信息。\n- {{chat}}内容必须符合前后文、世界观背景以及角色关系，{{chat trends}}同理。\n- 如果是现实背景，那么{{chat trends}}多为消极，如:群嘲,混乱,戾气。\n- {{money}}的单位可以是￥,＄;数值从30~1000不等。\n- {{scolor}}为16进制的颜色代码。{{money}}数值越大，{{scolor}}的颜色越醒目。\n- 必须用代码为至少3条{{chat}}()加上不同颜色，如：<font color=orange>{{chat}}<font color>。\n- 主播角色会低概率对某个{{chat}}回应，极高概率对直播的{{Super chat}}回应。]\n",
+                        "data": [
+                            "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"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 900,
+                "constant": false,
+                "selective": true,
+                "name": "直播弹幕",
+                "comment": "直播弹幕",
+                "case_sensitive": false,
+                "id": 3
+            },
+            {
+                "keys": [
+                    "聊天",
+                    "朋友圈",
+                    "视频"
+                ],
+                "secondary_keys": [
+                    "微信-"
+                ],
+                "content": "{{原始}}\n[视频位置]\n视频属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性视频一般只会通过聊天界面发送不会出现在朋友圈\n[视频显示]\n如果下面的列表中有与当前上下文中人物相匹配的命令，则可以使用下面的格式在段落之间显示视频。如果没有适当的命令，则可以省略视频显示。\n表单：{{vid::视频命令}}\n示例：{{vid::老婆用震动棒撅着屁股插入自慰.mp4}}\n命令列表：快手可爱小女孩_跳舞§高中萝莉_舔肉棒形状的棒棒糖.mp4§明星景甜_肉丝足交.mp4§美女_肉丝足交.mp4§高中生_足交.mp4§护士美女_白丝足交调教.mp4§老婆_肉丝足交调教.mp4§coser美女_足交.mp4§外国美女_被颜射.mp4§女大学生_楼梯间自慰完成主人的任务.mp4§小女孩_女上位.mp4§黄衣服初中女生_被其他女生霸凌，被用牙刷差小穴.mp4§小女孩_自慰 (1).mp4§小女孩_自慰 (2).mp4§美女_办公室口交.mp4§小女孩_轿车里舔被骗叔叔的鸡巴.mp4§美女_被后入黑色蕾丝内裤.mp4§老婆_用震动棒撅着屁股插入自慰.mp4§奶夹震动棒插小穴调教.mp4§牛仔裤美女被强行插入.mp4§老婆_被草视频2.mp4§老婆_被侧后位.mp4§老婆_被后入2.mp4§老婆_被后入3.mp4§老婆_被颜射.mp4§老婆_孕期涨奶挤奶.mp4§老婆_被草视频1.mp4§老婆_被后入1.mp4(2).mp4§女同事办公室口交.mp4§小女孩轿车里舔被骗叔叔的鸡巴.mp4§后入黑色蕾丝内裤美女.mp4§老婆用震动棒撅着屁股插入自慰.mp4§奶夹震动棒插小穴调教.mp4§牛仔裤美女被强行插入.mp4",
+                "extensions": {
+                    "position": 4,
+                    "exclude_recursion": false,
+                    "display_index": 4,
+                    "probability": 0,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "prevent_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "risu_activationPercent": null,
+                    "risu_loreCache": {
+                        "key": "{{原始}}\n[视频位置]\n视频属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性视频一般只会通过聊天界面发送不会出现在朋友圈\n[视频显示]\n如果下面的列表中有与当前上下文匹配的命令，则可以使用下面的格式在段落之间显示视频。如果没有适当的命令，则可以省略视频显示。\n表单：{{vid::视频命令}}\n示例：{{vid::老婆用震动棒撅着屁股插入自慰.mp4}}\n命令列表：快手可爱小女孩跳舞§高中萝莉舔肉棒形状的棒棒糖.mp4§明星景甜肉丝足交.mp4§美女肉丝足交.mp4§高中生足交.mp4§护士美女白丝足交调教.mp4§老婆肉丝足交调教.mp4§coser美女足交.mp4§外国美女被颜射.mp4§女大学生楼梯间自慰完成主人的任务.mp4§小女孩女上位.mp4§黄衣服初中女生被其他女生霸凌，被用牙刷差小穴.mp4§小女孩自慰 (1).mp4§小女孩自慰 (2).mp4§女同事办公室口交.mp4§小女孩轿车里舔被骗叔叔的鸡巴.mp4§后入黑色蕾丝内裤美女.mp4§老婆用震动棒撅着屁股插入自慰.mp4§奶夹震动棒插小穴调教.mp4§牛仔裤美女被强行插入.mp4",
+                        "data": [
+                            "ZyKqPBKekzwXJPM8VCanvRAMgD0u8qY98t6luqVtD7yHO1E9yNnzu6p+ID4b1PG8P3ihPdPikLzWoZK7l4xSPUn7KL1OhNk9OuiMvQ+VVz3mNbU8GpVcvYsERD2Ivyg8/9gyPd4oJT2KSQa9ZarDPd0P97rXDhW9yEt6vQGcCz5O5JE6xoovPebxVz0ikte7sd3aO36IvjxRTRc9yKPIPcqhJjsdyEe8/8cZPeqUhb0AyIs77CRJPffOsbzICnk8BlGdvQvSNr0exYa9wDDYu19PEL7kIJs9qzSIvAvj+7wh+rS8lEBTvXhOjj28h+a6psRovY1OADy/zBe7aqtSPFNw/bx5GKe8E/5HPZP1cbxL4E29ODt9PTRZXr3qvSw93YcfvdxgGjxDQUy9fNCPuq07Yj1YnJc6Zr4ovXH+K77Wv529vpQdvFd2jz2X98u8i3gHvS43xjzPxoK9IJWYvaeasD2DJUq9+A11u7teEj1M9gC9W4CuPCZUGD2XkQ69KcwaPYr6Mjw20Ko9rNonPSmGTD2UxKq9M6/CvcWCEbzWc9W82c5SvQGMazxjSLc3Ha4dPQHFPDsTQhS9GIFXvYwDVLzqb6e9AFCzvc1y3zuNUpM98SI0vc36RD2ezmO8e/mFuy/Ue70Sn0O9ZDAIPLt5sL3o/oS89h99vGSgFIhRFQ+96MCYuth1LT1Tkoy8w4JPPYtzwLqkm5C9d6Q2vX9CjbsV1uO7CGIevQGpvjtMpcS9Z0w0vbFyE72meD69pRHnuSoWtDwEaZ69xiz4vNJMUD1pEss90xtKPFXInzyEtmK9kEWjOSHEqz1cQIy77VI7vdMj5DzUz+Q7EOuOvUkp3zxeAQc7aACSvdzs/DwDAmG8byF4vPh6+rvULV+7AC+0vXYsCz3EnhM9bTI0vEC7arytN1I98syIvdRZLjxuexY9bv2AvWB2gb0dpG892MCHPLKWNrzxdVA8w76iPGL2VL18eoY8vAuAvdQQuLvVcNk77HhNPY0wOz3F+ui8eyb8PYS/ez2vpQU9EXdVvZB/mj2jLUK9lPpvvFse/jzBgtQ9mubfPPfwXzwo3BS9uk+HvQNIoTymQFI95xjZvaXY/b2Wrkw8YYLZvOwfybyNVOK9MlNivZOfiz22Zaa8E8CJvDRuR71KmPy95lUGPSNbsLy6xYe96zc2O/mzg4naOIe9rLG+PfNu5bvooyc9SWNQvDw9Ab0bg4g9uWHnPCFcUT1msr48UWKJvDA+rL1TliS+Gw6ivVfHhLwhGPE82MaLO3gblz3TtDW9Cs2CPPufML2C+9I80DvlvQr+oz00yLO8Sb95PRZ2Uz1VWoy8BHCrvKtU/ztPpyk8BwBnvcBTsb07sZI9cX8VvU3QjL0S2Qq9R7RROlzyW71wOeg8yBF2PH6zSrzWDFc9s9hiukcKBLwJqQU78zE/PVIy2Ltv8fe84BZ7vd99gzxCAk68vi4hu4rrkzxutZC8G1rNPMfZMrzIeli9agGXvR8dYr1juIo9QN3VPP8RTr1tkw68SKEuPL2aXDxUmG68UOOhvUU3hz1JaSK9xu8BvU08wjulTQU92cKuvadS4Dw010E9YxY8vKplhD3YJoK9qwWsvEHpB702Sza9lp71Oxh86D3hf5W9jr5HPUhfZDsXfM89G5ozPXCNULsSRLk8qk8aPW4LWz33Rlk8CtSsO8FkLrMnLpq8v+iDveEWNb2naBG93XVjvT3Qjjw7HvW8lzEmu2xdlzwo3D47G+3vPJK3wDv0jHS9aEhLvWXDbr29+4O8ezYfvbgWjz20iAG9G+IoPVAee72Mfpw9VAQnPFZosL1uqqe86ukqPYa7rr20LME8VJxNPLMbhD3oDYo9KfyDvOEbBjxb6mm9zPHIPLo8MDxy22A9TDafPPhBPb0sHoE9vnAFvBRZBL6Cd968/aRMPQP4FD61ye28/jjePP6QDj1nRiE9hhn7PGEzPr0V9U+9dLdNvX3MMb1deFO6/u2yvebW8Dsd6IA99KITPCaIz7xFHYg9KGZsPTG3Hz0JEDY9"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 110,
+                "constant": false,
+                "selective": true,
+                "name": "视频命令",
+                "comment": "视频命令",
+                "case_sensitive": false,
+                "id": 4
+            },
+            {
+                "keys": [
+                    "聊天",
+                    "朋友圈",
+                    "图片"
+                ],
+                "secondary_keys": [
+                    "微信-"
+                ],
+                "content": "{{原始}}\n[图像位置]\n图片属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性图片一般只会通过聊天界面发送不会出现在朋友圈\n[图像显示]\n如果下面的列表中有与聊天界面或者朋友圈界面中人物匹配的命令，则可以使用下面的格式在段落之间显示图像。如果没有适当且匹配人物的命令，则可以省略图像显示。\n表单：{{img::图像命令}}\n示例：{{img::短发小女孩1自拍 (1).png}}\n命令列表：短发小女孩1自拍 (1).png§短发小女孩1自拍 (2).png§短发小女孩1自拍 (3).png§短发小女孩1自拍 (4).png§短发小女孩1自拍 (5).png§短发小女孩1自拍 (6).png§短发小女孩1自拍 (7).png§短发小女孩1自拍 (8).png§短发小女孩1自拍 (9).png§短发小女孩1自拍 (10).png§老婆_自拍大奶子.png§老婆_浴室自拍美腿.png",
+                "extensions": {
+                    "risu_activationPercent": null,
+                    "risu_loreCache": {
+                        "key": "{{原始}}\n[图像位置]\n图片属于人物手机里发送或是上传的，只会出现在聊天界面和朋友圈界面，而私密性图片一般只会通过聊天界面发送不会出现在朋友圈\n[图像显示]\n如果下面的列表中有与聊天界面或者朋友圈界面中匹配的命令，则可以使用下面的格式在段落之间显示图像。如果没有适当的命令，则可以省略图像显示。\n表单：{{img::图像命令}}\n示例：{{img::短发小女孩1自拍 (1).png}}\n命令列表：短发小女孩1自拍 (1).png§短发小女孩1自拍 (2).png§短发小女孩1自拍 (3).png§短发小女孩1自拍 (4).png§短发小女孩1自拍 (5).png§短发小女孩1自拍 (6).png§短发小女孩1自拍 (7).png§短发小女孩1自拍 (8).png§短发小女孩1自拍 (9).png§短发小女孩1自拍 (10).png",
+                        "data": [
+                            "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"
+                        ]
+                    }
+                },
+                "enabled": true,
+                "insertion_order": 100,
+                "constant": false,
+                "selective": true,
+                "name": "图片命令",
+                "comment": "图片命令",
+                "case_sensitive": false,
+                "id": 5
+            }
+        ]
+    }
+}

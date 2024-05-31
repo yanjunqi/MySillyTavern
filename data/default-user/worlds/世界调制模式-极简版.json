@@ -36,7 +36,12 @@
             "role": null,
             "uid": 0,
             "preventRecursion": false,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "key": [
@@ -64,7 +69,12 @@
             "role": 0,
             "uid": 1,
             "preventRecursion": false,
-            "displayIndex": 1
+            "displayIndex": 1,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "key": [
@@ -92,7 +102,12 @@
             "role": null,
             "uid": 2,
             "preventRecursion": false,
-            "displayIndex": 2
+            "displayIndex": 2,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     },
     "originalData": {
