@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.0",
     "username": "王钢",
-    "active_character": "世界调制模式-正式版（常驻）.png",
+    "active_character": "逆子模拟器.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -173,7 +173,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 40,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -183,7 +183,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 1,
+        "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -363,8 +363,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": false,
-        "compact_input_area": true,
+        "reduced_motion": true,
+        "compact_input_area": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -1212,7 +1212,6 @@
         "Aqua.png": [],
         "Evelyn.png": [],
         "Pokémon Mint.png": [],
-        "Rina.png": [],
         "Darkness.png": [],
         "Mommy Bath Time.png": [],
         "熟女小镇传阅板.png": [],
@@ -1268,7 +1267,6 @@
         "霜叶.png": [],
         "申鹤＆甘雨.png": [],
         "媚外绿帽奴散兵把雷电影妈妈送给你.png": [],
-        "微信纯净版.png": [],
         "微信最新版.png": [],
         "世界调制模式-正式版（常驻）.png": []
     },
@@ -2244,7 +2242,7 @@
                     },
                     {
                         "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -2256,7 +2254,7 @@
                     },
                     {
                         "identifier": "959c1d91-b18c-4a73-8059-fea10ab750e7",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "669eff30-8c69-46dc-9e27-ec1c3b5d536e",
@@ -2284,7 +2282,7 @@
                     },
                     {
                         "identifier": "c442d02f-956b-47cd-b283-199aa94e2b21",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
@@ -2361,7 +2359,7 @@
         "group_nudge_prompt": "[Write the next reply only as {{char}}.]",
         "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
         "personality_format": "[{{char}}'s personality: {{personality}}]",
-        "openai_model": "gpt-3.5-turbo",
+        "openai_model": "claude-3-opus-20240229",
         "claude_model": "claude-3-opus-20240229",
         "google_model": "gemini-pro",
         "ai21_model": "j2-ultra",
@@ -2382,12 +2380,12 @@
         "openrouter_sort_models": "alphabetically",
         "openrouter_providers": [],
         "jailbreak_system": false,
-        "reverse_proxy": "https://claude-cody.sotershield.com/v1",
-        "chat_completion_source": "claude",
+        "reverse_proxy": "http://127.0.0.1:8444/v1",
+        "chat_completion_source": "openai",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
-        "proxy_password": "sgp_a0d7ccb4f752ea73_952beaa90767601f0e2bb0a595a4ea5fb4a65579,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
+        "proxy_password": "",
         "assistant_prefill": "",
         "assistant_impersonation": "",
         "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
@@ -2424,8 +2422,8 @@
         },
         {
             "name": "GPT",
-            "url": "https://sgp.sotershield.com/jb/v1",
-            "password": "sgp_a0d7ccb4f752ea73_743d7a5108535aec8dd35f791d9dee4dc4caac16,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9"
+            "url": "http://127.0.0.1:8444/v1",
+            "password": ""
         },
         {
             "name": "claude3",
@@ -2444,8 +2442,8 @@
         }
     ],
     "selected_proxy": {
-        "name": "claude",
-        "url": "https://claude-cody.sotershield.com/v1",
-        "password": "sgp_a0d7ccb4f752ea73_952beaa90767601f0e2bb0a595a4ea5fb4a65579,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4"
+        "name": "GPT",
+        "url": "http://127.0.0.1:8444/v1",
+        "password": ""
     }
 }
