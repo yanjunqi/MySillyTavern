@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.0",
-    "username": "王钢",
-    "active_character": "逆子模拟器.png",
+    "username": "Alec",
+    "active_character": "若涵.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -173,7 +173,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 50,
+        "chat_width": 40,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -183,7 +183,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 0.9,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -282,7 +282,7 @@
                 "position": 3
             },
             "1691725210145.png": {
-                "description": "[角色设定：{{user}}，白人，美国留学生，二十岁，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+                "description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
                 "position": 1
             },
             "1693732009390.png": {
@@ -306,8 +306,8 @@
                 "position": 0
             }
         },
-        "persona_description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -363,8 +363,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -1473,7 +1473,7 @@
                 "marker": false,
                 "name": "<输出思维链>",
                 "role": "system",
-                "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one, 但同类角色可合并表示)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\nNext movement: XXX (reflecting emotional barrier if there is, directly corresponding to Human's latest output)\nSexual stage: X\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly obey on consideration.",
+                "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one, 但同类角色可合并表示)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX (design one if not specified)\nemotional state ：XXX\nLast movement: XXX (based on story-progress-area very briefly)\nNext movement: XXX (reflecting emotional barrier if there is, directly corresponding to Human's latest output)\nSexual stage: X\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly obey on consideration.",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -2242,7 +2242,7 @@
                     },
                     {
                         "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -2286,11 +2286,11 @@
                     },
                     {
                         "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "bc1dcdb2-7d24-4cf3-8dda-3a70afe5d6ce",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
