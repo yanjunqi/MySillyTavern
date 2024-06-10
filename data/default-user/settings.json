@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.0",
     "username": "Alec",
-    "active_character": "若涵.png",
+    "active_character": "若涵和萌萌.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -173,7 +173,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 40,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -183,7 +183,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 1,
+        "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -363,8 +363,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": false,
-        "compact_input_area": true,
+        "reduced_motion": true,
+        "compact_input_area": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -1242,7 +1242,6 @@
         "吴桃.png": [],
         "《笑傲歪传》.png": [],
         "世界调制模式-极简版.png": [],
-        "若涵.png": [],
         "null": [],
         "1714986511033": [],
         "沈桂华_1.png": [],
@@ -1268,7 +1267,8 @@
         "申鹤＆甘雨.png": [],
         "媚外绿帽奴散兵把雷电影妈妈送给你.png": [],
         "微信最新版.png": [],
-        "世界调制模式-正式版（常驻）.png": []
+        "世界调制模式-正式版（常驻）.png": [],
+        "若涵和萌萌.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -1320,7 +1320,7 @@
     },
     "oai_settings": {
         "preset_settings_openai": "北极星预设2.5-标准版",
-        "temp_openai": 1,
+        "temp_openai": 0.9,
         "freq_pen_openai": 0.7,
         "pres_pen_openai": 0.7,
         "count_pen": 0,
@@ -2286,15 +2286,15 @@
                     },
                     {
                         "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "bc1dcdb2-7d24-4cf3-8dda-3a70afe5d6ce",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "db5be21a-ebb0-48bb-9612-25fd08911442",
