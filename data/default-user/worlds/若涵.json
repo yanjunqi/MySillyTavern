@@ -232,7 +232,7 @@
             "excludeRecursion": false,
             "probability": 100,
             "useProbability": true,
-            "depth": 4,
+            "depth": 1,
             "group": "",
             "scanDepth": null,
             "caseSensitive": null,
