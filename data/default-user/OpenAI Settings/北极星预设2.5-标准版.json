@@ -1,6 +1,6 @@
 {
-    "chat_completion_source": "claude",
-    "openai_model": "gpt-3.5-turbo",
+    "chat_completion_source": "openai",
+    "openai_model": "claude-3-opus-20240229",
     "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
@@ -21,7 +21,7 @@
     "custom_include_headers": "",
     "custom_prompt_post_processing": "",
     "google_model": "gemini-pro",
-    "temperature": 1,
+    "temperature": 0.9,
     "frequency_penalty": 0.7,
     "presence_penalty": 0.7,
     "count_penalty": 0,
@@ -42,8 +42,8 @@
     "new_example_chat_prompt": "[Example Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://claude-cody.sotershield.com/v1",
-    "proxy_password": "sgp_a0d7ccb4f752ea73_952beaa90767601f0e2bb0a595a4ea5fb4a65579,sgp_a0d7ccb4f752ea73_d86ab899677f690b902deb9d9c7fa1aaeb7c8dd9,sgp_a0d7ccb4f752ea73_aa46f8699bf01f476a1b2b12217ea308d6042cf4",
+    "reverse_proxy": "http://127.0.0.1:8444/v1",
+    "proxy_password": "",
     "max_context_unlocked": true,
     "wi_format": "[Details of the fictional world the RP is set in:\n{0}]\n",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -190,7 +190,7 @@
             "marker": false,
             "name": "<输出思维链>",
             "role": "system",
-            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one, 但同类角色可合并表示)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\nNext movement: XXX (reflecting emotional barrier if there is, directly corresponding to Human's latest output)\nSexual stage: X\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly obey on consideration.",
+            "content": "    <output consideration>\n      <description>Before output new story, output consideration as the instruction of new story.\n</description>\n      <requirement and format>\n[consideration]\n{{user}}\nIdentity: XXX (actively speculate on the most likely identity)\nPronoun: XXX\nClothes: XXX (design one if not specified)\nLast movement: XXX (based on story-progress-area very briefly)\n\nCharacter A (the set of present characters controlled by Assistant one by one, 但同类角色可合并表示)\nPronoun: XXX\nRelationship with {{user}}: XXX\nClothes: XXX (design one if not specified)\nemotional state ：XXX\nLast movement: XXX (based on story-progress-area very briefly)\nNext movement: XXX (reflecting emotional barrier if there is, directly corresponding to Human's latest output)\nSexual stage: X\n\nSpeech, action, and psychological activity of {{user}} should absolutely be avoided. Playing the role of {{user}} should be the exclusive authority of Human. (Repeat in Consideration)\n[/consideration]\n\nThen End the consideration and start new story strictly obey on consideration.",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -971,7 +971,7 @@
                 },
                 {
                     "identifier": "959c1d91-b18c-4a73-8059-fea10ab750e7",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "669eff30-8c69-46dc-9e27-ec1c3b5d536e",
@@ -999,7 +999,7 @@
                 },
                 {
                     "identifier": "c442d02f-956b-47cd-b283-199aa94e2b21",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "7c16d218-7216-4bd7-a235-9a2ec9a2342e",
@@ -1011,7 +1011,7 @@
                 },
                 {
                     "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "db5be21a-ebb0-48bb-9612-25fd08911442",

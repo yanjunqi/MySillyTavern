@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.0",
-    "username": "斋藤",
-    "active_character": "鸣人.png",
+    "username": "Alec",
+    "active_character": "若涵和萌萌.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "1705592132778-.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -182,7 +182,6 @@
         "confirm_message_delete": true,
         "sort_field": "date_last_chat",
         "sort_order": "desc",
-        "sort_rule": null,
         "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
@@ -306,7 +305,7 @@
                 "position": 0
             }
         },
-        "persona_description": "[{{user}}是火影忍者世界火之国新任的大名,非常年轻。身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
         "persona_description_position": 0,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
@@ -2293,7 +2292,7 @@
                     },
                     {
                         "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "db5be21a-ebb0-48bb-9612-25fd08911442",
