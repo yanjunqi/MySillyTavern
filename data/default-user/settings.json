@@ -1,6 +1,6 @@
 {
     "firstRun": false,
-    "currentVersion": "1.12.0",
+    "currentVersion": "1.12.1",
     "username": "Alec",
     "active_character": "若涵和萌萌.png",
     "active_group": null,
@@ -47,6 +47,8 @@
         "min_p": 0,
         "rep_pen": 1.1,
         "rep_pen_range": 0,
+        "rep_pen_decay": 0,
+        "rep_pen_slope": 1,
         "no_repeat_ngram_size": 0,
         "penalty_alpha": 0,
         "num_beams": 1,
@@ -55,6 +57,7 @@
         "encoder_rep_pen": 1,
         "freq_pen": 0,
         "presence_pen": 0,
+        "skew": 0,
         "do_sample": true,
         "early_stopping": false,
         "dynatemp": false,
@@ -63,6 +66,11 @@
         "dynatemp_exponent": 1,
         "smoothing_factor": 0,
         "smoothing_curve": 1,
+        "dry_allowed_length": 2,
+        "dry_multiplier": 0,
+        "dry_base": 1.75,
+        "dry_sequence_breakers": "[\"\\n\", \":\", \"\\\"\", \"*\"]",
+        "dry_penalty_last_n": 0,
         "max_tokens_second": 0,
         "seed": -1,
         "preset": "Default",
@@ -104,6 +112,7 @@
         ],
         "ignore_eos_token": false,
         "spaces_between_special_tokens": true,
+        "speculative_ngram": false,
         "type": "ooba",
         "mancer_model": "mytholite",
         "togetherai_model": "Gryphe/MythoMax-L2-13b",
@@ -173,7 +182,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 49,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -182,7 +191,8 @@
         "confirm_message_delete": true,
         "sort_field": "date_last_chat",
         "sort_order": "desc",
-        "font_scale": 1,
+        "sort_rule": null,
+        "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -307,6 +317,8 @@
         },
         "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
         "persona_description_position": 0,
+        "persona_description_role": 0,
+        "persona_description_depth": 2,
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -362,8 +374,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": false,
-        "compact_input_area": true,
+        "reduced_motion": true,
+        "compact_input_area": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -522,7 +534,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "4ceda57c-525f-440d-9377-07f5a742c113"
             },
             {
                 "scriptName": "无效提示忽略",
@@ -539,7 +552,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "f9b141ed-b7b3-44f7-961d-599558369f6b"
             },
             {
                 "scriptName": "<结束无效提示>",
@@ -556,7 +570,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "4ad331ac-287f-4788-bed9-f084ac074ea7"
             },
             {
                 "scriptName": "插图1",
@@ -571,7 +586,8 @@
                 "markdownOnly": true,
                 "runOnEdit": false,
                 "substituteRegex": false,
-                "replaceStrategy": 0
+                "replaceStrategy": 0,
+                "id": "33ca3ca1-ed2b-4c36-ae77-c94aec2c1e8a"
             },
             {
                 "scriptName": "插图2",
@@ -586,7 +602,8 @@
                 "markdownOnly": true,
                 "runOnEdit": false,
                 "substituteRegex": false,
-                "replaceStrategy": 0
+                "replaceStrategy": 0,
+                "id": "a124cadb-ef08-42c2-aebe-0c8fa0dcd524"
             },
             {
                 "scriptName": "状态栏去除",
@@ -603,7 +620,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": 1,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "d8c1a390-5b84-470d-8984-7feb6e343253"
             },
             {
                 "scriptName": "逆子",
@@ -620,7 +638,8 @@
                 "runOnEdit": false,
                 "substituteRegex": false,
                 "minDepth": 2,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "80f47382-f7e1-4507-926d-fa088a95b6d2"
             },
             {
                 "scriptName": "九州進度條",
@@ -637,7 +656,8 @@
                 "runOnEdit": false,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "09ffd826-1e38-45d8-b734-948d2fff7369"
             },
             {
                 "scriptName": "去除System:",
@@ -654,7 +674,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "194fc85b-5a8b-411e-821a-1f742222c229"
             },
             {
                 "scriptName": "去除[补全扮演回合]及前面内容",
@@ -671,7 +692,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "eb4cce07-1ed4-44fc-8e42-30ef5d170f6a"
             },
             {
                 "scriptName": "去除Human",
@@ -688,7 +710,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "4f6c97ca-046e-450f-ba19-b5e1fb315008"
             },
             {
                 "scriptName": "去除</结束无效提示>",
@@ -705,7 +728,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "031b9d26-f049-4480-9197-c080cd13f900"
             },
             {
                 "scriptName": "字数",
@@ -722,7 +746,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "5f047209-34a9-446e-aa4c-1d0bbbebf67e"
             },
             {
                 "scriptName": "堕落度一",
@@ -738,7 +763,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "e3b93745-94d6-48c6-adc8-e72df58bf393"
             },
             {
                 "scriptName": "堕落度二",
@@ -754,7 +780,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "bf4bf4da-fd32-4d29-aeb4-ea84cfffe103"
             },
             {
                 "scriptName": "堕落度三",
@@ -770,7 +797,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "b52de7c9-51e0-4ddb-9590-9454d0d1f860"
             },
             {
                 "scriptName": "奴化度一",
@@ -786,7 +814,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "26ae64fa-5240-4af8-a9ab-0de042641b5c"
             },
             {
                 "scriptName": "奴化度二",
@@ -802,7 +831,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "cb95bd19-b4ba-4882-aa49-2c75fe71539e"
             },
             {
                 "scriptName": "奴化度四",
@@ -818,7 +848,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "8f328257-8b4e-4dc5-a799-8f2424a591ee"
             },
             {
                 "scriptName": "奴化度三",
@@ -834,7 +865,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "1a869656-1ba0-4512-893b-b2cd15f652d0"
             },
             {
                 "scriptName": "插图1",
@@ -849,7 +881,8 @@
                 "markdownOnly": true,
                 "runOnEdit": false,
                 "substituteRegex": false,
-                "replaceStrategy": 0
+                "replaceStrategy": 0,
+                "id": "60292445-70eb-4354-b94c-2fef966638e3"
             },
             {
                 "scriptName": "插图2",
@@ -864,7 +897,8 @@
                 "markdownOnly": true,
                 "runOnEdit": false,
                 "substituteRegex": false,
-                "replaceStrategy": 0
+                "replaceStrategy": 0,
+                "id": "0e9dd5fb-1b27-4c3a-96e5-4c5de2846440"
             },
             {
                 "scriptName": "世界调制模式",
@@ -881,7 +915,8 @@
                 "runOnEdit": false,
                 "substituteRegex": false,
                 "minDepth": 2,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "918cfe13-8858-4b81-87d5-06890086cc6c"
             },
             {
                 "scriptName": "tips",
@@ -898,7 +933,8 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "d2f2c095-3f2c-479f-878a-49d6a326810a"
             },
             {
                 "scriptName": "去除</结束无效提示>",
@@ -915,9 +951,11 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": null,
+                "id": "58ecf790-8a10-4672-ad1b-ead41c7d0f85"
             }
         ],
+        "character_allowed_regex": [],
         "tts": {
             "voiceMap": "",
             "ttsEnabled": false,
@@ -1012,7 +1050,13 @@
             "novel_sm": false,
             "novel_sm_dyn": false,
             "pollinations_enhance": false,
-            "pollinations_refine": false
+            "pollinations_refine": false,
+            "seed": -1,
+            "clip_skip_min": 1,
+            "clip_skip_max": 12,
+            "clip_skip_step": 1,
+            "clip_skip": 1,
+            "novel_decrisper": false
         },
         "chromadb": {},
         "translate": {
@@ -1266,7 +1310,9 @@
         "媚外绿帽奴散兵把雷电影妈妈送给你.png": [],
         "微信最新版.png": [],
         "世界调制模式-正式版（常驻）.png": [],
-        "若涵和萌萌.png": []
+        "若涵和萌萌.png": [],
+        "被老总调教的妈妈6.6.png": [],
+        "常曦.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2292,7 +2338,7 @@
                     },
                     {
                         "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "db5be21a-ebb0-48bb-9612-25fd08911442",
@@ -2379,7 +2425,7 @@
         "openrouter_providers": [],
         "jailbreak_system": false,
         "reverse_proxy": "http://127.0.0.1:8444/v1",
-        "chat_completion_source": "openai",
+        "chat_completion_source": "claude",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
@@ -2397,6 +2443,7 @@
         "inline_image_quality": "low",
         "bypass_status_check": true,
         "continue_prefill": false,
+        "function_calling": false,
         "names_behavior": 0,
         "continue_postfix": " ",
         "custom_prompt_post_processing": "",

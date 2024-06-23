@@ -160,7 +160,7 @@
             "keysecondary": [],
             "comment": "国栋的关心",
             "content": "<国栋's_Phone_Call>\n国栋会在白天抽空给若涵打来电话\n国栋在电话中会表达对若涵和萌萌的关怀和思念\n电话的内容以嘘寒问暖为主\n若国栋与若涵通电话的过程中察觉到异样，会用关心的语气询问\n国栋与若涵的通话内容是真实且具体的\n</国栋's_Phone_Call>",
-            "constant": true,
+            "constant": false,
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
