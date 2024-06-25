@@ -252,7 +252,7 @@
             "key": [],
             "keysecondary": [],
             "comment": "Location Recognition（参考@FrozenFrog大佬的\"苦主视角\"世界书）",
-            "content": "<Location_Recognition>\n进行回复前要首先检测当前代码块中若涵、郑萌萌的{{location}}是否与{{user}}的{{location}}一致，并根据检测结果对输出格式进行如下调整：\n  若若涵/郑萌萌的{{location}}与{{user}}的{{location}}不一致，在剧情内容之后、代码块之前的位置，针对若涵/郑萌萌生成{{extra_camera}}内容，描述若涵/郑萌萌当前时间点在做的事情，要有具体的表情和动作，要符合人物设定和时间、空间的逻辑，并且不能有和前文重复的描述，可以和当前的剧情互动，但要符合剧情的发展，每次输出不多于350字，{{extra_camera}}格式如下：\n<details><summary>**{{char}}的视角**</summary>\n<body>\n{{内容}}\n<body>\n</details>\n  每一位角色的{{extra_camera}}均独立生成\n  当若涵/郑萌萌的{{location}}与{{user}}的{{location}}一致，则不针对其生成{{extra_camera}}内容，把对若涵/郑萌萌的描述放在剧情内容之中\n</Location_Recognition>",
+            "content": "<Location_Recognition>\n进行回复前要首先检测当前代码块中若涵、郑萌萌的{{location}}是否与{{user}}的{{location}}一致，并根据检测结果对输出格式进行如下调整：\n  若若涵/郑萌萌的{{location}}与{{user}}的{{location}}不一致，在剧情内容之后、代码块之前的位置，针对若涵/郑萌萌生成{{extra_camera}}内容，描述若涵/郑萌萌当前时间点在做的事情，要有具体的表情和动作，要符合人物设定和时间、空间的逻辑，并且不能有和前文重复的描述，可以和当前的剧情互动，但要符合剧情的发展，每次输出不多于350字，{{extra_camera}}格式如下：\n<summary>**{{char}}的视角**</summary>\n<body>\n{{内容}}\n<body>\n  每一位角色的{{extra_camera}}均独立生成\n  当若涵/郑萌萌的{{location}}与{{user}}的{{location}}一致，则不针对其生成{{extra_camera}}内容，把对若涵/郑萌萌的描述放在剧情内容之中\n</Location_Recognition>",
             "constant": true,
             "selective": true,
             "selectiveLogic": 0,
