@@ -30,7 +30,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 30000,
+    "openai_max_context": 20000,
     "openai_max_tokens": 3000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
@@ -935,7 +935,7 @@
                 },
                 {
                     "identifier": "19e614cd-b0b2-4c4c-a99a-30fe67a1699b",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "5400f163-8126-4e2a-9367-68d3e9c8bffa",
@@ -951,7 +951,7 @@
                 },
                 {
                     "identifier": "1dfee294-ead2-4085-8f63-f34b6e6fcab8",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "a30e5453-1cea-4088-bc9e-8a6549fef620",
@@ -959,7 +959,7 @@
                 },
                 {
                     "identifier": "fcdd369b-afae-45e8-a9b7-6d43f7667a0a",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "5866e950-0eac-419d-a848-24acda27f66b",
@@ -971,7 +971,7 @@
                 },
                 {
                     "identifier": "959c1d91-b18c-4a73-8059-fea10ab750e7",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "669eff30-8c69-46dc-9e27-ec1c3b5d536e",
@@ -1011,7 +1011,7 @@
                 },
                 {
                     "identifier": "95483d13-546c-4e89-9076-8c2c67335718",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "db5be21a-ebb0-48bb-9612-25fd08911442",
@@ -1060,6 +1060,7 @@
     "bypass_status_check": true,
     "continue_prefill": false,
     "continue_postfix": " ",
+    "function_calling": false,
     "seed": -1,
     "n": 1
 }

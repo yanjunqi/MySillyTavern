@@ -420,7 +420,7 @@ async function downloadJannyCharacter(uuid) {
     // This endpoint is being guarded behind Bot Fight Mode of Cloudflare
     // So hosted ST on Azure/AWS/GCP/Collab might get blocked by IP
     // Should work normally on self-host PC/Android
-    const result = await fetch('https://api.janitorai.me/api/v1/download', {
+    const result = await fetch('https://api.jannyai.com/api/v1/download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -516,7 +516,8 @@ async function downloadGenericPng(url) {
  */
 function parseRisuUrl(url) {
     // Example: https://realm.risuai.net/character/7adb0ed8d81855c820b3506980fb40f054ceef010ff0c4bab73730c0ebe92279
-    const pattern = /^https?:\/\/realm\.risuai\.net\/character\/([a-f0-9]{64})$/;
+    // or https://realm.risuai.net/character/7adb0ed8-d818-55c8-20b3-506980fb40f0
+    const pattern = /^https?:\/\/realm\.risuai\.net\/character\/([a-f0-9-]+)\/?$/i;
     const match = url.match(pattern);
     return match ? match[1] : null;
 }
