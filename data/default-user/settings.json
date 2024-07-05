@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.1",
     "username": "王钢",
-    "active_character": "Wendy.png",
+    "active_character": "菲里.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -12,7 +12,10 @@
     "main_api": "openai",
     "world_info_settings": {
         "world_info": {
-            "globalSelect": [],
+            "globalSelect": [
+                "✨SSR：绿帽NTR",
+                "3"
+            ],
             "charLore": [
                 {
                     "name": "Pokémon Mint",
@@ -182,7 +185,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 50,
+        "chat_width": 49,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -192,7 +195,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 0.9,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -374,8 +377,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -521,6 +524,74 @@
         "dice": {},
         "regex": [
             {
+                "scriptName": "插图1",
+                "findRegex": "/<(illustration|img)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
+                "replaceString": "<center><img src=https://files.catbox.moe/",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": false,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null,
+                "id": "f4f15450-e069-4c96-a2a7-96c5d2ebaabf"
+            },
+            {
+                "scriptName": "插图2",
+                "findRegex": "/<\\/(illustration|img)>/g",
+                "replaceString": "? width=50% /></center>",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": false,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null,
+                "id": "4b92590c-a729-4cbc-894c-1baf075ecdd2"
+            },
+            {
+                "scriptName": "视频1",
+                "findRegex": "/<(video)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
+                "replaceString": "<video controls width=100%><source src=https://files.catbox.moe/",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null,
+                "id": "f794b800-ac5e-4608-b9ab-55be3194f354"
+            },
+            {
+                "scriptName": "视频 2",
+                "findRegex": "/<\\/(video)>/g",
+                "replaceString": " type=video/mp4 /> type=video/mp4 /></video>",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": null,
+                "id": "c634e7bc-9f3a-4ca4-a5ae-e694968f47ec"
+            },
+            {
                 "scriptName": "北极星正则",
                 "findRegex": "\\[consideration\\][\\s\\S]*?\\[/consideration\\]",
                 "replaceString": "",
@@ -572,38 +643,6 @@
                 "minDepth": null,
                 "maxDepth": null,
                 "id": "4ad331ac-287f-4788-bed9-f084ac074ea7"
-            },
-            {
-                "scriptName": "插图1",
-                "findRegex": "/<(illustration|img)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
-                "replaceString": "<center><img src=https://files.catbox.moe/",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "replaceStrategy": 0,
-                "id": "33ca3ca1-ed2b-4c36-ae77-c94aec2c1e8a"
-            },
-            {
-                "scriptName": "插图2",
-                "findRegex": "/<\\/(illustration|img)>/g",
-                "replaceString": "? width=50% /></center>",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "replaceStrategy": 0,
-                "id": "a124cadb-ef08-42c2-aebe-0c8fa0dcd524"
             },
             {
                 "scriptName": "状态栏去除",
@@ -867,38 +906,6 @@
                 "minDepth": null,
                 "maxDepth": null,
                 "id": "1a869656-1ba0-4512-893b-b2cd15f652d0"
-            },
-            {
-                "scriptName": "插图1",
-                "findRegex": "/<(illustration|img)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
-                "replaceString": "<center><img src=https://files.catbox.moe/",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "replaceStrategy": 0,
-                "id": "60292445-70eb-4354-b94c-2fef966638e3"
-            },
-            {
-                "scriptName": "插图2",
-                "findRegex": "/<\\/(illustration|img)>/g",
-                "replaceString": "? width=50% /></center>",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "replaceStrategy": 0,
-                "id": "0e9dd5fb-1b27-4c3a-96e5-4c5de2846440"
             },
             {
                 "scriptName": "世界调制模式",
@@ -1268,7 +1275,6 @@
         "Miss Jones.png": [],
         "Umeko_2.png": [],
         "Rio Morales.png": [],
-        "Avery1.png": [],
         "Alcina Dimitrescu.png": [],
         "lana and her mother1.png": [],
         "Nush.png": [],
@@ -1280,7 +1286,6 @@
         "Katase.png": [],
         "Aqua.png": [],
         "Pokémon Mint.png": [],
-        "Mommy Bath Time.png": [],
         "熟女小镇传阅板.png": [],
         "王艳.png": [],
         "Vespera.png": [],
@@ -1332,14 +1337,11 @@
         "霜叶.png": [],
         "申鹤＆甘雨.png": [],
         "媚外绿帽奴散兵把雷电影妈妈送给你.png": [],
-        "微信最新版.png": [],
         "世界调制模式-正式版（常驻）.png": [],
         "若涵和萌萌.png": [],
-        "被老总调教的妈妈6.6.png": [],
         "Kiko.png": [],
         "佩妮姨妈.png": [],
         "Haruka.png": [],
-        "Kushina Uzumaki [NTR].png": [],
         "Kushina Uzumaki [NTR]1.png": [],
         "Miho.png": [],
         "Kyouko Sakura.png": [],
@@ -1348,7 +1350,8 @@
         "Petunia Dursley.png": [],
         "菲里.png": [],
         "Mabel.png": [],
-        "Martha Kent [GILF at Grocery store].png": []
+        "Martha Kent [GILF at Grocery store].png": [],
+        "微信最新版1.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2201,11 +2204,11 @@
                     },
                     {
                         "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -2273,7 +2276,7 @@
                     },
                     {
                         "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "c9d61718-6a1c-48c1-86c2-94dd8009c3b1",

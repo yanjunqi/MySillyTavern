@@ -906,7 +906,7 @@
                 },
                 {
                     "identifier": "500e3385-f1a4-4a49-941e-b07b3481e131",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
@@ -918,7 +918,7 @@
                 },
                 {
                     "identifier": "fd7084b8-9632-49cf-aa7a-074d12826831",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "13bfefcc-dd2f-4eeb-a1c6-d1defe1d635e",
