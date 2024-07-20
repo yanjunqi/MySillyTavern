@@ -996,7 +996,9 @@
                 "maxDepth": null
             }
         ],
-        "character_allowed_regex": [],
+        "character_allowed_regex": [
+            "素霞双修录5.0.png"
+        ],
         "tts": {
             "voiceMap": "",
             "ttsEnabled": false,
@@ -1324,7 +1326,6 @@
         "苏郁(拜金人妻).png": [],
         "default_CodingSensei.png": [],
         "王艳1.png": [],
-        "素霞双修录5.0.png": [],
         "佐藤母女.png": [],
         "克拉娜.png": [],
         "Kotone.png": [],
@@ -1350,7 +1351,12 @@
         "菲里.png": [],
         "Mabel.png": [],
         "Martha Kent [GILF at Grocery store].png": [],
-        "微信最新版1.png": []
+        "微信最新版1.png": [],
+        "素霞双修录5.0.png": [],
+        "我的妈妈李彤彤.png": [],
+        "南宫派.png": [],
+        "绫瀬遥&绘里香·薇尔蒂斯.png": [],
+        "Alex2.png": []
     },
     "nai_settings": {
         "top_k": 0,
