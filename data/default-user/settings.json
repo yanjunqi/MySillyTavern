@@ -1419,7 +1419,7 @@
         "repetition_penalty_openai": 1,
         "stream_openai": true,
         "websearch_cohere": false,
-        "openai_max_context": 30000,
+        "openai_max_context": 40000,
         "openai_max_tokens": 3000,
         "wrap_in_quotes": false,
         "prompts": [
@@ -2209,11 +2209,11 @@
                     },
                     {
                         "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -2281,7 +2281,7 @@
                     },
                     {
                         "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "c9d61718-6a1c-48c1-86c2-94dd8009c3b1",
