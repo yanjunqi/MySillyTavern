@@ -30,7 +30,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 30000,
+    "openai_max_context": 40000,
     "openai_max_tokens": 3000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
@@ -874,7 +874,7 @@
                 },
                 {
                     "identifier": "eeb6a2c0-9655-4bef-b7b6-6e09bcf2ad5a",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "70932c72-fae8-4308-91a3-237801efa617",
