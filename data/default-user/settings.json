@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.1",
-    "username": "Alec",
-    "active_character": "情人带来的伪娘竟是我儿子.png",
+    "username": "王钢",
+    "active_character": "Alex2.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "1691725210145.png",
+    "user_avatar": "legat.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -185,7 +185,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 49,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -195,7 +195,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 1,
+        "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -318,8 +318,8 @@
                 "position": 0
             }
         },
-        "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
-        "persona_description_position": 0,
+        "persona_description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
+        "persona_description_position": 3,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_show_notifications": true,
@@ -377,8 +377,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": false,
-        "compact_input_area": true,
+        "reduced_motion": true,
+        "compact_input_area": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -1362,7 +1362,8 @@
         "Alex2.png": [],
         "仁宪皇太后.png": [],
         "秦梦宛阿姨家的寄宿时光.png": [],
-        "博穆博果尔的小马拉大车.png": []
+        "博穆博果尔的小马拉大车.png": [],
+        "青荷仙子.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2215,11 +2216,11 @@
                     },
                     {
                         "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -2416,7 +2417,7 @@
         "group_nudge_prompt": "[Write the next reply only as {{char}}.]",
         "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
         "personality_format": "[{{char}}'s personality: {{personality}}]",
-        "openai_model": "claude-3-5-sonnet-20240620",
+        "openai_model": "claude-3-opus-20240229",
         "claude_model": "claude-3-sonnet-20240229",
         "google_model": "gemini-pro",
         "ai21_model": "j2-ultra",
