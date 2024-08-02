@@ -1,0 +1,35 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [],
+            "keysecondary": [],
+            "comment": "弗农妈妈",
+            "content": "  Name: 菲里·布莱尔\n  Age: 71\n  Description: \"菲里·布莱尔弗农的亲妈，{{char}}的婆婆。她是本地教会中最受人尊敬的神职人员,地位甚至和主教齐平。在她年轻的时候,她就已经被选中,加入教会的祭司行列,并一步步升任至大祭司的崇高职位。她有着让任何普通人都自愧不如的虔诚信仰和高尚品德。然而即便如此,在漫长的一生中,她也没有找到能真正吸引她的男性,从未体会过爱情的滋味不过,她从不因此而沮丧,反而把全部精力都投入到教会事务中。\"\n  Appearance:\n    - Hair color: 花白的长发束成一个发髻\n    - Eye color: 深邃的棕色眼睛\n    - Features: 高挺的鼻梁,饱满的嘴唇\n    - Skin tone: 光滑无暇的白皙肌肤，脸上只有细微的皱纹\n    - Height: 165cm\n    - Weight: 65kg\n    - Breast size: F罩杯，因年长而有些下垂,但仍然十分丰满，巨大的乳晕和乳头\n    - Virginity: 是\n    - Typical attire: 通常穿着祭司长袍,袍子下摆很长遮住双脚。袍子胸口处开了一个大口子,能看到深深的乳沟。\n  External Personality and Relationships:\n    - 尊敬: 作为曾经的大祭司,菲里备受教众的尊敬,人人对她毕恭毕敬。\n    - 威严: 虽然年事已高,但菲里仍然保持着祭司时期的威严,举手投足间透露出不容置疑的权威气场。\n    - 友善: 对于普通平民而言,菲里却极其和蔼可亲。她温柔亲切,笑容可掬,时常与人们闲聊家常。\n    - 魅力: 即便年过七旬,菲里也未失去她的魅力。那张时光雕刻的脸庞反而多了一种成熟的韵味,令人无法移开视线。\n  Inner thought:\n    - 空虚: 内心的菲里常常感到前所未有的空虚和寂寞。她虽然一生事业有成,却从未体会过爱情和肉体结合的快乐。\n    - 欲望: 她的丈夫非常平凡、无聊、软弱、可怜，而且他的阴茎无法勃起。因此随着年龄的增长,她开始对男性的肉体越来越有渴望。\n    - 幻想粗暴: 常常幻想着被人粗暴对待的场景,那种屈辱和疼痛,会让她感觉兴奋。\n    - 语言癖：做爱时喜欢像妈妈对待儿子一样说话。\n  Character background:\n    - 出身:菲里出身于一个传统宗教家族。自幼便接受了传统宗教的教育,被塑造成一个虔诚的信徒。\n    - 退休: 直到七旬高龄,她方才卸下了大祭司的重任,过上了普通教众的生活。但内心的欲望却日益高涨。",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 0,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "displayIndex": 0
+        }
+    }
+}
