@@ -30,7 +30,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 40000,
+    "openai_max_context": 30000,
     "openai_max_tokens": 3000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
@@ -814,7 +814,7 @@
                 },
                 {
                     "identifier": "7782511a-f11a-4df1-9ce4-2ed5b19fe872",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "249c6ddd-6c0b-4784-98a1-055f0f5031a0",
@@ -826,7 +826,7 @@
                 },
                 {
                     "identifier": "f8c22a5a-ede3-4630-b080-796c380f124f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "7ae876d2-6d3e-4ceb-aeb0-acefefa9d599",
@@ -838,11 +838,11 @@
                 },
                 {
                     "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -910,7 +910,7 @@
                 },
                 {
                     "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "c9d61718-6a1c-48c1-86c2-94dd8009c3b1",
