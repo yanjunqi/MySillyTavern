@@ -182,7 +182,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 50,
+        "chat_width": 49,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -192,7 +192,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 0.9,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -374,8 +374,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -976,15 +976,15 @@
                 "maxDepth": null
             },
             {
-                "id": "6313076b-b322-47bf-a012-02b8400281b4",
-                "scriptName": "引号替换",
-                "findRegex": "“|”",
+                "id": "e6a5bcb8-b624-484a-8387-84981ff7d995",
+                "scriptName": "转换引号",
+                "findRegex": "/”|“/g",
                 "replaceString": "\"",
                 "trimStrings": [],
                 "placement": [
                     1
                 ],
-                "disabled": true,
+                "disabled": false,
                 "markdownOnly": true,
                 "promptOnly": false,
                 "runOnEdit": true,
@@ -997,7 +997,8 @@
             "素霞双修录5.0.png",
             "胤祺的小马拉大车.png",
             "仁宪皇太后.png",
-            "博穆博果尔的小马拉大车.png"
+            "博穆博果尔的小马拉大车.png",
+            "《折服》同人.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -1358,7 +1359,10 @@
         "仁宪皇太后.png": [],
         "秦梦宛阿姨家的寄宿时光.png": [],
         "博穆博果尔的小马拉大车.png": [],
-        "青荷仙子.png": []
+        "青荷仙子.png": [],
+        "人妻小镇系统.png": [],
+        "洛书晴.png": [],
+        "《折服》同人.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2098,6 +2102,30 @@
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
+            },
+            {
+                "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
+                "system_prompt": false,
+                "enabled": false,
+                "marker": false,
+                "name": "特定视角",
+                "role": "system",
+                "content": "<story perspective>\n注意描写菲里的偷窥视角\n</story perspective>",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
+            },
+            {
+                "identifier": "f1b4e92a-2bfa-41f4-9b1e-18c9a580d756",
+                "system_prompt": false,
+                "enabled": false,
+                "marker": false,
+                "name": "特定视角",
+                "role": "system",
+                "content": "<story perspective>\n由于菲里昏睡过去，不要描写菲里的相关剧情。着重描写弗农的视角\n</story perspective>",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
             }
         ],
         "prompt_order": [
@@ -2211,11 +2239,11 @@
                     },
                     {
                         "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -2227,7 +2255,7 @@
                     },
                     {
                         "identifier": "bc6c82fa-9399-4980-8ce2-495bb04daf05",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "2001d80b-999a-41d1-9a03-b54aabd3749f",
@@ -2283,7 +2311,7 @@
                     },
                     {
                         "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "c9d61718-6a1c-48c1-86c2-94dd8009c3b1",
@@ -2352,6 +2380,10 @@
                     {
                         "identifier": "64c1b6a3-32d2-426b-9b63-e4d29317e6e8",
                         "enabled": true
+                    },
+                    {
+                        "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
+                        "enabled": false
                     },
                     {
                         "identifier": "e23a8bdb-21d0-4fc1-a53e-03f0a5ba840b",
