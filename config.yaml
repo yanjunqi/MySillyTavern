@@ -44,3 +44,7 @@ whitelistImportDomains:
   - cdn.discordapp.com
   - files.catbox.moe
   - raw.githubusercontent.com
+numberOfBackups: 50
+mistral:
+  enablePrefix: false
+sessionTimeout: 86400

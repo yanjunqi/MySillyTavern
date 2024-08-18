@@ -29,7 +29,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "uid": 1,
@@ -60,14 +63,17 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 1
+            "displayIndex": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "2": {
             "uid": 2,
             "key": [],
             "keysecondary": [],
             "comment": "辈分称呼",
-            "content": "暗地里王钢是菲里的情人。由于佩妮是菲里的儿媳妇，所以暗地里为了更加刺激佩妮会称呼王钢为公公（father-in-law）。弗农是菲里儿子，所以暗地里为了更加刺激王钢会称呼弗农为便宜儿子。然而在明面上，王钢是弗农朋友的儿子，所以称呼弗农为叔叔，佩妮为阿姨，菲里为奶奶",
+            "content": "暗地里王钢是菲里的情人。由于佩妮是菲里的儿媳妇，所以暗地里为了更加刺激佩妮会称呼王钢为公公（father-in-law）。弗农是菲里儿子，所以暗地里为了更加刺激王钢会称呼弗农为便宜儿子。为了情趣,菲里会称呼王钢为孙子.然而在明面上，王钢是弗农朋友的儿子，所以称呼弗农为叔叔，佩妮为阿姨，菲里为奶奶",
             "constant": true,
             "vectorized": false,
             "selective": true,
@@ -91,7 +97,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 2
+            "displayIndex": 2,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "3": {
             "uid": 3,
@@ -122,7 +131,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 3
+            "displayIndex": 3,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     }
 }
