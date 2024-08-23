@@ -29,7 +29,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "key": [],
@@ -60,7 +63,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "2": {
             "key": [],
@@ -91,7 +97,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "3": {
             "key": [],
@@ -122,7 +131,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "4": {
             "key": [],
@@ -153,7 +165,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "5": {
             "key": [],
@@ -184,7 +199,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "6": {
             "key": [],
@@ -215,7 +233,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "7": {
             "key": [],
@@ -246,7 +267,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "8": {
             "key": [],
@@ -277,7 +301,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     },
     "originalData": {

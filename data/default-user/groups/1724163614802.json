@@ -1,0 +1,46 @@
+{
+    "id": "1724163614802",
+    "name": "Group: Petunia Dursley",
+    "members": [
+        "弗农.png",
+        "Petunia Dursley.png"
+    ],
+    "avatar_url": "/thumbnail?type=avatar&file=Petunia%20Dursley.png",
+    "allow_self_responses": false,
+    "activation_strategy": false,
+    "generation_mode": 0,
+    "disabled_members": [
+        "弗农.png",
+        "Petunia Dursley.png"
+    ],
+    "chat_metadata": {
+        "chat_id_hash": 4117474546160997,
+        "note_prompt": "",
+        "note_interval": 1,
+        "note_position": 1,
+        "note_depth": 4,
+        "note_role": 0,
+        "tainted": true,
+        "quickReply": {
+            "setList": []
+        },
+        "timedWorldInfo": {
+            "sticky": {},
+            "cooldown": {}
+        },
+        "attachments": []
+    },
+    "fav": true,
+    "chat_id": "2024-08-20@22h20m14s",
+    "chats": [
+        "2024-08-20@22h20m14s"
+    ],
+    "auto_mode_delay": 5,
+    "generation_mode_join_prefix": "",
+    "generation_mode_join_suffix": "",
+    "date_added": 1724315795048.054,
+    "create_date": "2024-8-22 @16h 36m 35s 48ms",
+    "date_last_chat": 1724404502202,
+    "chat_size": 1210531,
+    "past_metadata": {}
+}

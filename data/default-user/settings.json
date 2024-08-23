@@ -2,8 +2,8 @@
     "firstRun": false,
     "currentVersion": "1.12.4",
     "username": "王钢",
-    "active_character": "Petunia Dursley.png",
-    "active_group": null,
+    "active_character": null,
+    "active_group": "1724163614802",
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
     "user_avatar": "legat.png",
@@ -12,7 +12,9 @@
     "main_api": "openai",
     "world_info_settings": {
         "world_info": {
-            "globalSelect": [],
+            "globalSelect": [
+                "lv"
+            ],
             "charLore": [
                 {
                     "name": "Pokémon Mint",
@@ -184,7 +186,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 50,
+        "chat_width": 49,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -194,7 +196,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 0.9,
+        "font_scale": 1,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -358,7 +360,7 @@
                 "lastConnection": 1704895028277
             }
         ],
-        "bogus_folders": "",
+        "bogus_folders": true,
         "zoomed_avatar_magnification": false,
         "show_tag_filters": false,
         "aux_field": "character_version",
@@ -380,8 +382,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": true,
-        "compact_input_area": false,
+        "reduced_motion": false,
+        "compact_input_area": true,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -1197,27 +1199,38 @@
         {
             "id": "1606777706260",
             "name": "ntr",
-            "color": "rgba(215, 154, 154, 1)"
+            "color": "rgba(215, 154, 154, 1)",
+            "color2": ""
         },
         {
             "id": "58647518686",
-            "name": "OpenAI"
+            "name": "OpenAI",
+            "color": "",
+            "color2": ""
         },
         {
             "id": "717256542709",
-            "name": "W++"
+            "name": "W++",
+            "color": "",
+            "color2": ""
         },
         {
             "id": "1078223237899",
-            "name": "Boostyle"
+            "name": "Boostyle",
+            "color": "",
+            "color2": ""
         },
         {
             "id": "930186779032",
-            "name": "PList"
+            "name": "PList",
+            "color": "",
+            "color2": ""
         },
         {
             "id": "1326920537119",
-            "name": "AliChat"
+            "name": "AliChat",
+            "color": "",
+            "color2": ""
         }
     ],
     "tag_map": {
@@ -1243,9 +1256,7 @@
         "张玉华1.png": [],
         "沈桂华.png": [],
         "1691488816309": [],
-        "出九.png": [
-            "1606777706260"
-        ],
+        "出九.png": [],
         "出九_1.png": [],
         "引子.png": [],
         "珍妮.png": [],
@@ -1378,9 +1389,8 @@
         "人妻小镇系统.png": [],
         "洛书晴.png": [],
         "《折服》同人.png": [],
-        "椿野毬絵（生殖活动中）.png": [],
-        "椿野毬絵（恋爱活动中）.png": [],
-        "1723914885297": []
+        "1724163614802": [],
+        "弗农.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2128,7 +2138,7 @@
                 "marker": false,
                 "name": "特定视角",
                 "role": "system",
-                "content": "<story perspective>\n注意描写菲里的偷窥视角\n</story perspective>",
+                "content": "<弗农‘s description>\n身份：佩妮的丈夫，菲里的儿子\n弗农对母亲和王钢的关系产生了怀疑,内心充满矛盾。他一方面担心母亲的贞洁,另一方面又隐隐期待着某些不道德的事情发生。\n弗农陷入了一种复杂的心理状态,既恐惧又隐隐期待妻子和母亲被比自己年纪还小一轮的王钢征服。总是忍不住幻想自己强势的妻子屈服于更强大的男人。幻想自己端庄典雅高贵的母亲沉溺于禁忌的快感中（比如和孙子辈的男人偷情）。但当现实摆在眼前时，又习惯逃避、自欺欺人，无论听到母亲给出什么理由都会接受，原谅，会找各种借口安慰自己，妥协。会不惜一切代价阻止母亲和妻子被王钢中出。\n弗农对于王钢愤怒又害怕，对于王钢的男性气质自惭形秽\n</弗农‘s description>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -2233,7 +2243,7 @@
                     },
                     {
                         "identifier": "7782511a-f11a-4df1-9ce4-2ed5b19fe872",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "249c6ddd-6c0b-4784-98a1-055f0f5031a0",
@@ -2245,7 +2255,7 @@
                     },
                     {
                         "identifier": "f8c22a5a-ede3-4630-b080-796c380f124f",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "7ae876d2-6d3e-4ceb-aeb0-acefefa9d599",
@@ -2401,7 +2411,7 @@
                     },
                     {
                         "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "e23a8bdb-21d0-4fc1-a53e-03f0a5ba840b",
