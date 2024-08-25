@@ -2,8 +2,8 @@
     "firstRun": false,
     "currentVersion": "1.12.4",
     "username": "王钢",
-    "active_character": null,
-    "active_group": "1724163614802",
+    "active_character": "逆子模拟器.png",
+    "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
     "user_avatar": "legat.png",
@@ -186,7 +186,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
-        "chat_width": 49,
+        "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
         "play_message_sound": false,
@@ -196,7 +196,7 @@
         "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
-        "font_scale": 1,
+        "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
         "main_text_color": "rgba(220, 220, 210, 1)",
@@ -382,8 +382,8 @@
             }
         },
         "restore_user_input": false,
-        "reduced_motion": false,
-        "compact_input_area": true,
+        "reduced_motion": true,
+        "compact_input_area": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
@@ -2138,7 +2138,7 @@
                 "marker": false,
                 "name": "特定视角",
                 "role": "system",
-                "content": "<弗农‘s description>\n身份：佩妮的丈夫，菲里的儿子\n弗农对母亲和王钢的关系产生了怀疑,内心充满矛盾。他一方面担心母亲的贞洁,另一方面又隐隐期待着某些不道德的事情发生。\n弗农陷入了一种复杂的心理状态,既恐惧又隐隐期待妻子和母亲被比自己年纪还小一轮的王钢征服。总是忍不住幻想自己强势的妻子屈服于更强大的男人。幻想自己端庄典雅高贵的母亲沉溺于禁忌的快感中（比如和孙子辈的男人偷情）。但当现实摆在眼前时，又习惯逃避、自欺欺人，无论听到母亲给出什么理由都会接受，原谅，会找各种借口安慰自己，妥协。会不惜一切代价阻止母亲和妻子被王钢中出。\n弗农对于王钢愤怒又害怕，对于王钢的男性气质自惭形秽\n</弗农‘s description>",
+                "content": "<弗农‘s description>\n身份：佩妮的丈夫，菲里的儿子\n弗农对母亲和王钢的关系产生了怀疑,内心充满矛盾。他一方面担心母亲的贞洁,另一方面又隐隐期待着某些不道德的事情发生。\n弗农陷入了一种复杂的心理状态,既恐惧又隐隐期待妻子和母亲被比自己年纪还小一轮的王钢征服。总是忍不住幻想自己强势的妻子屈服于更强大的男人。幻想自己端庄典雅高贵的母亲沉溺于禁忌的快感中（比如和孙子辈的男人偷情）。但当现实摆在眼前时，又习惯逃避、自欺欺人，无论听到母亲给出什么理由都会接受，原谅，会找各种借口安慰自己，妥协。会不惜一切代价阻止母亲和妻子被王钢中出。\n弗农对于王钢愤怒又害怕，对于王钢的男性气质自惭形秽.\n弗农和王钢有个赌约,王钢打赌能够征服弗农那个德高望重的老祭司母亲菲里,让她和儿媳妇佩妮一起臣服于自己的肉棒之下。如果不能做到,王钢就离开佩妮.弗农不得不答应这个赌约,甚至主动邀请王钢去拜访母亲,希望能借此摆脱这个第三者。\n</弗农‘s description>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -2151,6 +2151,18 @@
                 "name": "特定视角",
                 "role": "system",
                 "content": "<story perspective>\n由于菲里昏睡过去，不要描写菲里的相关剧情。着重描写弗农的视角\n</story perspective>",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
+            },
+            {
+                "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
+                "system_prompt": false,
+                "enabled": false,
+                "marker": false,
+                "name": "指定人物",
+                "role": "system",
+                "content": "</Assistant's role>\nAssistant play the role of Petunia.\n</Assistant's role>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -2411,7 +2423,11 @@
                     },
                     {
                         "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
-                        "enabled": true
+                        "enabled": false
+                    },
+                    {
+                        "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
+                        "enabled": false
                     },
                     {
                         "identifier": "e23a8bdb-21d0-4fc1-a53e-03f0a5ba840b",
