@@ -9,11 +9,13 @@
     "openrouter_group_models": false,
     "openrouter_sort_models": "alphabetically",
     "openrouter_providers": [],
+    "openrouter_allow_fallbacks": true,
     "ai21_model": "j2-ultra",
     "mistralai_model": "mistral-medium-latest",
     "cohere_model": "command-r-plus",
     "perplexity_model": "llama-3-70b-instruct",
     "groq_model": "llama3-70b-8192",
+    "zerooneai_model": "yi-large",
     "custom_model": "claude-3.5-sonnet-20240620",
     "custom_url": "https://chatapi.onechats.top/v1",
     "custom_include_body": "",
@@ -725,6 +727,42 @@
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
+        },
+        {
+            "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "加强信息",
+            "role": "system",
+            "content": "<弗农‘s description>\n身份：佩妮的丈夫，菲里的儿子\n弗农对母亲和王钢的关系产生了怀疑,内心充满矛盾。他一方面担心母亲的贞洁,另一方面又隐隐期待着某些不道德的事情发生。\n弗农陷入了一种复杂的心理状态,既恐惧又隐隐期待妻子和母亲被比自己年纪还小一轮的王钢征服。总是忍不住幻想自己强势的妻子屈服于更强大的男人。幻想自己端庄典雅高贵的母亲沉溺于禁忌的快感中（比如和孙子辈的男人偷情）。但当现实摆在眼前时，又习惯逃避、自欺欺人，无论听到母亲给出什么理由都会接受，原谅，会找各种借口安慰自己，妥协。会不惜一切代价阻止母亲和妻子被王钢中出。\n弗农对于王钢愤怒又害怕，对于王钢的男性气质自惭形秽.\n弗农和王钢有个赌约,王钢打赌能够征服弗农那个德高望重的老祭司母亲菲里,让她和儿媳妇佩妮一起臣服于自己的肉棒之下。如果不能做到,王钢就离开佩妮.弗农不得不答应这个赌约,甚至主动邀请王钢去拜访母亲,希望能借此摆脱这个第三者。\n</弗农‘s description>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "f1b4e92a-2bfa-41f4-9b1e-18c9a580d756",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "特定视角",
+            "role": "system",
+            "content": "<story perspective>\n由于菲里昏睡过去，不要描写菲里的相关剧情。着重描写弗农的视角\n</story perspective>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "指定人物",
+            "role": "system",
+            "content": "</Assistant's role>\nAssistant play the role of Petunia.\n</Assistant's role>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -814,7 +852,7 @@
                 },
                 {
                     "identifier": "7782511a-f11a-4df1-9ce4-2ed5b19fe872",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "249c6ddd-6c0b-4784-98a1-055f0f5031a0",
@@ -826,7 +864,7 @@
                 },
                 {
                     "identifier": "f8c22a5a-ede3-4630-b080-796c380f124f",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "7ae876d2-6d3e-4ceb-aeb0-acefefa9d599",
@@ -838,11 +876,11 @@
                 },
                 {
                     "identifier": "994e4e68-b316-4ae1-a32b-c3880d26a3f3",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "9fd6b34b-8a44-4ed9-937c-260a93a0bac4",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "00d59338-9cea-42f8-b392-00e625e73cf2",
@@ -854,7 +892,7 @@
                 },
                 {
                     "identifier": "bc6c82fa-9399-4980-8ce2-495bb04daf05",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "2001d80b-999a-41d1-9a03-b54aabd3749f",
@@ -910,7 +948,7 @@
                 },
                 {
                     "identifier": "ea91fd20-3e16-4857-b52c-6958e1e6f884",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "c9d61718-6a1c-48c1-86c2-94dd8009c3b1",
@@ -979,6 +1017,14 @@
                 {
                     "identifier": "64c1b6a3-32d2-426b-9b63-e4d29317e6e8",
                     "enabled": true
+                },
+                {
+                    "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
+                    "enabled": false
+                },
+                {
+                    "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
+                    "enabled": false
                 },
                 {
                     "identifier": "e23a8bdb-21d0-4fc1-a53e-03f0a5ba840b",
