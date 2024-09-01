@@ -31,7 +31,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "uid": 1,
@@ -65,7 +68,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "2": {
             "uid": 2,
@@ -98,7 +104,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "3": {
             "uid": 3,
@@ -131,7 +140,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "4": {
             "uid": 4,
@@ -164,7 +176,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "5": {
             "uid": 5,
@@ -197,7 +212,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "6": {
             "uid": 6,
@@ -230,7 +248,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "7": {
             "uid": 7,
@@ -263,7 +284,10 @@
             "groupWeight": 100,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "8": {
             "uid": 8,
@@ -294,7 +318,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 8
+            "displayIndex": 8,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     },
     "originalData": {

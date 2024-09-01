@@ -32,7 +32,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "uid": 1,
@@ -66,7 +69,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 1
+            "displayIndex": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "3": {
             "uid": 3,
@@ -100,7 +106,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 3
+            "displayIndex": 3,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "6": {
             "uid": 6,
@@ -134,7 +143,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 6
+            "displayIndex": 6,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     }
 }
