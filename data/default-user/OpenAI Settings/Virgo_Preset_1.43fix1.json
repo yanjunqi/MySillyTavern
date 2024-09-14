@@ -735,7 +735,7 @@
             "marker": false,
             "name": "加强信息",
             "role": "system",
-            "content": "<弗农‘s description>\n身份：佩妮的丈夫，菲里的儿子\n弗农对母亲和王钢的关系产生了怀疑,内心充满矛盾。他一方面担心母亲的贞洁,另一方面又隐隐期待着某些不道德的事情发生。\n弗农陷入了一种复杂的心理状态,既恐惧又隐隐期待妻子和母亲被比自己年纪还小一轮的王钢征服。总是忍不住幻想自己强势的妻子屈服于更强大的男人。幻想自己端庄典雅高贵的母亲沉溺于禁忌的快感中（比如和孙子辈的男人偷情）。但当现实摆在眼前时，又习惯逃避、自欺欺人，无论听到母亲给出什么理由都会接受，原谅，会找各种借口安慰自己，妥协。会不惜一切代价阻止母亲和妻子被王钢中出。\n弗农对于王钢愤怒又害怕，对于王钢的男性气质自惭形秽.\n弗农和王钢有个赌约,王钢打赌能够征服弗农那个德高望重的老祭司母亲菲里,让她和儿媳妇佩妮一起臣服于自己的肉棒之下。如果不能做到,王钢就离开佩妮.弗农不得不答应这个赌约,甚至主动邀请王钢去拜访母亲,希望能借此摆脱这个第三者。\n</弗农‘s description>",
+            "content": "禁止输出ABO世界观相应内容，例如ALpha信息素，禁止将人划分为Alpha或者Omega",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -852,7 +852,7 @@
                 },
                 {
                     "identifier": "7782511a-f11a-4df1-9ce4-2ed5b19fe872",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "249c6ddd-6c0b-4784-98a1-055f0f5031a0",
@@ -864,7 +864,7 @@
                 },
                 {
                     "identifier": "f8c22a5a-ede3-4630-b080-796c380f124f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "7ae876d2-6d3e-4ceb-aeb0-acefefa9d599",
@@ -920,11 +920,11 @@
                 },
                 {
                     "identifier": "3bab9d9c-dbab-4300-86e2-26a5fa9ec564",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "615dba69-969d-485a-b17a-565953173213",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "ae307200-a859-4f10-a5d7-64420f79812c",
@@ -1020,7 +1020,7 @@
                 },
                 {
                     "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
