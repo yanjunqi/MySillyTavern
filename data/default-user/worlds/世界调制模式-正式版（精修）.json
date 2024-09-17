@@ -36,7 +36,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "1": {
             "uid": 1,
@@ -64,7 +72,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "2": {
             "uid": 2,
@@ -92,7 +108,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "3": {
             "uid": 3,
@@ -120,7 +144,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "4": {
             "uid": 4,
@@ -150,7 +182,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "5": {
             "uid": 5,
@@ -180,7 +220,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "6": {
             "uid": 6,
@@ -208,7 +256,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "7": {
             "uid": 7,
@@ -237,7 +293,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": null
+            "role": null,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "8": {
             "uid": 8,
@@ -265,7 +329,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         },
         "9": {
             "uid": 9,
@@ -293,7 +365,15 @@
             "caseSensitive": null,
             "matchWholeWords": null,
             "automationId": "",
-            "role": 0
+            "role": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     },
     "originalData": {

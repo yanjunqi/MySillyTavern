@@ -29,7 +29,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "uid": 1,
@@ -60,7 +63,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "2": {
             "uid": 2,
@@ -1947,7 +1953,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "70": {
             "uid": 70,
@@ -1982,7 +1991,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "71": {
             "uid": 71,
@@ -2020,7 +2032,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "72": {
             "uid": 72,
@@ -2056,7 +2071,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "73": {
             "uid": 73,
@@ -2092,7 +2110,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "74": {
             "uid": 74,
@@ -2126,7 +2147,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "75": {
             "uid": 75,
@@ -2160,7 +2184,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "76": {
             "uid": 76,
@@ -2195,7 +2222,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "77": {
             "uid": 77,
@@ -2233,7 +2263,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "78": {
             "uid": 78,
@@ -2270,7 +2303,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "79": {
             "uid": 79,
@@ -2306,7 +2342,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "80": {
             "uid": 80,
@@ -2339,7 +2378,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "81": {
             "uid": 81,
@@ -2373,7 +2415,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "82": {
             "uid": 82,
@@ -2407,7 +2452,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "83": {
             "uid": 83,
@@ -2440,7 +2488,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "84": {
             "uid": 84,
@@ -2478,7 +2529,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "85": {
             "uid": 85,
@@ -2514,7 +2568,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "86": {
             "uid": 86,
@@ -2550,7 +2607,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "87": {
             "uid": 87,
@@ -3398,7 +3458,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "113": {
             "uid": 113,
@@ -3434,7 +3497,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "115": {
             "uid": 115,
@@ -3468,7 +3534,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "116": {
             "uid": 116,
@@ -3506,7 +3575,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "117": {
             "uid": 117,
@@ -3542,7 +3614,10 @@
             "role": 0,
             "vectorized": false,
             "delayUntilRecursion": false,
-            "useGroupScoring": null
+            "useGroupScoring": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     }
 }
