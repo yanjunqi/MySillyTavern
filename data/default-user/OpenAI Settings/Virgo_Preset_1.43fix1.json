@@ -1,6 +1,6 @@
 {
     "chat_completion_source": "openai",
-    "openai_model": "claude-3-opus-20240229",
+    "openai_model": "claude-3-5-sonnet-20240620",
     "claude_model": "claude-3-sonnet-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
@@ -759,7 +759,7 @@
             "marker": false,
             "name": "指定人物",
             "role": "system",
-            "content": "</Assistant's role>\nAssistant play the role of Petunia.\n</Assistant's role>",
+            "content": "<精灵的文化>\n由于精灵的寿命很长，这导致他们的性欲极低，{{char}}作为精灵并不会避讳谈及性，并不会对此羞耻\n</精灵的文化>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -1020,11 +1020,11 @@
                 },
                 {
                     "identifier": "54935159-5131-45bd-a353-342c3cf6251f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "c5ecb800-4aa8-4949-8974-091bcbd74c60",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "e23a8bdb-21d0-4fc1-a53e-03f0a5ba840b",
