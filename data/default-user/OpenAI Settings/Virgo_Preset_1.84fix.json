@@ -600,7 +600,7 @@
                 },
                 {
                     "identifier": "f5456d7c-4004-4e83-8401-8ea0e22edf00",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "584ef7bd-6e01-4f02-ad28-954ffe74a326",
@@ -608,7 +608,7 @@
                 },
                 {
                     "identifier": "ab927484-a389-406e-858f-3f4ab990bdc3",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "3a37dce4-bafe-4688-bf28-5d98bceb89cf",
@@ -624,7 +624,7 @@
                 },
                 {
                     "identifier": "7b5aaaf6-33af-4f69-996c-907dd799af8d",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "eda4f9de-5bf0-4080-9c01-bcf39b2ed2f9",
@@ -736,7 +736,7 @@
                 },
                 {
                     "identifier": "b9a3fd11-c904-47a4-ba31-dae24abfa99b",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "bb390374-0fbc-49e2-b35f-b3e44a47cc8c",
@@ -748,11 +748,11 @@
                 },
                 {
                     "identifier": "6286f65c-78b9-4730-9d04-0c588290f2e0",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "3d782d2e-59da-41b8-bf3e-98db04a33d2e",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "jailbreak",
