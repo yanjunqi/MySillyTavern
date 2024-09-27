@@ -1,6 +1,6 @@
 {
     "chat_completion_source": "openai",
-    "openai_model": "claude-3-5-sonnet-20240620",
+    "openai_model": "claude-3-opus-20240229",
     "claude_model": "claude-3-sonnet-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
