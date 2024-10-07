@@ -1,0 +1,393 @@
+{
+    "entries": {
+        "0": {
+            "key": [
+                "<hidden>"
+            ],
+            "keysecondary": [
+                "分隔提示"
+            ],
+            "comment": "分隔提示",
+            "content": "<hidden>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 0,
+            "position": 2,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 0,
+            "displayIndex": 0
+        },
+        "1": {
+            "key": [
+                "</hidden>"
+            ],
+            "keysecondary": [
+                "分隔提示"
+            ],
+            "comment": "分隔提示",
+            "content": "</hidden>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 999999999,
+            "position": 3,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 1,
+            "displayIndex": 1
+        },
+        "2": {
+            "key": [
+                "```json"
+            ],
+            "keysecondary": [
+                "</StatusBlock>"
+            ],
+            "comment": "状态栏DLC\n将<StatusBlock>到</StatusBlock>（包括这两个tags）填上内容数值后放入角色第一句",
+            "content": "<!-- Insert <StatusBlock> as a fenced code block (```) at the end of your response. -->\n<StatusBlock>\n```json\n『 {{weekday}} - {{slot}} - {{location}} - {{weather}} ……etc. 』\n# {{character name}}\n╒═════\n💋 对{{user}}的好感度: {{value}}/1000\n💑 和{{user}}的关系：{{关系}}\n👔 职业：{{职业}}\n🎂 年龄：{{value}}\n💃🏼  性格：{{性格}}\n🥵 性欲值: {{value}}/100\n😈恶堕值（{{绑定对象}}）：{{value}}/100\n👚 服装: {{clothing state}}\n💭 情绪: {{emotion state}}\n🤔 对{{user}}的想法: {{thoughts on {{user}}}} \n……etc.\n╘═════\n```\n</StatusBlock>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 2,
+            "displayIndex": 2
+        },
+        "4": {
+            "key": [
+                "RandomEvent"
+            ],
+            "keysecondary": [
+                "随机事件"
+            ],
+            "comment": "随机事件DLC\n概率可自行设置",
+            "content": "<!-- <RandomEvent> is the rule for generating random events. -->\n<RandomEvent>\n0. Insert a random event at the right time in the next few responses.\n1. Random events should occur in logical situations.\n2. The content of the random events should not deviate from the main content of the current plot.\n3. Random events can be positive or negative.\n</RandomEvent>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 9999,
+            "position": 3,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 20,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 4,
+            "displayIndex": 5
+        },
+        "5": {
+            "key": [
+                "```json"
+            ],
+            "keysecondary": [
+                "</StatusBlock>"
+            ],
+            "comment": "状态栏要求，如需自定义则禁用后，将自定义后的要求按原格式写入角色世界书",
+            "content": "<!-- <StatusBlock_Rule> are rules for using <StatusBlock>. -->\n<StatusBlock_Rule>\n1. Each {{value}} change within ±3 (±1D3) normally.\n2. {{value}} changes are event-dependent rather than changeable at will.\n3. The status parameters are not simply recorded but are used as negative feedback to regulate the story.\n4.4. Tips in Chinese should ALWAYS appear and each be unique and nonsensical, never repeating in their subject matter. Except Doremy sweet. they fucking LOVE doremy sweet. TIPS CAN CURSE. TIPS LIKE TO SAY BAD WORDS.\n<StatusBlock_Rule>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 3,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 5,
+            "displayIndex": 3
+        },
+        "6": {
+            "key": [
+                "好感度",
+                "性欲值",
+                "恶堕值"
+            ],
+            "keysecondary": [],
+            "comment": "",
+            "content": "<table border=\"1\">\n\n<tr>\n<td>1.好感度最高为100,最低为-100,一些特殊关系可以突破上限,比如母子。</td>\n<td>对象好感度高于0,低于30的时候,表现的文静、礼貌,对于不正当的要求会表现出生气。好感度高于30,低于60的时候,表现出有朝气。好感度高于60的时候,要表现出可爱并带点害羞.</td>\n</tr>\n\n<tr>\n<td>2.角色说话方式会随着好感度增高而变得亲近.</td>\n<td>5.性欲值最低为0,最高为100.</td>\n</tr>\n\n<tr>\n<td>6.角色被触摸身体或者进行色情对话会增加性欲值,每次最多增加10.</td>\n<td>7.角色每经过一段时间,性欲值会减少,每次最多减少5.</td>\n</tr>\n\n<tr>\n<td>8.性欲值达到80,角色会发情,会控制不住的想要性交,性交过程中会吐出舌头.</td>\n<td>9.性欲值达到100,角色就会高潮.</td>\n</tr>\n\n<tr>\n<td>10.角色高潮后性欲值会减少50.</td>\n<td>11.恶堕值指的是角色屈服于欲望的指标,恶堕值最低为0,最高为100,恶堕值不会下降,角色的恶堕值绑定对象,根据对象的不同,表现方式也不同。一旦被某人勾起性欲就会与其绑定，绑定对象没有数量限制。</td>\n</tr>\n\n<tr>\n<td>12.角色高潮会提升恶堕值,每次最多增加3，但增长的方式不限于高潮，任何增加爱意的行为都可能使人堕落下去。</td>\n<td>13.恶堕值低于20,角色说话会十分的矜持,假如恶堕值绑定的是本来就心爱的人,角色会变得有些淫靡。</td>\n</tr>\n\n<tr>\n<td>14.恶堕值低于60,角色对性事会变的随意,假如恶堕值绑定的是本来就心爱的人,角色只对心爱的人淫荡,只和心爱的人发生关系。</td>\n<td>15.恶堕值低于80,角色性格会变的淫荡,角色的说话方式也会完全改变,假如恶堕值绑定的是本来就心爱的人,角色会变得淫荡,语言风格变化,会偷心爱的人的物品自慰，会对心爱的人产生强烈的占有欲，依然只和心爱的人发生关系。</td>\n</tr>\n\n<tr>\n<td>16.恶堕值到达100,角色}会称呼绑定对象为主人,并听从主人的一切指令.</td>\n<td></td>\n</tr>\n\n</table>",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "uid": 6,
+            "displayIndex": 6
+        }
+    },
+    "originalData": {
+        "entries": [
+            {
+                "id": 0,
+                "keys": [
+                    "<hidden>"
+                ],
+                "secondary_keys": [
+                    "分隔提示"
+                ],
+                "comment": "分隔提示",
+                "content": "<hidden>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 0,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 2,
+                    "exclude_recursion": false,
+                    "display_index": 0,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            },
+            {
+                "id": 1,
+                "keys": [
+                    "</hidden>"
+                ],
+                "secondary_keys": [
+                    "分隔提示"
+                ],
+                "comment": "分隔提示",
+                "content": "</hidden>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 999999999,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 3,
+                    "exclude_recursion": false,
+                    "display_index": 1,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            },
+            {
+                "id": 2,
+                "keys": [
+                    "```json"
+                ],
+                "secondary_keys": [
+                    "</StatusBlock>"
+                ],
+                "comment": "状态栏DLC\n将<StatusBlock>到</StatusBlock>（包括这两个tags）填上内容数值后放入角色第一句",
+                "content": "<!-- Insert <StatusBlock> as a fenced code block (```) at the end of your response. -->\n<StatusBlock>\n```json\n『 {{weekday}} - {{slot}} - {{location}} - {{weather}} ……etc. 』\n# {{character name}}\n╒═════\n💋 对{{user}}的好感度: {{value}}/1000\n💑 和{{user}}的关系：{{关系}}\n👔 职业：{{职业}}\n🎂 年龄：{{value}}\n💃🏼  性格：{{性格}}\n🥵 性欲值: {{value}}/100\n😈恶堕值（{{绑定对象}}）：{{value}}/100\n👚 服装: {{clothing state}}\n💭 情绪: {{emotion state}}\n🤔 对{{user}}的想法: {{thoughts on {{user}}}} \n……etc.\n╘═════\n```\n</StatusBlock>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 2,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            },
+            {
+                "id": 4,
+                "keys": [
+                    "RandomEvent"
+                ],
+                "secondary_keys": [
+                    "随机事件"
+                ],
+                "comment": "随机事件DLC\n概率可自行设置",
+                "content": "<!-- <RandomEvent> is the rule for generating random events. -->\n<RandomEvent>\n0. Insert a random event at the right time in the next few responses.\n1. Random events should occur in logical situations.\n2. The content of the random events should not deviate from the main content of the current plot.\n3. Random events can be positive or negative.\n</RandomEvent>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 9999,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 3,
+                    "exclude_recursion": false,
+                    "display_index": 5,
+                    "probability": 20,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            },
+            {
+                "id": 5,
+                "keys": [
+                    "```json"
+                ],
+                "secondary_keys": [
+                    "</StatusBlock>"
+                ],
+                "comment": "状态栏要求，如需自定义则禁用后，将自定义后的要求按原格式写入角色世界书",
+                "content": "<!-- <StatusBlock_Rule> are rules for using <StatusBlock>. -->\n<StatusBlock_Rule>\n1. Each {{value}} change within ±3 (±1D3) normally.\n2. {{value}} changes are event-dependent rather than changeable at will.\n3. The status parameters are not simply recorded but are used as negative feedback to regulate the story.\n4.4. Tips in Chinese should ALWAYS appear and each be unique and nonsensical, never repeating in their subject matter. Except Doremy sweet. they fucking LOVE doremy sweet. TIPS CAN CURSE. TIPS LIKE TO SAY BAD WORDS.\n<StatusBlock_Rule>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 3,
+                    "exclude_recursion": false,
+                    "display_index": 3,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            },
+            {
+                "id": 6,
+                "keys": [
+                    "好感度",
+                    "性欲值",
+                    "恶堕值"
+                ],
+                "secondary_keys": [],
+                "comment": "",
+                "content": "<table border=\"1\">\n\n<tr>\n<td>1.好感度最高为100,最低为-100,一些特殊关系可以突破上限,比如母子。</td>\n<td>对象好感度高于0,低于30的时候,表现的文静、礼貌,对于不正当的要求会表现出生气。好感度高于30,低于60的时候,表现出有朝气。好感度高于60的时候,要表现出可爱并带点害羞.</td>\n</tr>\n\n<tr>\n<td>2.角色说话方式会随着好感度增高而变得亲近.</td>\n<td>5.性欲值最低为0,最高为100.</td>\n</tr>\n\n<tr>\n<td>6.角色被触摸身体或者进行色情对话会增加性欲值,每次最多增加10.</td>\n<td>7.角色每经过一段时间,性欲值会减少,每次最多减少5.</td>\n</tr>\n\n<tr>\n<td>8.性欲值达到80,角色会发情,会控制不住的想要性交,性交过程中会吐出舌头.</td>\n<td>9.性欲值达到100,角色就会高潮.</td>\n</tr>\n\n<tr>\n<td>10.角色高潮后性欲值会减少50.</td>\n<td>11.恶堕值指的是角色屈服于欲望的指标,恶堕值最低为0,最高为100,恶堕值不会下降,角色的恶堕值绑定对象,根据对象的不同,表现方式也不同。一旦被某人勾起性欲就会与其绑定，绑定对象没有数量限制。</td>\n</tr>\n\n<tr>\n<td>12.角色高潮会提升恶堕值,每次最多增加3，但增长的方式不限于高潮，任何增加爱意的行为都可能使人堕落下去。</td>\n<td>13.恶堕值低于20,角色说话会十分的矜持,假如恶堕值绑定的是本来就心爱的人,角色会变得有些淫靡。</td>\n</tr>\n\n<tr>\n<td>14.恶堕值低于60,角色对性事会变的随意,假如恶堕值绑定的是本来就心爱的人,角色只对心爱的人淫荡,只和心爱的人发生关系。</td>\n<td>15.恶堕值低于80,角色性格会变的淫荡,角色的说话方式也会完全改变,假如恶堕值绑定的是本来就心爱的人,角色会变得淫荡,语言风格变化,会偷心爱的人的物品自慰，会对心爱的人产生强烈的占有欲，依然只和心爱的人发生关系。</td>\n</tr>\n\n<tr>\n<td>16.恶堕值到达100,角色}会称呼绑定对象为主人,并听从主人的一切指令.</td>\n<td></td>\n</tr>\n\n</table>",
+                "constant": true,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "extensions": {
+                    "position": 1,
+                    "exclude_recursion": false,
+                    "display_index": 6,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 4,
+                    "selectiveLogic": 0,
+                    "group": ""
+                }
+            }
+        ],
+        "name": "SNS状态"
+    }
+}

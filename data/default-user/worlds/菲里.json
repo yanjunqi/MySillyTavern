@@ -29,7 +29,10 @@
             "useGroupScoring": null,
             "automationId": "",
             "role": null,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     }
 }
