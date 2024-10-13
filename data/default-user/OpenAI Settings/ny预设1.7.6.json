@@ -778,6 +778,18 @@
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
+        },
+        {
+            "identifier": "69b2ff90-7809-47d8-a76a-aef208aa3310",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "中文",
+            "role": "system",
+            "content": "    You must generate the response in full Chinese. If you understand, generate \"系统语言已变更为简体中文。现在开始完全以简体中文生成思维链条。\" after the \"[chain-of-thoughts]\" tag. After finishing logical reasoning, generate \"系统语言仍然锁定为简体中文。现在开始完全以简体中文开始生成新故事。\" before the \"[/chain-of-thoughts]\" tag.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1003,7 +1015,7 @@
                 },
                 {
                     "identifier": "54d7e17d-1c43-44c7-8b7a-cc5a56bf1260",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "6bd48052-3934-41e6-b120-7fceb8986c11",
@@ -1012,6 +1024,10 @@
                 {
                     "identifier": "7bc08c3d-d6aa-4586-aff5-ffaf0caff06f",
                     "enabled": false
+                },
+                {
+                    "identifier": "69b2ff90-7809-47d8-a76a-aef208aa3310",
+                    "enabled": true
                 },
                 {
                     "identifier": "e6a810a2-4fef-4640-849c-4950a17bf6e5",
