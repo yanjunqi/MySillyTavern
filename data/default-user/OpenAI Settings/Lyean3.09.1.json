@@ -438,7 +438,7 @@
             "marker": false,
             "name": "🗳️简易状态栏",
             "role": "system",
-            "content": "\n<status_format>\n[After the content, analyze the status of {{char}}, output the followings within code block]\n```\n--{{char}}状态--\n时间: (早晨/上午/...)\n姿态: (Current posture)\n衣着: (Current attire)\n```\n</status_format>",
+            "content": "\n<status_format>\n[After the content, analyze the status of {{char}}, output the followings within code block]\n```\n--{{char}}状态--\n时间: (早晨/上午/...)\n姿态: (Current posture)\n衣着: (Current attire)\n精液等级：(Current rate)\n```\n</status_format>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -686,11 +686,11 @@
                 },
                 {
                     "identifier": "main",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "865043ec-070e-42c4-9684-4721e2127606",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "enhanceDefinitions",
@@ -782,7 +782,7 @@
                 },
                 {
                     "identifier": "nsfw",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "8c20da46-f2fa-4823-814d-4eebd9d91237",
@@ -790,11 +790,11 @@
                 },
                 {
                     "identifier": "eebf3d1b-e097-4891-887a-37cf22273d22",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "e2a8a242-7bfe-4bc0-beb2-2ff972c08c65",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "3c9d1030-2b35-4ff7-979b-5de2b5d1bf5d",
