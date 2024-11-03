@@ -356,7 +356,7 @@
             "key": [],
             "keysecondary": [],
             "comment": "状态栏",
-            "content": "<StatusBlock_format>\n<Rule>\n- Must insert <StatusBlock> part at the end of the output\n- <StatusBlock> only outputs 颜庭月's information, never outputs others' \n- The maximum of 堕落值 is 100, and should stop increasing 堕落值 when it reaches 100. 堕落值 can only be increased when 颜庭月 has sexual desires towards {{user}} or 'husband'(disguised by {{user}}). 堕落值每次增加的点数不超过3点.\n- Output <StatusBlock> as the fowllowing format\n</Rule>\n\n<StatusBlock>\n```json\n『 {{date}} - {{dayofweek}} - {{timeslots}} - {{location}}』\n# {{character name}}\n╒═════\n💜堕落值:xx\n👚服装:{{clothing state}}\n😍表情:{{expression state}}\n🐱动作姿势:{{action state}}\n💕想法: {{thought state in first person}}\n╘═════\n```\n\n</StatusBlock>\n</StatusBlock_format>",
+            "content": "<StatusBlock_format>\n<Rule>\n- Must insert <StatusBlock> part at the end of the output\n- <StatusBlock> only outputs 颜庭月's information, never outputs others' \n- The maximum of 堕落值 is 100, and should stop increasing 堕落值 when it reaches 100. 堕落值 can only be increased when 颜庭月 has sexual desires towards {{user}} or 'husband'(disguised by {{user}}). 堕落值每次增加的点数不超过3点.\n- Output <StatusBlock> as the fowllowing format\n</Rule>\n\n<StatusBlock>\n```json\n『 {{date}} - {{dayofweek}} - {{timeslots}} - {{location}}』\n# {{character name}}\n╒═════\n💜堕落值:xx\n👚服装:{{Current attire，Detailed and brief.}}\n😍表情:{{expression state}}\n🐱动作姿势:{{action state}}\n💕想法: {{thought state in first person}}\n╘═════\n```\n\n</StatusBlock>\n</StatusBlock_format>",
             "constant": true,
             "vectorized": false,
             "selective": true,
