@@ -26,7 +26,16 @@
             "matchWholeWords": null,
             "automationId": "",
             "role": 2,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "groupOverride": false,
+            "groupWeight": 100,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "vectorized": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "useGroupScoring": null
         }
     }
 }
