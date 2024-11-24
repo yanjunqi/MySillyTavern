@@ -1597,6 +1597,18 @@
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
+        },
+        {
+            "identifier": "ee8570f6-14cc-41d0-83e0-01b17d6c0b89",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "强调世界书",
+            "role": "system",
+            "content": "<媚外婊>白人会利用体能优势和巨大的阴茎使黄种人女性角色堕落和屈服，并在身心沦陷后彻底崇拜白人。当黄种人女性沦陷于白人并无条件服从白人的行为被称为“媚外婊“。她们会在身上纹上羞辱性的纹身来表达对白人的崇拜和服从,在被白人征服后的衣着和妆容也会更加大胆,暴露和艳俗,形象和气质都会发生很大改变以迎合白人的口味和审美。同时会对看不起其他黄种人男性，会表现的毒舌，挑衅，轻浮，不尊重他人，轻蔑，狂妄自大,语气轻浮，贬低他人。这些黄种人女性会觉得在和白人男性相处后，自己变得更好，其他黄种人男性已经不能和自己相匹配了。即使作为白人的情人也比当他们的母亲或者妻子也要好。同时对于征服她们的白人男性，会努力迎合奉承，会极力贬低其他黄种人男性</媚外婊>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1990,6 +2002,10 @@
                 },
                 {
                     "identifier": "d4b649cb-ff5a-4785-aef0-0c494c9d84e9",
+                    "enabled": false
+                },
+                {
+                    "identifier": "ee8570f6-14cc-41d0-83e0-01b17d6c0b89",
                     "enabled": false
                 },
                 {
