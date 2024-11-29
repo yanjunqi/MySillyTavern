@@ -4,16 +4,19 @@ import { delay, escapeRegex, getBase64Async, getStringHash, onlyUnique } from '.
 import { EdgeTtsProvider } from './edge.js';
 import { ElevenLabsTtsProvider } from './elevenlabs.js';
 import { SileroTtsProvider } from './silerotts.js';
+import { GptSovitsV2Provider } from './gpt-sovits-v2.js';
 import { CoquiTtsProvider } from './coqui.js';
 import { SystemTtsProvider } from './system.js';
 import { NovelTtsProvider } from './novel.js';
 import { power_user } from '../../power-user.js';
 import { OpenAITtsProvider } from './openai.js';
+import { OpenAICompatibleTtsProvider } from './openai-compatible.js';
 import { XTTSTtsProvider } from './xtts.js';
 import { VITSTtsProvider } from './vits.js';
 import { GSVITtsProvider } from './gsvi.js';
 import { SBVits2TtsProvider } from './sbvits2.js';
 import { AllTalkTtsProvider } from './alltalk.js';
+import { CosyVoiceProvider } from './cosyvoice.js';
 import { SpeechT5TtsProvider } from './speecht5.js';
 import { AzureTtsProvider } from './azure.js';
 import { SlashCommandParser } from '../../slash-commands/SlashCommandParser.js';
@@ -23,6 +26,7 @@ import { debounce_timeout } from '../../constants.js';
 import { SlashCommandEnumValue, enumTypes } from '../../slash-commands/SlashCommandEnumValue.js';
 import { enumIcons } from '../../slash-commands/SlashCommandCommonEnumsProvider.js';
 import { POPUP_TYPE, callGenericPopup } from '../../popup.js';
+import { GoogleTranslateTtsProvider } from './google-translate.js';
 export { talkingAnimation };
 
 const UPDATE_INTERVAL = 1000;
@@ -82,20 +86,24 @@ export function getPreviewString(lang) {
 }
 
 const ttsProviders = {
-    ElevenLabs: ElevenLabsTtsProvider,
-    Silero: SileroTtsProvider,
-    XTTSv2: XTTSTtsProvider,
-    VITS: VITSTtsProvider,
-    GSVI: GSVITtsProvider,
-    SBVits2: SBVits2TtsProvider,
-    System: SystemTtsProvider,
+    AllTalk: AllTalkTtsProvider,
+    Azure: AzureTtsProvider,
     Coqui: CoquiTtsProvider,
+    'CosyVoice (Unofficial)': CosyVoiceProvider,
     Edge: EdgeTtsProvider,
+    ElevenLabs: ElevenLabsTtsProvider,
+    'Google Translate': GoogleTranslateTtsProvider,
+    GSVI: GSVITtsProvider,
+    'GPT-SoVITS-V2 (Unofficial)': GptSovitsV2Provider,
     Novel: NovelTtsProvider,
     OpenAI: OpenAITtsProvider,
-    AllTalk: AllTalkTtsProvider,
+    'OpenAI Compatible': OpenAICompatibleTtsProvider,
+    SBVits2: SBVits2TtsProvider,
+    Silero: SileroTtsProvider,
     SpeechT5: SpeechT5TtsProvider,
-    Azure: AzureTtsProvider,
+    System: SystemTtsProvider,
+    VITS: VITSTtsProvider,
+    XTTSv2: XTTSTtsProvider,
 };
 let ttsProvider;
 let ttsProviderName;
@@ -419,7 +427,7 @@ function completeTtsJob() {
 async function tts(text, voiceId, char) {
     async function processResponse(response) {
         // RVC injection
-        if (extension_settings.rvc.enabled && typeof window['rvcVoiceConversion'] === 'function')
+        if (typeof window['rvcVoiceConversion'] === 'function' && extension_settings.rvc.enabled)
             response = await window['rvcVoiceConversion'](response, char, text);
 
         await addAudioJob(response, char);
@@ -468,7 +476,7 @@ async function processTtsQueue() {
     }
 
     if (extension_settings.tts.narrate_quoted_only) {
-        const special_quotes = /[“”«»]/g; // Extend this regex to include other special quotes
+        const special_quotes = /[“”«»「」『』＂＂]/g; // Extend this regex to include other special quotes
         text = text.replace(special_quotes, '"');
         const matches = text.match(/".*?"/g); // Matches text inside double quotes, non-greedily
         const partJoiner = (ttsProvider?.separator || ' ... ');
@@ -752,6 +760,11 @@ async function onMessageEvent(messageId, lastCharIndex) {
     // clone message object, as things go haywire if message object is altered below (it's passed by reference)
     const message = structuredClone(context.chat[messageId]);
     const hashNew = getStringHash(message?.mes ?? '');
+
+    // Ignore prompt-hidden messages
+    if (message.is_system) {
+        return;
+    }
 
     // if no new messages, or same message, or same message hash, do nothing
     if (hashNew === lastMessageHash) {

@@ -48,3 +48,26 @@ numberOfBackups: 50
 mistral:
   enablePrefix: false
 sessionTimeout: 86400
+protocol:
+  ipv4: true
+  ipv6: false
+dnsPreferIPv6: false
+autorunHostname: auto
+autorunPortOverride: -1
+requestProxy:
+  enabled: false
+  url: socks5://username:password@example.com:1080
+  bypass:
+    - localhost
+    - 127.0.0.1
+autheliaAuth: false
+perUserBasicAuth: false
+avoidLocalhost: false
+chatBackupThrottleInterval: 10000
+enableExtensionsAutoUpdate: true
+enableDownloadableTokenizers: true
+promptPlaceholder: "[Start a new chat]"
+ollama:
+  keepAlive: -1
+claude:
+  enableSystemPromptCache: false

@@ -59,8 +59,10 @@ async function doTokenCounter() {
             $('#tokenized_chunks_display').text('—');
         }
 
-        resetScrollHeight($('#token_counter_textarea'));
-        resetScrollHeight($('#token_counter_ids'));
+        if (!CSS.supports('field-sizing', 'content')) {
+            await resetScrollHeight($('#token_counter_textarea'));
+            await resetScrollHeight($('#token_counter_ids'));
+        }
     }, debounce_timeout.relaxed);
     dialog.find('#token_counter_textarea').on('input', () => countDebounced());
 
@@ -87,7 +89,7 @@ function drawChunks(chunks, ids) {
     $('#tokenized_chunks_display').empty();
 
     for (let i = 0; i < chunks.length; i++) {
-        let chunk = chunks[i].replace(/▁/g, ' '); // This is a leading space in sentencepiece. More info: Lower one eighth block (U+2581)
+        let chunk = chunks[i].replace(/[▁Ġ]/g, ' '); // This is a leading space in sentencepiece. More info: Lower one eighth block (U+2581)
 
         // If <0xHEX>, decode it
         if (/^<0x[0-9A-F]+>$/i.test(chunk)) {
@@ -134,7 +136,8 @@ jQuery(() => {
         </div>`;
     $('#token_counter_wand_container').append(buttonHtml);
     $('#token_counter').on('click', doTokenCounter);
-    SlashCommandParser.addCommandObject(SlashCommand.fromProps({ name: 'count',
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'count',
         callback: async () => String(await doCount()),
         returns: 'number of tokens',
         helpString: 'Counts the number of tokens in the current chat.',

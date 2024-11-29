@@ -32,6 +32,9 @@ export const SECRET_KEYS = {
     ZEROONEAI: 'api_key_01ai',
     HUGGINGFACE: 'api_key_huggingface',
     STABILITY: 'api_key_stability',
+    BLOCKENTROPY: 'api_key_blockentropy',
+    CUSTOM_OPENAI_TTS: 'api_key_custom_openai_tts',
+    TAVILY: 'api_key_tavily',
 };
 
 const INPUT_MAP = {
@@ -63,6 +66,7 @@ const INPUT_MAP = {
     [SECRET_KEYS.FEATHERLESS]: '#api_key_featherless',
     [SECRET_KEYS.ZEROONEAI]: '#api_key_01ai',
     [SECRET_KEYS.HUGGINGFACE]: '#api_key_huggingface',
+    [SECRET_KEYS.BLOCKENTROPY]: '#api_key_blockentropy',
 };
 
 async function clearSecret() {
@@ -125,7 +129,7 @@ export async function writeSecret(key, value) {
             const text = await response.text();
 
             if (text == 'ok') {
-                secret_state[key] = true;
+                secret_state[key] = !!value;
                 updateSecretDisplay();
             }
         }

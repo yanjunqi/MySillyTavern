@@ -19,6 +19,8 @@ import {
     this_chid,
     saveChatConditional,
     chat_metadata,
+    neutralCharacterName,
+    updateChatMetadata,
 } from '../script.js';
 import { selected_group } from './group-chats.js';
 import { power_user } from './power-user.js';
@@ -38,6 +40,7 @@ import { POPUP_RESULT, POPUP_TYPE, Popup, callGenericPopup } from './popup.js';
 import { ScraperManager } from './scrapers.js';
 import { DragAndDropHandler } from './dragdrop.js';
 import { renderTemplateAsync } from './templates.js';
+import { t } from './i18n.js';
 
 /**
  * @typedef {Object} FileAttachment
@@ -125,8 +128,6 @@ function getConverter(type) {
  * @returns {Promise<void>}
  */
 export async function hideChatMessageRange(start, end, unhide) {
-    if (!getCurrentChatId()) return;
-
     if (isNaN(start)) return;
     if (!end) end = start;
     const hide = !unhide;
@@ -135,10 +136,11 @@ export async function hideChatMessageRange(start, end, unhide) {
         const message = chat[messageId];
         if (!message) continue;
 
+        message.is_system = hide;
+
+        // Also toggle "hidden" state for all visible messages
         const messageBlock = $(`.mes[mesid="${messageId}"]`);
         if (!messageBlock.length) continue;
-
-        message.is_system = hide;
         messageBlock.attr('is_system', String(hide));
     }
 
@@ -205,7 +207,7 @@ export async function populateFileAttachment(message, inputId = 'file_form_input
                     const fileText = await converter(file);
                     base64Data = window.btoa(unescape(encodeURIComponent(fileText)));
                 } catch (error) {
-                    toastr.error(String(error), 'Could not convert file');
+                    toastr.error(String(error), t`Could not convert file`);
                     console.error('Could not convert file', error);
                 }
             }
@@ -256,7 +258,7 @@ export async function uploadFileAttachment(fileName, base64Data) {
         const responseData = await result.json();
         return responseData.path;
     } catch (error) {
-        toastr.error(String(error), 'Could not upload file');
+        toastr.error(String(error), t`Could not upload file`);
         console.error('Could not upload file', error);
     }
 }
@@ -282,7 +284,7 @@ export async function getFileAttachment(url) {
         const text = await result.text();
         return text;
     } catch (error) {
-        toastr.error(error, 'Could not download file');
+        toastr.error(error, t`Could not download file`);
         console.error('Could not download file', error);
     }
 }
@@ -298,13 +300,13 @@ async function validateFile(file) {
     const isBinary = /^[\x00-\x08\x0E-\x1F\x7F-\xFF]*$/.test(fileText);
 
     if (!isImage && file.size > fileSizeLimit) {
-        toastr.error(`File is too big. Maximum size is ${humanFileSize(fileSizeLimit)}.`);
+        toastr.error(t`File is too big. Maximum size is ${humanFileSize(fileSizeLimit)}.`);
         return false;
     }
 
     // If file is binary
     if (isBinary && !isImage && !isConvertible(file.type)) {
-        toastr.error('Binary files are not supported. Select a text file or image.');
+        toastr.error(t`Binary files are not supported. Select a text file or image.`);
         return false;
     }
 
@@ -520,7 +522,7 @@ async function openExternalMediaOverridesDialog() {
     const entityId = getCurrentEntityId();
 
     if (!entityId) {
-        toastr.info('No character or group selected');
+        toastr.info(t`No character or group selected`);
         return;
     }
 
@@ -645,7 +647,7 @@ async function deleteFileFromServer(url, silent = false) {
         await eventSource.emit(event_types.FILE_ATTACHMENT_DELETED, url);
         return true;
     } catch (error) {
-        toastr.error(String(error), 'Could not delete file');
+        toastr.error(String(error), t`Could not delete file`);
         console.error('Could not delete file', error);
         return false;
     }
@@ -1053,7 +1055,7 @@ async function openAttachmentManager() {
             const selectedAttachments = document.querySelectorAll('.attachmentListItemCheckboxContainer .attachmentListItemCheckbox:checked');
 
             if (selectedAttachments.length === 0) {
-                toastr.info('No attachments selected.', 'Data Bank');
+                toastr.info(t`No attachments selected.`, t`Data Bank`);
                 return;
             }
 
@@ -1167,7 +1169,7 @@ async function runScraper(scraperId, target, callback) {
 
         if (files.length === 0) {
             console.warn('Scraping returned no files');
-            toastr.info('No files were scraped.', 'Data Bank');
+            toastr.info(t`No files were scraped.`, t`Data Bank`);
             return;
         }
 
@@ -1175,12 +1177,12 @@ async function runScraper(scraperId, target, callback) {
             await uploadFileAttachmentToServer(file, target);
         }
 
-        toastr.success(`Scraped ${files.length} files from ${scraperId} to ${target}.`, 'Data Bank');
+        toastr.success(t`Scraped ${files.length} files from ${scraperId} to ${target}.`, t`Data Bank`);
         callback();
     }
     catch (error) {
         console.error('Scraping failed', error);
-        toastr.error('Check browser console for details.', 'Scraping failed');
+        toastr.error(t`Check browser console for details.`, t`Scraping failed`);
     }
 }
 
@@ -1207,7 +1209,7 @@ export async function uploadFileAttachmentToServer(file, target) {
             const fileText = await converter(file);
             base64Data = window.btoa(unescape(encodeURIComponent(fileText)));
         } catch (error) {
-            toastr.error(String(error), 'Could not convert file');
+            toastr.error(String(error), t`Could not convert file`);
             console.error('Could not convert file', error);
         }
     } else {
@@ -1354,6 +1356,32 @@ async function verifyAttachmentsForSource(source) {
     }
 }
 
+const NEUTRAL_CHAT_KEY = 'neutralChat';
+
+export function preserveNeutralChat() {
+    if (this_chid !== undefined || selected_group || name2 !== neutralCharacterName) {
+        return;
+    }
+
+    sessionStorage.setItem(NEUTRAL_CHAT_KEY, JSON.stringify({ chat, chat_metadata }));
+}
+
+export function restoreNeutralChat() {
+    if (this_chid !== undefined || selected_group || name2 !== neutralCharacterName) {
+        return;
+    }
+
+    const neutralChat = sessionStorage.getItem(NEUTRAL_CHAT_KEY);
+    if (!neutralChat) {
+        return;
+    }
+
+    const { chat: neutralChatData, chat_metadata: neutralChatMetadata } = JSON.parse(neutralChat);
+    chat.splice(0, chat.length, ...neutralChatData);
+    updateChatMetadata(neutralChatMetadata, true);
+    sessionStorage.removeItem(NEUTRAL_CHAT_KEY);
+}
+
 /**
  * Registers a file converter function.
  * @param {string} mimeType MIME type
@@ -1418,6 +1446,7 @@ jQuery(function () {
     $(document).on('click', '.editor_maximize', function () {
         const broId = $(this).attr('data-for');
         const bro = $(`#${broId}`);
+        const contentEditable = bro.is('[contenteditable]');
         const withTab = $(this).attr('data-tab');
 
         if (!bro.length) {
@@ -1429,11 +1458,17 @@ jQuery(function () {
         wrapper.classList.add('height100p', 'wide100p', 'flex-container');
         wrapper.classList.add('flexFlowColumn', 'justifyCenter', 'alignitemscenter');
         const textarea = document.createElement('textarea');
-        textarea.value = String(bro.val());
+        textarea.dataset.for = broId;
+        textarea.value = String(contentEditable ? bro[0].innerText : bro.val());
         textarea.classList.add('height100p', 'wide100p', 'maximized_textarea');
         bro.hasClass('monospace') && textarea.classList.add('monospace');
         textarea.addEventListener('input', function () {
-            bro.val(textarea.value).trigger('input');
+            if (contentEditable) {
+                bro[0].innerText = textarea.value;
+                bro.trigger('input');
+            } else {
+                bro.val(textarea.value).trigger('input');
+            }
         });
         wrapper.appendChild(textarea);
 

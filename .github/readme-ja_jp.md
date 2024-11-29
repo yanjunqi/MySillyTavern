@@ -1,6 +1,20 @@
-[English](readme.md) | [中文](readme-zh_cn.md) | 日本語 | [Русский](readme-ru_ru.md)
+> [!IMPORTANT]  
+> ここに掲載されている情報は、古かったり不完全であったりする可能性があります。最新の情報は英語版をご利用ください。
 
-![SillyTavern-Banner](https://github.com/SillyTavern/SillyTavern/assets/18619528/c2be4c3f-aada-4f64-87a3-ae35a68b61a4)
+![][cover]
+
+<div align="center">
+
+[English](readme.md) | [German](readme-de_de.md) | [中文](readme-zh_cn.md) | 日本語 | [Русский](readme-ru_ru.md)
+
+[![GitHub Stars](https://img.shields.io/github/stars/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/network)
+[![GitHub Issues](https://img.shields.io/github/issues/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/pulls)
+
+</div>
+
+---
 
 モバイルデバイスにも適したレイアウト・マルチAPI（KoboldAI/CPP、Horde、NovelAI、Ooba、OpenAI、OpenRouter、Claude、Scale）、VN ライクな Waifu モード、Stable Diffusion、TTS、WorldInfo（伝承本）、カスタマイズ可能なUI、自動翻訳、大量のプロンプトオプション＋サードパーティの拡張機能をインストールする機能
 
@@ -71,14 +85,13 @@ Tavern は単なるフロントエンドのUIであり、必要なハードウ�
 * ワールド情報サポート: 豊富な伝承を作成したり、キャラクターカードにトークンを保存したりできます
 * [OpenRouter](https://openrouter.ai) 各種 API(Claude、GPT-4/3.5 など)の接続
 * [Oobabooga's TextGen WebUI](https://github.com/oobabooga/text-generation-webui) API 接続
-* [AI Horde](https://horde.koboldai.net/) 接続
+* [AI Horde](https://aihorde.net/) 接続
 * プロンプト生成フォーマットの調整
 
 ## 拡張機能
 
-SillyTavern は拡張できるようになっており、[SillyTavern Extras API](https://github.com/SillyTavern/SillyTavern-extras) でいくつかの追加AIモジュールをホストしています
+SillyTavern は拡張できるようになっており。
 
-* 作者ノート/キャラクターバイアス
 * キャラクターの感情表現（スプライト）
 * チャット履歴の自動サマリー
 * チャットに画像を送り、AI が内容を解釈する
@@ -282,8 +295,8 @@ ST サーバを再起動すると、ユーザ名とパスワードさえ知っ�
 
 ## スクリーンショット
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/18619528/228649245-8061c60f-63dc-488e-9325-f151b7a3ec2d.png">
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/18619528/228649856-fbdeef05-d727-4d5a-be80-266cbbc6b811.png">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9b5f32f0-c3b3-4102-b3f5-0e9213c0f50f">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/913fdbaa-7d33-42f1-ae2c-89dca41c53d1">
 
 ## ライセンスとクレジット
 
@@ -312,3 +325,6 @@ ST サーバを再起動すると、ユーザ名とパスワードさえ知っ�
 * @doloroushyeonse による韓国語翻訳
 * k_euler_a による Horde のサポート <https://github.com/Teashrock>
 * [@XXpE3](https://github.com/XXpE3) による中国語翻訳、中国語 ISSUES の連絡先は @XXpE3
+
+<!-- LINK GROUP -->
+[cover]: https://github.com/user-attachments/assets/01a6ae9a-16aa-45f2-8bff-32b5dc587e44

@@ -1,8 +1,22 @@
+> [!IMPORTANT]  
+> Приведенная здесь информация может быть устаревшей или неполной и предоставляется только для вашего удобства. Пожалуйста, используйте английскую версию для получения наиболее актуальной информации.
+
 <a name="readme-top"></a>
 
-[English](readme.md) | [中文](readme-zh_cn.md) | [日本語](readme-ja_jp.md) | Русский
-
 ![][cover]
+
+<div align="center">
+
+[English](readme.md) | [German](readme-de_de.md) | [中文](readme-zh_cn.md) | [日本語](readme-ja_jp.md) | Русский
+
+[![GitHub Stars](https://img.shields.io/github/stars/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/network)
+[![GitHub Issues](https://img.shields.io/github/issues/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/SillyTavern/SillyTavern.svg)](https://github.com/SillyTavern/SillyTavern/pulls)
+
+</div>
+
+---
 
 Мобайл-френдли интерфейс, поддержка множества API (KoboldAI/CPP, Horde, NovelAI, Ooba, OpenAI, OpenRouter, Claude, Scale), ВН-образный режим Вайфу, Stable Diffusion, TTS, поддержка миров (лорбуков), кастомизируемый UI, автоперевод, тончайшая настройка промптов + возможность устанавливать расширения.
 
@@ -26,8 +40,8 @@ SillyTavern — это форк версии TavernAI 1.2.8, который ра
 
 ## Скриншоты
 
-<img width="400" alt="image" src="https://github.com/SillyTavern/SillyTavern/assets/61471128/e902c7a2-45a6-4415-97aa-c59c597669c1"> 
-<img width="400" alt="image" src="https://github.com/SillyTavern/SillyTavern/assets/61471128/f8a79c47-4fe9-4564-9e4a-bf247ed1c961">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9b5f32f0-c3b3-4102-b3f5-0e9213c0f50f">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/913fdbaa-7d33-42f1-ae2c-89dca41c53d1">
 
 ### Ветки
 
@@ -51,7 +65,7 @@ SillyTavern — это просто интерфейс, поэтому запу�
 ### У нас появился сервер в Discord
 
 | [![][discord-shield-badge]][discord-link] | [Вступайте в наше Discord-сообщество!](https://discord.gg/sillytavern) Задавайте вопросы, делитесь любимыми персонажами и промптами. |
-| :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
 
 Также можно написать разработчикам напрямую:
 
@@ -69,14 +83,13 @@ SillyTavern — это просто интерфейс, поэтому запу�
 * Поддержка миров (функция "Информация о мире" / WorldInfo): создавайте свой богатый лор, или экономьте токены для карточек персонажей
 * Соединение через [OpenRouter](https://openrouter.ai) для разных API (Claude, GPT-4/3.5 и других)
 * Соединение с API [Oobabooga's TextGen WebUI](https://github.com/oobabooga/text-generation-webui)
-* Соединение с [AI Horde](https://horde.koboldai.net/)
+* Соединение с [AI Horde](https://aihorde.net/)
 * Настройку форматирования промптов
 
 ## Расширения
 
-SillyTavern поддерживает расширения, при этом некоторые из ИИ-модулей работают через [SillyTavern Extras API](https://github.com/SillyTavern/SillyTavern-extras)
+SillyTavern поддерживает расширения.
 
-* Заметки автора / Смещение характера
 * Эмоции для персонажей (спрайты)
 * Автоматический саммарайз (краткий пересказ) истории чата
 * Возможность отправить в чат картинку, которую ИИ сможет рассмотреть и понять
@@ -216,6 +229,46 @@ SillyTavern сохраняет ключи от ваших API в файле `sec
 1. Зайдите в файл `config.yaml` и установите `allowKeysExposure` в положение `true`.
 2. Перезапустите сервер SillyTavern.
 
+## Аргументы командной строки
+
+Вы можете передавать аргументы командной строки при запуске сервера SillyTavern, чтобы переопределять настройки из `config.yaml`.
+
+### Примеры
+
+```shell
+node server.js --port 8000 --listen false
+# или
+npm run start -- --port 8000 --listen false
+# или (только на Windows)
+Start.bat --port 8000 --listen false
+```
+
+### Поддерживаемые аргументы
+
+| Аргумент                | Описание                                                                                                       | Тип      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------|----------|
+| `--version`             | Показывает номер версии.                                                                                       | boolean  |
+| `--enableIPv6`          | Включает IPv6.                                                                                                 | boolean  |
+| `--enableIPv4`          | Включает IPv4.                                                                                                 | boolean  |
+| `--port`                | Устанавливает порт, котрый будет использовать SillyTavern. Если не указан, то используется yaml-конфиг 'port'. | number   |
+| `--dnsPreferIPv6`       | Отдает предпочтение IPv6 для dns. Если не указан, то используется yaml-конфиг 'preferIPv6'.                    | boolean  |
+| `--autorun`             | Автоматический запуск SillyTavern в браузере. Если не указан, то используется yaml-конфиг 'autorun'.           | boolean  |
+| `--autorunHostname`     | Имя хоста автозапуска, лучше оставить на 'auto'.                                                               | string   |
+| `--autorunPortOverride` | Переопределяет порт для автозапуска.                                                                           | string   |
+| `--listen`              | SillyTavern будет прослушивать все сетевые интерфейсы. Если не указан, то используется yaml-конфиг 'listen'.   | boolean  |
+| `--corsProxy`           | Включает CORS-прокси. Если не указан, то используется yaml-конфиг 'enableCorsProxy'.                           | boolean  |
+| `--disableCsrf`         | Отключает защиту от CSRF.                                                                                      | boolean  |
+| `--ssl`                 | Включает SSL.                                                                                                  | boolean  |
+| `--certPath`            | Путь к файлу c сертификатом.                                                                                   | string   |
+| `--keyPath`             | Путь к файлу с закрытым ключом.                                                                                | string   |
+| `--whitelist`           | Включает режим белого списка.                                                                                  | boolean  |
+| `--dataRoot`            | Корневой каталог для хранения данных.                                                                          | string   |
+| `--avoidLocalhost`      | Избегает использования 'localhost' для автозапуска в режиме 'auto'.                                            | boolean  |
+| `--basicAuthMode`       | Включает простую аутентификацию.                                                                               | boolean  |
+| `--requestProxyEnabled` | Разрешает использование прокси для исходящих запросов.                                                         | boolean  |
+| `--requestProxyUrl`     | URL-адрес прокси (протоколы HTTP или SOCKS).                                                                   | string   |
+| `--requestProxyBypass`  | Bypass список прокси (список хостов, разделенных пробелами).                                                   | array    |
+
 ## Удалённое подключение
 
 В основном этим пользуются тогда, когда хотят использовать SillyTavern с телефона, запустив сервер SillyTavern на стационарном ПК в той же Wi-Fi-сети.
@@ -353,7 +406,7 @@ SillyTavern сохраняет ключи от ваших API в файле `sec
 
 <!-- LINK GROUP -->
 [back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-[cover]: https://github.com/SillyTavern/SillyTavern/assets/18619528/c2be4c3f-aada-4f64-87a3-ae35a68b61a4
+[cover]: https://github.com/user-attachments/assets/01a6ae9a-16aa-45f2-8bff-32b5dc587e44
 [discord-link]: https://discord.gg/sillytavern
 [discord-shield]: https://img.shields.io/discord/1100685673633153084?color=5865F2&label=discord&labelColor=black&logo=discord&logoColor=white&style=flat-square
 [discord-shield-badge]: https://img.shields.io/discord/1100685673633153084?color=5865F2&label=discord&labelColor=black&logo=discord&logoColor=white&style=for-the-badge

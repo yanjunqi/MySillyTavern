@@ -1,6 +1,10 @@
-import { pipeline, env, RawImage, Pipeline } from 'sillytavern-transformers';
+import path from 'node:path';
+import fs from 'node:fs';
+import process from 'node:process';
+import { Buffer } from 'node:buffer';
+
+import { pipeline, env, RawImage } from 'sillytavern-transformers';
 import { getConfigValue } from './util.js';
-import path from 'path';
 
 configureTransformers();
 
@@ -30,12 +34,6 @@ const tasks = {
         configField: 'extras.embeddingModel',
         quantized: true,
     },
-    'text-generation': {
-        defaultModel: 'Cohee/fooocus_expansion-onnx',
-        pipeline: null,
-        configField: 'extras.promptExpansionModel',
-        quantized: true,
-    },
     'automatic-speech-recognition': {
         defaultModel: 'Xenova/whisper-small',
         pipeline: null,
@@ -48,14 +46,14 @@ const tasks = {
         configField: 'extras.textToSpeechModel',
         quantized: false,
     },
-}
+};
 
 /**
  * Gets a RawImage object from a base64-encoded image.
  * @param {string} image Base64-encoded image
  * @returns {Promise<RawImage|null>} Object representing the image
  */
-async function getRawImage(image) {
+export async function getRawImage(image) {
     try {
         const buffer = Buffer.from(image, 'base64');
         const byteArray = new Uint8Array(buffer);
@@ -85,13 +83,45 @@ function getModelForTask(task) {
     }
 }
 
+async function migrateCacheToDataDir() {
+    const oldCacheDir = path.join(process.cwd(), 'cache');
+    const newCacheDir = path.join(global.DATA_ROOT, '_cache');
+
+    if (!fs.existsSync(newCacheDir)) {
+        fs.mkdirSync(newCacheDir, { recursive: true });
+    }
+
+    if (fs.existsSync(oldCacheDir) && fs.statSync(oldCacheDir).isDirectory()) {
+        const files = fs.readdirSync(oldCacheDir);
+
+        if (files.length === 0) {
+            return;
+        }
+
+        console.log('Migrating model cache files to data directory. Please wait...');
+
+        for (const file of files) {
+            try {
+                const oldPath = path.join(oldCacheDir, file);
+                const newPath = path.join(newCacheDir, file);
+                fs.cpSync(oldPath, newPath, { recursive: true, force: true });
+                fs.rmSync(oldPath, { recursive: true, force: true });
+            } catch (error) {
+                console.warn('Failed to migrate cache file. The model will be re-downloaded.', error);
+            }
+        }
+    }
+}
+
 /**
  * Gets the transformers.js pipeline for a given task.
  * @param {import('sillytavern-transformers').PipelineType} task The task to get the pipeline for
  * @param {string} forceModel The model to use for the pipeline, if any
- * @returns {Promise<Pipeline>} Pipeline for the task
+ * @returns {Promise<import('sillytavern-transformers').Pipeline>} The transformers.js pipeline
  */
-async function getPipeline(task, forceModel = '') {
+export async function getPipeline(task, forceModel = '') {
+    await migrateCacheToDataDir();
+
     if (tasks[task].pipeline) {
         if (forceModel === '' || tasks[task].currentModel === forceModel) {
             return tasks[task].pipeline;
@@ -100,17 +130,18 @@ async function getPipeline(task, forceModel = '') {
         await tasks[task].pipeline.dispose();
     }
 
-    const cache_dir = path.join(process.cwd(), 'cache');
+    const cacheDir = path.join(global.DATA_ROOT, '_cache');
     const model = forceModel || getModelForTask(task);
     const localOnly = getConfigValue('extras.disableAutoDownload', false);
     console.log('Initializing transformers.js pipeline for task', task, 'with model', model);
-    const instance = await pipeline(task, model, { cache_dir, quantized: tasks[task].quantized ?? true, local_files_only: localOnly });
+    const instance = await pipeline(task, model, { cache_dir: cacheDir, quantized: tasks[task].quantized ?? true, local_files_only: localOnly });
     tasks[task].pipeline = instance;
     tasks[task].currentModel = model;
+    // @ts-ignore
     return instance;
 }
 
 export default {
-    getPipeline,
     getRawImage,
+    getPipeline,
 };

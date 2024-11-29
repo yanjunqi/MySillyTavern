@@ -1,7 +1,9 @@
 import {
     Generate,
+    UNIQUE_APIS,
     activateSendButtons,
     addOneMessage,
+    api_server,
     callPopup,
     characters,
     chat,
@@ -9,6 +11,7 @@ import {
     comment_avatar,
     deactivateSendButtons,
     default_avatar,
+    deleteSwipe,
     eventSource,
     event_types,
     extension_prompt_roles,
@@ -21,6 +24,7 @@ import {
     main_api,
     name1,
     name2,
+    neutralCharacterName,
     reloadCurrentChat,
     removeMacros,
     renameCharacter,
@@ -49,9 +53,9 @@ import { findGroupMemberId, groups, is_group_generating, openGroupById, resetSel
 import { chat_completion_sources, oai_settings, setupChatCompletionPromptManager } from './openai.js';
 import { autoSelectPersona, retriggerFirstMessageOnEmptyChat, setPersonaLockState, togglePersonaLock, user_avatar } from './personas.js';
 import { addEphemeralStoppingString, chat_styles, flushEphemeralStoppingStrings, power_user } from './power-user.js';
-import { textgen_types, textgenerationwebui_settings } from './textgen-settings.js';
-import { decodeTextTokens, getFriendlyTokenizerName, getTextTokens, getTokenCountAsync } from './tokenizers.js';
-import { debounce, delay, isFalseBoolean, isTrueBoolean, stringToRange, trimToEndSentence, trimToStartSentence, waitUntilCondition } from './utils.js';
+import { SERVER_INPUTS, textgen_types, textgenerationwebui_settings } from './textgen-settings.js';
+import { decodeTextTokens, getAvailableTokenizers, getFriendlyTokenizerName, getTextTokens, getTokenCountAsync, selectTokenizer } from './tokenizers.js';
+import { debounce, delay, equalsIgnoreCaseAndAccents, findChar, getCharIndex, isFalseBoolean, isTrueBoolean, onlyUnique, showFontAwesomePicker, stringToRange, trimToEndSentence, trimToStartSentence, waitUntilCondition } from './utils.js';
 import { registerVariableCommands, resolveVariable } from './variables.js';
 import { background_settings } from './backgrounds.js';
 import { SlashCommandClosure } from './slash-commands/SlashCommandClosure.js';
@@ -64,6 +68,9 @@ import { SlashCommandNamedArgumentAssignment } from './slash-commands/SlashComma
 import { SlashCommandEnumValue, enumTypes } from './slash-commands/SlashCommandEnumValue.js';
 import { POPUP_TYPE, Popup, callGenericPopup } from './popup.js';
 import { commonEnumProviders, enumIcons } from './slash-commands/SlashCommandCommonEnumsProvider.js';
+import { SlashCommandBreakController } from './slash-commands/SlashCommandBreakController.js';
+import { SlashCommandExecutionError } from './slash-commands/SlashCommandExecutionError.js';
+import { slashCommandReturnHelper } from './slash-commands/SlashCommandReturnHelper.js';
 export {
     executeSlashCommands, executeSlashCommandsWithOptions, getSlashCommandsHelp, registerSlashCommand,
 };
@@ -167,25 +174,110 @@ export function initDefaultSlashCommands() {
     `,
     }));
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'char-find',
+        aliases: ['findchar'],
+        callback: (args, name) => {
+            if (typeof name !== 'string') throw new Error('name must be a string');
+            if (args.preferCurrent instanceof SlashCommandClosure || Array.isArray(args.preferCurrent)) throw new Error('preferCurrent cannot be a closure or array');
+            if (args.quiet instanceof SlashCommandClosure || Array.isArray(args.quiet)) throw new Error('quiet cannot be a closure or array');
+
+            const char = findChar({ name: name, filteredByTags: validateArrayArgString(args.tag, 'tag'), preferCurrentChar: !isFalseBoolean(args.preferCurrent), quiet: isTrueBoolean(args.quiet) });
+            return char?.avatar ?? '';
+        },
+        returns: 'the avatar key (unique identifier) of the character',
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'tag',
+                description: 'Supply one or more tags to filter down to the correct character for the provided name, if multiple characters have the same name.',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumProvider: commonEnumProviders.tags('assigned'),
+                acceptsMultiple: true,
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'preferCurrent',
+                description: 'Prefer current character or characters in a group, if multiple characters match',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'true',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'quiet',
+                description: 'Do not show warning if multiple charactrers are found',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'false',
+                enumProvider: commonEnumProviders.boolean('trueFalse'),
+            }),
+        ],
+        unnamedArgumentList: [
+            SlashCommandArgument.fromProps({
+                description: 'Character name - or unique character identifier (avatar key)',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumProvider: commonEnumProviders.characters('character'),
+                forceEnum: false,
+            }),
+        ],
+        helpString: `
+        <div>
+            Searches for a character and returns its avatar key.
+        </div>
+        <div>
+            This can be used to choose the correct character for something like <code>/sendas</code> or other commands in need of a character name
+            if you have multiple characters with the same name.
+        </div>
+        <div>
+            <strong>Example:</strong>
+            <ul>
+                <li>
+                    <pre><code>/char-find name="Chloe"</code></pre>
+                    Returns the avatar key for "Chloe".
+                </li>
+                <li>
+                    <pre><code>/search name="Chloe" tag="friend"</code></pre>
+                    Returns the avatar key for the character "Chloe" that is tagged with "friend".
+                    This is useful if you for example have multiple characters named "Chloe", and the others are "foe", "goddess", or anything else,
+                    so you can actually select the character you are looking for.
+                </li>
+            </ul>
+        </div>
+        `,
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'sendas',
         callback: sendMessageAs,
+        returns: 'Optionally the text of the sent message, if specified in the "return" argument',
         namedArgumentList: [
             SlashCommandNamedArgument.fromProps({
                 name: 'name',
-                description: 'Character name',
+                description: 'Character name - or unique character identifier (avatar key)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 isRequired: true,
                 enumProvider: commonEnumProviders.characters('character'),
                 forceEnum: false,
             }),
-            new SlashCommandNamedArgument(
-                'compact', 'Use compact layout', [ARGUMENT_TYPE.BOOLEAN], false, false, 'false',
-            ),
+            SlashCommandNamedArgument.fromProps({
+                name: 'avatar',
+                description: 'Character avatar override (Can be either avatar key or just the character name to pull the avatar from)',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumProvider: commonEnumProviders.characters('character'),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'compact',
+                description: 'Use compact layout',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'false',
+            }),
             SlashCommandNamedArgument.fromProps({
                 name: 'at',
                 description: 'position to insert the message (index-based, corresponding to message id). If not set, the message will be inserted at the end of the chat.\nNegative values are accepted and will work similarly to how \'depth\' usually works. For example, -1 will insert the message right before the last message in chat.',
                 typeList: [ARGUMENT_TYPE.NUMBER],
                 enumProvider: commonEnumProviders.messages({ allowIdAfter: true }),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'none',
+                enumList: slashCommandReturnHelper.enumList({ allowObject: true }),
+                forceEnum: true,
             }),
         ],
         unnamedArgumentList: [
@@ -204,6 +296,10 @@ export function initDefaultSlashCommands() {
                     <pre><code>/sendas name="Chloe" Hello, guys!</code></pre>
                     will send "Hello, guys!" from "Chloe".
                 </li>
+                <li>
+                    <pre><code>/sendas name="Chloe" avatar="BigBadBoss" Hehehe, I am the big bad evil, fear me.</code></pre>
+                    will send a message as the character "Chloe", but utilizing the avatar from a character named "BigBadBoss".
+                </li>
             </ul>
         </div>
         <div>
@@ -215,6 +311,7 @@ export function initDefaultSlashCommands() {
         name: 'sys',
         callback: sendNarratorMessage,
         aliases: ['nar'],
+        returns: 'Optionally the text of the sent message, if specified in the "return" argument',
         namedArgumentList: [
             new SlashCommandNamedArgument(
                 'compact',
@@ -229,6 +326,14 @@ export function initDefaultSlashCommands() {
                 description: 'position to insert the message (index-based, corresponding to message id). If not set, the message will be inserted at the end of the chat.\nNegative values are accepted and will work similarly to how \'depth\' usually works. For example, -1 will insert the message right before the last message in chat.',
                 typeList: [ARGUMENT_TYPE.NUMBER],
                 enumProvider: commonEnumProviders.messages({ allowIdAfter: true }),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'none',
+                enumList: slashCommandReturnHelper.enumList({ allowObject: true }),
+                forceEnum: true,
             }),
         ],
         unnamedArgumentList: [
@@ -269,6 +374,7 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'comment',
         callback: sendCommentMessage,
+        returns: 'Optionally the text of the sent message, if specified in the "return" argument',
         namedArgumentList: [
             new SlashCommandNamedArgument(
                 'compact',
@@ -283,6 +389,14 @@ export function initDefaultSlashCommands() {
                 description: 'position to insert the message (index-based, corresponding to message id). If not set, the message will be inserted at the end of the chat.\nNegative values are accepted and will work similarly to how \'depth\' usually works. For example, -1 will insert the message right before the last message in chat.',
                 typeList: [ARGUMENT_TYPE.NUMBER],
                 enumProvider: commonEnumProviders.messages({ allowIdAfter: true }),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'none',
+                enumList: slashCommandReturnHelper.enumList({ allowObject: true }),
+                forceEnum: true,
             }),
         ],
         unnamedArgumentList: [
@@ -374,12 +488,14 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'go',
         callback: goToCharacterCallback,
+        returns: 'The character/group name',
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
-                description: 'name',
+                description: 'Character name - or unique character identifier (avatar key)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 isRequired: true,
                 enumProvider: commonEnumProviders.characters('all'),
+                forceEnum: true,
             }),
         ],
         helpString: 'Opens up a chat with the character or group by its name',
@@ -421,18 +537,27 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'ask',
         callback: askCharacter,
+        returns: 'Optionally the text of the sent message, if specified in the "return" argument',
         namedArgumentList: [
             SlashCommandNamedArgument.fromProps({
                 name: 'name',
-                description: 'character name',
+                description: 'Character name - or unique character identifier (avatar key)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 isRequired: true,
                 enumProvider: commonEnumProviders.characters('character'),
             }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'pipe',
+                enumList: slashCommandReturnHelper.enumList({ allowObject: true }),
+                forceEnum: true,
+            }),
         ],
         unnamedArgumentList: [
             new SlashCommandArgument(
-                'prompt', [ARGUMENT_TYPE.STRING], true, false,
+                'prompt', [ARGUMENT_TYPE.STRING], false, false,
             ),
         ],
         helpString: 'Asks a specified character card a prompt. Character name must be provided in a named argument.',
@@ -443,7 +568,7 @@ export function initDefaultSlashCommands() {
         namedArgumentList: [],
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
-                description: 'name',
+                description: 'Character name - or unique character identifier (avatar key)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 isRequired: true,
                 enumProvider: commonEnumProviders.characters('character'),
@@ -467,6 +592,7 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'send',
         callback: sendUserMessageCallback,
+        returns: 'Optionally the text of the sent message, if specified in the "return" argument',
         namedArgumentList: [
             new SlashCommandNamedArgument(
                 'compact',
@@ -488,6 +614,14 @@ export function initDefaultSlashCommands() {
                 typeList: [ARGUMENT_TYPE.STRING],
                 defaultValue: '{{user}}',
                 enumProvider: commonEnumProviders.personas,
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'none',
+                enumList: slashCommandReturnHelper.enumList({ allowObject: true }),
+                forceEnum: true,
             }),
         ],
         unnamedArgumentList: [
@@ -610,7 +744,7 @@ export function initDefaultSlashCommands() {
         aliases: ['addmember', 'memberadd'],
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
-                description: 'character name',
+                description: 'Character name - or unique character identifier (avatar key)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 isRequired: true,
                 enumProvider: () => selected_group ? commonEnumProviders.characters('character')() : [],
@@ -714,6 +848,7 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'delswipe',
         callback: deleteSwipeCallback,
+        returns: 'the new, currently selected swipe id',
         aliases: ['swipedel'],
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
@@ -790,6 +925,27 @@ export function initDefaultSlashCommands() {
                 defaultValue: 'false',
                 enumList: commonEnumProviders.boolean('trueFalse')(),
             }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'cssClass',
+                description: 'additional CSS class to add to the toast message (e.g. for custom styling)',
+                typeList: [ARGUMENT_TYPE.STRING],
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'color',
+                description: 'custom CSS color of the toast message. Accepts all valid CSS color values (e.g. \'red\', \'#FF0000\', \'rgb(255, 0, 0)\').<br />>Can be more customizable with the \'cssClass\' argument and custom classes.',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'escapeHtml',
+                description: 'whether to escape HTML in the toast message.',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'true',
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'onClick',
+                description: 'a closure to call when the toast is clicked. This executed closure receives scope as provided in the script. Careful about possible side effects when manipulating variables and more.',
+                typeList: [ARGUMENT_TYPE.CLOSURE],
+            }),
         ],
         unnamedArgumentList: [
             new SlashCommandArgument(
@@ -798,13 +954,19 @@ export function initDefaultSlashCommands() {
         ],
         helpString: `
         <div>
-            Echoes the provided text to a toast message. Useful for pipes debugging.
+            Echoes the provided text to a toast message. Can be used to display informational messages or for pipes debugging.
         </div>
         <div>
             <strong>Example:</strong>
             <ul>
                 <li>
-                    <pre><code>/echo title="My Message" severity=info This is an info message</code></pre>
+                    <pre><code>/echo title="My Message" severity=warning This is a warning message</code></pre>
+                </li>
+                <li>
+                    <pre><code>/echo color=purple This message is purple</code></pre>
+                </li>
+                <li>
+                    <pre><code>/echo onClick={: /echo escapeHtml=false color=transparent cssClass=wider_dialogue_popup &lt;img src="/img/five.png" /&gt; :} timeout=5000 Clicking on this message within 5 seconds will open the image.</code></pre>
                 </li>
             </ul>
         </div>
@@ -820,7 +982,7 @@ export function initDefaultSlashCommands() {
             ),
             SlashCommandNamedArgument.fromProps({
                 name: 'name',
-                description: 'in-prompt name for instruct mode',
+                description: 'in-prompt character name for instruct mode (or unique character identifier (avatar key), which will be used as name)',
                 typeList: [ARGUMENT_TYPE.STRING],
                 defaultValue: 'System',
                 enumProvider: () => [...commonEnumProviders.characters('character')(), new SlashCommandEnumValue('System', null, enumTypes.enum, enumIcons.assistant)],
@@ -909,13 +1071,28 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'addswipe',
         callback: addSwipeCallback,
+        returns: 'the new swipe id',
         aliases: ['swipeadd'],
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'switch',
+                description: 'switch to the new swipe',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean()(),
+            }),
+        ],
         unnamedArgumentList: [
             new SlashCommandArgument(
                 'text', [ARGUMENT_TYPE.STRING], true,
             ),
         ],
-        helpString: 'Adds a swipe to the last chat message.',
+        helpString: `
+        <div>
+            Adds a swipe to the last chat message.
+        </div>
+        <div>
+            Use switch=true to switch to directly switch to the new swipe.
+        </div>`,
     }));
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'stop',
@@ -1120,10 +1297,10 @@ export function initDefaultSlashCommands() {
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
                 description: 'scoped variable or qr label',
-                typeList: [ARGUMENT_TYPE.VARIABLE_NAME, ARGUMENT_TYPE.STRING],
+                typeList: [ARGUMENT_TYPE.VARIABLE_NAME, ARGUMENT_TYPE.STRING, ARGUMENT_TYPE.CLOSURE],
                 isRequired: true,
-                enumProvider: () => [
-                    ...commonEnumProviders.variables('scope')(),
+                enumProvider: (executor, scope) => [
+                    ...commonEnumProviders.variables('scope')(executor, scope),
                     ...(typeof window['qrEnumProviderExecutables'] === 'function') ? window['qrEnumProviderExecutables']() : [],
                 ],
             }),
@@ -1218,20 +1395,66 @@ export function initDefaultSlashCommands() {
         callback: popupCallback,
         returns: 'popup text',
         namedArgumentList: [
-            new SlashCommandNamedArgument(
-                'large', 'show large popup', [ARGUMENT_TYPE.BOOLEAN], false, false, null, commonEnumProviders.boolean('onOff')(),
-            ),
-            new SlashCommandNamedArgument(
-                'wide', 'show wide popup', [ARGUMENT_TYPE.BOOLEAN], false, false, null, commonEnumProviders.boolean('onOff')(),
-            ),
-            new SlashCommandNamedArgument(
-                'okButton', 'text for the OK button', [ARGUMENT_TYPE.STRING], false,
-            ),
+            SlashCommandNamedArgument.fromProps({
+                name: 'scroll',
+                description: 'allows vertical scrolling of the content',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'true',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'large',
+                description: 'show large popup',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'false',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'wide',
+                description: 'show wide popup',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'false',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'wider',
+                description: 'show wider popup',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'false',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'transparent',
+                description: 'show transparent popup',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'false',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'okButton',
+                description: 'text for the OK button',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'OK',
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'cancelButton',
+                description: 'text for the Cancel button',
+                typeList: [ARGUMENT_TYPE.STRING],
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'result',
+                description: 'if enabled, returns the popup result (as an integer) instead of the popup text. Resolves to 1 for OK and 0 cancel button, empty string for exiting out.',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+                defaultValue: 'false',
+            }),
         ],
         unnamedArgumentList: [
-            new SlashCommandArgument(
-                'text', [ARGUMENT_TYPE.STRING], true,
-            ),
+            SlashCommandArgument.fromProps({
+                description: 'popup text',
+                typeList: [ARGUMENT_TYPE.STRING],
+                isRequired: true,
+            }),
         ],
         helpString: `
         <div>
@@ -1242,7 +1465,10 @@ export function initDefaultSlashCommands() {
             <strong>Example:</strong>
             <ul>
                 <li>
-                    <pre><code>/popup large=on wide=on okButton="Submit" Enter some text:</code></pre>
+                    <pre><code>/popup large=on wide=on okButton="Confirm" Please confirm this action.</code></pre>
+                </li>
+                <li>
+                    <pre><code>/popup okButton="Left" cancelButton="Right" result=true Do you want to go left or right? | /echo 0 means right, 1 means left. Choice: {{pipe}}</code></pre>
                 </li>
             </ul>
         </div>
@@ -1394,7 +1620,31 @@ export function initDefaultSlashCommands() {
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'listinjects',
         callback: listInjectsCallback,
-        helpString: 'Lists all script injections for the current chat.',
+        helpString: 'Lists all script injections for the current chat. Displays injects in a popup by default. Use the <code>return</code> argument to change the return type.',
+        returns: 'Optionalls the JSON object of script injections',
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'return',
+                description: 'The way how you want the return value to be provided',
+                typeList: [ARGUMENT_TYPE.STRING],
+                defaultValue: 'popup-html',
+                enumList: slashCommandReturnHelper.enumList({ allowPipe: false, allowObject: true, allowChat: true, allowPopup: true, allowTextVersion: false }),
+                forceEnum: true,
+            }),
+            // TODO remove some day
+            SlashCommandNamedArgument.fromProps({
+                name: 'format',
+                description: '!!! DEPRECATED - use "return" instead !!! output format',
+                typeList: [ARGUMENT_TYPE.STRING],
+                isRequired: true,
+                forceEnum: true,
+                enumList: [
+                    new SlashCommandEnumValue('popup', 'Show injects in a popup.', enumTypes.enum, enumIcons.default),
+                    new SlashCommandEnumValue('chat', 'Post a system message to the chat.', enumTypes.enum, enumIcons.default),
+                    new SlashCommandEnumValue('none', 'Just return the injects as a JSON object.', enumTypes.enum, enumIcons.default),
+                ],
+            }),
+        ],
     }));
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'flushinject',
@@ -1428,11 +1678,20 @@ export function initDefaultSlashCommands() {
         name: 'model',
         callback: modelCallback,
         returns: 'current model',
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'quiet',
+                description: 'suppress the toast message on model change',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'false',
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+            }),
+        ],
         unnamedArgumentList: [
             SlashCommandArgument.fromProps({
                 description: 'model name',
                 typeList: [ARGUMENT_TYPE.STRING],
-                enumProvider: () => getModelOptions()?.options.map(option => new SlashCommandEnumValue(option.value, option.value !== option.text ? option.text : null)),
+                enumProvider: () => getModelOptions(true)?.options?.map(option => new SlashCommandEnumValue(option.value, option.value !== option.text ? option.text : null)) ?? [],
             }),
         ],
         helpString: 'Sets the model for the current API. Gets the current model name if no argument is provided.',
@@ -1476,6 +1735,95 @@ export function initDefaultSlashCommands() {
             }),
         ],
         helpString: 'Sets the specified prompt manager entry/entries on or off.',
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'pick-icon',
+        callback: async () => ((await showFontAwesomePicker()) ?? false).toString(),
+        returns: 'The chosen icon name or false if cancelled.',
+        helpString: `
+                <div>Opens a popup with all the available Font Awesome icons and returns the selected icon's name.</div>
+                <div>
+                    <strong>Example:</strong>
+                    <ul>
+                        <li>
+                            <pre><code>/pick-icon |\n/if left={{pipe}} rule=eq right=false\n\telse={: /echo chosen icon: "{{pipe}}" :}\n\t{: /echo cancelled icon selection :}\n|</code></pre>
+                        </li>
+                    </ul>
+                </div>
+            `,
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'api-url',
+        callback: setApiUrlCallback,
+        returns: 'the current API url',
+        aliases: ['server'],
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'api',
+                description: 'API to set/get the URL for - if not provided, current API is used',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumList: [
+                    new SlashCommandEnumValue('custom', 'custom OpenAI-compatible', enumTypes.getBasedOnIndex(UNIQUE_APIS.findIndex(x => x === 'openai')), 'O'),
+                    new SlashCommandEnumValue('kobold', 'KoboldAI Classic', enumTypes.getBasedOnIndex(UNIQUE_APIS.findIndex(x => x === 'kobold')), 'K'),
+                    ...Object.values(textgen_types).map(api => new SlashCommandEnumValue(api, null, enumTypes.getBasedOnIndex(UNIQUE_APIS.findIndex(x => x === 'textgenerationwebui')), 'T')),
+                ],
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'connect',
+                description: 'Whether to auto-connect to the API after setting the URL',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'true',
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'quiet',
+                description: 'suppress the toast message on API change',
+                typeList: [ARGUMENT_TYPE.BOOLEAN],
+                defaultValue: 'false',
+                enumList: commonEnumProviders.boolean('trueFalse')(),
+            }),
+        ],
+        unnamedArgumentList: [
+            SlashCommandArgument.fromProps({
+                description: 'API url to connect to',
+                typeList: [ARGUMENT_TYPE.STRING],
+            }),
+        ],
+        helpString: `
+            <div>
+                Set the API url / server url for the currently selected API, including the port. If no argument is provided, it will return the current API url.
+            </div>
+            <div>
+                If a manual API is provided to <b>set</b> the URL, make sure to set <code>connect=false</code>, as auto-connect only works for the currently selected API,
+                or consider switching to it with <code>/api</code> first.
+            </div>
+            <div>
+                This slash command works for most of the Text Completion sources, KoboldAI Classic, and also Custom OpenAI compatible for the Chat Completion sources. If unsure which APIs are supported,
+                check the auto-completion of the optional <code>api</code> argument of this command.
+            </div>
+        `,
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'tokenizer',
+        callback: selectTokenizerCallback,
+        returns: 'current tokenizer',
+        unnamedArgumentList: [
+            SlashCommandArgument.fromProps({
+                description: 'tokenizer name',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumList: getAvailableTokenizers().map(tokenizer =>
+                    new SlashCommandEnumValue(tokenizer.tokenizerKey, tokenizer.tokenizerName, enumTypes.enum, enumIcons.default)),
+            }),
+        ],
+        helpString: `
+            <div>
+                Selects tokenizer by name. Gets the current tokenizer if no name is provided.
+            </div>
+            <div>
+                <strong>Available tokenizers:</strong>
+                <pre><code>${getAvailableTokenizers().map(t => t.tokenizerKey).join(', ')}</code></pre>
+            </div>
+        `,
     }));
 
     registerVariableCommands();
@@ -1554,25 +1902,44 @@ function injectCallback(args, value) {
     return '';
 }
 
-function listInjectsCallback() {
-    if (!chat_metadata.script_injects || !Object.keys(chat_metadata.script_injects).length) {
-        toastr.info('No script injections for the current chat');
-        return '';
+async function listInjectsCallback(args) {
+    /** @type {import('./slash-commands/SlashCommandReturnHelper.js').SlashCommandReturnType} */
+    let returnType = args.return;
+
+    // Old legacy return type handling
+    if (args.format) {
+        toastr.warning(`Legacy argument 'format' with value '${args.format}' is deprecated. Please use 'return' instead. Routing to the correct return type...`, 'Deprecation warning');
+        const type = String(args?.format).toLowerCase().trim();
+        if (!chat_metadata.script_injects || !Object.keys(chat_metadata.script_injects).length) {
+            type !== 'none' && toastr.info('No script injections for the current chat');
+        }
+        switch (type) {
+            case 'none':
+                returnType = 'none';
+                break;
+            case 'chat':
+                returnType = 'chat-html';
+                break;
+            case 'popup':
+            default:
+                returnType = 'popup-html';
+                break;
+        }
     }
 
-    const injects = Object.entries(chat_metadata.script_injects)
-        .map(([id, inject]) => {
-            const position = Object.entries(extension_prompt_types);
-            const positionName = position.find(([_, value]) => value === inject.position)?.[0] ?? 'unknown';
-            return `* **${id}**: <code>${inject.value}</code> (${positionName}, depth: ${inject.depth}, scan: ${inject.scan ?? false}, role: ${inject.role ?? extension_prompt_roles.SYSTEM})`;
-        })
-        .join('\n');
+    // Now the actual new return type handling
+    const buildTextValue = (injects) => {
+        const injectsStr = Object.entries(injects)
+            .map(([id, inject]) => {
+                const position = Object.entries(extension_prompt_types);
+                const positionName = position.find(([_, value]) => value === inject.position)?.[0] ?? 'unknown';
+                return `* **${id}**: <code>${inject.value}</code> (${positionName}, depth: ${inject.depth}, scan: ${inject.scan ?? false}, role: ${inject.role ?? extension_prompt_roles.SYSTEM})`;
+            })
+            .join('\n');
+        return `### Script injections:\n${injectsStr || 'No script injections for the current chat'}`;
+    };
 
-    const converter = new showdown.Converter();
-    const messageText = `### Script injections:\n${injects}`;
-    const htmlMessage = DOMPurify.sanitize(converter.makeHtml(messageText));
-
-    sendSystemMessage(system_message_types.GENERIC, htmlMessage);
+    return await slashCommandReturnHelper.doReturn(returnType ?? 'popup-html', chat_metadata.script_injects ?? {}, { objectToStringFunc: buildTextValue });
 }
 
 /**
@@ -1731,7 +2098,7 @@ async function buttonsCallback(args, text) {
             popupContainer.innerHTML = safeValue;
             popupContainer.appendChild(buttonContainer);
 
-            popup = new Popup(popupContainer, POPUP_TYPE.TEXT, '', { okButton: 'Cancel' });
+            popup = new Popup(popupContainer, POPUP_TYPE.TEXT, '', { okButton: 'Cancel', allowVerticalScrolling: true });
             popup.show()
                 .then((result => resolve(typeof result === 'number' ? resultToButtonMap.get(result) ?? '' : '')))
                 .catch(() => resolve(''));
@@ -1742,19 +2109,25 @@ async function buttonsCallback(args, text) {
 }
 
 async function popupCallback(args, value) {
-    const safeValue = DOMPurify.sanitize(value || '');
+    const safeBody = DOMPurify.sanitize(value || '');
+    const safeHeader = args?.header && typeof args?.header === 'string' ? DOMPurify.sanitize(args.header) : null;
+    const requestedResult = isTrueBoolean(args?.result);
+
+    /** @type {import('./popup.js').PopupOptions} */
     const popupOptions = {
+        allowVerticalScrolling: !isFalseBoolean(args?.scroll),
         large: isTrueBoolean(args?.large),
         wide: isTrueBoolean(args?.wide),
+        wider: isTrueBoolean(args?.wider),
+        transparent: isTrueBoolean(args?.transparent),
         okButton: args?.okButton !== undefined && typeof args?.okButton === 'string' ? args.okButton : 'Ok',
+        cancelButton: args?.cancelButton !== undefined && typeof args?.cancelButton === 'string' ? args.cancelButton : null,
     };
-    await delay(1);
-    await callGenericPopup(safeValue, POPUP_TYPE.TEXT, '', popupOptions);
-    await delay(1);
-    return String(value);
+    const result = await Popup.show.text(safeHeader, safeBody, popupOptions);
+    return String(requestedResult ? result ?? '' : value);
 }
 
-function getMessagesCallback(args, value) {
+async function getMessagesCallback(args, value) {
     const includeNames = !isFalseBoolean(args?.names);
     const includeHidden = isTrueBoolean(args?.hidden);
     const role = args?.role;
@@ -1787,38 +2160,44 @@ function getMessagesCallback(args, value) {
         throw new Error(`Invalid role provided. Expected one of: system, assistant, user. Got: ${role}`);
     };
 
-    const messages = [];
-
-    for (let messageId = range.start; messageId <= range.end; messageId++) {
-        const message = chat[messageId];
-        if (!message) {
-            console.warn(`WARN: No message found with ID ${messageId}`);
-            continue;
+    const processMessage = async (mesId) => {
+        const msg = chat[mesId];
+        if (!msg) {
+            console.warn(`WARN: No message found with ID ${mesId}`);
+            return null;
         }
 
-        if (role && !filterByRole(message)) {
-            console.debug(`/messages: Skipping message with ID ${messageId} due to role filter`);
-            continue;
+        if (role && !filterByRole(msg)) {
+            console.debug(`/messages: Skipping message with ID ${mesId} due to role filter`);
+            return null;
         }
 
-        if (!includeHidden && message.is_system) {
-            console.debug(`/messages: Skipping hidden message with ID ${messageId}`);
-            continue;
+        if (!includeHidden && msg.is_system) {
+            console.debug(`/messages: Skipping hidden message with ID ${mesId}`);
+            return null;
         }
 
-        if (includeNames) {
-            messages.push(`${message.name}: ${message.mes}`);
-        } else {
-            messages.push(message.mes);
-        }
-    }
+        return includeNames ? `${msg.name}: ${msg.mes}` : msg.mes;
+    };
 
-    return messages.join('\n\n');
+    const messagePromises = [];
+
+    for (let rInd = range.start; rInd <= range.end; ++rInd)
+        messagePromises.push(processMessage(rInd));
+
+    const messages = await Promise.all(messagePromises);
+
+    return messages.filter(m => m !== null).join('\n\n');
 }
 
 async function runCallback(args, name) {
     if (!name) {
         throw new Error('No name provided for /run command');
+    }
+
+    if (name instanceof SlashCommandClosure) {
+        name.breakController = new SlashCommandBreakController();
+        return (await name.execute())?.pipe;
     }
 
     /**@type {SlashCommandScope} */
@@ -1829,6 +2208,11 @@ async function runCallback(args, name) {
             throw new Error(`"${name}" is not callable.`);
         }
         closure.scope.parent = scope;
+        closure.breakController = new SlashCommandBreakController();
+        if (args._debugController && !closure.debugController) {
+            closure.debugController = args._debugController;
+        }
+        while (closure.providedArgumentList.pop());
         closure.argumentList.forEach(arg => {
             if (Object.keys(args).includes(arg.name)) {
                 const providedArg = new SlashCommandNamedArgumentAssignment();
@@ -1847,9 +2231,14 @@ async function runCallback(args, name) {
 
     try {
         name = name.trim();
-        return await window['executeQuickReplyByName'](name, args);
+        /**@type {ExecuteSlashCommandsOptions} */
+        const options = {
+            abortController: args._abortController,
+            debugController: args._debugController,
+        };
+        return await window['executeQuickReplyByName'](name, args, options);
     } catch (error) {
-        throw new Error(`Error running Quick Reply "${name}": ${error.message}`, 'Error');
+        throw new Error(`Error running Quick Reply "${name}": ${error.message}`);
     }
 }
 
@@ -2001,7 +2390,7 @@ function setEphemeralStopStrings(value) {
 async function generateRawCallback(args, value) {
     if (!value) {
         console.warn('WARN: No argument provided for /genraw command');
-        return;
+        return '';
     }
 
     // Prevent generate recursion
@@ -2020,20 +2409,25 @@ async function generateRawCallback(args, value) {
         setEphemeralStopStrings(resolveVariable(args?.stop));
         const result = await generateRaw(value, '', isFalseBoolean(args?.instruct), quietToLoud, systemPrompt, length);
         return result;
+    } catch (err) {
+        console.error('Error on /genraw generation', err);
+        toastr.error(err.message, 'API Error', { preventDuplicates: true });
     } finally {
         if (lock) {
             activateSendButtons();
         }
         flushEphemeralStoppingStrings();
     }
+    return '';
 }
 
+/**
+ * Callback for the /gen command
+ * @param {object} args Named arguments
+ * @param {string} value Unnamed argument
+ * @returns {Promise<string>} The generated text
+ */
 async function generateCallback(args, value) {
-    if (!value) {
-        console.warn('WARN: No argument provided for /gen command');
-        return;
-    }
-
     // Prevent generate recursion
     $('#send_textarea').val('')[0].dispatchEvent(new Event('input', { bubbles: true }));
     const lock = isTrueBoolean(args?.lock);
@@ -2048,19 +2442,24 @@ async function generateCallback(args, value) {
 
         setEphemeralStopStrings(resolveVariable(args?.stop));
         const name = args?.name;
-        const result = await generateQuietPrompt(value, quietToLoud, false, '', name, length);
+        const char = findChar({ name: name });
+        const result = await generateQuietPrompt(value, quietToLoud, false, '', char?.name ?? name, length);
         return result;
+    } catch (err) {
+        console.error('Error on /gen generation', err);
+        toastr.error(err.message, 'API Error', { preventDuplicates: true });
     } finally {
         if (lock) {
             activateSendButtons();
         }
         flushEphemeralStoppingStrings();
     }
+    return '';
 }
 
 /**
  *
- * @param {{title?: string, severity?: string, timeout?: string, extendedTimeout?: string, preventDuplicates?: string, awaitDismissal?: string}} args - named arguments from the slash command
+ * @param {{title?: string, severity?: string, timeout?: string, extendedTimeout?: string, preventDuplicates?: string, awaitDismissal?: string, cssClass?: string, color?: string, escapeHtml?: string, onClick?: SlashCommandClosure}} args - named arguments from the slash command
  * @param {string} value - The string to echo (unnamed argument from the slash command)
  * @returns {Promise<string>} The text that was echoed
  */
@@ -2079,7 +2478,7 @@ async function echoCallback(args, value) {
     // Make sure that the value is a string
     value = String(value);
 
-    const title = args.title ? args.title : undefined;
+    let title = args.title ? args.title : undefined;
     const severity = args.severity ? args.severity : 'info';
 
     /** @type {ToastrOptions} */
@@ -2087,6 +2486,8 @@ async function echoCallback(args, value) {
     if (args.timeout && !isNaN(parseInt(args.timeout))) options.timeOut = parseInt(args.timeout);
     if (args.extendedTimeout && !isNaN(parseInt(args.extendedTimeout))) options.extendedTimeOut = parseInt(args.extendedTimeout);
     if (isTrueBoolean(args.preventDuplicates)) options.preventDuplicates = true;
+    if (args.cssClass) options.toastClass = args.cssClass;
+    options.escapeHtml = args.escapeHtml !== undefined ? isTrueBoolean(args.escapeHtml) : true;
 
     // Prepare possible await handling
     let awaitDismissal = isTrueBoolean(args.awaitDismissal);
@@ -2095,21 +2496,43 @@ async function echoCallback(args, value) {
     if (awaitDismissal) {
         options.onHidden = () => resolveToastDismissal(value);
     }
+    if (args.onClick) {
+        if (args.onClick instanceof SlashCommandClosure) {
+            options.onclick = async () => {
+                // Execute the slash command directly, with its internal scope and everything. Clear progress handler so it doesn't interfere with command execution progress.
+                args.onClick.onProgress = null;
+                await args.onClick.execute();
+            };
+        } else {
+            toastr.warning('Invalid onClick provided for /echo command. This is not a closure');
+        }
+    }
 
+    // If we allow HTML, we need to sanitize it to prevent security risks
+    if (!options.escapeHtml) {
+        if (title) title = DOMPurify.sanitize(title, { FORBID_TAGS: ['style'] });
+        value = DOMPurify.sanitize(value, { FORBID_TAGS: ['style'] });
+    }
+
+    let toast;
     switch (severity) {
         case 'error':
-            toastr.error(value, title, options);
+            toast = toastr.error(value, title, options);
             break;
         case 'warning':
-            toastr.warning(value, title, options);
+            toast = toastr.warning(value, title, options);
             break;
         case 'success':
-            toastr.success(value, title, options);
+            toast = toastr.success(value, title, options);
             break;
         case 'info':
         default:
-            toastr.info(value, title, options);
+            toast = toastr.info(value, title, options);
             break;
+    }
+
+    if (args.color) {
+        toast.css('background-color', args.color);
     }
 
     if (awaitDismissal) {
@@ -2121,8 +2544,11 @@ async function echoCallback(args, value) {
     }
 }
 
-
-async function addSwipeCallback(_, arg) {
+/**
+ * @param {{switch?: string}} args - named arguments
+ * @param {string} value - The swipe text to add (unnamed argument)
+ */
+async function addSwipeCallback(args, value) {
     const lastMessage = chat[chat.length - 1];
 
     if (!lastMessage) {
@@ -2130,7 +2556,7 @@ async function addSwipeCallback(_, arg) {
         return '';
     }
 
-    if (!arg) {
+    if (!value) {
         console.warn('WARN: No argument provided for /addswipe command');
         return '';
     }
@@ -2159,59 +2585,39 @@ async function addSwipeCallback(_, arg) {
         lastMessage.swipe_info = lastMessage.swipes.map(() => ({}));
     }
 
-    lastMessage.swipes.push(arg);
+    lastMessage.swipes.push(value);
     lastMessage.swipe_info.push({
         send_date: getMessageTimeStamp(),
         gen_started: null,
         gen_finished: null,
         extra: {
-            bias: extractMessageBias(arg),
+            bias: extractMessageBias(value),
             gen_id: Date.now(),
             api: 'manual',
             model: 'slash command',
         },
     });
 
+    const newSwipeId = lastMessage.swipes.length - 1;
+
+    if (isTrueBoolean(args.switch)) {
+        lastMessage.swipe_id = newSwipeId;
+        lastMessage.mes = lastMessage.swipes[newSwipeId];
+    }
+
     await saveChatConditional();
     await reloadCurrentChat();
 
-    return '';
+    return String(newSwipeId);
 }
 
 async function deleteSwipeCallback(_, arg) {
-    const lastMessage = chat[chat.length - 1];
+    // Take the provided argument. Null if none provided, which will target the current swipe.
+    const swipeId = arg && !isNaN(Number(arg)) ? (Number(arg) - 1) : null;
 
-    if (!lastMessage || !Array.isArray(lastMessage.swipes) || !lastMessage.swipes.length) {
-        toastr.warning('No messages to delete swipes from.');
-        return '';
-    }
+    const newSwipeId = await deleteSwipe(swipeId);
 
-    if (lastMessage.swipes.length <= 1) {
-        toastr.warning('Can\'t delete the last swipe.');
-        return '';
-    }
-
-    const swipeId = arg && !isNaN(Number(arg)) ? (Number(arg) - 1) : lastMessage.swipe_id;
-
-    if (swipeId < 0 || swipeId >= lastMessage.swipes.length) {
-        toastr.warning(`Invalid swipe ID: ${swipeId + 1}`);
-        return '';
-    }
-
-    lastMessage.swipes.splice(swipeId, 1);
-
-    if (Array.isArray(lastMessage.swipe_info) && lastMessage.swipe_info.length) {
-        lastMessage.swipe_info.splice(swipeId, 1);
-    }
-
-    const newSwipeId = Math.min(swipeId, lastMessage.swipes.length - 1);
-    lastMessage.swipe_id = newSwipeId;
-    lastMessage.mes = lastMessage.swipes[newSwipeId];
-
-    await saveChatConditional();
-    await reloadCurrentChat();
-
-    return '';
+    return String(newSwipeId);
 }
 
 async function askCharacter(args, text) {
@@ -2221,88 +2627,83 @@ async function askCharacter(args, text) {
     // Not supported in group chats
     // TODO: Maybe support group chats?
     if (selected_group) {
-        toastr.error('Cannot run this command in a group chat!');
+        toastr.warning('Cannot run /ask command in a group chat!');
         return '';
     }
 
-    if (!text) {
-        console.warn('WARN: No text provided for /ask command');
-        toastr.warning('No text provided for /ask command');
+    if (!args.name) {
+        toastr.warning('You must specify a name of the character to ask.');
         return '';
     }
-
-    let name = '';
-    let mesText = '';
-
-    if (args?.name) {
-        name = args.name.trim();
-        mesText = text.trim();
-
-        if (!name && !mesText) {
-            toastr.warning('You must specify a name and text to ask.');
-            return '';
-        }
-    }
-
-    mesText = getRegexedString(mesText, regex_placement.SLASH_COMMAND);
 
     const prevChId = this_chid;
 
     // Find the character
-    const chId = characters.findIndex((e) => e.name === name);
-    if (!characters[chId] || chId === -1) {
+    const character = findChar({ name: args?.name });
+    if (!character) {
         toastr.error('Character not found.');
         return '';
+    }
+
+    const chId = getCharIndex(character);
+
+    if (text) {
+        const mesText = getRegexedString(text.trim(), regex_placement.SLASH_COMMAND);
+        // Sending a message implicitly saves the chat, so this needs to be done before changing the character
+        // Otherwise, a corruption will occur
+        await sendMessageAsUser(mesText, '');
     }
 
     // Override character and send a user message
     setCharacterId(String(chId));
 
-    // TODO: Maybe look up by filename instead of name
-    const character = characters[chId];
-    let force_avatar, original_avatar;
+    const { name, force_avatar, original_avatar } = getNameAndAvatarForMessage(character, args?.name);
 
-    if (character && character.avatar !== 'none') {
-        force_avatar = getThumbnailUrl('avatar', character.avatar);
-        original_avatar = character.avatar;
-    }
-    else {
-        force_avatar = default_avatar;
-        original_avatar = default_avatar;
-    }
-
-    setCharacterName(character.name);
-
-    await sendMessageAsUser(mesText, '');
+    setCharacterName(name);
 
     const restoreCharacter = () => {
-        setCharacterId(prevChId);
-        setCharacterName(characters[prevChId].name);
+        if (String(this_chid) !== String(chId)) {
+            return;
+        }
+
+        if (prevChId !== undefined) {
+            setCharacterId(prevChId);
+            setCharacterName(characters[prevChId].name);
+        } else {
+            setCharacterId(undefined);
+            setCharacterName(neutralCharacterName);
+        }
 
         // Only force the new avatar if the character name is the same
         // This skips if an error was fired
         const lastMessage = chat[chat.length - 1];
-        if (lastMessage && lastMessage?.name === character.name) {
+        if (lastMessage && lastMessage?.name === name) {
             lastMessage.force_avatar = force_avatar;
             lastMessage.original_avatar = original_avatar;
         }
-
-        // Kill this callback once the event fires
-        eventSource.removeListener(event_types.CHARACTER_MESSAGE_RENDERED, restoreCharacter);
     };
 
-    // Run generate and restore previous character on error
+    let askResult = '';
+
+    // Run generate and restore previous character
     try {
-        toastr.info(`Asking ${character.name} something...`);
-        await Generate('ask_command');
-    } catch {
+        eventSource.once(event_types.MESSAGE_RECEIVED, restoreCharacter);
+        toastr.info(`Asking ${name} something...`);
+        askResult = await Generate('ask_command');
+    } catch (error) {
         restoreCharacter();
+        console.error('Error running /ask command', error);
+    } finally {
+        if (String(this_chid) === String(prevChId)) {
+            await saveChatConditional();
+        } else {
+            toastr.error('It is strongly recommended to reload the page.', 'Something went wrong');
+        }
     }
 
-    // Restore previous character once message renders
-    // Hack for generate
-    eventSource.on(event_types.CHARACTER_MESSAGE_RENDERED, restoreCharacter);
-    return '';
+    const message = askResult ? chat[chat.length - 1] : null;
+
+    return await slashCommandReturnHelper.doReturn(args.return ?? 'pipe', message, { objectToStringFunc: x => x.mes });
 }
 
 async function hideMessageCallback(_, arg) {
@@ -2483,26 +2884,23 @@ async function removeGroupMemberCallback(_, arg) {
     return '';
 }
 
-async function addGroupMemberCallback(_, arg) {
+async function addGroupMemberCallback(_, name) {
     if (!selected_group) {
         toastr.warning('Cannot run /memberadd command outside of a group chat.');
         return '';
     }
 
-    if (!arg) {
+    if (!name) {
         console.warn('WARN: No argument provided for /memberadd command');
         return '';
     }
 
-    arg = arg.trim();
-    const chid = findCharacterIndex(arg);
-
-    if (chid === -1) {
-        console.warn(`WARN: No character found for argument ${arg}`);
+    const character = findChar({ name: name, preferCurrentChar: false });
+    if (!character) {
+        console.warn(`WARN: No character found for argument ${name}`);
         return '';
     }
 
-    const character = characters[chid];
     const group = groups.find(x => x.id === selected_group);
 
     if (!group || !Array.isArray(group.members)) {
@@ -2571,7 +2969,7 @@ function findPersonaByName(name) {
     }
 
     for (const persona of Object.entries(power_user.personas)) {
-        if (persona[1].toLowerCase() === name.toLowerCase()) {
+        if (equalsIgnoreCaseAndAccents(persona[1], name)) {
             return persona[0];
         }
     }
@@ -2580,7 +2978,7 @@ function findPersonaByName(name) {
 
 async function sendUserMessageCallback(args, text) {
     if (!text) {
-        console.warn('WARN: No text provided for /send command');
+        toastr.warning('You must specify text to send');
         return;
     }
 
@@ -2596,16 +2994,17 @@ async function sendUserMessageCallback(args, text) {
         insertAt = chat.length + insertAt;
     }
 
+    let message;
     if ('name' in args) {
         const name = args.name || '';
         const avatar = findPersonaByName(name) || user_avatar;
-        await sendMessageAsUser(text, bias, insertAt, compact, name, avatar);
+        message = await sendMessageAsUser(text, bias, insertAt, compact, name, avatar);
     }
     else {
-        await sendMessageAsUser(text, bias, insertAt, compact);
+        message = await sendMessageAsUser(text, bias, insertAt, compact);
     }
 
-    return '';
+    return await slashCommandReturnHelper.doReturn(args.return ?? 'none', message, { objectToStringFunc: x => x.mes });
 }
 
 async function deleteMessagesByNameCallback(_, name) {
@@ -2614,7 +3013,9 @@ async function deleteMessagesByNameCallback(_, name) {
         return;
     }
 
-    name = name.trim();
+    // Search for a matching character to get the real name, or take the name provided
+    const character = findChar({ name: name });
+    name = character?.name || name;
 
     const messagesToDelete = [];
     chat.forEach((value) => {
@@ -2643,60 +3044,34 @@ async function deleteMessagesByNameCallback(_, name) {
     return '';
 }
 
-function findCharacterIndex(name) {
-    const matchTypes = [
-        (a, b) => a === b,
-        (a, b) => a.startsWith(b),
-        (a, b) => a.includes(b),
-    ];
-
-    const exactAvatarMatch = characters.findIndex(x => x.avatar === name);
-
-    if (exactAvatarMatch !== -1) {
-        return exactAvatarMatch;
-    }
-
-    for (const matchType of matchTypes) {
-        const index = characters.findIndex(x => matchType(x.name.toLowerCase(), name.toLowerCase()));
-        if (index !== -1) {
-            return index;
-        }
-    }
-
-    return -1;
-}
-
 async function goToCharacterCallback(_, name) {
     if (!name) {
         console.warn('WARN: No character name provided for /go command');
         return;
     }
 
-    name = name.trim();
-    const characterIndex = findCharacterIndex(name);
-
-    if (characterIndex !== -1) {
-        await openChat(new String(characterIndex));
-        setActiveCharacter(characters[characterIndex]?.avatar);
+    const character = findChar({ name: name });
+    if (character) {
+        const chid = getCharIndex(character);
+        await openChat(new String(chid));
+        setActiveCharacter(character.avatar);
         setActiveGroup(null);
-        return characters[characterIndex]?.name;
-    } else {
-        const group = groups.find(it => it.name.toLowerCase() == name.toLowerCase());
-        if (group) {
-            await openGroupById(group.id);
-            setActiveCharacter(null);
-            setActiveGroup(group.id);
-            return group.name;
-        } else {
-            console.warn(`No matches found for name "${name}"`);
-            return '';
-        }
+        return character.name;
     }
+    const group = groups.find(it => equalsIgnoreCaseAndAccents(it.name, name));
+    if (group) {
+        await openGroupById(group.id);
+        setActiveCharacter(null);
+        setActiveGroup(group.id);
+        return group.name;
+    }
+    console.warn(`No matches found for name "${name}"`);
+    return '';
 }
 
-async function openChat(id) {
+async function openChat(chid) {
     resetSelectedGroup();
-    setCharacterId(id);
+    setCharacterId(chid);
     await delay(1);
     await reloadCurrentChat();
 }
@@ -2723,7 +3098,7 @@ async function continueChatCallback(args, prompt) {
             resolve();
         } catch (error) {
             console.error('Error running /continue command:', error);
-            reject();
+            reject(error);
         }
     });
 
@@ -2842,32 +3217,95 @@ async function setNarratorName(_, text) {
     return '';
 }
 
+/**
+ * Checks if an argument is a string array (or undefined), and if not, throws an error
+ * @param {string|SlashCommandClosure|(string|SlashCommandClosure)[]|undefined} arg The named argument to check
+ * @param {string} name The name of the argument for the error message
+ * @param {object} [options={}] - The optional arguments
+ * @param {boolean} [options.allowUndefined=false] - Whether the argument can be undefined
+ * @throws {Error} If the argument is not an array
+ * @returns {string[]}
+ */
+export function validateArrayArgString(arg, name, { allowUndefined = true } = {}) {
+    if (arg === undefined) {
+        if (allowUndefined) return undefined;
+        throw new Error(`Argument "${name}" is undefined, but must be a string array`);
+    }
+    if (!Array.isArray(arg)) throw new Error(`Argument "${name}" must be an array`);
+    if (!arg.every(x => typeof x === 'string')) throw new Error(`Argument "${name}" must be an array of strings`);
+    return arg;
+}
+
+/**
+ * Checks if an argument is a string or closure array (or undefined), and if not, throws an error
+ * @param {string|SlashCommandClosure|(string|SlashCommandClosure)[]|undefined} arg The named argument to check
+ * @param {string} name The name of the argument for the error message
+ * @param {object} [options={}] - The optional arguments
+ * @param {boolean} [options.allowUndefined=false] - Whether the argument can be undefined
+ * @throws {Error} If the argument is not an array of strings or closures
+ * @returns {(string|SlashCommandClosure)[]}
+ */
+export function validateArrayArg(arg, name, { allowUndefined = true } = {}) {
+    if (arg === undefined) {
+        if (allowUndefined) return [];
+        throw new Error(`Argument "${name}" is undefined, but must be an array of strings or closures`);
+    }
+    if (!Array.isArray(arg)) throw new Error(`Argument "${name}" must be an array`);
+    if (!arg.every(x => typeof x === 'string' || x instanceof SlashCommandClosure)) throw new Error(`Argument "${name}" must be an array of strings or closures`);
+    return arg;
+}
+
+
+/**
+ * Retrieves the name and avatar information for a message
+ *
+ * The name of the character will always have precendence over the one given as argument. If you want to specify a different name for the message,
+ * explicitly implement this in the code using this.
+ *
+ * @param {object?} character - The character object to get the avatar data for
+ * @param {string?} name - The name to get the avatar data for
+ * @returns {{name: string, force_avatar: string, original_avatar: string}} An object containing the name for the message, forced avatar URL, and original avatar
+ */
+export function getNameAndAvatarForMessage(character, name = null) {
+    const isNeutralCharacter = !character && name2 === neutralCharacterName && name === neutralCharacterName;
+    const currentChar = characters[this_chid];
+
+    let force_avatar, original_avatar;
+    if (character?.avatar === currentChar?.avatar || isNeutralCharacter) {
+        // If the targeted character is the currently selected one in a solo chat, we don't need to force any avatars
+    }
+    else if (character && character.avatar !== 'none') {
+        force_avatar = getThumbnailUrl('avatar', character.avatar);
+        original_avatar = character.avatar;
+    }
+    else {
+        force_avatar = default_avatar;
+        original_avatar = default_avatar;
+    }
+
+    return {
+        name: character?.name || name,
+        force_avatar: force_avatar,
+        original_avatar: original_avatar,
+    };
+}
+
 export async function sendMessageAs(args, text) {
     if (!text) {
+        toastr.warning('You must specify text to send as');
         return '';
     }
 
-    let name;
+    let name = args.name?.trim();
     let mesText;
 
-    if (args.name) {
-        name = args.name.trim();
-
-        if (!name && !text) {
-            toastr.warning('You must specify a name and text to send as');
-            return '';
-        }
-    } else {
+    if (!name) {
         const namelessWarningKey = 'sendAsNamelessWarningShown';
         if (localStorage.getItem(namelessWarningKey) !== 'true') {
             toastr.warning('To avoid confusion, please use /sendas name="Character Name"', 'Name defaulted to {{char}}', { timeOut: 10000 });
             localStorage.setItem(namelessWarningKey, 'true');
         }
         name = name2;
-        if (!text) {
-            toastr.warning('You must specify text to send as');
-            return '';
-        }
     }
 
     mesText = text.trim();
@@ -2880,20 +3318,18 @@ export async function sendMessageAs(args, text) {
     const isSystem = bias && !removeMacros(mesText).length;
     const compact = isTrueBoolean(args?.compact);
 
-    const character = characters.find(x => x.avatar === name) ?? characters.find(x => x.name === name);
-    let force_avatar, original_avatar;
+    const character = findChar({ name: name });
 
-    if (character && character.avatar !== 'none') {
-        force_avatar = getThumbnailUrl('avatar', character.avatar);
-        original_avatar = character.avatar;
+    const avatarCharacter = args.avatar ? findChar({ name: args.avatar }) : character;
+    if (args.avatar && !avatarCharacter) {
+        toastr.warning(`Character for avatar ${args.avatar} not found`);
+        return '';
     }
-    else {
-        force_avatar = default_avatar;
-        original_avatar = default_avatar;
-    }
+
+    const { name: avatarCharName, force_avatar, original_avatar } = getNameAndAvatarForMessage(avatarCharacter, name);
 
     const message = {
-        name: name,
+        name: character?.name || name || avatarCharName,
         is_user: false,
         is_system: isSystem,
         send_date: getMessageTimeStamp(),
@@ -2946,11 +3382,12 @@ export async function sendMessageAs(args, text) {
         await saveChatConditional();
     }
 
-    return '';
+    return await slashCommandReturnHelper.doReturn(args.return ?? 'none', message, { objectToStringFunc: x => x.mes });
 }
 
 export async function sendNarratorMessage(args, text) {
     if (!text) {
+        toastr.warning('You must specify text to send');
         return '';
     }
 
@@ -2999,7 +3436,7 @@ export async function sendNarratorMessage(args, text) {
         await saveChatConditional();
     }
 
-    return '';
+    return await slashCommandReturnHelper.doReturn(args.return ?? 'none', message, { objectToStringFunc: x => x.mes });
 }
 
 export async function promptQuietForLoudResponse(who, text) {
@@ -3045,6 +3482,7 @@ export async function promptQuietForLoudResponse(who, text) {
 
 async function sendCommentMessage(args, text) {
     if (!text) {
+        toastr.warning('You must specify text to send');
         return '';
     }
 
@@ -3087,7 +3525,7 @@ async function sendCommentMessage(args, text) {
         await saveChatConditional();
     }
 
-    return '';
+    return await slashCommandReturnHelper.doReturn(args.return ?? 'none', message, { objectToStringFunc: x => x.mes });
 }
 
 /**
@@ -3165,11 +3603,14 @@ function setBackgroundCallback(_, bg) {
 
 /**
  * Retrieves the available model options based on the currently selected main API and its subtype
+ * @param {boolean} quiet - Whether to suppress toasts
  *
- * @returns {{control: HTMLSelectElement, options: HTMLOptionElement[]}?} An array of objects representing the available model options, or null if not supported
+ * @returns {{control: HTMLSelectElement|HTMLInputElement, options: HTMLOptionElement[]}?} An array of objects representing the available model options, or null if not supported
  */
-function getModelOptions() {
+function getModelOptions(quiet) {
+    const nullResult = { control: null, options: null };
     const modelSelectMap = [
+        { id: 'custom_model_textgenerationwebui', api: 'textgenerationwebui', type: textgen_types.OOBA },
         { id: 'model_togetherai_select', api: 'textgenerationwebui', type: textgen_types.TOGETHERAI },
         { id: 'openrouter_model', api: 'textgenerationwebui', type: textgen_types.OPENROUTER },
         { id: 'model_infermaticai_select', api: 'textgenerationwebui', type: textgen_types.INFERMATICAI },
@@ -3178,6 +3619,8 @@ function getModelOptions() {
         { id: 'vllm_model', api: 'textgenerationwebui', type: textgen_types.VLLM },
         { id: 'aphrodite_model', api: 'textgenerationwebui', type: textgen_types.APHRODITE },
         { id: 'ollama_model', api: 'textgenerationwebui', type: textgen_types.OLLAMA },
+        { id: 'tabby_model', api: 'textgenerationwebui', type: textgen_types.TABBY },
+        { id: 'featherless_model', api: 'textgenerationwebui', type: textgen_types.FEATHERLESS },
         { id: 'model_openai_select', api: 'openai', type: chat_completion_sources.OPENAI },
         { id: 'model_claude_select', api: 'openai', type: chat_completion_sources.CLAUDE },
         { id: 'model_windowai_select', api: 'openai', type: chat_completion_sources.WINDOWAI },
@@ -3185,11 +3628,12 @@ function getModelOptions() {
         { id: 'model_ai21_select', api: 'openai', type: chat_completion_sources.AI21 },
         { id: 'model_google_select', api: 'openai', type: chat_completion_sources.MAKERSUITE },
         { id: 'model_mistralai_select', api: 'openai', type: chat_completion_sources.MISTRALAI },
-        { id: 'model_custom_select', api: 'openai', type: chat_completion_sources.CUSTOM },
+        { id: 'custom_model_id', api: 'openai', type: chat_completion_sources.CUSTOM },
         { id: 'model_cohere_select', api: 'openai', type: chat_completion_sources.COHERE },
         { id: 'model_perplexity_select', api: 'openai', type: chat_completion_sources.PERPLEXITY },
         { id: 'model_groq_select', api: 'openai', type: chat_completion_sources.GROQ },
         { id: 'model_01ai_select', api: 'openai', type: chat_completion_sources.ZEROONEAI },
+        { id: 'model_blockentropy_select', api: 'openai', type: chat_completion_sources.BLOCKENTROPY },
         { id: 'model_novel_select', api: 'novel', type: null },
         { id: 'horde_model', api: 'koboldhorde', type: null },
     ];
@@ -3209,37 +3653,52 @@ function getModelOptions() {
     const modelSelectItem = modelSelectMap.find(x => x.api == main_api && x.type == apiSubType)?.id;
 
     if (!modelSelectItem) {
-        toastr.info('Setting a model for your API is not supported or not implemented yet.');
-        return null;
+        !quiet && toastr.info('Setting a model for your API is not supported or not implemented yet.');
+        return nullResult;
     }
 
     const modelSelectControl = document.getElementById(modelSelectItem);
 
-    if (!(modelSelectControl instanceof HTMLSelectElement)) {
-        toastr.error(`Model select control not found: ${main_api}[${apiSubType}]`);
-        return null;
+    if (!(modelSelectControl instanceof HTMLSelectElement) && !(modelSelectControl instanceof HTMLInputElement)) {
+        !quiet && toastr.error(`Model select control not found: ${main_api}[${apiSubType}]`);
+        return nullResult;
     }
 
-    const options = Array.from(modelSelectControl.options);
+    /**
+     * Get options from a HTMLSelectElement or HTMLInputElement with a list.
+     * @param {HTMLSelectElement | HTMLInputElement} control Control containing the options
+     * @returns {HTMLOptionElement[]} Array of options
+     */
+    const getOptions = (control) => {
+        if (control instanceof HTMLSelectElement) {
+            return Array.from(control.options);
+        }
+
+        const valueOption = new Option(control.value, control.value);
+
+        if (control instanceof HTMLInputElement && control.list instanceof HTMLDataListElement) {
+            return [valueOption, ...Array.from(control.list.options)];
+        }
+
+        return [valueOption];
+    };
+
+    const options = getOptions(modelSelectControl).filter(x => x.value).filter(onlyUnique);
     return { control: modelSelectControl, options };
 }
 
 /**
  * Sets a model for the current API.
- * @param {object} _ Unused
+ * @param {object} args Named arguments
  * @param {string} model New model name
  * @returns {string} New or existing model name
  */
-function modelCallback(_, model) {
-    const { control: modelSelectControl, options } = getModelOptions();
+function modelCallback(args, model) {
+    const quiet = isTrueBoolean(args?.quiet);
+    const { control: modelSelectControl, options } = getModelOptions(quiet);
 
     // If no model was found, the reason was already logged, we just return here
     if (options === null) {
-        return '';
-    }
-
-    if (!options.length) {
-        toastr.warning('No model options found. Check your API settings.');
         return '';
     }
 
@@ -3250,6 +3709,18 @@ function modelCallback(_, model) {
     }
 
     console.log('Set model to ' + model);
+
+    if (modelSelectControl instanceof HTMLInputElement) {
+        modelSelectControl.value = model;
+        $(modelSelectControl).trigger('input');
+        !quiet && toastr.success(`Model set to "${model}"`);
+        return model;
+    }
+
+    if (!options.length) {
+        !quiet && toastr.warning('No model options found. Check your API settings.');
+        return '';
+    }
 
     let newSelectedOption = null;
 
@@ -3270,10 +3741,10 @@ function modelCallback(_, model) {
     if (newSelectedOption) {
         modelSelectControl.value = newSelectedOption.value;
         $(modelSelectControl).trigger('change');
-        toastr.success(`Model set to "${newSelectedOption.text}"`);
+        !quiet && toastr.success(`Model set to "${newSelectedOption.text}"`);
         return newSelectedOption.value;
     } else {
-        toastr.warning(`No model found with name "${model}"`);
+        !quiet && toastr.warning(`No model found with name "${model}"`);
         return '';
     }
 }
@@ -3292,11 +3763,17 @@ function setPromptEntryCallback(args, targetState) {
     const prompts = promptManager.serviceSettings.prompts;
 
     function parseArgs(arg) {
+        // Arg is already an array
+        if (Array.isArray(arg)) {
+            return arg;
+        }
         const list = [];
         try {
+            // Arg is a JSON-stringified array
             const parsedArg = JSON.parse(arg);
             list.push(...Array.isArray(parsedArg) ? parsedArg : [arg]);
         } catch {
+            // Arg is a string
             list.push(arg);
         }
         return list;
@@ -3356,6 +3833,129 @@ function setPromptEntryCallback(args, targetState) {
     promptManager.render();
     promptManager.saveServiceSettings();
     return '';
+}
+
+/**
+ * Sets the API URL and triggers the text generation web UI button click.
+ *
+ * @param {object} args - named args
+ * @param {string?} [args.api=null] - the API name to set/get the URL for
+ * @param {string?} [args.connect=true] - whether to connect to the API after setting
+ * @param {string?} [args.quiet=false] - whether to suppress toasts
+ * @param {string} url - the API URL to set
+ * @returns {Promise<string>}
+ */
+async function setApiUrlCallback({ api = null, connect = 'true', quiet = 'false' }, url) {
+    const isQuiet = isTrueBoolean(quiet);
+    const autoConnect = isTrueBoolean(connect);
+
+    // Special handling for Chat Completion Custom OpenAI compatible, that one can also support API url handling
+    const isCurrentlyCustomOpenai = main_api === 'openai' && oai_settings.chat_completion_source === chat_completion_sources.CUSTOM;
+    if (api === chat_completion_sources.CUSTOM || (!api && isCurrentlyCustomOpenai)) {
+        if (!url) {
+            return oai_settings.custom_url ?? '';
+        }
+
+        if (!isCurrentlyCustomOpenai && autoConnect) {
+            toastr.warning('Custom OpenAI API is not the currently selected API, so we cannot do an auto-connect. Consider switching to it via /api beforehand.');
+            return '';
+        }
+
+        $('#custom_api_url_text').val(url).trigger('input');
+
+        if (autoConnect) {
+            $('#api_button_openai').trigger('click');
+        }
+
+        return url;
+    }
+
+    // Special handling for Kobold Classic API
+    const isCurrentlyKoboldClassic = main_api === 'kobold';
+    if (api === 'kobold' || (!api && isCurrentlyKoboldClassic)) {
+        if (!url) {
+            return api_server ?? '';
+        }
+
+        if (!isCurrentlyKoboldClassic && autoConnect) {
+            toastr.warning('Kobold Classic API is not the currently selected API, so we cannot do an auto-connect. Consider switching to it via /api beforehand.');
+            return '';
+        }
+
+        $('#api_url_text').val(url).trigger('input');
+        // trigger blur debounced, so we hide the autocomplete menu
+        setTimeout(() => $('#api_url_text').trigger('blur'), 1);
+
+        if (autoConnect) {
+            $('#api_button').trigger('click');
+        }
+
+        return api_server ?? '';
+    }
+
+    // Do some checks and get the api type we are targeting with this command
+    if (api && !Object.values(textgen_types).includes(api)) {
+        !isQuiet && toastr.warning(`API '${api}' is not a valid text_gen API.`);
+        return '';
+    }
+    if (!api && !Object.values(textgen_types).includes(textgenerationwebui_settings.type)) {
+        !isQuiet && toastr.warning(`API '${textgenerationwebui_settings.type}' is not a valid text_gen API.`);
+        return '';
+    }
+    if (!api && main_api !== 'textgenerationwebui') {
+        !isQuiet && toastr.warning(`API type '${main_api}' does not support setting the server URL.`);
+        return '';
+    }
+    if (api && url && autoConnect && api !== textgenerationwebui_settings.type) {
+        !isQuiet && toastr.warning(`API '${api}' is not the currently selected API, so we cannot do an auto-connect. Consider switching to it via /api beforehand.`);
+        return '';
+    }
+    const type = api || textgenerationwebui_settings.type;
+
+    const inputSelector = SERVER_INPUTS[type];
+    if (!inputSelector) {
+        !isQuiet && toastr.warning(`API '${type}' does not have a server url input.`);
+        return '';
+    }
+
+    // If no url was provided, return the current one
+    if (!url) {
+        return textgenerationwebui_settings.server_urls[type] ?? '';
+    }
+
+    // else, we want to actually set the url
+    $(inputSelector).val(url).trigger('input');
+    // trigger blur debounced, so we hide the autocomplete menu
+    setTimeout(() => $(inputSelector).trigger('blur'), 1);
+
+    // Trigger the auto connect via connect button, if requested
+    if (autoConnect) {
+        $('#api_button_textgenerationwebui').trigger('click');
+    }
+
+    // We still re-acquire the value, as it might have been modified by the validation on connect
+    return textgenerationwebui_settings.server_urls[type] ?? '';
+}
+
+async function selectTokenizerCallback(_, name) {
+    if (!name) {
+        return getAvailableTokenizers().find(tokenizer => tokenizer.tokenizerId === power_user.tokenizer)?.tokenizerKey ?? '';
+    }
+
+    const tokenizers = getAvailableTokenizers();
+    const fuse = new Fuse(tokenizers, { keys: ['tokenizerKey', 'tokenizerName'] });
+    const result = fuse.search(name);
+
+    if (result.length === 0) {
+        toastr.warning(`Tokenizer "${name}" not found`);
+        return '';
+    }
+
+    /** @type {import('./tokenizers.js').Tokenizer} */
+    const foundTokenizer = result[0].item;
+    selectTokenizer(foundTokenizer.tokenizerId);
+
+    return foundTokenizer.tokenizerKey;
 }
 
 export let isExecutingCommandsFromChatInput = false;
@@ -3428,7 +4028,9 @@ const clearCommandProgressDebounced = debounce(clearCommandProgress);
  * @prop {boolean} [handleExecutionErrors] (false) Whether to handle execution errors (show toast on error) or throw
  * @prop {{[id:PARSER_FLAG]:boolean}} [parserFlags] (null) Parser flags to apply
  * @prop {SlashCommandAbortController} [abortController] (null) Controller used to abort or pause command execution
+ * @prop {SlashCommandDebugController} [debugController] (null) Controller used to control debug execution
  * @prop {(done:number, total:number)=>void} [onProgress] (null) Callback to handle progress events
+ * @prop {string} [source] (null) String indicating where the code come from (e.g., QR name)
  */
 
 /**
@@ -3436,6 +4038,7 @@ const clearCommandProgressDebounced = debounce(clearCommandProgress);
  * @prop {SlashCommandScope} [scope] (null) The scope to be used when executing the commands.
  * @prop {{[id:PARSER_FLAG]:boolean}} [parserFlags] (null) Parser flags to apply
  * @prop {boolean} [clearChatInput] (false) Whether to clear the chat input textarea
+ * @prop {string} [source] (null) String indicating where the code come from (e.g., QR name)
  */
 
 /**
@@ -3451,6 +4054,7 @@ export async function executeSlashCommandsOnChatInput(text, options = {}) {
         scope: null,
         parserFlags: null,
         clearChatInput: false,
+        source: null,
     }, options);
 
     isExecutingCommandsFromChatInput = true;
@@ -3473,13 +4077,21 @@ export async function executeSlashCommandsOnChatInput(text, options = {}) {
 
     /**@type {SlashCommandClosureResult} */
     let result = null;
+    let currentProgress = 0;
     try {
         commandsFromChatInputAbortController = new SlashCommandAbortController();
         result = await executeSlashCommandsWithOptions(text, {
             abortController: commandsFromChatInputAbortController,
-            onProgress: (done, total) => ta.style.setProperty('--prog', `${done / total * 100}%`),
+            onProgress: (done, total) => {
+                const newProgress = done / total;
+                if (newProgress > currentProgress) {
+                    currentProgress = newProgress;
+                    ta.style.setProperty('--prog', `${newProgress * 100}%`);
+                }
+            },
             parserFlags: options.parserFlags,
             scope: options.scope,
+            source: options.source,
         });
         if (commandsFromChatInputAbortController.signal.aborted) {
             document.querySelector('#form_sheld').classList.add('script_aborted');
@@ -3492,7 +4104,23 @@ export async function executeSlashCommandsOnChatInput(text, options = {}) {
         result.isError = true;
         result.errorMessage = e.message || 'An unknown error occurred';
         if (e.cause !== 'abort') {
-            toastr.error(result.errorMessage);
+            if (e instanceof SlashCommandExecutionError) {
+                /**@type {SlashCommandExecutionError}*/
+                const ex = e;
+                const toast = `
+                    <div>${ex.message}</div>
+                    <div>Line: ${ex.line} Column: ${ex.column}</div>
+                    <pre style="text-align:left;">${ex.hint}</pre>
+                    `;
+                const clickHint = '<p>Click to see details</p>';
+                toastr.error(
+                    `${toast}${clickHint}`,
+                    'SlashCommandExecutionError',
+                    { escapeHtml: false, timeOut: 10000, onclick: () => callPopup(toast, 'text') },
+                );
+            } else {
+                toastr.error(result.errorMessage);
+            }
         }
     } finally {
         delay(1000).then(() => clearCommandProgressDebounced());
@@ -3520,7 +4148,9 @@ async function executeSlashCommandsWithOptions(text, options = {}) {
         handleExecutionErrors: false,
         parserFlags: null,
         abortController: null,
+        debugController: null,
         onProgress: null,
+        source: null,
     }, options);
 
     let closure;
@@ -3528,6 +4158,8 @@ async function executeSlashCommandsWithOptions(text, options = {}) {
         closure = parser.parse(text, true, options.parserFlags, options.abortController ?? new SlashCommandAbortController());
         closure.scope.parent = options.scope;
         closure.onProgress = options.onProgress;
+        closure.debugController = options.debugController;
+        closure.source = options.source;
     } catch (e) {
         if (options.handleParserErrors && e instanceof SlashCommandParserError) {
             /**@type {SlashCommandParserError}*/
@@ -3559,7 +4191,23 @@ async function executeSlashCommandsWithOptions(text, options = {}) {
         return result;
     } catch (e) {
         if (options.handleExecutionErrors) {
-            toastr.error(e.message);
+            if (e instanceof SlashCommandExecutionError) {
+                /**@type {SlashCommandExecutionError}*/
+                const ex = e;
+                const toast = `
+                    <div>${ex.message}</div>
+                    <div>Line: ${ex.line} Column: ${ex.column}</div>
+                    <pre style="text-align:left;">${ex.hint}</pre>
+                    `;
+                const clickHint = '<p>Click to see details</p>';
+                toastr.error(
+                    `${toast}${clickHint}`,
+                    'SlashCommandExecutionError',
+                    { escapeHtml: false, timeOut: 10000, onclick: () => callPopup(toast, 'text') },
+                );
+            } else {
+                toastr.error(e.message);
+            }
             const result = new SlashCommandClosureResult();
             result.isError = true;
             result.errorMessage = e.message;
@@ -3596,6 +4244,7 @@ async function executeSlashCommands(text, handleParserErrors = true, scope = nul
  *
  * @param {HTMLTextAreaElement} textarea The textarea to receive autocomplete
  * @param {Boolean} isFloating Whether to show the auto complete as a floating window (e.g., large QR editor)
+ * @returns {Promise<AutoComplete>}
  */
 export async function setSlashCommandAutoComplete(textarea, isFloating = false) {
     function canUseNegativeLookbehind() {
@@ -3619,6 +4268,7 @@ export async function setSlashCommandAutoComplete(textarea, isFloating = false) 
         async (text, index) => await parser.getNameAt(text, index),
         isFloating,
     );
+    return ac;
 }
 /**@type {HTMLTextAreaElement} */
 const sendTextarea = document.querySelector('#send_textarea');

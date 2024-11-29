@@ -1,12 +1,12 @@
 {
     "firstRun": false,
-    "currentVersion": "1.12.4",
-    "username": "王钢",
-    "active_character": "桐谷绫.png",
+    "currentVersion": "1.12.7",
+    "username": "Alec",
+    "active_character": "七大姑.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -35,7 +35,8 @@
         "world_info_match_whole_words": false,
         "world_info_character_strategy": 1,
         "world_info_budget_cap": 0,
-        "world_info_use_group_scoring": false
+        "world_info_use_group_scoring": false,
+        "world_info_max_recursion_steps": 0
     },
     "textgenerationwebui_settings": {
         "temp": 0.5,
@@ -79,7 +80,6 @@
         "preset": "Default",
         "add_bos_token": true,
         "stopping_strings": [],
-        "truncation_length": 2048,
         "ban_eos_token": false,
         "skip_special_tokens": true,
         "streaming": false,
@@ -92,6 +92,10 @@
         "json_schema": {},
         "banned_tokens": "",
         "sampler_priority": [
+            "repetition_penalty",
+            "presence_penalty",
+            "frequency_penalty",
+            "dry",
             "temperature",
             "dynamic_temperature",
             "quadratic_sampling",
@@ -103,7 +107,10 @@
             "tfs",
             "top_a",
             "min_p",
-            "mirostat"
+            "mirostat",
+            "xtc",
+            "encoder_repetition_penalty",
+            "no_repeat_ngram"
         ],
         "samplers": [
             "top_k",
@@ -111,6 +118,7 @@
             "typical_p",
             "top_p",
             "min_p",
+            "xtc",
             "temperature"
         ],
         "ignore_eos_token": false,
@@ -126,7 +134,7 @@
         "vllm_model": "",
         "aphrodite_model": "",
         "dreamgen_model": "opus-v1-xl/text",
-        "legacy_api": false,
+        "tabby_model": "",
         "sampler_order": [
             6,
             0,
@@ -149,6 +157,11 @@
         "custom_model": "",
         "bypass_status_check": false,
         "openrouter_allow_fallbacks": true,
+        "xtc_threshold": 0.1,
+        "xtc_probability": 0,
+        "featherless_model": "",
+        "truncation_length": 2048,
+        "legacy_api": false,
         "ignore_eos_token_aphrodite": false,
         "spaces_between_special_tokens_aphrodite": true,
         "streaming_url": "ws://127.0.0.1:5005/api/v1/stream",
@@ -162,13 +175,13 @@
         "trusted_workers_only": false
     },
     "power_user": {
+        "charListGrid": true,
         "tokenizer": 2,
         "token_padding": 64,
         "collapse_newlines": true,
         "pin_examples": false,
         "strip_examples": false,
         "trim_sentences": false,
-        "include_newline": false,
         "always_force_name2": false,
         "user_prompt_bias": "",
         "show_user_prompt_bias": true,
@@ -182,7 +195,6 @@
         "streaming_fps": 30,
         "smooth_streaming": false,
         "smooth_streaming_speed": 50,
-        "ui_mode": 1,
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
@@ -244,26 +256,25 @@
         "prefer_character_prompt": true,
         "prefer_character_jailbreak": true,
         "quick_continue": true,
+        "quick_impersonate": false,
         "continue_on_send": false,
         "trim_spaces": true,
         "relaxed_api_urls": false,
         "world_import_dialog": true,
+        "enable_auto_select_input": false,
+        "enable_md_hotkeys": false,
         "tag_import_setting": 1,
         "disable_group_trimming": false,
         "single_line": false,
-        "default_instruct": "",
         "instruct": {
             "enabled": false,
             "wrap": true,
-            "names": false,
-            "system_prompt": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\nWrite {{char}}'s next reply in a fictional roleplay chat between {{user}} and {{char}}. Write 1 reply only.",
             "system_sequence": "",
             "stop_sequence": "",
             "input_sequence": "### Instruction:",
             "output_sequence": "### Response:",
             "preset": "Alpaca",
             "macro": false,
-            "names_force_groups": true,
             "skip_examples": false,
             "output_suffix": "",
             "input_suffix": "",
@@ -272,16 +283,23 @@
             "last_system_sequence": "",
             "system_same_as_user": false,
             "first_input_sequence": "",
-            "last_input_sequence": ""
+            "last_input_sequence": "",
+            "names_behavior": "force",
+            "names_force_groups": true
         },
-        "default_context": "Default",
         "context": {
             "preset": "Default",
             "story_string": "{{#if system}}{{system}}\n{{/if}}{{#if description}}{{description}}\n{{/if}}{{#if personality}}{{personality}}\n{{/if}}{{#if scenario}}Scenario: {{scenario}}\n{{/if}}{{#if persona}}{{persona}}\n{{/if}}",
             "chat_start": "***",
             "example_separator": "***",
             "use_stop_strings": true,
-            "allow_jailbreak": false
+            "allow_jailbreak": false,
+            "names_as_stop_strings": true
+        },
+        "sysprompt": {
+            "enabled": true,
+            "name": "[Migrated] Alpaca",
+            "content": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\nWrite {{char}}'s next reply in a fictional roleplay chat between {{user}} and {{char}}. Write 1 reply only."
         },
         "personas": {
             "legat.png": "王钢",
@@ -330,8 +348,8 @@
                 "role": 0
             }
         },
-        "persona_description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_show_notifications": true,
@@ -382,7 +400,8 @@
                 "width": {
                     "left": 1,
                     "right": 1
-                }
+                },
+                "select": 3
             },
             "parser": {
                 "flags": {}
@@ -391,11 +410,16 @@
         "restore_user_input": false,
         "reduced_motion": true,
         "compact_input_area": false,
+        "show_swipe_num_all_messages": false,
         "auto_connect": true,
         "auto_load_chat": false,
         "forbid_external_media": false,
         "external_media_allowed_overrides": [],
         "external_media_forbidden_overrides": [],
+        "include_newline": false,
+        "ui_mode": 1,
+        "default_instruct": "",
+        "default_context": "Default",
         "forbid_external_images": false,
         "pygmalion_formatting": 0,
         "disable_description_formatting": false,
@@ -408,7 +432,6 @@
         "multigen_next_chunks": 30,
         "custom_chat_separator": "",
         "sheld_width": 0,
-        "charListGrid": true,
         "auto_sort_tags": false,
         "selectSamplers": {
             "forceHidden": [],
@@ -533,6 +556,10 @@
             "custom": [],
             "api": 1,
             "llmPrompt": "Pause your roleplay. Classify the emotion of the last message. Output just one word, e.g. \"joy\" or \"anger\". Choose only one of the following labels: {{labels}}"
+        },
+        "connectionManager": {
+            "selectedProfile": "",
+            "profiles": []
         },
         "dice": {},
         "regex": [
@@ -1347,7 +1374,8 @@
                 "9": "Provide an exhaustive comma-separated list of tags describing the appearance of the character on this image in great detail. Start with \"full body portrait\".",
                 "10": "Provide an exhaustive comma-separated list of tags describing the appearance of the character on this image in great detail. Start with \"close-up portrait\".",
                 "11": "Pause your roleplay and provide an exhaustive comma-separated list of tags describing the appearance of \"{0}\" in great detail. Start with {{charPrefix}} (sic) if the subject is associated with {{char}}.",
-                "-1": "[{{char}} sends a picture that contains: {{prompt}}]."
+                "-1": "[{{char}} sends a picture that contains: {{prompt}}].",
+                "-2": "The text prompt used to generate the image. Must represent an exhaustive description of the desired image that will allow an artist or a photographer to perfectly recreate it."
             },
             "auto_url": "http://localhost:7860",
             "auto_auth": "",
@@ -1402,7 +1430,9 @@
             "wand_visible": false,
             "command_visible": false,
             "interactive_visible": false,
-            "stability_style_preset": "anime"
+            "stability_style_preset": "anime",
+            "adetailer_face": false,
+            "function_tool": false
         },
         "chromadb": {},
         "translate": {
@@ -1619,10 +1649,8 @@
         "Rio Morales.png": [],
         "Alcina Dimitrescu.png": [],
         "lana and her mother1.png": [],
-        "Nush.png": [],
         "Julio.png": [],
         "Chiyo.png": [],
-        "Cheeli.png": [],
         "Kyouko.png": [],
         "Mind controlled Superheroines.png": [],
         "Katase.png": [],
@@ -1736,17 +1764,22 @@
         "瑟拉斯.png": [],
         "狮子娘.png": [],
         "半人马娘.png": [],
-        "黒人転校生にNTRる.png": []
+        "黒人転校生にNTRる.png": [],
+        "《仙媳攻略》.png": [],
+        "海豚娘莉莉.png": []
     },
     "nai_settings": {
         "top_k": 0,
         "top_p": 0.95,
         "top_a": 0,
+        "min_p": 0,
+        "math1_temp": 1,
+        "math1_quad": 0,
+        "math1_quad_entropy_scale": 0,
         "model_novel": "euterpe-v2",
         "preset_settings_novel": "Classic-Euterpe",
         "streaming_novel": false,
         "preamble": "[ Style: chat, complex, sensory, visceral ]",
-        "cfg_uc": "",
         "banned_tokens": "",
         "order": [
             1,
@@ -1791,14 +1824,12 @@
         "temp_openai": 1.19,
         "freq_pen_openai": 0,
         "pres_pen_openai": 0,
-        "count_pen": 0,
         "top_p_openai": 1,
         "top_k_openai": 0,
         "min_p_openai": 0,
         "top_a_openai": 1,
         "repetition_penalty_openai": 1,
         "stream_openai": true,
-        "websearch_cohere": false,
         "openai_max_context": 30000,
         "openai_max_tokens": 4096,
         "wrap_in_quotes": false,
@@ -3755,7 +3786,7 @@
                     },
                     {
                         "identifier": "ee8570f6-14cc-41d0-83e0-01b17d6c0b89",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "9bb0e0b0-ac0e-45d7-ab66-79f737366541",
@@ -3850,6 +3881,7 @@
         "perplexity_model": "llama-3-70b-instruct",
         "groq_model": "llama3-70b-8192",
         "zerooneai_model": "yi-large",
+        "blockentropy_model": "be-70b-base-llama3.1",
         "custom_model": "claude-3-5-sonnet-20240620",
         "custom_url": "https://chatapi.onechats.top/v1",
         "custom_include_body": "",
@@ -3858,7 +3890,6 @@
         "windowai_model": "",
         "openrouter_model": "OR_Website",
         "openrouter_use_fallback": false,
-        "openrouter_force_instruct": false,
         "openrouter_group_models": false,
         "openrouter_sort_models": "alphabetically",
         "openrouter_providers": [],
@@ -3873,8 +3904,6 @@
         "assistant_prefill": "",
         "assistant_impersonation": "",
         "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
-        "use_ai21_tokenizer": false,
-        "use_google_tokenizer": false,
         "claude_use_sysprompt": false,
         "use_makersuite_sysprompt": true,
         "use_alt_scale": false,
@@ -3886,7 +3915,7 @@
         "function_calling": false,
         "names_behavior": 0,
         "continue_postfix": "",
-        "custom_prompt_post_processing": "claude",
+        "custom_prompt_post_processing": "merge",
         "seed": -1,
         "n": 1
     },

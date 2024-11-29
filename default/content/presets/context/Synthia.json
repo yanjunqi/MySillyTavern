@@ -11,7 +11,6 @@
     "allow_jailbreak": false,
     "always_force_name2": true,
     "trim_sentences": false,
-    "include_newline": false,
     "single_line": false,
     "name": "Synthia"
 >>>>>>> b8ea75f79fa274165190a567ebae59bc0d607262:default/content/presets/context/Synthia.json
