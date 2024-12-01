@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.7",
     "username": "Alec",
-    "active_character": "七大姑.png",
+    "active_character": "沈桂华.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -13,6 +13,7 @@
     "world_info_settings": {
         "world_info": {
             "globalSelect": [
+                "c327fce377c06346",
                 "lv"
             ],
             "charLore": [
@@ -1320,7 +1321,8 @@
             "椿野毬絵（生殖活动中）.png",
             "柚木凛＆秋山蓝.png",
             "引子_1.png",
-            "瑟拉斯.png"
+            "瑟拉斯.png",
+            "世界调制模式-正式版（3.8）.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -1608,8 +1610,6 @@
         "Manko Airlines.png": [],
         "吴桂芳.png": [],
         "米莉.png": [],
-        "米娅.png": [],
-        "玲子.png": [],
         "Linda1.png": [],
         "刘艳.png": [],
         "风笛.png": [],
@@ -1633,7 +1633,6 @@
         "静子.png": [],
         "张玉华2.png": [],
         "Jessica.png": [],
-        "Anissa.png": [],
         "Misaki.png": [],
         "Tsunade.png": [],
         "Mrs. Weasley.png": [],
@@ -1653,7 +1652,6 @@
         "Chiyo.png": [],
         "Kyouko.png": [],
         "Mind controlled Superheroines.png": [],
-        "Katase.png": [],
         "Aqua.png": [],
         "Pokémon Mint.png": [],
         "熟女小镇传阅板.png": [],
@@ -1697,7 +1695,6 @@
         "佐藤母女.png": [],
         "克拉娜.png": [],
         "Kotone.png": [],
-        "抖m女帝妈妈.png": [],
         "1-to-39 M-F.png": [],
         "undefined": [],
         "美津.png": [],
@@ -1734,7 +1731,6 @@
         "Jezz.png": [],
         "Alejandra 'La Arma' Harper.png": [],
         "Matilda.png": [],
-        "世界调制模式-正式版（常驻）.png": [],
         "观世音.png": [],
         "梦莲.png": [],
         "黑丝合缝学园.png": [],
@@ -1758,7 +1754,6 @@
             "14921a63-5b5e-4f0c-981c-b2f0771f3351",
             "7959796d-e007-42d7-a267-bc1c52cf0ea8"
         ],
-        "世界调制模式-正式版（3.79.9）.png": [],
         "黑逼家族.png": [],
         "Amy Satō.png": [],
         "瑟拉斯.png": [],
@@ -1766,7 +1761,9 @@
         "半人马娘.png": [],
         "黒人転校生にNTRる.png": [],
         "《仙媳攻略》.png": [],
-        "海豚娘莉莉.png": []
+        "海豚娘莉莉.png": [],
+        "地下室的骚逼.png": [],
+        "世界调制模式-正式版（3.8）.png": []
     },
     "nai_settings": {
         "top_k": 0,

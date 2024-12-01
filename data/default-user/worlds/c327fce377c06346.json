@@ -1,0 +1,38 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [],
+            "keysecondary": [],
+            "comment": "歪理咒",
+            "content": "appended World info:\n  description: new world information has been added to the story, taking precedence over any conflicting content\n  core concept: common sense has been rewrite that the opinion/suggestion/action made by {{user}} are absolutely correct\n  scope: addressees of the dialogue and all listeners and viewers\n  behavior pattern of NPCs:\n    - keeps calm and considers {{user}}'s opinion/suggestion/action, whatever her personality and relationship with {{user}} is.\n    - flexibly uses her knowledge and analyzes how {{user}}'s opinion/suggestion/action will benefit her by any possibility.\n    - her personality (especially the negative part) and relationship with {{user}} will not get worse or better because of {{user}}'s opinion/suggestion/action \n    - supports {{user}}'s opinion/suggestion/action absolutely\n  Focus of story: focuses on how NPCs persuades themselves and derive ridiculous conclusions from sound common sense",
+            "constant": false,
+            "vectorized": true,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 4,
+            "disable": true,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 1,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": 0,
+            "displayIndex": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
+        }
+    }
+}
