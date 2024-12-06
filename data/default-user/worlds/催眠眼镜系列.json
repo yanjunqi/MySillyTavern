@@ -29,7 +29,10 @@
             "automationId": "",
             "role": null,
             "uid": 0,
-            "displayIndex": 0
+            "displayIndex": 0,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "1": {
             "key": [
@@ -64,7 +67,10 @@
             "automationId": "",
             "role": null,
             "uid": 1,
-            "displayIndex": 1
+            "displayIndex": 1,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "2": {
             "key": [
@@ -98,7 +104,10 @@
             "automationId": "",
             "role": null,
             "uid": 2,
-            "displayIndex": 2
+            "displayIndex": 2,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "3": {
             "key": [
@@ -132,7 +141,10 @@
             "automationId": "",
             "role": null,
             "uid": 3,
-            "displayIndex": 3
+            "displayIndex": 3,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "4": {
             "key": [],
@@ -163,7 +175,10 @@
             "automationId": "",
             "role": 0,
             "uid": 4,
-            "displayIndex": 4
+            "displayIndex": 4,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "5": {
             "key": [
@@ -196,7 +211,10 @@
             "automationId": "",
             "role": 0,
             "uid": 5,
-            "displayIndex": 5
+            "displayIndex": 5,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "6": {
             "key": [],
@@ -227,7 +245,10 @@
             "automationId": "",
             "role": 0,
             "uid": 6,
-            "displayIndex": 6
+            "displayIndex": 6,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "7": {
             "key": [],
@@ -258,7 +279,10 @@
             "automationId": "",
             "role": 0,
             "uid": 7,
-            "displayIndex": 7
+            "displayIndex": 7,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "8": {
             "key": [],
@@ -289,7 +313,10 @@
             "automationId": "",
             "role": null,
             "uid": 8,
-            "displayIndex": 8
+            "displayIndex": 8,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "9": {
             "key": [],
@@ -320,7 +347,10 @@
             "automationId": "",
             "role": null,
             "uid": 9,
-            "displayIndex": 9
+            "displayIndex": 9,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         },
         "10": {
             "key": [],
@@ -351,7 +381,10 @@
             "automationId": "",
             "role": 0,
             "uid": 10,
-            "displayIndex": 10
+            "displayIndex": 10,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0
         }
     },
     "originalData": {

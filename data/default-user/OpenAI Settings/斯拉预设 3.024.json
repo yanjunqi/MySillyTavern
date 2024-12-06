@@ -5,7 +5,6 @@
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": false,
-    "openrouter_force_instruct": false,
     "openrouter_group_models": false,
     "openrouter_sort_models": "alphabetically",
     "openrouter_providers": [],
@@ -16,6 +15,7 @@
     "perplexity_model": "llama-3-70b-instruct",
     "groq_model": "llama3-70b-8192",
     "zerooneai_model": "yi-large",
+    "blockentropy_model": "be-70b-base-llama3.1",
     "custom_model": "claude-3-5-sonnet-20240620",
     "custom_url": "https://chatapi.onechats.top/v1",
     "custom_include_body": "",
@@ -26,7 +26,6 @@
     "temperature": 1,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "count_penalty": 0,
     "top_p": 1,
     "top_k": 0,
     "top_a": 1,
@@ -52,7 +51,6 @@
     "personality_format": "[{{char}}'s personality: {{personality}}]",
     "group_nudge_prompt": "[Write the next reply only as the group members.]",
     "stream_openai": true,
-    "websearch_cohere": false,
     "prompts": [
         {
             "name": "遇到问题看这里",
@@ -1857,7 +1855,7 @@
                 },
                 {
                     "identifier": "10a04619-f78d-42b9-b4f6-be73fdeb1948",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
@@ -1877,7 +1875,7 @@
                 },
                 {
                     "identifier": "f1c4dea9-680a-44b3-b84d-f126bca6981f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "3d5ebfa6-7be9-4a8e-bf3f-2f43f62f4ce3",
@@ -1919,8 +1917,6 @@
     "assistant_prefill": "",
     "assistant_impersonation": "",
     "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
-    "use_ai21_tokenizer": false,
-    "use_google_tokenizer": false,
     "claude_use_sysprompt": false,
     "use_makersuite_sysprompt": true,
     "use_alt_scale": false,
