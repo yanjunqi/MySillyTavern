@@ -1920,7 +1920,7 @@
                 },
                 {
                     "identifier": "d6aecf09-9f85-4b82-b60a-4df13f1edcb6",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "3bbd36c0-42f1-490b-868f-d7a2affa9e83",
@@ -1972,11 +1972,11 @@
                 },
                 {
                     "identifier": "10a04619-f78d-42b9-b4f6-be73fdeb1948",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "2a183098-067a-4fda-9994-d66875a79bfd",
@@ -2004,7 +2004,7 @@
                 },
                 {
                     "identifier": "ee8570f6-14cc-41d0-83e0-01b17d6c0b89",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "9bb0e0b0-ac0e-45d7-ab66-79f737366541",
