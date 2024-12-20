@@ -58,7 +58,7 @@
             "selective": true,
             "selectiveLogic": 0,
             "addMemo": true,
-            "order": 100,
+            "order": 99,
             "position": 4,
             "disable": false,
             "excludeRecursion": false,

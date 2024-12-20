@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.7",
     "username": "Alec",
-    "active_character": "七大姑.png",
+    "active_character": "丁瑶.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -315,7 +315,7 @@
         "default_persona": "legat.png",
         "persona_descriptions": {
             "legat.png": {
-                "description": "{{user}}长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
+                "description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
                 "position": 3
             },
             "1691725210145.png": {
@@ -636,91 +636,6 @@
                 "maxDepth": null
             },
             {
-                "scriptName": "插图1",
-                "findRegex": "/<(illustration|img)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
-                "replaceString": "<center><img src=https://files.catbox.moe/",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": true,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "f4f15450-e069-4c96-a2a7-96c5d2ebaabf"
-            },
-            {
-                "scriptName": "插图2",
-                "findRegex": "/<\\/(illustration|img)>/g",
-                "replaceString": "? width=50% /></center>",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": true,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "4b92590c-a729-4cbc-894c-1baf075ecdd2"
-            },
-            {
-                "scriptName": "视频1",
-                "findRegex": "/<(video)>.*[^0-9A-Za-z\\.\\s</>]+/gm",
-                "replaceString": "<video controls width=100%><source src=https://files.catbox.moe/",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "f794b800-ac5e-4608-b9ab-55be3194f354"
-            },
-            {
-                "scriptName": "视频 2",
-                "findRegex": "/<\\/(video)>/g",
-                "replaceString": " type=video/mp4 /> type=video/mp4 /></video>",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "c634e7bc-9f3a-4ca4-a5ae-e694968f47ec"
-            },
-            {
-                "scriptName": "北极星正则",
-                "findRegex": "\\[consideration\\][\\s\\S]*?\\[/consideration\\]",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "4ceda57c-525f-440d-9377-07f5a742c113"
-            },
-            {
                 "scriptName": "无效提示忽略",
                 "findRegex": "/.*(?=<结束无效提示>)/s",
                 "replaceString": "",
@@ -773,24 +688,6 @@
                 "minDepth": 2,
                 "maxDepth": null,
                 "id": "80f47382-f7e1-4507-926d-fa088a95b6d2"
-            },
-            {
-                "scriptName": "九州進度條",
-                "findRegex": "/<Progress>(.+)<dlbm>(.+)<dlcm1>(.+)</Progress>/g",
-                "replaceString": "<div style='width:90%; display: flex; align-items: center; margin-bottom: 10px;'>\n  <span style='margin-right: 10px;'>$1</span>\n  <div style='flex-grow: 1; height: 12px; background-color: #FFF; border-radius: 5px; display: flex; align-items: center;dlbm;'>\n    <div style='height: 100%; width: $2; background-color: #8CC269; border-radius: 5px; text-align: center; line-height: 12px; color: white; position: relative;'>\n    </div>\n  </div>\n  <span style='margin-left: 10px;'>\n    $3\n  </span>\n</div>",
-                "trimStrings": [],
-                "placement": [
-                    2,
-                    3
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "09ffd826-1e38-45d8-b734-948d2fff7369"
             },
             {
                 "scriptName": "去除System:",
@@ -883,125 +780,6 @@
                 "id": "5f047209-34a9-446e-aa4c-1d0bbbebf67e"
             },
             {
-                "scriptName": "堕落度一",
-                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([0-2]?[0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1堕落值：$2/100\n$3:【冷淡】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "e3b93745-94d6-48c6-adc8-e72df58bf393"
-            },
-            {
-                "scriptName": "堕落度二",
-                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([3-5][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1堕落值：$2/100\n$3:【接受】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "bf4bf4da-fd32-4d29-aeb4-ea84cfffe103"
-            },
-            {
-                "scriptName": "堕落度三",
-                "findRegex": "/([^\\s]*)堕落值[:：][^\\d]*([6-9][0-9]|100\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1堕落值：$2/100\n$3:【沉沦】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "b52de7c9-51e0-4ddb-9590-9454d0d1f860"
-            },
-            {
-                "scriptName": "奴化度一",
-                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([0-2]?[0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1奴化度：$2/100\n$3:【无力】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "26ae64fa-5240-4af8-a9ab-0de042641b5c"
-            },
-            {
-                "scriptName": "奴化度二",
-                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([3-5][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1奴化度：$2/100\n$3:【默许】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "cb95bd19-b4ba-4882-aa49-2c75fe71539e"
-            },
-            {
-                "scriptName": "奴化度四",
-                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([8-9][0-9]|100\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1奴化度：$2/100\n$3:【上头】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "8f328257-8b4e-4dc5-a799-8f2424a591ee"
-            },
-            {
-                "scriptName": "奴化度三",
-                "findRegex": "/([^\\s]*)奴化度[:：][^\\d]*([6-7][0-9]\\b(?:\\.\\d+)?).*\\s*.*?([^\\s]*)[:：]\\s*([^\\s]+)/gm",
-                "replaceString": "$1奴化度：$2/100\n$3:【扭曲】",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "1a869656-1ba0-4512-893b-b2cd15f652d0"
-            },
-            {
                 "scriptName": "世界调制模式",
                 "findRegex": "【规则】.*(\\n.*)+",
                 "replaceString": "",
@@ -1090,23 +868,6 @@
                 "maxDepth": null
             },
             {
-                "id": "3ade353d-a3f3-46bb-8b6f-75a940db631a",
-                "scriptName": "Sagittarius_Preset_Regex",
-                "findRegex": "/(.*\\[[Ss]tart [Ww]riting]|.*\\[开始写作])/gs",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null
-            },
-            {
                 "id": "ad72d2f5-b3fd-4920-9d00-a9bfc99e7091",
                 "scriptName": "选项去除",
                 "findRegex": "<Option>\\n(.+\\n)+</Option>",
@@ -1122,23 +883,6 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": 1,
-                "maxDepth": null
-            },
-            {
-                "id": "fbe18684-0a32-4955-a1c1-861003cfe601",
-                "scriptName": "去英文输出",
-                "findRegex": "/<details><summary>英文版</summary>.*?</details>/gs",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
                 "maxDepth": null
             },
             {
@@ -1167,7 +911,7 @@
                 "placement": [
                     1
                 ],
-                "disabled": true,
+                "disabled": false,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -1191,125 +935,6 @@
                 "substituteRegex": false,
                 "minDepth": null,
                 "maxDepth": null
-            },
-            {
-                "id": "0446c78c-83e7-4ff5-9f24-26fb6bec54bf",
-                "scriptName": "昆仑字数",
-                "findRegex": "/\\{Total([\\s\\S]*?)\\}/g",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null
-            },
-            {
-                "id": "5a183c9b-b52b-44c5-9d81-4e9bd5bc8f9e",
-                "scriptName": "昆仑推导1",
-                "findRegex": "/<推导>([\\s\\S]*?)<\\/推导>/g",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": 0,
-                "maxDepth": null
-            },
-            {
-                "id": "f60e35b6-8ca6-4205-a3e8-5c14b964d983",
-                "scriptName": "昆仑标注最后发言",
-                "findRegex": "^([\\s\\S]*?)$",
-                "replaceString": "------------以下为最后场景-------------\n$1\n------------以上为最后场景-------------",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": 1
-            },
-            {
-                "id": "2db840ca-0d08-4ced-8775-55fe2243568c",
-                "scriptName": "昆仑压缩场景",
-                "findRegex": "/^[\\s\\S]*?<角色自我总结>([\\s\\S]*?)</角色自我总结>[\\s\\S]*?</判断>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?$|^[\\s\\S]*?<角色自我总结>([\\s\\S]*?)</角色自我总结>[\\s\\S]*?<状态栏式总结>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?$/g",
-                "replaceString": "<已发生的场景进行压缩,请勿重复>$1{Total 826>800 满足条件准备收尾}</已发生的场景进行压缩,请勿重复>",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": 1,
-                "maxDepth": null
-            },
-            {
-                "id": "85a7f6ae-1ce8-4a24-893a-19e57f0ab291",
-                "scriptName": "昆仑最后压缩场景",
-                "findRegex": "/^[\\s\\S]*?<角色自我总结>([\\s\\S]*?)</角色自我总结>[\\s\\S]*?</判断>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?$|^[\\s\\S]*?<角色自我总结>([\\s\\S]*?)</角色自我总结>[\\s\\S]*?<状态栏式总结>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?$/g",
-                "replaceString": "<已发生的场景进行压缩,请勿重复>$1{Total 826>800 满足条件准备收尾}</已发生的场景进行压缩,请勿重复>\n\n$2",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": 1
-            },
-            {
-                "id": "473161a1-2a5f-44c0-8101-4c3091f44aa2",
-                "scriptName": "昆仑全局显示格式",
-                "findRegex": "/^[\\s\\S]*?<输出>([\\s\\S]*?)<输出内容总结>[\\s\\S]*?</角色自我总结>[\\s\\S]*?</判断>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?输出结束期待您的回应!|^[\\s\\S]*?<输出>([\\s\\S]*?)<输出内容总结>[\\s\\S]*?</角色自我总结>[\\s\\S]*?<状态栏式总结>([\\s\\S]*?)</状态栏式总结>[\\s\\S]*?输出结束期待您的回应!/",
-                "replaceString": "$1\n$2",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null
-            },
-            {
-                "id": "cd0c69d9-cc63-463e-bce0-4aa1aabe6022",
-                "scriptName": "昆仑去掉\\n",
-                "findRegex": "/\\n/g",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": 1,
-                "maxDepth": null
             }
         ],
         "character_allowed_regex": [
@@ -1322,7 +947,8 @@
             "柚木凛＆秋山蓝.png",
             "引子_1.png",
             "瑟拉斯.png",
-            "世界调制模式-正式版（3.8）.png"
+            "世界调制模式-正式版（3.8）.png",
+            "丁瑶.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -1758,11 +1384,13 @@
         "海豚娘莉莉.png": [],
         "地下室的骚逼.png": [],
         "世界调制模式-正式版（3.8）.png": [],
-        "早濑优香健身记.png": [],
         "呪いのせいでMPが足りません.png": [],
         "好兄弟的痴女女友.png": [],
         "稚子.png": [],
-        "AI 指南 2.01.png": []
+        "AI 指南 2.01.png": [],
+        "稻村敦子.png": [],
+        "小皇帝.png": [],
+        "丁瑶.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2877,7 +2505,7 @@
                 "marker": false,
                 "name": "✅女性状态栏",
                 "role": "system",
-                "content": "## 按要求输出 `<TimeFormat>`，将其用于注明本次剧情的时间、地点、天气信息。\n<Time>\n<TimeFormat>\n\n『星期–00,00-地点-天气』\n\n</TimeFormat>\n    每次输出应把重置后的TimeFormat置于输出最前端/剧情开始之前，以作为环境背景提示，最先直接输出TimeFormat是必须的；\n    TimeFormat中只能出现时间-地点-天气的信息；\n    根据上文时空逻辑，保持逻辑连贯性，参考上次TimeFormat的信息，并根据当前状况更新TimeFormat全部内容，确保衔接顺畅；\n    每次更新都需要根据剧情内容推进TimeFormat时间和日期，更新时间时不能出现过大的时间跨度(time-skips)，而应该根据每次剧情发生所需要的时间，合理地根据剧情所需要的时间长短，推进时间；\n    当时间在接近24:00时，切换到下一天的凌晨;\n    TimeFormat中提供的时间、空间逻辑，作为剧情的提示和描述，需要与剧情吻合;\n    地点需要遵循剧情逻辑，根据剧情内容填写；“天气”处根据剧情逻辑写明所处位置的天色，室内场所不受天气影响；\n    确保TimeFormat中出现的只有时间、天气、地点三种信息。\n</Time>\n## 以TimeFormat作为本次输出的第一项内容；输出TimeFormat是开始输出剧情的前提。\n\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n『{{weekday,中文输出}} - {{data,中文输出}} - {{time periods,中文输出}}-{{time,中文输出}} - {{location,中文输出}} - {{weather,中文输出}} - {{temperature,中文输出}}   』\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n╘═════\n```\n</StatusBlocks>",
+                "content": "## 按要求输出 `<TimeFormat>`，将其用于注明本次剧情的时间、地点、天气信息。\n<Time>\n<TimeFormat>\n\n『星期–00,00-地点-天气』\n\n</TimeFormat>\n    每次输出应把重置后的TimeFormat置于输出最前端/剧情开始之前，以作为环境背景提示，最先直接输出TimeFormat是必须的；\n    TimeFormat中只能出现时间-地点-天气的信息；\n    根据上文时空逻辑，保持逻辑连贯性，参考上次TimeFormat的信息，并根据当前状况更新TimeFormat全部内容，确保衔接顺畅；\n    每次更新都需要根据剧情内容推进TimeFormat时间和日期，更新时间时不能出现过大的时间跨度(time-skips)，而应该根据每次剧情发生所需要的时间，合理地根据剧情所需要的时间长短，推进时间；\n    当时间在接近24:00时，切换到下一天的凌晨;\n    TimeFormat中提供的时间、空间逻辑，作为剧情的提示和描述，需要与剧情吻合;\n    地点需要遵循剧情逻辑，根据剧情内容填写；“天气”处根据剧情逻辑写明所处位置的天色，室内场所不受天气影响；\n    确保TimeFormat中出现的只有时间、天气、地点三种信息。\n</Time>\n## 以TimeFormat作为本次输出的第一项内容；输出TimeFormat是开始输出剧情的前提。\n\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>```\n『{{weekday,中文输出}} - {{data,中文输出}} - {{time periods,中文输出}}-{{time,中文输出}} - {{location,中文输出}} - {{weather,中文输出}} - {{temperature,中文输出}}   』\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n╘═════\n```</StatusBlocks>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
@@ -3754,7 +3382,7 @@
                     },
                     {
                         "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "2a183098-067a-4fda-9994-d66875a79bfd",
@@ -3782,7 +3410,7 @@
                     },
                     {
                         "identifier": "ee8570f6-14cc-41d0-83e0-01b17d6c0b89",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "9bb0e0b0-ac0e-45d7-ab66-79f737366541",
