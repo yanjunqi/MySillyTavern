@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.7",
     "username": "王钢",
-    "active_character": "乡村狂操曲.png",
+    "active_character": "巨乳阿姨.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -1392,7 +1392,10 @@
         "稻村敦子.png": [],
         "小皇帝.png": [],
         "丁瑶.png": [],
-        "乡村狂操曲.png": []
+        "乡村狂操曲.png": [],
+        "乡村狂操曲1.png": [],
+        "阿姨我帮你（变态的我之朋友的母亲）.png": [],
+        "巨乳阿姨.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -3384,7 +3387,7 @@
                     },
                     {
                         "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "2a183098-067a-4fda-9994-d66875a79bfd",
