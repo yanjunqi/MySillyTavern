@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.7",
-    "username": "王钢",
-    "active_character": "巨乳阿姨.png",
+    "username": "Alec",
+    "active_character": "梦莲.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -349,8 +349,8 @@
                 "role": 0
             }
         },
-        "persona_description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_show_notifications": true,
@@ -565,24 +565,6 @@
         "dice": {},
         "regex": [
             {
-                "id": "473fd5a1-7662-4909-b088-9407a1d81c18",
-                "scriptName": "```状态栏",
-                "findRegex": "/```\\n(.+\\n)+```/gm",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": true,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": 1,
-                "maxDepth": null
-            },
-            {
                 "id": "e1e0d11f-5030-4656-8f67-af72f86c6e7e",
                 "scriptName": "con",
                 "findRegex": "/<content>[\\s\\S]*?</content>/gm",
@@ -621,6 +603,24 @@
                 "id": "d8c1a390-5b84-470d-8984-7feb6e343253",
                 "scriptName": "状态栏去除1",
                 "findRegex": "<StatusBlocks>[\\s\\S]+</StatusBlocks>",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1,
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": 2,
+                "maxDepth": null
+            },
+            {
+                "id": "473fd5a1-7662-4909-b088-9407a1d81c18",
+                "scriptName": "```状态栏",
+                "findRegex": "```[\\s\\S]+```",
                 "replaceString": "",
                 "trimStrings": [],
                 "placement": [
@@ -1284,7 +1284,6 @@
         "逆子模拟器.png": [],
         "巨乳萝莉养母糖糖.png": [],
         "梅子.png": [],
-        "Charlotte & Samantha.png": [],
         "陈香凝.png": [],
         "魔都诡事.png": [
             "1078223237899"
@@ -1395,7 +1394,8 @@
         "乡村狂操曲.png": [],
         "乡村狂操曲1.png": [],
         "阿姨我帮你（变态的我之朋友的母亲）.png": [],
-        "巨乳阿姨.png": []
+        "巨乳阿姨.png": [],
+        "小百合.png": []
     },
     "nai_settings": {
         "top_k": 0,
