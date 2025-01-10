@@ -2,7 +2,7 @@
     "firstRun": false,
     "currentVersion": "1.12.7",
     "username": "王钢",
-    "active_character": "陆婉瑶.png",
+    "active_character": "乡村狂操曲1.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -206,8 +206,9 @@
         "play_sound_unfocused": true,
         "auto_save_msg_edits": false,
         "confirm_message_delete": true,
-        "sort_field": "chat_size",
-        "sort_order": "asc",
+        "sort_field": "create_date",
+        "sort_order": "desc",
+        "sort_rule": null,
         "font_scale": 0.9,
         "blur_strength": 10,
         "shadow_width": 2,
@@ -595,7 +596,7 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
+                "maxDepth": 30
             },
             {
                 "id": "e75c334e-0d6b-4283-8b9a-87c92101ba9e",
@@ -660,7 +661,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -678,7 +679,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": false,
                 "runOnEdit": true,
@@ -686,24 +687,6 @@
                 "minDepth": null,
                 "maxDepth": null,
                 "id": "4ad331ac-287f-4788-bed9-f084ac074ea7"
-            },
-            {
-                "scriptName": "逆子",
-                "findRegex": "<status>.*(\\n.*)+",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": false,
-                "substituteRegex": false,
-                "minDepth": 2,
-                "maxDepth": null,
-                "id": "80f47382-f7e1-4507-926d-fa088a95b6d2"
             },
             {
                 "scriptName": "去除System:",
@@ -714,7 +697,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -732,7 +715,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -750,7 +733,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -768,7 +751,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -776,24 +759,6 @@
                 "minDepth": null,
                 "maxDepth": null,
                 "id": "031b9d26-f049-4480-9197-c080cd13f900"
-            },
-            {
-                "scriptName": "字数",
-                "findRegex": "\\(字数:.+\\)",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2,
-                    3
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": false,
-                "minDepth": null,
-                "maxDepth": null,
-                "id": "5f047209-34a9-446e-aa4c-1d0bbbebf67e"
             },
             {
                 "scriptName": "世界调制模式",
@@ -804,7 +769,7 @@
                     1,
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": false,
                 "promptOnly": true,
                 "runOnEdit": false,
@@ -822,7 +787,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -840,7 +805,7 @@
                     2,
                     3
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -858,7 +823,7 @@
                 "placement": [
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -893,7 +858,7 @@
                     1,
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -910,7 +875,7 @@
                 "placement": [
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -927,7 +892,7 @@
                 "placement": [
                     1
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -1383,12 +1348,16 @@
         "乡村狂操曲.png": [],
         "阿姨我帮你（变态的我之朋友的母亲）.png": [],
         "小百合.png": [],
-        "乡村狂操曲1.png": [],
         "宝妈讲堂.png": [],
         "蛇精.png": [],
         "未忘人妻-雪乃深冬.png": [],
         "死对头附身了自己的青梅竹马.png": [],
-        "陆婉瑶.png": []
+        "陆婉瑶.png": [],
+        "default_Seraphina.png": [],
+        "我的高冷剑仙美母绝对不可能被低劣黑鬼征服.png": [],
+        "重生之我在无职草人妻1.0.png": [],
+        "乡村狂操曲1.png": [],
+        "淫乱公主.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -3380,7 +3349,7 @@
                     },
                     {
                         "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "2a183098-067a-4fda-9994-d66875a79bfd",
