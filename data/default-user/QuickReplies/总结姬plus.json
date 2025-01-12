@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "name": "总结姬plus",
+    "disableSend": false,
+    "placeBeforeInput": false,
+    "injectInput": false,
+    "color": "rgba(0, 0, 0, 0)",
+    "onlyBorderColor": false,
+    "qrList": [
+        {
+            "id": 2,
+            "showLabel": false,
+            "label": "总结姬plus",
+            "title": "",
+            "message": "/getchatlore |\n/setvar key=chatlore |\n/findentry file={{getvar::chatlore}} field=comment 聊天记录缓存 |\n/if left={{pipe}} right=\"\" rule=neq else={:/createentry file={{getvar::chatlore}} |/setvar key=cacheUID | /setentryfield file={{getvar::chatlore}} uid={{getvar::cacheUID}} field=comment 聊天记录缓存 |/setentryfield file={{getvar::chatlore}} uid={{getvar::cacheUID}} field=constant true |/setentryfield file={{getvar::chatlore}} uid={{getvar::cacheUID}} field=position 1|:} {::} |\n/getentryfield file={{getvar::chatlore}} field=content {{getvar::cacheUID}} |\n/setvar key=cache |\n/setvar key=OriginalText \"\"|\n/input 开始总结从第x层开始|\n/setvar key=i |\n/input 开始总结到第x层结束（包含）|\n/setvar key=j |\n/while left=i right=j rule=lte guard=on {:\n  /messages names=on {{getvar::i}} |\n  /regex name=状态栏去除1 |\n  /regex name=```状态栏 |\n  /addvar key=OriginalText {{pipe}} |\n  /addvar key=OriginalText \"\n\n\" |\n  /hide {{getvar::i}} |\n  /addvar key=i 1 |\n  :} |\n/preset Virgo_Preset_Summarizer_plus |\n/wait 2000 |\n/gen lock=on |\n/addvar key=cache |\n/setentryfield file={{getvar::chatlore}} uid={{getvar::cacheUID}} field=content {{getvar::cache}} |\n/flushvar key=i |",
+            "contextList": [],
+            "preventAutoExecute": true,
+            "isHidden": false,
+            "executeOnStartup": false,
+            "executeOnUser": false,
+            "executeOnAi": false,
+            "executeOnChatChange": false,
+            "executeOnGroupMemberDraft": false,
+            "executeOnNewChat": false,
+            "automationId": ""
+        }
+    ],
+    "idIndex": 2
+}

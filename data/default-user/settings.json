@@ -206,7 +206,7 @@
         "play_sound_unfocused": true,
         "auto_save_msg_edits": false,
         "confirm_message_delete": true,
-        "sort_field": "create_date",
+        "sort_field": "date_last_chat",
         "sort_order": "desc",
         "sort_rule": null,
         "font_scale": 0.9,
@@ -368,22 +368,32 @@
             {
                 "label": "ooba_blocking",
                 "url": "http://127.0.0.1:7860/",
-                "lastConnection": 1704895028277
+                "lastConnection": 1736568255947
             },
             {
                 "label": "aphrodite",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1704895028277
+                "lastConnection": 1736568255950
             },
             {
                 "label": "tabby",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1704895028277
+                "lastConnection": 1736568255951
             },
             {
                 "label": "koboldcpp",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1704895028277
+                "lastConnection": 1736568255951
+            },
+            {
+                "label": "ollama",
+                "url": "http://127.0.0.1:7860",
+                "lastConnection": 1736568255952
+            },
+            {
+                "label": "llamacpp",
+                "url": "http://127.0.0.1:7860",
+                "lastConnection": 1736568255952
             }
         ],
         "bogus_folders": true,
@@ -590,7 +600,7 @@
                 "placement": [
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -608,7 +618,7 @@
                     1,
                     2
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -1095,10 +1105,11 @@
             "isEnabled": true,
             "isCombined": false,
             "isPopout": false,
+            "showPopoutButton": true,
             "config": {
                 "setList": [
                     {
-                        "set": "剧情推进",
+                        "set": "总结姬plus",
                         "isVisible": true
                     }
                 ]
@@ -1229,7 +1240,6 @@
         "1707754573998": [],
         "蒂法.png": [],
         "塞拉.png": [],
-        "LewdTV.png": [],
         "Umeko_2.png": [],
         "Rio Morales.png": [],
         "Alcina Dimitrescu.png": [],
