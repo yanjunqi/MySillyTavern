@@ -1,21 +1,18 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.7",
-    "username": "王钢",
-    "active_character": "乡村狂操曲1.png",
+    "username": "Alec",
+    "active_character": "沈桂华.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
     "world_info_settings": {
         "world_info": {
-            "globalSelect": [
-                "c327fce377c06346",
-                "lv"
-            ],
+            "globalSelect": [],
             "charLore": [
                 {
                     "name": "Pokémon Mint",
@@ -235,7 +232,7 @@
         "auto_swipe_blacklist": [],
         "auto_swipe_blacklist_threshold": 2,
         "auto_scroll_chat_to_bottom": true,
-        "auto_fix_generated_markdown": true,
+        "auto_fix_generated_markdown": false,
         "send_on_enter": 0,
         "console_log_prompts": false,
         "request_token_probabilities": false,
@@ -310,7 +307,8 @@
             "1708485461648-.png": "凌霄",
             "1711077589536-.png": "安度因",
             "1714313334403-.png": "出九",
-            "1726641944597-.png": "王钢"
+            "1726641944597-.png": "王钢",
+            "1738416494521-.png": "郑太"
         },
         "default_persona": "legat.png",
         "persona_descriptions": {
@@ -319,7 +317,7 @@
                 "position": 3
             },
             "1691725210145.png": {
-                "description": "[角色设定：{{user}}，白人，美国，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+                "description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
                 "position": 1
             },
             "1693732009390.png": {
@@ -347,10 +345,16 @@
                 "position": 0,
                 "depth": 2,
                 "role": 0
+            },
+            "1738416494521-.png": {
+                "description": "<user>\n-{{user}}是{{char}}的儿子。有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n</user>",
+                "position": 0,
+                "depth": 2,
+                "role": 0
             }
         },
-        "persona_description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_show_notifications": true,
@@ -569,15 +573,39 @@
             "llmPrompt": "Pause your roleplay. Classify the emotion of the last message. Output just one word, e.g. \"joy\" or \"anger\". Choose only one of the following labels: {{labels}}"
         },
         "connectionManager": {
-            "selectedProfile": "",
-            "profiles": []
+            "selectedProfile": "1ee60c54-a1aa-41e3-a7a4-f01aa0f72b66",
+            "profiles": [
+                {
+                    "id": "3ab5f67d-5f1b-440f-b874-a0aea7cfe091",
+                    "mode": "cc",
+                    "exclude": [
+                        "api",
+                        "api-url",
+                        "preset",
+                        "model",
+                        "proxy"
+                    ],
+                    "name": "代理"
+                },
+                {
+                    "id": "1ee60c54-a1aa-41e3-a7a4-f01aa0f72b66",
+                    "mode": "cc",
+                    "exclude": [
+                        "api",
+                        "preset",
+                        "model"
+                    ],
+                    "proxy": "GPT",
+                    "name": "claude"
+                }
+            ]
         },
         "dice": {},
         "regex": [
             {
                 "id": "e1e0d11f-5030-4656-8f67-af72f86c6e7e",
                 "scriptName": "con",
-                "findRegex": "/<content>[\\s\\S]*?</content>/gm",
+                "findRegex": "/<consideration>[\\s\\S]*?</consideration>/gm",
                 "replaceString": "",
                 "trimStrings": [],
                 "placement": [
@@ -600,7 +628,7 @@
                 "placement": [
                     2
                 ],
-                "disabled": true,
+                "disabled": false,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -885,7 +913,7 @@
                 "placement": [
                     2
                 ],
-                "disabled": true,
+                "disabled": false,
                 "markdownOnly": true,
                 "promptOnly": true,
                 "runOnEdit": true,
@@ -909,6 +937,295 @@
                 "substituteRegex": false,
                 "minDepth": null,
                 "maxDepth": 1
+            },
+            {
+                "id": "4ab35563-ac8f-4356-8cb3-e4ce04f4a890",
+                "scriptName": "0.最大截取上下文",
+                "findRegex": "/^([\\s\\S]*?)$/",
+                "replaceString": "{{setvar::角色总结::“此处为所有人物经历:”}}",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 10,
+                "maxDepth": 11
+            },
+            {
+                "id": "e2f4936f-7139-44ca-932e-3610a007176d",
+                "scriptName": "1.修补</输出>",
+                "findRegex": "/满足条件([\\s\\S]*?)收尾}/g",
+                "replaceString": "满足条件准备收尾}</输出>",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "43f180f2-b80f-4144-b308-fc9b9c2faf61",
+                "scriptName": "2.输出提取",
+                "findRegex": "/<输出>([\\s\\S]*?)<\\/输出>/",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "5b40a080-2a79-46ec-8106-d05d509f9447",
+                "scriptName": "3.昆仑去除其他",
+                "findRegex": "/^([\\s\\S]*?)Derivation End:推导结束!|<\\/推导>|End Tag:assistant输出结束期待您的回应!|End Tag:assistant输出结束期待您的回应！|\\{Total([\\s\\S]*?)\\}/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": true,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "c04723d5-d45b-41c3-9ca0-ecd3ca543f0b",
+                "scriptName": "4.昆仑去掉\\n",
+                "findRegex": "/\\n/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 2,
+                "maxDepth": null
+            },
+            {
+                "id": "157deb9f-9e4c-48be-b5d3-2c9a7616365c",
+                "scriptName": "5.用户发言去掉\\n",
+                "findRegex": "/\\n/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "9765ed93-4091-4a21-b487-8e0a637655b6",
+                "scriptName": "6.用户发言",
+                "findRegex": "/^([\\s\\S]*?)$/",
+                "replaceString": "{{addvar::角色总结2::$1 ；}}",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 4,
+                "maxDepth": null
+            },
+            {
+                "id": "025355a0-fc7b-4f51-adfc-0a0d33d9016d",
+                "scriptName": "7.最后用户发言",
+                "findRegex": "/^([\\s\\S]*?)$/",
+                "replaceString": "$0{{setvar::最后用户发言::用户:$1\\n  }}",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 2,
+                "maxDepth": 2
+            },
+            {
+                "id": "b3d38959-94fa-4fb7-bfad-276477a9cfa9",
+                "scriptName": "8.角色全部总结",
+                "findRegex": "/^([\\s\\S]*?)场景梗概\\:([\\s\\S]*?)最后画面:([\\s\\S]*?)$/",
+                "replaceString": "{{addvar::角色总结::$2 \\n  }}",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 2,
+                "maxDepth": null
+            },
+            {
+                "id": "99cafa5b-e35a-48b5-9d4f-5dbcc8b8fb55",
+                "scriptName": "9.替换/n",
+                "findRegex": "/\\n/g",
+                "replaceString": "|-",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": 2
+            },
+            {
+                "id": "4594d3ef-102e-4d5c-80ae-c768f05b86e2",
+                "scriptName": "10.提取角色最后总结",
+                "findRegex": "/<角色自我总结>([\\s\\S]*?)Summary End:总结结束!/",
+                "replaceString": "{{setvar::最后角色总结::前一个场景:$1 \\n }}前一个场景:$1\n请使用最新状态栏:",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 1,
+                "maxDepth": 1
+            },
+            {
+                "id": "3fa3c9e5-704d-467e-9853-7c2a925e2ec4",
+                "scriptName": "11.换回/n",
+                "findRegex": "/\\|\\-/g",
+                "replaceString": "\n\n",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": 3
+            },
+            {
+                "id": "1099be16-f69b-4dd3-b089-d52e73b1e7a5",
+                "scriptName": "12.资料",
+                "findRegex": "/^([\\s\\S]*?)$/",
+                "replaceString": "{{setvar::最新用户发言::<最新用户发言>$1</最新用户发言>\\n}}\n{{getvar::最新用户发言}}",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 0,
+                "maxDepth": 1
+            },
+            {
+                "id": "8c76bb63-1048-4e83-8576-3a5033e1cd42",
+                "scriptName": "13.隐藏自我总结显示",
+                "findRegex": "/<角色自我总结>([\\s\\S]*?)</角色自我总结>|<角色自我总结>([\\s\\S]*?)Summary End:总结结束!/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "5748d571-dc1e-4648-8f47-ec1324b8c37a",
+                "scriptName": "14.隐藏输出",
+                "findRegex": "/<输出>|<\\/输出>|</角色自我总结>/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": true,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "0a566b08-dca5-4961-a429-0ba274a7ca44",
+                "scriptName": "15.选择去除",
+                "findRegex": "/<Selection>([\\s\\S]*?)$/",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "4d2da1fd-bd18-45c6-88a4-533db12c5de1",
+                "scriptName": "用户消息添加伪Human",
+                "findRegex": "^([\\s\\S]*)$",
+                "replaceString": "\bHuman: <inputs>\n$1\n</inputs>",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": false,
+                "minDepth": null,
+                "maxDepth": 1
             }
         ],
         "character_allowed_regex": [
@@ -925,7 +1242,13 @@
             "丁瑶.png",
             "乡村狂操曲.png",
             "Stella Greenray.png",
-            "陆婉瑶.png"
+            "陆婉瑶.png",
+            "蜡笔小新世界.png",
+            "林又青和出九的.png",
+            "淫精美航空.png",
+            "陈蓉.png",
+            "高贵典雅的妈妈姐姐们变成了勇者大人的淫乱性奴.png",
+            "乡村狂操曲1.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -1182,6 +1505,46 @@
             "color": "",
             "color2": "",
             "create_date": 1731641410982
+        },
+        {
+            "id": "28e1e77d-5ebe-49c5-a4ea-2b5d203c0f5e",
+            "name": "后宫",
+            "folder_type": "NONE",
+            "filter_state": "UNDEFINED",
+            "sort_order": null,
+            "color": "",
+            "color2": "",
+            "create_date": 1737306685534
+        },
+        {
+            "id": "f962e7ef-e5ca-4d60-9ef3-6b5839ccfde5",
+            "name": "异世界",
+            "folder_type": "NONE",
+            "filter_state": "UNDEFINED",
+            "sort_order": null,
+            "color": "",
+            "color2": "",
+            "create_date": 1737306685534
+        },
+        {
+            "id": "ed1b1cbd-8a6a-46b5-8bbe-e28746e04710",
+            "name": "恶堕",
+            "folder_type": "NONE",
+            "filter_state": "UNDEFINED",
+            "sort_order": null,
+            "color": "",
+            "color2": "",
+            "create_date": 1737306685534
+        },
+        {
+            "id": "adf4a47a-d10a-470f-af8e-194123034c6b",
+            "name": "调教",
+            "folder_type": "NONE",
+            "filter_state": "UNDEFINED",
+            "sort_order": null,
+            "color": "",
+            "color2": "",
+            "create_date": 1737306685534
         }
     ],
     "tag_map": {
@@ -1289,12 +1652,10 @@
         "美津.png": [],
         "情人带来的伪娘竟是我儿子.png": [],
         "催眠眼镜.png": [],
-        "霜叶.png": [],
         "申鹤＆甘雨.png": [],
         "媚外绿帽奴散兵把雷电影妈妈送给你.png": [],
         "若涵和萌萌.png": [],
         "Kiko.png": [],
-        "佩妮姨妈.png": [],
         "Kushina Uzumaki [NTR]1.png": [],
         "Kyouko Sakura.png": [],
         "Petunia Dursley.png": [],
@@ -1365,9 +1726,24 @@
         "陆婉瑶.png": [],
         "default_Seraphina.png": [],
         "我的高冷剑仙美母绝对不可能被低劣黑鬼征服.png": [],
-        "重生之我在无职草人妻1.0.png": [],
+        "淫乱公主.png": [],
+        "打败魔王，皇后公主双丰收.png": [],
+        "真白花音.png": [],
+        "蜡笔小新世界.png": [],
         "乡村狂操曲1.png": [],
-        "淫乱公主.png": []
+        "淫乱公主1.png": [],
+        "只狼：淫事二度.png": [],
+        "仙儿攻略？仙母被素女道圣女寄生了！.png": [],
+        "走光女仆.png": [],
+        "淫精美航空.png": [],
+        "日向雏田.png": [],
+        "万能超市.png": [],
+        "人妻大公寓.png": [],
+        "性欲旺盛的青梅竹马.png": [],
+        "大周风云.png": [],
+        "陈蓉.png": [],
+        "火淫忍者.png": [],
+        "高贵典雅的妈妈姐姐们变成了勇者大人的淫乱性奴.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2990,6 +3366,30 @@
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false
+            },
+            {
+                "identifier": "5b5164d0-289b-481b-882c-561618cd7373",
+                "system_prompt": false,
+                "enabled": false,
+                "marker": false,
+                "name": "new状态栏",
+                "role": "system",
+                "content": "<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n<details><summary>---{{character name}}状态栏---</summary>\n```\n『{{年-月-日}} {{时-分}} | {{日出/正午/日落/深夜}} | {{天气现象}}』\n角色: {{character name}}\n地点:『{{具体地点}} - {{周边环境详细描述}}』\n▶角色信息\n年龄: {{age}}岁 \n关系: {{Relationship with {user}}}\n💓【{{character name}}的好感度】:{{Favorability  for {user}}}/100(Reason for change)\n🔥【性欲值】:{{Sexual desire value}}/100(Reason for change)\n▶着装状态\n【上身:{{Upper body clothing condition}}】【胸罩:{{bra status}}】\n【下身:{{Condition of lower body clothing}}】【内裤:{{panty status}}】【丝袜:{{stockings status}}】\n【鞋子:{{Posture state}}】【配饰:{{Accessories}}】\n▶行动状态\n【日程:{{Subsequent schedule}}】\n✨当前行动:{{Describe the current character's posture and behavior in 30 words}}\n▶身体状态\n👙胸部状态: {{Describe current breast condition in detail in 30 words or less}}\n💗小穴状态: {{Describe the current vaginal condition in detail in 30 words or less}}\n🏵️肛门状态: {{Describe the current anal condition in detail within 30 words}}\n🫦口腔状态: {{Describe the current oral condition in detail within 30 words}}\n🎂子宫状态: {{Describe the current uterine condition in 30 words or less}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n```\n</details>\n</StatusBlocks>\n<!-- Note: 不要生成{{user}}的状态栏;如果有多个女角色,用<details></details>分开依次生成。如果当前没有合适的女角色,则显示空白。 -->",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
+            },
+            {
+                "identifier": "9062699a-2c54-4566-ba32-cc8e9c34a5d2",
+                "system_prompt": false,
+                "enabled": false,
+                "marker": false,
+                "name": "状态栏前置",
+                "role": "system",
+                "content": "System: You must insert the <StatusBlocks> at the end of the reply to record the status of characters, and the specific format for filling in refers to the example. You can ONLY fill in the specified <StatusBlocks></StatusBlocks>. When the character is not in the same scene as {{user}}, the <StatusBlocks> of the character are not allowed to be \ngenerated. \n\n<!-- <StatusBlocks> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. The description must provide a complete and detailed account according to the required word count. Avoid using short phrases like \"正常\" or \"正常状态\" to describe physical condition. Describe the appearance and body parts of the character setting in depth. The <StatusBlocks> must be updated in real-time, aiming to avoid repeating the same output as the last one. -->\n",
+                "injection_position": 0,
+                "injection_depth": 4,
+                "forbid_overrides": false
             }
         ],
         "prompt_order": [
@@ -3295,7 +3695,7 @@
                     },
                     {
                         "identifier": "ce3c483c-3357-45de-a472-3312ca2438b0",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "77ad6e95-f5fb-464c-a7c0-4e39ae305e3a",
@@ -3359,6 +3759,14 @@
                     },
                     {
                         "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
+                        "enabled": false
+                    },
+                    {
+                        "identifier": "9062699a-2c54-4566-ba32-cc8e9c34a5d2",
+                        "enabled": true
+                    },
+                    {
+                        "identifier": "5b5164d0-289b-481b-882c-561618cd7373",
                         "enabled": false
                     },
                     {

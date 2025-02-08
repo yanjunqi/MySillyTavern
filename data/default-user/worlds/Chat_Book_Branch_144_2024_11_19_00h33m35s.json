@@ -1,0 +1,38 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [],
+            "keysecondary": [],
+            "comment": "聊天记录缓存",
+            "content": "[前情提要]\n在一所著名的女子中学里，58岁的校长沈桂华为了保护学校，不得不向一位年轻的美国军官Alec求助。她穿上最好的旗袍，精心打扮，想用东方女人的魅力让他愿意帮助学校。\n两人跳舞时，Alec开始对沈桂华动手动脚。沈桂华虽然觉得不应该，但为了学校的安全，默许了他的行为。他们发生了关系。结束后，Alec承诺会派兵保护学校，还说要搬到学校来，以学习中国文化为由拜沈桂华为师。\n两人决定同床共枕，第二天将举行拜师礼。沈桂华虽然知道这对她的名誉有损，但为了学校安全，还是接受了这样的安排。[All Test Messages Rejected]\n[前情提要]\n在办公室内，年过五十的校长沈桂华和年轻的美国军官Alec进行了更深入的文化交流。先是沈桂华用口技服侍了Alec。随后Alec将沈桂华按在办公桌上，热烈地索取。最终Alec射进了沈桂华的子宫深处。在这场激烈的欢愉中沈桂华抛弃了往日矜持的形象，只想要被Alec征服和占有。\n[前情提要]\n在女校藏书室里，校长沈桂华与她的外国学生Alec继续研习双修秘籍。两人在交合过程中感受到一股神奇的热流在体内流转。当热流变得狂暴时，Alec突发奇想用接吻的方式分散了一部分能量，让沈桂华得以承受住这股力量。事后发现双修带来神奇效果，沈桂华的身体变得更加年轻，皮肤光滑紧致。Alec提议陪她去买新衣服，沈桂华虽然害羞但还是答应了。",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "displayIndex": 0
+        }
+    }
+}

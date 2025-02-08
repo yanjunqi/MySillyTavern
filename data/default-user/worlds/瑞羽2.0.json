@@ -1,0 +1,45 @@
+{
+    "entries": {},
+    "originalData": {
+        "entries": [
+            {
+                "id": 0,
+                "keys": [],
+                "secondary_keys": [],
+                "comment": "状态栏",
+                "content": "\n状态栏设定:\n\n# 基本信息\n##Everyting you write  must add status information to the end of each reply between \"<StatusBlock>\" tags.\n  Format:\n<examples>\n<StatusBlock>\n```yaml\n- 🏠 地点: {当前所在场景的精确地点，限制在15字以内}\n- 🕓 时间: {根据剧情推进的时间，格式例如：上午9:00，限制在20字以内}\n- 🤵‍♀️ 姓名: {{char}}\n\n# 与{{user}}的关系\n- 💋 好感度: {0-100的数值}\n- 💕 好感等级: {厌恶，初遇，熟悉，思慕，恋慕，亲爱}\n- 👥 关系: {例如：陌生人，朋友，恋人，青梅竹马，炮友，家人等，限制在10字以内}\n\n# 状态\n- 🥵 性欲值: {0-100的数值}\n- 🔋 精力值: {0-100的数值}\n- 👚 服装: {对当前穿着的详细描述，限制在50字以内}\n- 💭 情绪: {例如：开心，悲伤，愤怒，焦虑等}\n\n# 身体状态 \n- 🍌 肉棒: {例如：疲软，平静，勃起，半勃起等，限制在7字以内}\n- 🥛 菊穴内精液量: {0-500ml的数值，单位为ml}\n- 🔄 当前状态: {对身体各部位状态的详细描述，例如：乳头红肿，阴道湿润，肛门扩张等，限制在100字以内}\n\n# 行为和想法\n- 💪 当前动作: {正在进行的动作，特别是与{{user}}相关的互动，限制在100字以内}\n- 🤔 内心想法: {角色此刻的想法，特别是与{{user}}相关的想法，使用第一人称，限制在100字以内}\n</StatusBlock>\n<examples>\n\n# 多角色状态栏\n# 在同一场景中，每个女性NPC都有独立的状态栏，格式同上。\n# 例如：\n# 女性NPC 1:\n#   - 🏠 地点: ...\n#   - 🕓 时间: ...\n#   - ...\n\n# 女性NPC 2:\n#   - 🏠 地点: ...\n#   - 🕓 时间: ...\n#   - ...\n\n# 以此类推...\n\n",
+                "constant": false,
+                "selective": true,
+                "insertion_order": 100,
+                "enabled": true,
+                "position": "after_char",
+                "use_regex": true,
+                "extensions": {
+                    "position": 4,
+                    "exclude_recursion": false,
+                    "display_index": 0,
+                    "probability": 100,
+                    "useProbability": true,
+                    "depth": 2,
+                    "selectiveLogic": 0,
+                    "group": "",
+                    "group_override": false,
+                    "group_weight": 100,
+                    "prevent_recursion": false,
+                    "delay_until_recursion": false,
+                    "scan_depth": null,
+                    "match_whole_words": null,
+                    "use_group_scoring": false,
+                    "case_sensitive": null,
+                    "automation_id": "",
+                    "role": 0,
+                    "vectorized": false,
+                    "sticky": 0,
+                    "cooldown": 0,
+                    "delay": 0
+                }
+            }
+        ],
+        "name": "瑞羽2.0"
+    }
+}
