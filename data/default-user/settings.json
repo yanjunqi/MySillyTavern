@@ -1,12 +1,12 @@
 {
     "firstRun": false,
     "currentVersion": "1.12.7",
-    "username": "王钢",
-    "active_character": "菲里.png",
+    "username": "Alec",
+    "active_character": "陈淑兰.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -347,14 +347,14 @@
                 "role": 0
             },
             "1738416494521-.png": {
-                "description": "<user>\n-{{user}}是{{char}}的儿子。有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n</user>",
+                "description": "<user>\n-{{user}}是{{char}}的孙子。有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n</user>",
                 "position": 0,
                 "depth": 2,
                 "role": 0
             }
         },
-        "persona_description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_show_notifications": true,
@@ -1858,7 +1858,7 @@
         "repetition_penalty_openai": 1,
         "stream_openai": true,
         "openai_max_context": 30000,
-        "openai_max_tokens": 8192,
+        "openai_max_tokens": 10000,
         "wrap_in_quotes": false,
         "prompts": [
             {
@@ -2461,11 +2461,11 @@
                     },
                     {
                         "identifier": "d606dcd6-8ec5-4166-930b-3057d31ac830",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "67ce76b6-dbf6-4bc6-b928-9e290f389916",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "52c236ce-5298-4989-a1ef-a6e6dd9f23eb",
