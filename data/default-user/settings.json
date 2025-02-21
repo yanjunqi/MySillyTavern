@@ -1793,7 +1793,8 @@
         "不雌堕就出不去的城市.png": [],
         "隐欲.png": [],
         "結月.png": [],
-        "陈淑兰.png": []
+        "陈淑兰.png": [],
+        "小原瀬.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2513,7 +2514,7 @@
                     },
                     {
                         "identifier": "a3f3f7bd-0581-483e-bea1-0edbd79819fd",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "71ce8571-e750-44e1-a21d-55a86c947ebc",
