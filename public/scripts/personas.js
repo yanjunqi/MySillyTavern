@@ -21,7 +21,11 @@ import { PAGINATION_TEMPLATE, debounce, delay, download, ensureImageFormatSuppor
 import { debounce_timeout } from './constants.js';
 import { FILTER_TYPES, FilterHelper } from './filters.js';
 import { selected_group } from './group-chats.js';
-import { POPUP_RESULT, POPUP_TYPE, Popup } from './popup.js';
+import { POPUP_RESULT, POPUP_TYPE, Popup, callGenericPopup } from './popup.js';
+import { t } from './i18n.js';
+import { openWorldInfoEditor, world_names } from './world-info.js';
+import { renderTemplateAsync } from './templates.js';
+import { accountStorage } from './util/AccountStorage.js';
 
 let savePersonasPage = 0;
 const GRID_STORAGE_KEY = 'Personas_GridView';
@@ -31,7 +35,7 @@ export let user_avatar = '';
 export const personasFilter = new FilterHelper(debounce(getUserAvatars, debounce_timeout.quick));
 
 function switchPersonaGridView() {
-    const state = localStorage.getItem(GRID_STORAGE_KEY) === 'true';
+    const state = accountStorage.getItem(GRID_STORAGE_KEY) === 'true';
     $('#user_avatar_block').toggleClass('gridView', state);
 }
 
@@ -179,7 +183,7 @@ export async function getUserAvatars(doRender = true, openPageAt = '') {
 
         const storageKey = 'Personas_PerPage';
         const listId = '#user_avatar_block';
-        const perPage = Number(localStorage.getItem(storageKey)) || 5;
+        const perPage = Number(accountStorage.getItem(storageKey)) || 5;
 
         $('#persona_pagination_container').pagination({
             dataSource: entities,
@@ -202,7 +206,7 @@ export async function getUserAvatars(doRender = true, openPageAt = '') {
                 highlightSelectedAvatar();
             },
             afterSizeSelectorChange: function (e) {
-                localStorage.setItem(storageKey, e.target.value);
+                accountStorage.setItem(storageKey, e.target.value);
             },
             afterPaging: function (e) {
                 savePersonasPage = e;
@@ -276,7 +280,7 @@ async function changeUserAvatar(e) {
     let url = '/api/avatars/upload';
 
     if (!power_user.never_resize_avatars) {
-        const dlg = new Popup('Set the crop position of the avatar image', POPUP_TYPE.CROP, '', { cropImage: dataUrl });
+        const dlg = new Popup(t`Set the crop position of the avatar image`, POPUP_TYPE.CROP, '', { cropImage: dataUrl });
         const result = await dlg.show();
 
         if (!result) {
@@ -331,23 +335,23 @@ async function changeUserAvatar(e) {
  * @returns {Promise} Promise that resolves when the persona is set
  */
 export async function createPersona(avatarId) {
-    const personaName = await Popup.show.input('Enter a name for this persona:', 'Cancel if you\'re just uploading an avatar.', '');
+    const personaName = await Popup.show.input(t`Enter a name for this persona:`, t`Cancel if you're just uploading an avatar.`, '');
 
     if (!personaName) {
         console.debug('User cancelled creating a persona');
         return;
     }
 
-    const personaDescription = await Popup.show.input('Enter a description for this persona:', 'You can always add or change it later.', '', { rows: 4 });
+    const personaDescription = await Popup.show.input(t`Enter a description for this persona:`, t`You can always add or change it later.`, '', { rows: 4 });
 
     initPersona(avatarId, personaName, personaDescription);
     if (power_user.persona_show_notifications) {
-        toastr.success(`You can now pick ${personaName} as a persona in the Persona Management menu.`, 'Persona Created');
+        toastr.success(t`You can now pick ${personaName} as a persona in the Persona Management menu.`, t`Persona Created`);
     }
 }
 
 async function createDummyPersona() {
-    const personaName = await Popup.show.input('Enter a name for this persona:', null);
+    const personaName = await Popup.show.input(t`Enter a name for this persona:`, null);
 
     if (!personaName) {
         console.debug('User cancelled creating dummy persona');
@@ -374,6 +378,7 @@ export function initPersona(avatarId, personaName, personaDescription) {
         position: persona_description_positions.IN_PROMPT,
         depth: DEFAULT_DEPTH,
         role: DEFAULT_ROLE,
+        lorebook: '',
     };
 
     saveSettingsDebounced();
@@ -393,7 +398,7 @@ export async function convertCharacterToPersona(characterId = null) {
     const overwriteName = `${name} (Persona).png`;
 
     if (overwriteName in power_user.personas) {
-        const confirm = await Popup.show.confirm('Overwrite Existing Persona', 'This character exists as a persona already. Do you want to overwrite it?');
+        const confirm = await Popup.show.confirm(t`Overwrite Existing Persona`, t`This character exists as a persona already. Do you want to overwrite it?`);
         if (!confirm) {
             console.log('User cancelled the overwrite of the persona');
             return;
@@ -401,7 +406,7 @@ export async function convertCharacterToPersona(characterId = null) {
     }
 
     if (description.includes('{{char}}') || description.includes('{{user}}')) {
-        const confirm = await Popup.show.confirm('Persona Description Macros', 'This character has a description that uses <code>{{char}}</code> or <code>{{user}}</code> macros. Do you want to swap them in the persona description?');
+        const confirm = await Popup.show.confirm(t`Persona Description Macros`, t`This character has a description that uses <code>{{char}}</code> or <code>{{user}}</code> macros. Do you want to swap them in the persona description?`);
         if (confirm) {
             description = description.replace(/{{char}}/gi, '{{personaChar}}').replace(/{{user}}/gi, '{{personaUser}}');
             description = description.replace(/{{personaUser}}/gi, '{{char}}').replace(/{{personaChar}}/gi, '{{user}}');
@@ -417,6 +422,7 @@ export async function convertCharacterToPersona(characterId = null) {
         position: persona_description_positions.IN_PROMPT,
         depth: DEFAULT_DEPTH,
         role: DEFAULT_ROLE,
+        lorebook: '',
     };
 
     // If the user is currently using this persona, update the description
@@ -427,7 +433,7 @@ export async function convertCharacterToPersona(characterId = null) {
     saveSettingsDebounced();
 
     console.log('Persona for character created');
-    toastr.success(`You can now select ${name} as a persona in the Persona Management menu.`, 'Persona Created');
+    toastr.success(t`You can now pick ${name} as a persona in the Persona Management menu.`, t`Persona Created`);
 
     // Refresh the persona selector
     await getUserAvatars(true, overwriteName);
@@ -460,6 +466,7 @@ export function setPersonaDescription() {
         .val(power_user.persona_description_role)
         .find(`option[value="${power_user.persona_description_role}"]`)
         .prop('selected', String(true));
+    $('#persona_lore_button').toggleClass('world_set', !!power_user.persona_description_lorebook);
     countPersonaDescriptionTokens();
 }
 
@@ -489,6 +496,7 @@ async function updatePersonaNameIfExists(avatarId, newName) {
             position: persona_description_positions.IN_PROMPT,
             depth: DEFAULT_DEPTH,
             role: DEFAULT_ROLE,
+            lorebook: '',
         };
         console.log(`Created persona name for ${avatarId} as ${newName}`);
     }
@@ -509,8 +517,8 @@ async function bindUserNameToPersona(e) {
     let personaUnbind = false;
     const existingPersona = power_user.personas[avatarId];
     const personaName = await Popup.show.input(
-        'Enter a name for this persona:',
-        '(If empty name is provided, this will unbind the name from this avatar)',
+        t`Enter a name for this persona:`,
+        t`(If empty name is provided, this will unbind the name from this avatar)`,
         existingPersona || '',
         { onClose: (p) => { personaUnbind = p.value === '' && p.result === POPUP_RESULT.AFFIRMATIVE; } });
 
@@ -534,6 +542,7 @@ async function bindUserNameToPersona(e) {
                 position: isCurrentPersona ? power_user.persona_description_position : persona_description_positions.IN_PROMPT,
                 depth: isCurrentPersona ? power_user.persona_description_depth : DEFAULT_DEPTH,
                 role: isCurrentPersona ? power_user.persona_description_role : DEFAULT_ROLE,
+                lorebook: isCurrentPersona ? power_user.persona_description_lorebook : '',
             };
         }
 
@@ -560,8 +569,8 @@ function selectCurrentPersona() {
         const lockedPersona = chat_metadata['persona'];
         if (lockedPersona && lockedPersona !== user_avatar && power_user.persona_show_notifications) {
             toastr.info(
-                `To permanently set "${personaName}" as the selected persona, unlock and relock it using the "Lock" button. Otherwise, the selection resets upon reloading the chat.`,
-                `This chat is locked to a different persona (${power_user.personas[lockedPersona]}).`,
+                t`To permanently set "${personaName}" as the selected persona, unlock and relock it using the "Lock" button. Otherwise, the selection resets upon reloading the chat.`,
+                t`This chat is locked to a different persona (${power_user.personas[lockedPersona]}).`,
                 { timeOut: 10000, extendedTimeOut: 20000, preventDuplicates: true },
             );
         }
@@ -578,12 +587,20 @@ function selectCurrentPersona() {
             power_user.persona_description_position = descriptor.position ?? persona_description_positions.IN_PROMPT;
             power_user.persona_description_depth = descriptor.depth ?? DEFAULT_DEPTH;
             power_user.persona_description_role = descriptor.role ?? DEFAULT_ROLE;
+            power_user.persona_description_lorebook = descriptor.lorebook ?? '';
         } else {
             power_user.persona_description = '';
             power_user.persona_description_position = persona_description_positions.IN_PROMPT;
             power_user.persona_description_depth = DEFAULT_DEPTH;
             power_user.persona_description_role = DEFAULT_ROLE;
-            power_user.persona_descriptions[user_avatar] = { description: '', position: persona_description_positions.IN_PROMPT, depth: DEFAULT_DEPTH, role: DEFAULT_ROLE };
+            power_user.persona_description_lorebook = '';
+            power_user.persona_descriptions[user_avatar] = {
+                description: '',
+                position: persona_description_positions.IN_PROMPT,
+                depth: DEFAULT_DEPTH,
+                role: DEFAULT_ROLE,
+                lorebook: '',
+            };
         }
 
         setPersonaDescription();
@@ -626,7 +643,7 @@ async function unlockPersona() {
         delete chat_metadata['persona'];
         await saveMetadata();
         if (power_user.persona_show_notifications) {
-            toastr.info('User persona is now unlocked for this chat. Click the "Lock" again to revert.', 'Persona unlocked');
+            toastr.info(t`User persona is now unlocked for this chat. Click the "Lock" again to revert.`, t`Persona unlocked`);
         }
         updateUserLockIcon();
     }
@@ -640,8 +657,8 @@ async function lockPersona() {
         console.log(`Creating a new persona ${user_avatar}`);
         if (power_user.persona_show_notifications) {
             toastr.info(
-                'Creating a new persona for currently selected user name and avatar...',
-                'Persona not set for this avatar',
+                t`Creating a new persona for currently selected user name and avatar...`,
+                t`Persona not set for this avatar`,
                 { timeOut: 10000, extendedTimeOut: 20000 },
             );
         }
@@ -651,6 +668,7 @@ async function lockPersona() {
             position: persona_description_positions.IN_PROMPT,
             depth: DEFAULT_DEPTH,
             role: DEFAULT_ROLE,
+            lorebook: '',
         };
     }
 
@@ -659,7 +677,7 @@ async function lockPersona() {
     saveSettingsDebounced();
     console.log(`Locking persona for this chat ${user_avatar}`);
     if (power_user.persona_show_notifications) {
-        toastr.success(`User persona is locked to ${name1} in this chat`);
+        toastr.success(t`User persona is locked to ${name1} in this chat`);
     }
     updateUserLockIcon();
 }
@@ -676,11 +694,11 @@ async function deleteUserAvatar(e) {
 
     if (avatarId == user_avatar) {
         console.warn(`User tried to delete their current avatar ${avatarId}`);
-        toastr.warning('You cannot delete the avatar you are currently using', 'Warning');
+        toastr.warning(t`You cannot delete the avatar you are currently using`, t`Warning`);
         return;
     }
 
-    const confirm = await Popup.show.confirm('Are you sure you want to delete this avatar?', 'All information associated with its linked persona will be lost.');
+    const confirm = await Popup.show.confirm(t`Are you sure you want to delete this avatar?`, t`All information associated with its linked persona will be lost.`);
 
     if (!confirm) {
         console.debug('User cancelled deleting avatar');
@@ -701,12 +719,12 @@ async function deleteUserAvatar(e) {
         delete power_user.persona_descriptions[avatarId];
 
         if (avatarId === power_user.default_persona) {
-            toastr.warning('The default persona was deleted. You will need to set a new default persona.', 'Default persona deleted');
+            toastr.warning(t`The default persona was deleted. You will need to set a new default persona.`, t`Default persona deleted`);
             power_user.default_persona = null;
         }
 
         if (avatarId === chat_metadata['persona']) {
-            toastr.warning('The locked persona was deleted. You will need to set a new persona for this chat.', 'Persona deleted');
+            toastr.warning(t`The locked persona was deleted. You will need to set a new persona for this chat.`, t`Persona deleted`);
             delete chat_metadata['persona'];
             await saveMetadata();
         }
@@ -730,6 +748,7 @@ function onPersonaDescriptionInput() {
                 position: Number($('#persona_description_position').find(':selected').val()),
                 depth: Number($('#persona_depth_value').val()),
                 role: Number($('#persona_depth_role').find(':selected').val()),
+                lorebook: '',
             };
             power_user.persona_descriptions[user_avatar] = object;
         }
@@ -765,6 +784,52 @@ function onPersonaDescriptionDepthRoleInput() {
     saveSettingsDebounced();
 }
 
+/**
+ * Opens a popup to set the lorebook for the current persona.
+ * @param {PointerEvent} event Click event
+ */
+async function onPersonaLoreButtonClick(event) {
+    const personaName = power_user.personas[user_avatar];
+    const selectedLorebook = power_user.persona_description_lorebook;
+
+    if (!personaName) {
+        toastr.warning(t`You must bind a name to this persona before you can set a lorebook.`, t`Persona name not set`);
+        return;
+    }
+
+    if (event.altKey && selectedLorebook) {
+        openWorldInfoEditor(selectedLorebook);
+        return;
+    }
+
+    const template = $(await renderTemplateAsync('personaLorebook'));
+
+    const worldSelect = template.find('select');
+    template.find('.persona_name').text(personaName);
+
+    for (const worldName of world_names) {
+        const option = document.createElement('option');
+        option.value = worldName;
+        option.innerText = worldName;
+        option.selected = selectedLorebook === worldName;
+        worldSelect.append(option);
+    }
+
+    worldSelect.on('change', function () {
+        power_user.persona_description_lorebook = String($(this).val());
+
+        if (power_user.personas[user_avatar]) {
+            const object = getOrCreatePersonaDescriptor();
+            object.lorebook = power_user.persona_description_lorebook;
+        }
+
+        $('#persona_lore_button').toggleClass('world_set', !!power_user.persona_description_lorebook);
+        saveSettingsDebounced();
+    });
+
+    await callGenericPopup(template, POPUP_TYPE.TEXT);
+}
+
 function onPersonaDescriptionPositionInput() {
     power_user.persona_description_position = Number(
         $('#persona_description_position').find(':selected').val(),
@@ -788,6 +853,7 @@ function getOrCreatePersonaDescriptor() {
             position: power_user.persona_description_position,
             depth: power_user.persona_description_depth,
             role: power_user.persona_description_role,
+            lorebook: power_user.persona_description_lorebook,
         };
         power_user.persona_descriptions[user_avatar] = object;
     }
@@ -807,14 +873,14 @@ async function setDefaultPersona(e) {
 
     if (power_user.personas[avatarId] === undefined) {
         console.warn(`No persona name found for avatar ${avatarId}`);
-        toastr.warning('You must bind a name to this persona before you can set it as the default.', 'Persona name not set');
+        toastr.warning(t`You must bind a name to this persona before you can set it as the default.`, t`Persona name not set`);
         return;
     }
 
     const personaName = power_user.personas[avatarId];
 
     if (avatarId === currentDefault) {
-        const confirm = await Popup.show.confirm('Are you sure you want to remove the default persona?', personaName);
+        const confirm = await Popup.show.confirm(t`Are you sure you want to remove the default persona?`, personaName);
 
         if (!confirm) {
             console.debug('User cancelled removing default persona');
@@ -823,11 +889,11 @@ async function setDefaultPersona(e) {
 
         console.log(`Removing default persona ${avatarId}`);
         if (power_user.persona_show_notifications) {
-            toastr.info('This persona will no longer be used by default when you open a new chat.', 'Default persona removed');
+            toastr.info(t`This persona will no longer be used by default when you open a new chat.`, t`Default persona removed`);
         }
         delete power_user.default_persona;
     } else {
-        const confirm = await Popup.show.confirm(`Are you sure you want to set "${personaName}" as the default persona?`, 'This name and avatar will be used for all new chats, as well as existing chats where the user persona is not locked.');
+        const confirm = await Popup.show.confirm(t`Are you sure you want to set \"${personaName}\" as the default persona?`, t`This name and avatar will be used for all new chats, as well as existing chats where the user persona is not locked.`);
 
         if (!confirm) {
             console.debug('User cancelled setting default persona');
@@ -836,7 +902,7 @@ async function setDefaultPersona(e) {
 
         power_user.default_persona = avatarId;
         if (power_user.persona_show_notifications) {
-            toastr.success('This persona will be used by default when you open a new chat.', `Default persona set to ${personaName}`);
+            toastr.success(t`This persona will be used by default when you open a new chat.`, t`Default persona set to ${personaName}`);
         }
     }
 
@@ -918,13 +984,13 @@ async function onPersonasRestoreInput(e) {
     const data = await parseJsonFile(file);
 
     if (!data) {
-        toastr.warning('Invalid file selected', 'Persona Management');
+        toastr.warning(t`Invalid file selected`, t`Persona Management`);
         console.debug('Invalid file selected');
         return;
     }
 
     if (!data.personas || !data.persona_descriptions || typeof data.personas !== 'object' || typeof data.persona_descriptions !== 'object') {
-        toastr.warning('Invalid file format', 'Persona Management');
+        toastr.warning(t`Invalid file format`, t`Persona Management`);
         console.debug('Invalid file selected');
         return;
     }
@@ -972,10 +1038,10 @@ async function onPersonasRestoreInput(e) {
     }
 
     if (warnings.length) {
-        toastr.success('Personas restored with warnings. Check console for details.');
+        toastr.success(t`Personas restored with warnings. Check console for details.`);
         console.warn(`PERSONA RESTORE REPORT\n====================\n${warnings.join('\n')}`);
     } else {
-        toastr.success('Personas restored successfully.');
+        toastr.success(t`Personas restored successfully.`);
     }
 
     await getUserAvatars();
@@ -985,7 +1051,7 @@ async function onPersonasRestoreInput(e) {
 }
 
 async function syncUserNameToPersona() {
-    const confirmation = await Popup.show.confirm('Are you sure?', `All user-sent messages in this chat will be attributed to ${name1}.`);
+    const confirmation = await Popup.show.confirm(t`Are you sure?`, t`All user-sent messages in this chat will be attributed to ${name1}.`);
 
     if (!confirmation) {
         return;
@@ -1021,7 +1087,7 @@ async function duplicatePersona(avatarId) {
         return;
     }
 
-    const confirm = await Popup.show.confirm('Are you sure you want to duplicate this persona?', personaName);
+    const confirm = await Popup.show.confirm(t`Are you sure you want to duplicate this persona?`, personaName);
 
     if (!confirm) {
         console.debug('User cancelled duplicating persona');
@@ -1037,6 +1103,7 @@ async function duplicatePersona(avatarId) {
         position: descriptor?.position ?? persona_description_positions.IN_PROMPT,
         depth: descriptor?.depth ?? DEFAULT_DEPTH,
         role: descriptor?.role ?? DEFAULT_ROLE,
+        lorebook: descriptor?.lorebook ?? '',
     };
 
     await uploadUserAvatar(getUserAvatar(avatarId), newAvatarId);
@@ -1054,6 +1121,7 @@ export function initPersonas() {
     $('#persona_description_position').on('input', onPersonaDescriptionPositionInput);
     $('#persona_depth_value').on('input', onPersonaDescriptionDepthValueInput);
     $('#persona_depth_role').on('input', onPersonaDescriptionDepthRoleInput);
+    $('#persona_lore_button').on('click', onPersonaLoreButtonClick);
     $('#personas_backup').on('click', onBackupPersonas);
     $('#personas_restore').on('click', () => $('#personas_restore_input').trigger('click'));
     $('#personas_restore_input').on('change', onPersonasRestoreInput);
@@ -1065,8 +1133,8 @@ export function initPersonas() {
         saveSettingsDebounced();
     });
     $('#persona_grid_toggle').on('click', () => {
-        const state = localStorage.getItem(GRID_STORAGE_KEY) === 'true';
-        localStorage.setItem(GRID_STORAGE_KEY, String(!state));
+        const state = accountStorage.getItem(GRID_STORAGE_KEY) === 'true';
+        accountStorage.setItem(GRID_STORAGE_KEY, String(!state));
         switchPersonaGridView();
     });
 

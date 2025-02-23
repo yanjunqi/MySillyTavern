@@ -1,3 +1,5 @@
+import { Fuse } from '../lib.js';
+
 import {
     amount_gen,
     characters,
@@ -582,6 +584,11 @@ class PresetManager {
             'openrouter_providers',
             'openrouter_allow_fallbacks',
             'tabby_model',
+            'derived',
+            'generic_model',
+            'include_reasoning',
+            'global_banned_tokens',
+            'send_banned_tokens',
         ];
         const settings = Object.assign({}, getSettingsByApiId(this.apiId));
 

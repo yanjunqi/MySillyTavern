@@ -1,6 +1,84 @@
 {
     "firstRun": false,
-    "currentVersion": "1.12.7",
+    "accountStorage": {
+        "AlertWI_微信纯净版.png": "true",
+        "AlertWI_我的妈妈李彤彤.png": "true",
+        "AlertRegex_Dean Winchester.png": "true",
+        "AlertWI_山田优子.png": "true",
+        "AlertWI_世界调制模式-正式版（3.79.8）.png": "true",
+        "AlertRegex_乡村大乱交.png": "true",
+        "AlertWI_雅佩.png": "true",
+        "AlertWI_神薙.png": "true",
+        "AlertWI_《折服》同人.png": "true",
+        "AlertWI_椿野毬絵（生殖活动中）.png": "true",
+        "AlertWI_淫乱公主.png": "true",
+        "AlertWI_1-to-39 M-F.png": "true",
+        "AlertWI_乡村狂操曲.png": "true",
+        "AlertWI_素霞双修录5.0.png": "true",
+        "AlertWI_未忘人妻-雪乃深冬.png": "true",
+        "AlertWI_南宫派.png": "true",
+        "AlertWI_白芸.png": "true",
+        "AlertWI_阿尔法・罗曼洛夫.png": "true",
+        "AlertWI_媚华世界交换生.png": "true",
+        "AlertWI_同学的妈妈是我的女佣2.0.png": "true",
+        "AlertWI_妻子的秘密生活.png": "true",
+        "AlertWI_世界调制模式-正式版（3.8）.png": "true",
+        "AlertWI_伊札里斯三魔女1.png": "true",
+        "AlertWI_椿野毬絵（恋爱活动中）.png": "true",
+        "AlertWI_申鹤＆甘雨.png": "true",
+        "Proxy_SkipConfirm_5938162226874975": "true",
+        "LNavOpened": "true",
+        "SelectedNavTab": "rm_button_characters",
+        "AlertWI_死对头附身了自己的青梅竹马.png": "true",
+        "AlertWI_W.png": "true",
+        "NavLockOn": "true",
+        "AlertWI_神雕外传.png": "true",
+        "AlertWI_Dean Winchester.png": "true",
+        "AlertWI_黍.png": "true",
+        "AlertWI_青荷仙子.png": "true",
+        "AlertWI_秦桂芝.png": "true",
+        "AlertWI_柏崎加奈.png": "true",
+        "AlertWI_常曦.png": "true",
+        "AlertRegex_柚木凛＆秋山蓝.png": "true",
+        "AlertWI_子承父业帮操妈.png": "true",
+        "AlertWI_陆婉瑶.png": "true",
+        "AlertWI_微信最新版.png": "true",
+        "world_info_sort_order": "1",
+        "Characters_PerPage": "100",
+        "StoryStringValidationCache": "{\"hashCache\":{\"545096496205048\":{\"fieldsWarned\":{\"wiBefore\":true,\"wiAfter\":true}}}}",
+        "WINavOpened": "true",
+        "AlertWI_佐藤母女.png": "true",
+        "AlertWI_林墨1.png": "true",
+        "AlertWI_地下室的骚逼.png": "true",
+        "AlertWI_被老总调教的妈妈6.6.png": "true",
+        "AlertRegex_世界调制模式-正式版（3.8）.png": "true",
+        "AlertRegex_子承父业帮操妈.png": "true",
+        "AlertWI_女友让母亲代替自己解决性欲.png": "true",
+        "NavOpened": "true",
+        "AlertWI_乡村大乱交.png": "true",
+        "AlertRegex_步非烟.png": "true",
+        "AlertRegex_素霞双修录5.0.png": "true",
+        "AlertRegex_椿野毬絵（生殖活动中）.png": "true",
+        "AlertRegex_陆婉瑶.png": "true",
+        "AlertWI_克拉娜.png": "true",
+        "AlertWI_熟女小镇传阅板.png": "true",
+        "AlertWI_Gazelle.png": "true",
+        "AlertWI_夕.png": "true",
+        "AlertWI_塞拉.png": "1",
+        "AlertWI_柚木凛＆秋山蓝.png": "true",
+        "AlertWI_素霞双修录5.01.png": "true",
+        "AlertWI_七大姑.png": "true",
+        "AlertRegex_素霞双修录5.01.png": "true",
+        "LNavLockOn": "true",
+        "AlertWI_龙娘.png": "true",
+        "AlertWI_骚妈颜庭月.png": "true",
+        "AlertWI_巨乳喷奶姐姐.png": "true",
+        "AlertWI_蜡笔小新世界.png": "true",
+        "AlertRegex_蜡笔小新世界.png": "true",
+        "__migrated": "1",
+        "AlertRegex_世界调制模式-新年版（3.83）.png": "true"
+    },
+    "currentVersion": "1.12.12",
     "username": "Alec",
     "active_character": "陈淑兰.png",
     "active_group": null,
@@ -80,6 +158,7 @@
         "stopping_strings": [],
         "ban_eos_token": false,
         "skip_special_tokens": true,
+        "include_reasoning": true,
         "streaming": false,
         "mirostat_mode": 0,
         "mirostat_tau": 5,
@@ -89,6 +168,8 @@
         "grammar_string": "",
         "json_schema": {},
         "banned_tokens": "",
+        "global_banned_tokens": "",
+        "send_banned_tokens": true,
         "sampler_priority": [
             "repetition_penalty",
             "presence_penalty",
@@ -111,6 +192,7 @@
             "no_repeat_ngram"
         ],
         "samplers": [
+            "dry",
             "top_k",
             "tfs_z",
             "typical_p",
@@ -118,6 +200,22 @@
             "min_p",
             "xtc",
             "temperature"
+        ],
+        "samplers_priorities": [
+            "dry",
+            "penalties",
+            "no_repeat_ngram",
+            "temperature",
+            "top_nsigma",
+            "top_p_top_k",
+            "top_a",
+            "min_p",
+            "tfs",
+            "eta_cutoff",
+            "epsilon_cutoff",
+            "typical_p",
+            "quadratic",
+            "xtc"
         ],
         "ignore_eos_token": false,
         "spaces_between_special_tokens": true,
@@ -157,7 +255,9 @@
         "openrouter_allow_fallbacks": true,
         "xtc_threshold": 0.1,
         "xtc_probability": 0,
+        "nsigma": 0,
         "featherless_model": "",
+        "generic_model": "",
         "truncation_length": 2048,
         "legacy_api": false,
         "ignore_eos_token_aphrodite": false,
@@ -237,7 +337,6 @@
         "console_log_prompts": false,
         "request_token_probabilities": false,
         "show_group_chat_queue": false,
-        "render_formulas": false,
         "allow_name1_display": false,
         "allow_name2_display": false,
         "hotswap_enabled": true,
@@ -294,10 +393,22 @@
             "allow_jailbreak": false,
             "names_as_stop_strings": true
         },
+        "context_derived": false,
+        "context_size_derived": false,
         "sysprompt": {
             "enabled": true,
             "name": "[Migrated] Alpaca",
             "content": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\nWrite {{char}}'s next reply in a fictional roleplay chat between {{user}} and {{char}}. Write 1 reply only."
+        },
+        "reasoning": {
+            "auto_parse": false,
+            "add_to_prompts": false,
+            "auto_expand": false,
+            "show_hidden": false,
+            "prefix": "<think>\n",
+            "suffix": "\n</think>",
+            "separator": "\n\n",
+            "max_additions": 1
         },
         "personas": {
             "legat.png": "王钢",
@@ -357,6 +468,7 @@
         "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
+        "persona_description_lorebook": "",
         "persona_show_notifications": true,
         "persona_sort_order": "asc",
         "custom_stopping_strings": "",
@@ -372,32 +484,32 @@
             {
                 "label": "ooba_blocking",
                 "url": "http://127.0.0.1:7860/",
-                "lastConnection": 1736568255947
+                "lastConnection": 1740316684890
             },
             {
                 "label": "aphrodite",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1736568255950
+                "lastConnection": 1740316684892
             },
             {
                 "label": "tabby",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1736568255951
+                "lastConnection": 1740316684893
             },
             {
                 "label": "koboldcpp",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1736568255951
+                "lastConnection": 1740316684894
             },
             {
                 "label": "ollama",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1736568255952
+                "lastConnection": 1740316684894
             },
             {
                 "label": "llamacpp",
                 "url": "http://127.0.0.1:7860",
-                "lastConnection": 1736568255952
+                "lastConnection": 1740316684895
             }
         ],
         "bogus_folders": true,
@@ -431,6 +543,7 @@
         "forbid_external_media": false,
         "external_media_allowed_overrides": [],
         "external_media_forbidden_overrides": [],
+        "render_formulas": false,
         "include_newline": false,
         "ui_mode": 1,
         "default_instruct": "",
@@ -608,6 +721,17 @@
                     ],
                     "proxy": "GPT",
                     "name": "claude"
+                },
+                {
+                    "id": "36f77c6d-9f93-4b85-869f-3b17f82a5c01",
+                    "mode": "cc",
+                    "exclude": [],
+                    "api": "custom",
+                    "preset": "Lyean3.13小说之神",
+                    "api-url": "http://127.0.0.1:3333/v1",
+                    "model": "gork-3-上传",
+                    "proxy": "GPT",
+                    "name": "grok"
                 }
             ]
         },
@@ -1294,7 +1418,8 @@
             "陈蓉.png",
             "高贵典雅的妈妈姐姐们变成了勇者大人的淫乱性奴.png",
             "乡村狂操曲1.png",
-            "色情的魔法少女世界.png"
+            "色情的魔法少女世界.png",
+            "世界调制模式-新年版（3.83）.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -1406,14 +1531,17 @@
             "interactive_visible": false,
             "stability_style_preset": "anime",
             "adetailer_face": false,
-            "function_tool": false
+            "function_tool": false,
+            "tool_visible": false,
+            "bfl_upsampling": false
         },
         "chromadb": {},
         "translate": {
             "target_language": "zh-CN",
             "internal_language": "en",
             "provider": "google",
-            "auto_mode": "none"
+            "auto_mode": "none",
+            "deepl_endpoint": "free"
         },
         "objective": {},
         "quickReply": {
@@ -1794,7 +1922,7 @@
         "隐欲.png": [],
         "結月.png": [],
         "陈淑兰.png": [],
-        "小原瀬.png": []
+        "世界调制模式-新年版（3.83）.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -2543,19 +2671,23 @@
             "Anti-bond": [
                 {
                     "text": " bond",
-                    "value": -50
+                    "value": -50,
+                    "id": "0b0d8789-473a-4ccb-9444-8428050e90e3"
                 },
                 {
                     "text": " future",
-                    "value": -50
+                    "value": -50,
+                    "id": "36813d9a-2e00-4ef4-b1fe-e87e3e8d2ecb"
                 },
                 {
                     "text": " bonding",
-                    "value": -50
+                    "value": -50,
+                    "id": "6d07f36e-5729-465c-8f97-b1b74b9b2fee"
                 },
                 {
                     "text": " connection",
-                    "value": -25
+                    "value": -25,
+                    "id": "7bca5903-8d41-4059-8cd5-116832a1bcd9"
                 }
             ],
             "强调世界书": []
@@ -2572,10 +2704,12 @@
         "cohere_model": "command-r",
         "perplexity_model": "llama-3-70b-instruct",
         "groq_model": "llama3-70b-8192",
+        "nanogpt_model": "gpt-4o-mini",
         "zerooneai_model": "yi-large",
         "blockentropy_model": "be-70b-base-llama3.1",
-        "custom_model": "claude-3-5-sonnet-20241022",
-        "custom_url": "https://ar26710.chatapifirefly.ddns-ip.net/v1",
+        "deepseek_model": "deepseek-chat",
+        "custom_model": "gork-3-上传",
+        "custom_url": "http://127.0.0.1:3333/v1",
         "custom_include_body": "",
         "custom_exclude_body": "",
         "custom_include_headers": "",
@@ -2586,6 +2720,7 @@
         "openrouter_sort_models": "alphabetically",
         "openrouter_providers": [],
         "openrouter_allow_fallbacks": true,
+        "openrouter_middleout": "on",
         "jailbreak_system": false,
         "reverse_proxy": "http://127.0.0.1:8444/v1",
         "chat_completion_source": "openai",
@@ -2595,7 +2730,6 @@
         "proxy_password": "",
         "assistant_prefill": "",
         "assistant_impersonation": "我将暂停其他任务，以{{user}}视角，生成50字左右的符合逻辑的情节如下：\n",
-        "human_sysprompt_message": "",
         "claude_use_sysprompt": true,
         "use_makersuite_sysprompt": true,
         "use_alt_scale": false,
@@ -2608,12 +2742,15 @@
         "names_behavior": -1,
         "continue_postfix": "\n",
         "custom_prompt_post_processing": "strict",
+        "show_thoughts": true,
+        "reasoning_effort": "medium",
         "seed": -1,
         "n": 1
     },
     "background": {
         "name": "__transparent.png",
-        "url": "url(\"backgrounds/__transparent.png\")"
+        "url": "url(\"backgrounds/__transparent.png\")",
+        "fitting": "classic"
     },
     "proxies": [
         {

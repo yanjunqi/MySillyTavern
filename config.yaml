@@ -11,22 +11,11 @@ basicAuthUser:
 enableCorsProxy: false
 securityOverride: false
 autorun: true
-disableThumbnails: false
-thumbnailsQuality: 95
-avatarThumbnailsPng: false
 allowKeysExposure: false
 skipContentCheck: false
-disableChatBackup: true
 requestOverrides: []
-enableExtensions: true
 extras:
-  disableAutoDownload: false
-  classificationModel: Cohee/distilbert-base-uncased-go-emotions-onnx
-  captioningModel: Xenova/vit-gpt2-image-captioning
-  embeddingModel: Cohee/jina-embeddings-v2-base-en
   promptExpansionModel: Cohee/fooocus_expansion-onnx
-  speechToTextModel: Xenova/whisper-small
-  textToSpeechModel: Xenova/speecht5_tts
 openai:
   randomizeUserId: false
   captionSystemPrompt: ""
@@ -44,7 +33,6 @@ whitelistImportDomains:
   - cdn.discordapp.com
   - files.catbox.moe
   - raw.githubusercontent.com
-numberOfBackups: 50
 mistral:
   enablePrefix: false
 sessionTimeout: 86400
@@ -63,11 +51,45 @@ requestProxy:
 autheliaAuth: false
 perUserBasicAuth: false
 avoidLocalhost: false
-chatBackupThrottleInterval: 10000
-enableExtensionsAutoUpdate: true
 enableDownloadableTokenizers: true
 promptPlaceholder: "[Start a new chat]"
 ollama:
   keepAlive: -1
+  batchSize: -1
 claude:
   enableSystemPromptCache: false
+  cachingAtDepth: -1
+thumbnails:
+  enabled: true
+  quality: 95
+  format: jpg
+  dimensions:
+    bg:
+      - 160
+      - 90
+    avatar:
+      - 96
+      - 144
+backups:
+  chat:
+    enabled: false
+    throttleInterval: 10000
+    maxTotalBackups: -1
+  common:
+    numberOfBackups: 50
+extensions:
+  enabled: true
+  autoUpdate: true
+  models:
+    autoDownload: true
+    classification: Cohee/distilbert-base-uncased-go-emotions-onnx
+    captioning: Xenova/vit-gpt2-image-captioning
+    embedding: Cohee/jina-embeddings-v2-base-en
+    speechToText: Xenova/whisper-small
+    textToSpeech: Xenova/speecht5_tts
+cardsCacheCapacity: 100
+listenAddress:
+  ipv4: 0.0.0.0
+  ipv6: "[::]"
+minLogLevel: 0
+enableServerPluginsAutoUpdate: true

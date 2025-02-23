@@ -82,7 +82,7 @@ async function getPathToTokenizer(model, fallbackModel) {
             throw new Error('Failed to extract the file name from the URL');
         }
 
-        const CACHE_PATH = path.join(global.DATA_ROOT, '_cache');
+        const CACHE_PATH = path.join(globalThis.DATA_ROOT, '_cache');
         if (!fs.existsSync(CACHE_PATH)) {
             fs.mkdirSync(CACHE_PATH, { recursive: true });
         }
@@ -96,7 +96,7 @@ async function getPathToTokenizer(model, fallbackModel) {
             throw new Error('Downloading tokenizers is disabled, the model is not cached');
         }
 
-        console.log('Downloading tokenizer model:', model);
+        console.info('Downloading tokenizer model:', model);
         const response = await fetch(model);
         if (!response.ok) {
             throw new Error(`Failed to fetch the model: ${response.status} ${response.statusText}`);
@@ -108,7 +108,7 @@ async function getPathToTokenizer(model, fallbackModel) {
     } catch (error) {
         const getLastSegment = str => str?.split('/')?.pop() || '';
         if (fallbackModel) {
-            console.log(`Could not get a tokenizer from ${getLastSegment(model)}. Reason: ${error.message}. Using a fallback model: ${getLastSegment(fallbackModel)}.`);
+            console.error(`Could not get a tokenizer from ${getLastSegment(model)}. Reason: ${error.message}. Using a fallback model: ${getLastSegment(fallbackModel)}.`);
             return fallbackModel;
         }
 
@@ -156,7 +156,7 @@ class SentencePieceTokenizer {
             const pathToModel = await getPathToTokenizer(this.#model, this.#fallbackModel);
             this.#instance = new SentencePieceProcessor();
             await this.#instance.load(pathToModel);
-            console.log('Instantiated the tokenizer for', path.parse(pathToModel).name);
+            console.info('Instantiated the tokenizer for', path.parse(pathToModel).name);
             return this.#instance;
         } catch (error) {
             console.error('Sentencepiece tokenizer failed to load: ' + this.#model, error);
@@ -205,7 +205,7 @@ class WebTokenizer {
             const pathToModel = await getPathToTokenizer(this.#model, this.#fallbackModel);
             const arrayBuffer = fs.readFileSync(pathToModel).buffer;
             this.#instance = await Tokenizer.fromJSON(arrayBuffer);
-            console.log('Instantiated the tokenizer for', path.parse(pathToModel).name);
+            console.info('Instantiated the tokenizer for', path.parse(pathToModel).name);
             return this.#instance;
         } catch (error) {
             console.error('Web tokenizer failed to load: ' + this.#model, error);
@@ -226,6 +226,7 @@ const llama3_tokenizer = new WebTokenizer('src/tokenizers/llama3.json');
 const commandTokenizer = new WebTokenizer('https://github.com/SillyTavern/SillyTavern-Tokenizers/raw/main/command-r.json', 'src/tokenizers/llama3.json');
 const qwen2Tokenizer = new WebTokenizer('https://github.com/SillyTavern/SillyTavern-Tokenizers/raw/main/qwen2.json', 'src/tokenizers/llama3.json');
 const nemoTokenizer = new WebTokenizer('https://github.com/SillyTavern/SillyTavern-Tokenizers/raw/main/nemo.json', 'src/tokenizers/llama3.json');
+const deepseekTokenizer = new WebTokenizer('https://github.com/SillyTavern/SillyTavern-Tokenizers/raw/main/deepseek.json', 'src/tokenizers/llama3.json');
 
 export const sentencepieceTokenizers = [
     'llama',
@@ -235,6 +236,15 @@ export const sentencepieceTokenizers = [
     'yi',
     'gemma',
     'jamba',
+];
+
+export const webTokenizers = [
+    'claude',
+    'llama3',
+    'command-r',
+    'qwen2',
+    'nemo',
+    'deepseek',
 ];
 
 /**
@@ -269,6 +279,39 @@ export function getSentencepiceTokenizer(model) {
 
     if (model.includes('jamba')) {
         return spp_jamba;
+    }
+
+    return null;
+}
+
+/**
+ * Gets the Web tokenizer by the model name.
+ * @param {string} model Web tokenizer model name
+ * @returns {WebTokenizer|null} Web tokenizer
+ */
+export function getWebTokenizer(model) {
+    if (model.includes('llama3')) {
+        return llama3_tokenizer;
+    }
+
+    if (model.includes('claude')) {
+        return claude_tokenizer;
+    }
+
+    if (model.includes('command-r')) {
+        return commandTokenizer;
+    }
+
+    if (model.includes('qwen2')) {
+        return qwen2Tokenizer;
+    }
+
+    if (model.includes('nemo')) {
+        return nemoTokenizer;
+    }
+
+    if (model.includes('deepseek')) {
+        return deepseekTokenizer;
     }
 
     return null;
@@ -355,7 +398,7 @@ function getWebTokenizersChunks(tokenizer, ids) {
  * @returns {string} Tokenizer model to use
  */
 export function getTokenizerModel(requestModel) {
-    if (requestModel.includes('o1-preview') || requestModel.includes('o1-mini')) {
+    if (requestModel.includes('o1-preview') || requestModel.includes('o1-mini') || requestModel.includes('o3-mini')) {
         return 'gpt-4o';
     }
 
@@ -407,6 +450,10 @@ export function getTokenizerModel(requestModel) {
         return 'yi';
     }
 
+    if (requestModel.includes('deepseek')) {
+        return 'deepseek';
+    }
+
     if (requestModel.includes('gemma') || requestModel.includes('gemini')) {
         return 'gemma';
     }
@@ -437,7 +484,7 @@ export function getTiktokenTokenizer(model) {
     }
 
     const tokenizer = tiktoken.encoding_for_model(model);
-    console.log('Instantiated the tokenizer for', model);
+    console.info('Instantiated the tokenizer for', model);
     tokenizersCache[model] = tokenizer;
     return tokenizer;
 }
@@ -484,7 +531,7 @@ function createSentencepieceEncodingHandler(tokenizer) {
             const chunks = instance?.encodePieces(text);
             return response.send({ ids, count, chunks });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ ids: [], count: 0, chunks: [] });
         }
     };
@@ -515,7 +562,7 @@ function createSentencepieceDecodingHandler(tokenizer) {
             const text = chunks.join('');
             return response.send({ text, chunks });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ text: '', chunks: [] });
         }
     };
@@ -544,7 +591,7 @@ function createTiktokenEncodingHandler(modelId) {
             const chunks = await getTiktokenChunks(tokenizer, tokens);
             return response.send({ ids: tokens, count: tokens.length, chunks });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ ids: [], count: 0, chunks: [] });
         }
     };
@@ -573,7 +620,7 @@ function createTiktokenDecodingHandler(modelId) {
             const text = new TextDecoder().decode(textBytes);
             return response.send({ text });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ text: '' });
         }
     };
@@ -603,7 +650,7 @@ function createWebTokenizerEncodingHandler(tokenizer) {
             const chunks = getWebTokenizersChunks(instance, tokens);
             return response.send({ ids: tokens, count: tokens.length, chunks });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ ids: [], count: 0, chunks: [] });
         }
     };
@@ -634,7 +681,7 @@ function createWebTokenizerDecodingHandler(tokenizer) {
             const text = instance.decode(new Int32Array(ids));
             return response.send({ text, chunks });
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return response.send({ text: '', chunks: [] });
         }
     };
@@ -655,6 +702,7 @@ router.post('/llama3/encode', jsonParser, createWebTokenizerEncodingHandler(llam
 router.post('/qwen2/encode', jsonParser, createWebTokenizerEncodingHandler(qwen2Tokenizer));
 router.post('/command-r/encode', jsonParser, createWebTokenizerEncodingHandler(commandTokenizer));
 router.post('/nemo/encode', jsonParser, createWebTokenizerEncodingHandler(nemoTokenizer));
+router.post('/deepseek/encode', jsonParser, createWebTokenizerEncodingHandler(deepseekTokenizer));
 router.post('/llama/decode', jsonParser, createSentencepieceDecodingHandler(spp_llama));
 router.post('/nerdstash/decode', jsonParser, createSentencepieceDecodingHandler(spp_nerd));
 router.post('/nerdstash_v2/decode', jsonParser, createSentencepieceDecodingHandler(spp_nerd_v2));
@@ -668,6 +716,7 @@ router.post('/llama3/decode', jsonParser, createWebTokenizerDecodingHandler(llam
 router.post('/qwen2/decode', jsonParser, createWebTokenizerDecodingHandler(qwen2Tokenizer));
 router.post('/command-r/decode', jsonParser, createWebTokenizerDecodingHandler(commandTokenizer));
 router.post('/nemo/decode', jsonParser, createWebTokenizerDecodingHandler(nemoTokenizer));
+router.post('/deepseek/decode', jsonParser, createWebTokenizerDecodingHandler(deepseekTokenizer));
 
 router.post('/openai/encode', jsonParser, async function (req, res) {
     try {
@@ -723,11 +772,16 @@ router.post('/openai/encode', jsonParser, async function (req, res) {
             return handler(req, res);
         }
 
+        if (queryModel.includes('deepseek')) {
+            const handler = createWebTokenizerEncodingHandler(deepseekTokenizer);
+            return handler(req, res);
+        }
+
         const model = getTokenizerModel(queryModel);
         const handler = createTiktokenEncodingHandler(model);
         return handler(req, res);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return res.send({ ids: [], count: 0, chunks: [] });
     }
 });
@@ -786,11 +840,16 @@ router.post('/openai/decode', jsonParser, async function (req, res) {
             return handler(req, res);
         }
 
+        if (queryModel.includes('deepseek')) {
+            const handler = createWebTokenizerDecodingHandler(deepseekTokenizer);
+            return handler(req, res);
+        }
+
         const model = getTokenizerModel(queryModel);
         const handler = createTiktokenDecodingHandler(model);
         return handler(req, res);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return res.send({ text: '' });
     }
 });
@@ -863,6 +922,13 @@ router.post('/openai/count', jsonParser, async function (req, res) {
             return res.send({ 'token_count': num_tokens });
         }
 
+        if (model === 'deepseek') {
+            const instance = await deepseekTokenizer.get();
+            if (!instance) throw new Error('Failed to load the DeepSeek tokenizer');
+            num_tokens = countWebTokenizerTokens(instance, req.body);
+            return res.send({ 'token_count': num_tokens });
+        }
+
         const tokensPerName = queryModel.includes('gpt-3.5-turbo-0301') ? -1 : 1;
         const tokensPerMessage = queryModel.includes('gpt-3.5-turbo-0301') ? 4 : 3;
         const tokensPadding = 3;
@@ -922,7 +988,7 @@ router.post('/remote/kobold/count', jsonParser, async function (request, respons
         const result = await fetch(url, args);
 
         if (!result.ok) {
-            console.log(`API returned error: ${result.status} ${result.statusText}`);
+            console.warn(`API returned error: ${result.status} ${result.statusText}`);
             return response.send({ error: true });
         }
 
@@ -931,7 +997,7 @@ router.post('/remote/kobold/count', jsonParser, async function (request, respons
         const ids = data['ids'] ?? [];
         return response.send({ count, ids });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return response.send({ error: true });
     }
 });
@@ -986,7 +1052,7 @@ router.post('/remote/textgenerationwebui/encode', jsonParser, async function (re
         const result = await fetch(url, args);
 
         if (!result.ok) {
-            console.log(`API returned error: ${result.status} ${result.statusText}`);
+            console.warn(`API returned error: ${result.status} ${result.statusText}`);
             return response.send({ error: true });
         }
 
@@ -996,7 +1062,7 @@ router.post('/remote/textgenerationwebui/encode', jsonParser, async function (re
 
         return response.send({ count, ids });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return response.send({ error: true });
     }
 });

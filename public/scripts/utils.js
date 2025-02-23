@@ -1,3 +1,10 @@
+import {
+    moment,
+    DOMPurify,
+    Readability,
+    isProbablyReaderable,
+} from '../lib.js';
+
 import { getContext } from './extensions.js';
 import { characters, getRequestHeaders, this_chid } from '../script.js';
 import { isMobile } from './RossAscends-mods.js';
@@ -58,6 +65,16 @@ export function deepMerge(target, source) {
 
 export function escapeHtml(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/**
+ * Make string safe for use as a CSS selector.
+ * @param {string} str String to sanitize
+ * @param {string} replacement Replacement for invalid characters
+ * @returns {string} Sanitized string
+ */
+export function sanitizeSelector(str, replacement = '_') {
+    return String(str).replace(/[^a-z0-9_-]/ig, replacement);
 }
 
 export function isValidUrl(value) {
@@ -375,6 +392,26 @@ export function getStringHash(str, seed = 0) {
 }
 
 /**
+ * Copy text to clipboard. Use navigator.clipboard.writeText if available, otherwise use document.execCommand.
+ * @param {string} text - The text to copy to the clipboard.
+ * @returns {Promise<void>} A promise that resolves when the text has been copied to the clipboard.
+ */
+export function copyText(text) {
+    if (navigator.clipboard) {
+        return navigator.clipboard.writeText(text);
+    }
+
+    const parent = document.querySelector('dialog[open]:last-of-type') ?? document.body;
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    parent.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand('copy');
+    parent.removeChild(textArea);
+}
+
+/**
  * Map of debounced functions to their timers.
  * Weak map is used to avoid memory leaks.
  * @type {WeakMap<function, any>}
@@ -658,9 +695,10 @@ export function trimToEndSentence(input) {
     const characters = Array.from(input);
     for (let i = characters.length - 1; i >= 0; i--) {
         const char = characters[i];
+        const emoji = isEmoji(char);
 
-        if (punctuation.has(char) || isEmoji(char)) {
-            if (i > 0 && /[\s\n]/.test(characters[i - 1])) {
+        if (punctuation.has(char) || emoji) {
+            if (!emoji && i > 0 && /[\s\n]/.test(characters[i - 1])) {
                 last = i - 1;
             } else {
                 last = i;
@@ -804,8 +842,8 @@ export function isOdd(number) {
 
 /**
  * Compare two moment objects for sorting.
- * @param {moment.Moment} a The first moment object.
- * @param {moment.Moment} b The second moment object.
+ * @param {import('moment').Moment} a The first moment object.
+ * @param {import('moment').Moment} b The second moment object.
  * @returns {number} A negative number if a is before b, a positive number if a is after b, or 0 if they are equal.
  */
 export function sortMoments(a, b) {
@@ -824,7 +862,7 @@ const dateCache = new Map();
  * Cached version of moment() to avoid re-parsing the same date strings.
  * Important: Moment objects are mutable, so use clone() before modifying them!
  * @param {string|number} timestamp String or number representing a date.
- * @returns {moment.Moment} Moment object
+ * @returns {import('moment').Moment} Moment object
  */
 export function timestampToMoment(timestamp) {
     if (dateCache.has(timestamp)) {
@@ -1524,38 +1562,9 @@ export async function getReadableText(document, textSelector = 'body') {
  * @returns {Promise<string>} A promise that resolves to the parsed text.
  */
 export async function extractTextFromPDF(blob) {
-    async function initPdfJs() {
-        const promises = [];
-
-        const workerPromise = new Promise((resolve, reject) => {
-            const workerScript = document.createElement('script');
-            workerScript.type = 'module';
-            workerScript.async = true;
-            workerScript.src = 'lib/pdf.worker.mjs';
-            workerScript.onload = resolve;
-            workerScript.onerror = reject;
-            document.head.appendChild(workerScript);
-        });
-
-        promises.push(workerPromise);
-
-        const pdfjsPromise = new Promise((resolve, reject) => {
-            const pdfjsScript = document.createElement('script');
-            pdfjsScript.type = 'module';
-            pdfjsScript.async = true;
-            pdfjsScript.src = 'lib/pdf.mjs';
-            pdfjsScript.onload = resolve;
-            pdfjsScript.onerror = reject;
-            document.head.appendChild(pdfjsScript);
-        });
-
-        promises.push(pdfjsPromise);
-
-        return Promise.all(promises);
-    }
-
     if (!('pdfjsLib' in window)) {
-        await initPdfJs();
+        await import('../lib/pdf.min.mjs');
+        await import('../lib/pdf.worker.min.mjs');
     }
 
     const buffer = await getFileBuffer(blob);
@@ -1594,30 +1603,9 @@ export async function extractTextFromMarkdown(blob) {
 }
 
 export async function extractTextFromEpub(blob) {
-    async function initEpubJs() {
-        const epubScript = new Promise((resolve, reject) => {
-            const epubScript = document.createElement('script');
-            epubScript.async = true;
-            epubScript.src = 'lib/epub.min.js';
-            epubScript.onload = resolve;
-            epubScript.onerror = reject;
-            document.head.appendChild(epubScript);
-        });
-
-        const jszipScript = new Promise((resolve, reject) => {
-            const jszipScript = document.createElement('script');
-            jszipScript.async = true;
-            jszipScript.src = 'lib/jszip.min.js';
-            jszipScript.onload = resolve;
-            jszipScript.onerror = reject;
-            document.head.appendChild(jszipScript);
-        });
-
-        return Promise.all([epubScript, jszipScript]);
-    }
-
     if (!('ePub' in window)) {
-        await initEpubJs();
+        await import('../lib/jszip.min.js');
+        await import('../lib/epub.min.js');
     }
 
     const book = ePub(blob);
@@ -1745,17 +1733,17 @@ export function hasAnimation(control) {
 
 /**
  * Run an action once an animation on a control ends. If the control has no animation, the action will be executed immediately.
- *
+ * The action will be executed after the animation ends or after the timeout, whichever comes first.
  * @param {HTMLElement} control - The control element to listen for animation end event
  * @param {(control:*?) => void} callback - The callback function to be executed when the animation ends
+ * @param {number} [timeout=500] - The timeout in milliseconds to wait for the animation to end before executing the callback
  */
-export function runAfterAnimation(control, callback) {
+export function runAfterAnimation(control, callback, timeout = 500) {
     if (hasAnimation(control)) {
-        const onAnimationEnd = () => {
-            control.removeEventListener('animationend', onAnimationEnd);
-            callback(control);
-        };
-        control.addEventListener('animationend', onAnimationEnd);
+        Promise.race([
+            new Promise((r) => setTimeout(r, timeout)), // Fallback timeout
+            new Promise((r) => control.addEventListener('animationend', r, { once: true })),
+        ]).finally(() => callback(control));
     } else {
         callback(control);
     }
@@ -2071,6 +2059,23 @@ export function toggleDrawer(drawer, expand = true) {
     }
 }
 
+/**
+ * Sets or removes a dataset property on an HTMLElement
+ *
+ * Utility function to make it easier to reset dataset properties on null, without them being "null" as value.
+ *
+ * @param {HTMLElement} element - The element to modify
+ * @param {string} name - The name of the dataset property
+ * @param {string|null} value - The value to set - If null, the dataset property will be removed
+ */
+export function setDatasetProperty(element, name, value) {
+    if (value === null) {
+        delete element.dataset[name];
+    } else {
+        element.dataset[name] = value;
+    }
+}
+
 export async function fetchFaFile(name) {
     const style = document.createElement('style');
     style.innerHTML = await (await fetch(`/css/${name}`)).text();
@@ -2155,7 +2160,7 @@ export async function showFontAwesomePicker(customList = null) {
  * @param {string[]?} [options.filteredByTags=null] - Tags to filter characters by
  * @param {boolean} [options.preferCurrentChar=true] - Whether to prefer the current character(s)
  * @param {boolean} [options.quiet=false] - Whether to suppress warnings
- * @returns {any?} - The found character or null if not found
+ * @returns {import('./char-data.js').v1CharData?} - The found character or null if not found
  */
 export function findChar({ name = null, allowAvatar = true, insensitive = true, filteredByTags = null, preferCurrentChar = true, quiet = false } = {}) {
     const matches = (char) => !name || (allowAvatar && char.avatar === name) || (insensitive ? equalsIgnoreCaseAndAccents(char.name, name) : char.name === name);
@@ -2215,4 +2220,21 @@ export function getCharIndex(char) {
     const index = characters.findIndex(c => c.avatar === char.avatar);
     if (index === -1) throw new Error(`Character not found: ${char.avatar}`);
     return index;
+}
+
+/**
+ * Compares two arrays for equality
+ * @param {any[]} a - The first array
+ * @param {any[]} b - The second array
+ * @returns {boolean} True if the arrays are equal, false otherwise
+ */
+export function arraysEqual(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
 }

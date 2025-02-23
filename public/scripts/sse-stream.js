@@ -144,9 +144,14 @@ async function* parseStreamData(json) {
                 for (let j = 0; j < json.candidates[i].content.parts.length; j++) {
                     if (typeof json.candidates[i].content.parts[j].text === 'string') {
                         for (let k = 0; k < json.candidates[i].content.parts[j].text.length; k++) {
-                            const str = json.candidates[i].content.parts[j].text[k];
+                            const moreThanOnePart = json.candidates[i].content.parts.length > 1;
+                            const isNotLastPart = j !== json.candidates[i].content.parts.length - 1;
+                            const isLastSymbol = k === json.candidates[i].content.parts[j].text.length - 1;
+                            const addNewline = moreThanOnePart && isNotLastPart && isLastSymbol;
+                            const str = json.candidates[i].content.parts[j].text[k] + (addNewline ? '\n\n' : '');
                             const candidateClone = structuredClone(json.candidates[0]);
                             candidateClone.content.parts[j].text = str;
+                            candidateClone.content.parts = [candidateClone.content.parts[j]];
                             const candidates = [candidateClone];
                             yield {
                                 data: { ...json, candidates },
@@ -207,6 +212,36 @@ async function* parseStreamData(json) {
                     const str = json.choices[0].delta.text[j];
                     const choiceClone = structuredClone(json.choices[0]);
                     choiceClone.delta.text = str;
+                    const choices = [choiceClone];
+                    yield {
+                        data: { ...json, choices },
+                        chunk: str,
+                    };
+                }
+                return;
+            }
+            else if (typeof json.choices[0].delta.reasoning_content === 'string' && json.choices[0].delta.reasoning_content.length > 0) {
+                for (let j = 0; j < json.choices[0].delta.reasoning_content.length; j++) {
+                    const str = json.choices[0].delta.reasoning_content[j];
+                    const isLastSymbol = j === json.choices[0].delta.reasoning_content.length - 1;
+                    const choiceClone = structuredClone(json.choices[0]);
+                    choiceClone.delta.reasoning_content = str;
+                    choiceClone.delta.content = isLastSymbol ? choiceClone.delta.content : '';
+                    const choices = [choiceClone];
+                    yield {
+                        data: { ...json, choices },
+                        chunk: str,
+                    };
+                }
+                return;
+            }
+            else if (typeof json.choices[0].delta.reasoning === 'string' && json.choices[0].delta.reasoning.length > 0) {
+                for (let j = 0; j < json.choices[0].delta.reasoning.length; j++) {
+                    const str = json.choices[0].delta.reasoning[j];
+                    const isLastSymbol = j === json.choices[0].delta.reasoning.length - 1;
+                    const choiceClone = structuredClone(json.choices[0]);
+                    choiceClone.delta.reasoning = str;
+                    choiceClone.delta.content = isLastSymbol ? choiceClone.delta.content : '';
                     const choices = [choiceClone];
                     yield {
                         data: { ...json, choices },

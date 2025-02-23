@@ -1,3 +1,4 @@
+import { localforage } from '../lib.js';
 import { characters, main_api, api_server, nai_settings, online_status, this_chid } from '../script.js';
 import { power_user, registerDebugFunction } from './power-user.js';
 import { chat_completion_sources, model_list, oai_settings } from './openai.js';
@@ -6,8 +7,6 @@ import { getStringHash } from './utils.js';
 import { kai_flags } from './kai-settings.js';
 import { textgen_types, textgenerationwebui_settings as textgen_settings, getTextGenServer, getTextGenModel } from './textgen-settings.js';
 import { getCurrentDreamGenModelTokenizer, getCurrentOpenRouterModelTokenizer, openRouterModels } from './textgen-models.js';
-
-const { OOBA, TABBY, KOBOLDCPP, VLLM, APHRODITE, LLAMACPP, OPENROUTER, DREAMGEN } = textgen_types;
 
 export const CHARACTERS_PER_TOKEN_RATIO = 3.35;
 export const TOKENIZER_WARNING_KEY = 'tokenizationWarningShown';
@@ -32,6 +31,7 @@ export const tokenizers = {
     QWEN2: 15,
     COMMAND_R: 16,
     NEMO: 17,
+    DEEPSEEK: 18,
     BEST_MATCH: 99,
 };
 
@@ -46,13 +46,18 @@ export const ENCODE_TOKENIZERS = [
     tokenizers.QWEN2,
     tokenizers.COMMAND_R,
     tokenizers.NEMO,
+    tokenizers.DEEPSEEK,
     // uncomment when NovelAI releases Kayra and Clio weights, lol
     //tokenizers.NERD,
     //tokenizers.NERD2,
 ];
 
-// A list of Text Completion sources that support remote tokenization.
-export const TEXTGEN_TOKENIZERS = [OOBA, TABBY, KOBOLDCPP, LLAMACPP, VLLM, APHRODITE];
+/**
+ * A list of Text Completion sources that support remote tokenization.
+ * Populated in initTokenziers due to circular dependencies.
+ * @type {string[]}
+ */
+export const TEXTGEN_TOKENIZERS = [];
 
 const TOKENIZER_URLS = {
     [tokenizers.GPT2]: {
@@ -129,13 +134,18 @@ const TOKENIZER_URLS = {
         decode: '/api/tokenizers/nemo/decode',
         count: '/api/tokenizers/nemo/encode',
     },
+    [tokenizers.DEEPSEEK]: {
+        encode: '/api/tokenizers/deepseek/encode',
+        decode: '/api/tokenizers/deepseek/decode',
+        count: '/api/tokenizers/deepseek/encode',
+    },
     [tokenizers.API_TEXTGENERATIONWEBUI]: {
         encode: '/api/tokenizers/remote/textgenerationwebui/encode',
         count: '/api/tokenizers/remote/textgenerationwebui/encode',
     },
 };
 
-const objectStore = new localforage.createInstance({ name: 'SillyTavern_ChatCompletions' });
+const objectStore = localforage.createInstance({ name: 'SillyTavern_ChatCompletions' });
 
 let tokenCache = {};
 
@@ -286,7 +296,7 @@ export function getTokenizerBestMatch(forApi) {
         const hasTokenizerError = sessionStorage.getItem(TOKENIZER_WARNING_KEY);
         const hasValidEndpoint = sessionStorage.getItem(TOKENIZER_SUPPORTED_KEY);
         const isConnected = online_status !== 'no_connection';
-        const isTokenizerSupported = TEXTGEN_TOKENIZERS.includes(textgen_settings.type) && (textgen_settings.type !== OOBA || hasValidEndpoint);
+        const isTokenizerSupported = TEXTGEN_TOKENIZERS.includes(textgen_settings.type) && (textgen_settings.type !== textgen_types.OOBA || hasValidEndpoint);
 
         if (!hasTokenizerError && isConnected) {
             if (forApi === 'kobold' && kai_flags.can_use_tokenization) {
@@ -296,10 +306,10 @@ export function getTokenizerBestMatch(forApi) {
             if (forApi === 'textgenerationwebui' && isTokenizerSupported) {
                 return tokenizers.API_TEXTGENERATIONWEBUI;
             }
-            if (forApi === 'textgenerationwebui' && textgen_settings.type === OPENROUTER) {
+            if (forApi === 'textgenerationwebui' && textgen_settings.type === textgen_types.OPENROUTER) {
                 return getCurrentOpenRouterModelTokenizer();
             }
-            if (forApi === 'textgenerationwebui' && textgen_settings.type === DREAMGEN) {
+            if (forApi === 'textgenerationwebui' && textgen_settings.type === textgen_types.DREAMGEN) {
                 return getCurrentDreamGenModelTokenizer();
             }
         }
@@ -314,6 +324,12 @@ export function getTokenizerBestMatch(forApi) {
             }
             if (model.includes('gemma')) {
                 return tokenizers.GEMMA;
+            }
+            if (model.includes('nemo') || model.includes('pixtral')) {
+                return tokenizers.NEMO;
+            }
+            if (model.includes('deepseek')) {
+                return tokenizers.DEEPSEEK;
             }
             if (model.includes('yi')) {
                 return tokenizers.YI;
@@ -417,6 +433,7 @@ export async function getTokenCountAsync(str, padding = undefined) {
     }
 
     let tokenizerType = power_user.tokenizer;
+    let modelHash = '';
 
     if (main_api === 'openai') {
         if (padding === power_user.token_padding) {
@@ -432,13 +449,17 @@ export async function getTokenCountAsync(str, padding = undefined) {
         tokenizerType = getTokenizerBestMatch(main_api);
     }
 
+    if (tokenizerType === tokenizers.API_TEXTGENERATIONWEBUI) {
+        modelHash = getStringHash(getTextGenModel() || online_status).toString();
+    }
+
     if (padding === undefined) {
         padding = 0;
     }
 
     const cacheObject = getTokenCacheObject();
     const hash = getStringHash(str);
-    const cacheKey = `${tokenizerType}-${hash}+${padding}`;
+    const cacheKey = `${tokenizerType}-${hash}${modelHash}+${padding}`;
 
     if (typeof cacheObject[cacheKey] === 'number') {
         return cacheObject[cacheKey];
@@ -468,6 +489,7 @@ export function getTokenCount(str, padding = undefined) {
     }
 
     let tokenizerType = power_user.tokenizer;
+    let modelHash = '';
 
     if (main_api === 'openai') {
         if (padding === power_user.token_padding) {
@@ -483,13 +505,17 @@ export function getTokenCount(str, padding = undefined) {
         tokenizerType = getTokenizerBestMatch(main_api);
     }
 
+    if (tokenizerType === tokenizers.API_TEXTGENERATIONWEBUI) {
+        modelHash = getStringHash(getTextGenModel() || online_status).toString();
+    }
+
     if (padding === undefined) {
         padding = 0;
     }
 
     const cacheObject = getTokenCacheObject();
     const hash = getStringHash(str);
-    const cacheKey = `${tokenizerType}-${hash}+${padding}`;
+    const cacheKey = `${tokenizerType}-${hash}${modelHash}+${padding}`;
 
     if (typeof cacheObject[cacheKey] === 'number') {
         return cacheObject[cacheKey];
@@ -533,7 +559,6 @@ export function getTokenizerModel() {
         return oai_settings.openai_model;
     }
 
-    const turbo0301Tokenizer = 'gpt-3.5-turbo-0301';
     const turboTokenizer = 'gpt-3.5-turbo';
     const gpt4Tokenizer = 'gpt-4';
     const gpt4oTokenizer = 'gpt-4o';
@@ -548,19 +573,21 @@ export function getTokenizerModel() {
     const qwen2Tokenizer = 'qwen2';
     const commandRTokenizer = 'command-r';
     const nemoTokenizer = 'nemo';
+    const deepseekTokenizer = 'deepseek';
 
     // Assuming no one would use it for different models.. right?
     if (oai_settings.chat_completion_source == chat_completion_sources.SCALE) {
         return gpt4Tokenizer;
     }
 
+    if (oai_settings.chat_completion_source == chat_completion_sources.DEEPSEEK) {
+        return deepseekTokenizer;
+    }
+
     // Select correct tokenizer for WindowAI proxies
     if (oai_settings.chat_completion_source == chat_completion_sources.WINDOWAI && oai_settings.windowai_model) {
         if (oai_settings.windowai_model.includes('gpt-4')) {
             return gpt4Tokenizer;
-        }
-        else if (oai_settings.windowai_model.includes('gpt-3.5-turbo-0301')) {
-            return turbo0301Tokenizer;
         }
         else if (oai_settings.windowai_model.includes('gpt-3.5-turbo')) {
             return turboTokenizer;
@@ -575,7 +602,7 @@ export function getTokenizerModel() {
 
     // And for OpenRouter (if not a site model, then it's impossible to determine the tokenizer)
     if (main_api == 'openai' && oai_settings.chat_completion_source == chat_completion_sources.OPENROUTER && oai_settings.openrouter_model ||
-        main_api == 'textgenerationwebui' && textgen_settings.type === OPENROUTER && textgen_settings.openrouter_model) {
+        main_api == 'textgenerationwebui' && textgen_settings.type === textgen_types.OPENROUTER && textgen_settings.openrouter_model) {
         const model = main_api == 'openai'
             ? model_list.find(x => x.id === oai_settings.openrouter_model)
             : openRouterModels.find(x => x.id === textgen_settings.openrouter_model);
@@ -607,9 +634,6 @@ export function getTokenizerModel() {
         else if (oai_settings.openrouter_model.includes('gpt-4')) {
             return gpt4Tokenizer;
         }
-        else if (oai_settings.openrouter_model.includes('gpt-3.5-turbo-0301')) {
-            return turbo0301Tokenizer;
-        }
         else if (oai_settings.openrouter_model.includes('gpt-3.5-turbo')) {
             return turboTokenizer;
         }
@@ -621,6 +645,9 @@ export function getTokenizerModel() {
         }
         else if (oai_settings.openrouter_model.includes('jamba')) {
             return jambaTokenizer;
+        }
+        else if (oai_settings.openrouter_model.includes('deepseek')) {
+            return deepseekTokenizer;
         }
     }
 
@@ -651,7 +678,10 @@ export function getTokenizerModel() {
         return oai_settings.custom_model;
     }
 
-    if (oai_settings.chat_completion_source === chat_completion_sources.PERPLEXITY)  {
+    if (oai_settings.chat_completion_source === chat_completion_sources.PERPLEXITY) {
+        if (oai_settings.perplexity_model.includes('sonar-reasoning')) {
+            return deepseekTokenizer;
+        }
         if (oai_settings.perplexity_model.includes('llama-3') || oai_settings.perplexity_model.includes('llama3')) {
             return llama3Tokenizer;
         }
@@ -679,7 +709,7 @@ export function getTokenizerModel() {
         return yiTokenizer;
     }
 
-    if (oai_settings.chat_completion_source === chat_completion_sources.BLOCKENTROPY)  {
+    if (oai_settings.chat_completion_source === chat_completion_sources.BLOCKENTROPY) {
         if (oai_settings.blockentropy_model.includes('llama3')) {
             return llama3Tokenizer;
         }
@@ -1120,6 +1150,14 @@ export function decodeTextTokens(tokenizerType, ids) {
 }
 
 export async function initTokenizers() {
+    TEXTGEN_TOKENIZERS.push(
+        textgen_types.OOBA,
+        textgen_types.TABBY,
+        textgen_types.KOBOLDCPP,
+        textgen_types.LLAMACPP,
+        textgen_types.VLLM,
+        textgen_types.APHRODITE,
+    );
     await loadTokenCache();
     registerDebugFunction('resetTokenCache', 'Reset token cache', 'Purges the calculated token counts. Use this if you want to force a full re-tokenization of all chats or suspect the token counts are wrong.', resetTokenCache);
 }

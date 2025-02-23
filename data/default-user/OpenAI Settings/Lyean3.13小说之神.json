@@ -1,5 +1,5 @@
 {
-    "chat_completion_source": "openai",
+    "chat_completion_source": "custom",
     "openai_model": "claude-3-5-sonnet-20241022",
     "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
@@ -9,6 +9,7 @@
     "openrouter_sort_models": "alphabetically",
     "openrouter_providers": [],
     "openrouter_allow_fallbacks": true,
+    "openrouter_middleout": "on",
     "ai21_model": "jamba-1.5-large",
     "mistralai_model": "mistral-medium",
     "cohere_model": "command-r",
@@ -16,8 +17,8 @@
     "groq_model": "llama3-70b-8192",
     "zerooneai_model": "yi-large",
     "blockentropy_model": "be-70b-base-llama3.1",
-    "custom_model": "claude-3-5-sonnet-20241022",
-    "custom_url": "https://ar26710.chatapifirefly.ddns-ip.net/v1",
+    "custom_model": "grok-3",
+    "custom_url": "http://grok.yousebaby.com/v1",
     "custom_include_body": "",
     "custom_exclude_body": "",
     "custom_include_headers": "",
@@ -704,7 +705,7 @@
                 },
                 {
                     "identifier": "a3f3f7bd-0581-483e-bea1-0edbd79819fd",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "71ce8571-e750-44e1-a21d-55a86c947ebc",
@@ -725,7 +726,6 @@
     "show_external_models": true,
     "assistant_prefill": "",
     "assistant_impersonation": "我将暂停其他任务，以{{user}}视角，生成50字左右的符合逻辑的情节如下：\n",
-    "human_sysprompt_message": "",
     "claude_use_sysprompt": true,
     "use_makersuite_sysprompt": true,
     "use_alt_scale": false,
@@ -736,6 +736,8 @@
     "continue_prefill": true,
     "continue_postfix": "\n",
     "function_calling": true,
+    "show_thoughts": true,
+    "reasoning_effort": "medium",
     "seed": -1,
     "n": 1
 }

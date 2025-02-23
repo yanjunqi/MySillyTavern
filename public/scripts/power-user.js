@@ -1,3 +1,5 @@
+import { Fuse, Handlebars } from '../lib.js';
+
 import {
     saveSettingsDebounced,
     scrollChatToBottom,
@@ -51,13 +53,14 @@ import { SlashCommandEnumValue, enumTypes } from './slash-commands/SlashCommandE
 import { commonEnumProviders, enumIcons } from './slash-commands/SlashCommandCommonEnumsProvider.js';
 import { POPUP_TYPE, callGenericPopup } from './popup.js';
 import { loadSystemPrompts } from './sysprompt.js';
+import { fuzzySearchCategories } from './filters.js';
+import { accountStorage } from './util/AccountStorage.js';
 
 export {
     loadPowerUserSettings,
     loadMovingUIState,
     collapseNewlines,
     playMessageSound,
-    sortEntitiesList,
     fixMarkdown,
     power_user,
     send_on_enter_options,
@@ -178,7 +181,6 @@ let power_user = {
     console_log_prompts: false,
     request_token_probabilities: false,
     show_group_chat_queue: false,
-    render_formulas: false,
     allow_name1_display: false,
     allow_name2_display: false,
     hotswap_enabled: true,
@@ -225,6 +227,7 @@ let power_user = {
         macro: true,
         names_behavior: names_behavior_types.FORCE,
         activation_regex: '',
+        derived: false,
         bind_to_context: false,
         user_alignment_message: '',
         system_same_as_user: false,
@@ -242,10 +245,24 @@ let power_user = {
         names_as_stop_strings: true,
     },
 
+    context_derived: false,
+    context_size_derived: false,
+
     sysprompt: {
         enabled: true,
         name: 'Neutral - Chat',
         content: 'Write {{char}}\'s next reply in a fictional chat between {{char}} and {{user}}.',
+    },
+
+    reasoning: {
+        auto_parse: false,
+        add_to_prompts: false,
+        auto_expand: false,
+        show_hidden: false,
+        prefix: '<think>\n',
+        suffix: '\n</think>',
+        separator: '\n\n',
+        max_additions: 1,
     },
 
     personas: {},
@@ -256,6 +273,7 @@ let power_user = {
     persona_description_position: persona_description_positions.IN_PROMPT,
     persona_description_role: 0,
     persona_description_depth: 2,
+    persona_description_lorebook: '',
     persona_show_notifications: true,
     persona_sort_order: 'asc',
 
@@ -467,9 +485,9 @@ function switchCompactInputArea() {
     $('#compact_input_area').prop('checked', power_user.compact_input_area);
 }
 
-export function switchSwipeNumAllMessages() {
+function switchSwipeNumAllMessages() {
     $('#show_swipe_num_all_messages').prop('checked', power_user.show_swipe_num_all_messages);
-    $('.mes:not(.last_mes) .swipes-counter').css('opacity', '').toggle(power_user.show_swipe_num_all_messages);
+    $('body').toggleClass('swipeAllMessages', !!power_user.show_swipe_num_all_messages);
 }
 
 var originalSliderValues = [];
@@ -638,6 +656,10 @@ async function CreateZenSliders(elmnt) {
         numSteps = 50;
         decimals = 1;
     }
+    if (sliderID == 'nsigma') {
+        numSteps = 50;
+        decimals = 1;
+    }
     //customize steps
     if (sliderID == 'mirostat_mode_textgenerationwebui' ||
         sliderID == 'mirostat_mode_kobold') {
@@ -682,6 +704,7 @@ async function CreateZenSliders(elmnt) {
         sliderID == 'penalty_alpha_textgenerationwebui' ||
         sliderID == 'length_penalty_textgenerationwebui' ||
         sliderID == 'epsilon_cutoff_textgenerationwebui' ||
+        sliderID == 'nsigma' ||
         sliderID == 'rep_pen_range' ||
         sliderID == 'eta_cutoff_textgenerationwebui' ||
         sliderID == 'top_a_textgenerationwebui' ||
@@ -1302,9 +1325,7 @@ function applyTheme(name) {
             if (type) applyThemeColor(type);
             if (action) action();
         } else {
-            if (selector) { $(selector).attr('color', 'rgba(0,0,0,0)'); }
             console.debug(`Empty theme key: ${key}`);
-            power_user[key] = '';
         }
     }
 
@@ -1471,6 +1492,8 @@ async function loadPowerUserSettings(settings, data) {
     $('#encode_tags').prop('checked', power_user.encode_tags);
     $('#example_messages_behavior').val(getExampleMessagesBehavior());
     $(`#example_messages_behavior option[value="${getExampleMessagesBehavior()}"]`).prop('selected', true);
+    $('#context_derived').parent().find('i').toggleClass('toggleEnabled', !!power_user.context_derived);
+    $('#context_size_derived').prop('checked', !!power_user.context_size_derived);
 
     $('#console_log_prompts').prop('checked', power_user.console_log_prompts);
     $('#request_token_probabilities').prop('checked', power_user.request_token_probabilities);
@@ -1486,7 +1509,6 @@ async function loadPowerUserSettings(settings, data) {
     $('#collapse-newlines-checkbox').prop('checked', power_user.collapse_newlines);
     $('#always-force-name2-checkbox').prop('checked', power_user.always_force_name2);
     $('#trim_sentences_checkbox').prop('checked', power_user.trim_sentences);
-    $('#render_formulas').prop('checked', power_user.render_formulas);
     $('#disable_group_trimming').prop('checked', power_user.disable_group_trimming);
     $('#markdown_escape_strings').val(power_user.markdown_escape_strings);
     $('#fast_ui_mode').prop('checked', power_user.fast_ui_mode);
@@ -1593,7 +1615,7 @@ async function loadPowerUserSettings(settings, data) {
     $(`#character_sort_order option[data-order="${power_user.sort_order}"][data-field="${power_user.sort_field}"]`).prop('selected', true);
     switchReducedMotion();
     switchCompactInputArea();
-    reloadMarkdownProcessor(power_user.render_formulas);
+    reloadMarkdownProcessor();
     await loadInstructMode(data);
     await loadContextSettings();
     await loadSystemPrompts(data);
@@ -1745,7 +1767,7 @@ async function loadContextSettings() {
         } else {
             $element.val(power_user.context[control.property]);
         }
-        console.log(`Setting ${$element.prop('id')} to ${power_user.context[control.property]}`);
+        console.debug(`Setting ${$element.prop('id')} to ${power_user.context[control.property]}`);
 
         // If the setting already exists, no need to duplicate it
         // TODO: Maybe check the power_user object for the setting instead of a flag?
@@ -1756,7 +1778,7 @@ async function loadContextSettings() {
             } else {
                 power_user.context[control.property] = value;
             }
-            console.log(`Setting ${$element.prop('id')} to ${value}`);
+            console.debug(`Setting ${$element.prop('id')} to ${value}`);
             if (!CSS.supports('field-sizing', 'content') && $(this).is('textarea')) {
                 await resetScrollHeight($(this));
             }
@@ -1820,27 +1842,27 @@ async function loadContextSettings() {
     });
 }
 
+
 /**
- * Fuzzy search characters by a search term
+ * Common function to perform fuzzy search with optional caching
+ * @param {string} type - Type of search from fuzzySearchCategories
+ * @param {any[]} data - Data array to search in
+ * @param {Array<{name: string, weight: number, getFn?: (obj: any) => string}>} keys - Fuse.js keys configuration
  * @param {string} searchValue - The search term
- * @returns {FuseResult[]} Results as items with their score
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
  */
-export function fuzzySearchCharacters(searchValue) {
-    // @ts-ignore
-    const fuse = new Fuse(characters, {
-        keys: [
-            { name: 'data.name', weight: 20 },
-            { name: '#tags', weight: 10, getFn: (character) => getTagsList(character.avatar).map(x => x.name).join('||') },
-            { name: 'data.description', weight: 3 },
-            { name: 'data.mes_example', weight: 3 },
-            { name: 'data.scenario', weight: 2 },
-            { name: 'data.personality', weight: 2 },
-            { name: 'data.first_mes', weight: 2 },
-            { name: 'data.creator_notes', weight: 2 },
-            { name: 'data.creator', weight: 1 },
-            { name: 'data.tags', weight: 1 },
-            { name: 'data.alternate_greetings', weight: 1 },
-        ],
+function performFuzzySearch(type, data, keys, searchValue, fuzzySearchCaches = null) {
+    // Check cache if provided
+    if (fuzzySearchCaches) {
+        const cache = fuzzySearchCaches[type];
+        if (cache?.resultMap.has(searchValue)) {
+            return cache.resultMap.get(searchValue);
+        }
+    }
+
+    const fuse = new Fuse(data, {
+        keys: keys,
         includeScore: true,
         ignoreLocation: true,
         useExtendedSearch: true,
@@ -1848,109 +1870,110 @@ export function fuzzySearchCharacters(searchValue) {
     });
 
     const results = fuse.search(searchValue);
-    console.debug('Characters fuzzy search results for ' + searchValue, results);
+
+    // Store in cache if provided
+    if (fuzzySearchCaches) {
+        fuzzySearchCaches[type].resultMap.set(searchValue, results);
+    }
     return results;
+}
+
+/**
+ * Fuzzy search characters by a search term
+ * @param {string} searchValue - The search term
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
+ */
+export function fuzzySearchCharacters(searchValue, fuzzySearchCaches = null) {
+    const keys = [
+        { name: 'data.name', weight: 20 },
+        { name: '#tags', weight: 10, getFn: (character) => getTagsList(character.avatar).map(x => x.name).join('||') },
+        { name: 'data.description', weight: 3 },
+        { name: 'data.mes_example', weight: 3 },
+        { name: 'data.scenario', weight: 2 },
+        { name: 'data.personality', weight: 2 },
+        { name: 'data.first_mes', weight: 2 },
+        { name: 'data.creator_notes', weight: 2 },
+        { name: 'data.creator', weight: 1 },
+        { name: 'data.tags', weight: 1 },
+        { name: 'data.alternate_greetings', weight: 1 },
+    ];
+
+    return performFuzzySearch(fuzzySearchCategories.characters, characters, keys, searchValue, fuzzySearchCaches);
 }
 
 /**
  * Fuzzy search world info entries by a search term
  * @param {*[]} data - WI items data array
  * @param {string} searchValue - The search term
- * @returns {FuseResult[]} Results as items with their score
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
  */
-export function fuzzySearchWorldInfo(data, searchValue) {
-    // @ts-ignore
-    const fuse = new Fuse(data, {
-        keys: [
-            { name: 'key', weight: 20 },
-            { name: 'group', weight: 15 },
-            { name: 'comment', weight: 10 },
-            { name: 'keysecondary', weight: 10 },
-            { name: 'content', weight: 3 },
-            { name: 'uid', weight: 1 },
-            { name: 'automationId', weight: 1 },
-        ],
-        includeScore: true,
-        ignoreLocation: true,
-        useExtendedSearch: true,
-        threshold: 0.2,
-    });
+export function fuzzySearchWorldInfo(data, searchValue, fuzzySearchCaches = null) {
+    const keys = [
+        { name: 'key', weight: 20 },
+        { name: 'group', weight: 15 },
+        { name: 'comment', weight: 10 },
+        { name: 'keysecondary', weight: 10 },
+        { name: 'content', weight: 3 },
+        { name: 'uid', weight: 1 },
+        { name: 'automationId', weight: 1 },
+    ];
 
-    const results = fuse.search(searchValue);
-    console.debug('World Info fuzzy search results for ' + searchValue, results);
-    return results;
+    return performFuzzySearch(fuzzySearchCategories.worldInfo, data, keys, searchValue, fuzzySearchCaches);
 }
 
 /**
  * Fuzzy search persona entries by a search term
  * @param {*[]} data - persona data array
  * @param {string} searchValue - The search term
- * @returns {FuseResult[]} Results as items with their score
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
  */
-export function fuzzySearchPersonas(data, searchValue) {
-    data = data.map(x => ({ key: x, name: power_user.personas[x] ?? '', description: power_user.persona_descriptions[x]?.description ?? '' }));
-    // @ts-ignore
-    const fuse = new Fuse(data, {
-        keys: [
-            { name: 'name', weight: 20 },
-            { name: 'description', weight: 3 },
-        ],
-        includeScore: true,
-        ignoreLocation: true,
-        useExtendedSearch: true,
-        threshold: 0.2,
-    });
+export function fuzzySearchPersonas(data, searchValue, fuzzySearchCaches = null) {
+    const mappedData = data.map(x => ({
+        key: x,
+        name: power_user.personas[x] ?? '',
+        description: power_user.persona_descriptions[x]?.description ?? '',
+    }));
 
-    const results = fuse.search(searchValue);
-    console.debug('Personas fuzzy search results for ' + searchValue, results);
-    return results;
+    const keys = [
+        { name: 'name', weight: 20 },
+        { name: 'description', weight: 3 },
+    ];
+
+    return performFuzzySearch(fuzzySearchCategories.personas, mappedData, keys, searchValue, fuzzySearchCaches);
 }
 
 /**
  * Fuzzy search tags by a search term
  * @param {string} searchValue - The search term
- * @returns {FuseResult[]} Results as items with their score
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
  */
-export function fuzzySearchTags(searchValue) {
-    // @ts-ignore
-    const fuse = new Fuse(tags, {
-        keys: [
-            { name: 'name', weight: 1 },
-        ],
-        includeScore: true,
-        ignoreLocation: true,
-        useExtendedSearch: true,
-        threshold: 0.2,
-    });
+export function fuzzySearchTags(searchValue, fuzzySearchCaches = null) {
+    const keys = [
+        { name: 'name', weight: 1 },
+    ];
 
-    const results = fuse.search(searchValue);
-    console.debug('Tags fuzzy search results for ' + searchValue, results);
-    return results;
+    return performFuzzySearch(fuzzySearchCategories.tags, tags, keys, searchValue, fuzzySearchCaches);
 }
 
 /**
  * Fuzzy search groups by a search term
  * @param {string} searchValue - The search term
- * @returns {FuseResult[]} Results as items with their score
+ * @param {Object.<string, { resultMap: Map<string, any> }>} [fuzzySearchCaches=null] - Optional fuzzy search caches
+ * @returns {import('fuse.js').FuseResult<any>[]} Results as items with their score
  */
-export function fuzzySearchGroups(searchValue) {
-    // @ts-ignore
-    const fuse = new Fuse(groups, {
-        keys: [
-            { name: 'name', weight: 20 },
-            { name: 'members', weight: 15 },
-            { name: '#tags', weight: 10, getFn: (group) => getTagsList(group.id).map(x => x.name).join('||') },
-            { name: 'id', weight: 1 },
-        ],
-        includeScore: true,
-        ignoreLocation: true,
-        useExtendedSearch: true,
-        threshold: 0.2,
-    });
+export function fuzzySearchGroups(searchValue, fuzzySearchCaches = null) {
+    const keys = [
+        { name: 'name', weight: 20 },
+        { name: 'members', weight: 15 },
+        { name: '#tags', weight: 10, getFn: (group) => getTagsList(group.id).map(x => x.name).join('||') },
+        { name: 'id', weight: 1 },
+    ];
 
-    const results = fuse.search(searchValue);
-    console.debug('Groups fuzzy search results for ' + searchValue, results);
-    return results;
+    return performFuzzySearch(fuzzySearchCategories.groups, groups, keys, searchValue, fuzzySearchCaches);
 }
 
 /**
@@ -1998,7 +2021,7 @@ export function renderStoryString(params) {
  */
 function validateStoryString(storyString, params) {
     /** @type {{hashCache: {[hash: string]: {fieldsWarned: {[key: string]: boolean}}}}} */
-    const cache = JSON.parse(localStorage.getItem(storage_keys.storyStringValidationCache)) ?? { hashCache: {} };
+    const cache = JSON.parse(accountStorage.getItem(storage_keys.storyStringValidationCache)) ?? { hashCache: {} };
 
     const hash = getStringHash(storyString);
 
@@ -2035,7 +2058,7 @@ function validateStoryString(storyString, params) {
         toastr.warning(`The story string does not contain the following fields, but they would contain content: ${fieldsList}`, 'Story String Validation');
     }
 
-    localStorage.setItem(storage_keys.storyStringValidationCache, JSON.stringify(cache));
+    accountStorage.setItem(storage_keys.storyStringValidationCache, JSON.stringify(cache));
 }
 
 
@@ -2066,32 +2089,33 @@ const compareFunc = (first, second) => {
 /**
  * Sorts an array of entities based on the current sort settings
  * @param {any[]} entities An array of objects with an `item` property
+ * @param {boolean} forceSearch Whether to force search sorting
+ * @param {import('./filters.js').FilterHelper} [filterHelper=null] Filter helper to use
  */
-function sortEntitiesList(entities) {
+export function sortEntitiesList(entities, forceSearch, filterHelper = null) {
+    filterHelper = filterHelper ?? entitiesFilter;
     if (power_user.sort_field == undefined || entities.length === 0) {
         return;
     }
 
-    if (power_user.sort_order === 'random') {
+    const isSearch = forceSearch || $('#character_sort_order option[data-field="search"]').is(':selected');
+
+    if (!isSearch && power_user.sort_order === 'random') {
         shuffle(entities);
         return;
     }
 
-    const isSearch = $('#character_sort_order option[data-field="search"]').is(':selected');
-
     entities.sort((a, b) => {
-        // Sort tags/folders will always be at the top
-        if (a.type === 'tag' && b.type !== 'tag') {
-            return -1;
-        }
-        if (a.type !== 'tag' && b.type === 'tag') {
-            return 1;
+        // Sort tags/folders will always be at the top. Their original sorting will be kept, to respect manual tag sorting.
+        if (a.type === 'tag' || b.type === 'tag') {
+            // The one that is a tag will be at the top
+            return (a.type === 'tag' ? -1 : 1) - (b.type === 'tag' ? -1 : 1);
         }
 
         // If we have search sorting, we take scores and use those
         if (isSearch) {
-            const aScore = entitiesFilter.getScore(FILTER_TYPES.SEARCH, `${a.type}.${a.id}`);
-            const bScore = entitiesFilter.getScore(FILTER_TYPES.SEARCH, `${b.type}.${b.id}`);
+            const aScore = filterHelper.getScore(FILTER_TYPES.SEARCH, `${a.type}.${a.id}`);
+            const bScore = filterHelper.getScore(FILTER_TYPES.SEARCH, `${b.type}.${b.id}`);
             return (aScore - bScore);
         }
 
@@ -2429,7 +2453,7 @@ async function resetMovablePanels(type) {
     }
 
     saveSettingsDebounced();
-    eventSource.emit(event_types.MOVABLE_PANELS_RESET);
+    await eventSource.emit(event_types.MOVABLE_PANELS_RESET);
 
     eventSource.once(event_types.SETTINGS_UPDATED, () => {
         $('.resizing').removeClass('resizing');
@@ -2522,7 +2546,7 @@ async function loadUntilMesId(mesId) {
     let target;
 
     while (getFirstDisplayedMessageId() > mesId && getFirstDisplayedMessageId() !== 0) {
-        showMoreMessages();
+        await showMoreMessages();
         await delay(1);
         target = $('#chat').find(`.mes[mesid=${mesId}]`);
 
@@ -2897,6 +2921,46 @@ export function flushEphemeralStoppingStrings() {
 }
 
 /**
+ * Checks if the generated text should be filtered based on the auto-swipe settings.
+ * @param {string} text The text to check
+ * @returns {boolean} If the generated text should be filtered
+ */
+export function generatedTextFiltered(text) {
+    /**
+     * Checks if the given text contains any of the blacklisted words.
+     * @param {string} text The text to check
+     * @param {string[]} blacklist The list of blacklisted words
+     * @param {number} threshold The number of blacklisted words that need to be present to trigger the check
+     * @returns {boolean} Whether the text contains blacklisted words
+     */
+    function containsBlacklistedWords(text, blacklist, threshold) {
+        const regex = new RegExp(`\\b(${blacklist.join('|')})\\b`, 'gi');
+        const matches = text.match(regex) || [];
+        return matches.length >= threshold;
+    }
+
+    // Make sure a generated text is non-empty
+    // Otherwise we might get in a loop with a broken API
+    text = text.trim();
+    if (text.length > 0) {
+        if (power_user.auto_swipe_minimum_length) {
+            if (text.length < power_user.auto_swipe_minimum_length) {
+                console.log('Generated text size too small');
+                return true;
+            }
+        }
+        if (power_user.auto_swipe_blacklist.length && power_user.auto_swipe_blacklist_threshold) {
+            if (containsBlacklistedWords(text, power_user.auto_swipe_blacklist, power_user.auto_swipe_blacklist_threshold)) {
+                console.log('Generated text has blacklisted words');
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+/**
  * Gets the custom stopping strings from the power user settings.
  * @param {number | undefined} limit Number of strings to return. If 0 or undefined, returns all strings.
  * @returns {string[]} An array of custom stopping strings
@@ -3057,6 +3121,26 @@ $(document).ready(() => {
         saveSettingsDebounced();
     });
 
+    $('#context_derived').on('input', function () {
+        const value = !!$(this).prop('checked');
+        power_user.context_derived = value;
+        saveSettingsDebounced();
+    });
+
+    $('#context_derived').on('change', function () {
+        $('#context_derived').parent().find('i').toggleClass('toggleEnabled', !!power_user.context_derived);
+    });
+
+    $('#context_size_derived').on('input', function () {
+        const value = !!$(this).prop('checked');
+        power_user.context_size_derived = value;
+        saveSettingsDebounced();
+    });
+
+    $('#context_size_derived').on('change', function () {
+        $('#context_size_derived').prop('checked', !!power_user.context_size_derived);
+    });
+
     $('#always-force-name2-checkbox').change(function () {
         power_user.always_force_name2 = !!$(this).prop('checked');
         saveSettingsDebounced();
@@ -3065,7 +3149,7 @@ $(document).ready(() => {
     $('#markdown_escape_strings').on('input', function () {
         power_user.markdown_escape_strings = String($(this).val());
         saveSettingsDebounced();
-        reloadMarkdownProcessor(power_user.render_formulas);
+        reloadMarkdownProcessor();
     });
 
     $('#start_reply_with').on('input', function () {
@@ -3414,13 +3498,6 @@ $(document).ready(() => {
 
     $('#confirm_message_delete').on('input', function () {
         power_user.confirm_message_delete = !!$(this).prop('checked');
-        saveSettingsDebounced();
-    });
-
-    $('#render_formulas').on('input', function () {
-        power_user.render_formulas = !!$(this).prop('checked');
-        reloadMarkdownProcessor(power_user.render_formulas);
-        reloadCurrentChat();
         saveSettingsDebounced();
     });
 
@@ -3854,9 +3931,9 @@ $(document).ready(() => {
         helpString: 'Start a new chat with a random character. If an argument is provided, only considers characters that have the specified tag.',
     }));
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
-        name: 'delmode',
+        name: 'del',
         callback: doDelMode,
-        aliases: ['del'],
+        aliases: ['delete', 'delmode'],
         unnamedArgumentList: [
             new SlashCommandArgument(
                 'optional number', [ARGUMENT_TYPE.NUMBER], false,
@@ -3938,6 +4015,95 @@ $(document).ready(() => {
     `,
     }));
     SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'css-var',
+        /** @param {{to: string, varname: string }} args @param {string} value @returns {string} */
+        callback: (args, value) => {
+            // Map enum to target selector
+            const targetSelector = {
+                chat: '#chat',
+                background: '#bg1',
+                gallery: '#gallery',
+                zoomedAvatar: 'div.zoomed_avatar',
+            }[args.to || 'chat'];
+
+            if (!targetSelector) {
+                toastr.error(`Invalid target: ${args.to}`);
+                return;
+            }
+
+            if (!args.varname) {
+                toastr.error('CSS variable name is required');
+                return;
+            }
+            if (!args.varname.startsWith('--')) {
+                toastr.error('CSS variable names must start with "--"');
+                return;
+            }
+
+            const elements = document.querySelectorAll(targetSelector);
+            if (elements.length === 0) {
+                toastr.error(`No elements found for ${args.to ?? 'chat'} with selector "${targetSelector}"`);
+                return;
+            }
+
+            elements.forEach(element => {
+                element.style.setProperty(args.varname, value);
+            });
+
+            console.info(`Set CSS variable "${args.varname}" to "${value}" on "${targetSelector}"`);
+        },
+        namedArgumentList: [
+            SlashCommandNamedArgument.fromProps({
+                name: 'varname',
+                description: 'CSS variable name (starting with double dashes)',
+                typeList: [ARGUMENT_TYPE.STRING],
+                isRequired: true,
+            }),
+            SlashCommandNamedArgument.fromProps({
+                name: 'to',
+                description: 'The target element to which the CSS variable will be applied',
+                typeList: [ARGUMENT_TYPE.STRING],
+                enumList: [
+                    new SlashCommandEnumValue('chat', null, enumTypes.enum, enumIcons.message),
+                    new SlashCommandEnumValue('background', null, enumTypes.enum, enumIcons.image),
+                    new SlashCommandEnumValue('zoomedAvatar', null, enumTypes.enum, enumIcons.character),
+                    new SlashCommandEnumValue('gallery', null, enumTypes.enum, enumIcons.image),
+                ],
+                defaultValue: 'chat',
+            }),
+        ],
+        unnamedArgumentList: [
+            SlashCommandArgument.fromProps({
+                description: 'CSS variable value',
+                typeList: [ARGUMENT_TYPE.STRING],
+                isRequired: true,
+            }),
+        ],
+        helpString: `
+            <div>
+                Sets a CSS variable to a specified value on a target element.
+                <br />
+                Only setting of variable names is supported. They have to be prefixed with double dashes ("--exampleVar").
+                Setting actual CSS properties is not supported. Custom CSS in the theme settings can be used for that.
+                <br /><br />
+                <b>This value will be gone after a page reload!</b>
+            </div>
+            <div>
+                <strong>Example:</strong>
+                <ul>
+                    <li>
+                        <pre><code>/css-var varname="--SmartThemeBodyColor" #ff0000</code></pre>
+                        Sets the text color of the chat to red
+                    </li>
+                    <li>
+                        <pre><code>/css-var to=zoomedAvatar varname="--SmartThemeBlurStrength" 0</code></pre>
+                        Remove the blur from the zoomed avatar
+                    </li>
+                </ul>
+            </div>
+        `,
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
         name: 'movingui',
         callback: setmovingUIPreset,
         unnamedArgumentList: [
@@ -3949,5 +4115,46 @@ $(document).ready(() => {
             }),
         ],
         helpString: 'activates a movingUI preset by name',
+    }));
+    SlashCommandParser.addCommandObject(SlashCommand.fromProps({
+        name: 'stop-strings',
+        aliases: ['stopping-strings', 'custom-stopping-strings', 'custom-stop-strings'],
+        helpString: `
+            <div>
+                Sets a list of custom stopping strings. Gets the list if no value is provided.
+            </div>
+            <div>
+                <strong>Examples:</strong>
+            </div>
+            <ul>
+                <li>Value must be a JSON-serialized array: <pre><code class="language-stscript">/stop-strings ["goodbye", "farewell"]</code></pre></li>
+                <li>Pipe characters must be escaped with a backslash: <pre><code class="language-stscript">/stop-strings ["left\\|right"]</code></pre></li>
+            </ul>
+        `,
+        returns: ARGUMENT_TYPE.LIST,
+        unnamedArgumentList: [
+            SlashCommandArgument.fromProps({
+                description: 'list of strings',
+                typeList: [ARGUMENT_TYPE.LIST],
+                acceptsMultiple: false,
+                isRequired: false,
+            }),
+        ],
+        callback: (_, value) => {
+            if (String(value ?? '').trim()) {
+                const parsedValue = ((x) => { try { return JSON.parse(x.toString()); } catch { return null; } })(value);
+                if (!parsedValue || !Array.isArray(parsedValue)) {
+                    throw new Error('Invalid list format. The value must be a JSON-serialized array of strings.');
+                }
+                parsedValue.forEach((item, index) => {
+                    parsedValue[index] = String(item);
+                });
+                power_user.custom_stopping_strings = JSON.stringify(parsedValue);
+                $('#custom_stopping_strings').val(power_user.custom_stopping_strings);
+                saveSettingsDebounced();
+            }
+
+            return power_user.custom_stopping_strings;
+        },
     }));
 });

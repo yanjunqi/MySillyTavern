@@ -1,3 +1,5 @@
+import { DOMPurify } from '../lib.js';
+
 import {
     characters,
     saveSettingsDebounced,
@@ -26,6 +28,7 @@ import { debounce_timeout } from './constants.js';
 import { INTERACTABLE_CONTROL_CLASS } from './keyboard.js';
 import { commonEnumProviders } from './slash-commands/SlashCommandCommonEnumsProvider.js';
 import { renderTemplateAsync } from './templates.js';
+import { t } from './i18n.js';
 
 export {
     TAG_FOLDER_TYPES,
@@ -193,9 +196,10 @@ function filterByTagState(entities, { globalDisplayFilters = false, subForEntity
                 return false;
             }
 
-            // Hide folders that have 0 visible sub entities after the first filtering round
+            // Hide folders that have 0 visible sub entities after the first filtering round, unless we are inside a search via search term.
+            // Then we want to display folders that mach too, even if the chars inside don't match the search.
             if (entity.type === 'tag') {
-                return entity.entities.length > 0;
+                return entity.entities.length > 0 || entitiesFilter.getFilterData(FILTER_TYPES.SEARCH);
             }
 
             return true;
@@ -726,9 +730,9 @@ async function importTags(character, { importSetting = null } = {}) {
     const added = addTagsToEntity(tagsToImport, character.avatar);
 
     if (added) {
-        toastr.success(`Imported tags:<br />${tagsToImport.map(x => x.name).join(', ')}`, 'Importing Tags', { escapeHtml: false });
+        toastr.success(t`Imported tags:` + `<br />${tagsToImport.map(x => x.name).join(', ')}`, t`Importing Tags`, { escapeHtml: false });
     } else {
-        toastr.error(`Couldn't import tags:<br />${tagsToImport.map(x => x.name).join(', ')}`, 'Importing Tags', { escapeHtml: false });
+        toastr.error(t`Couldn't import tags:` + `<br />${tagsToImport.map(x => x.name).join(', ')}`, t`Importing Tags`, { escapeHtml: false });
     }
 
     return added;
@@ -1297,40 +1301,7 @@ export function createTagInput(inputSelector, listSelector, tagListOptions = {})
 async function onViewTagsListClick() {
     const html = $(document.createElement('div'));
     html.attr('id', 'tag_view_list');
-    html.append(`
-    <div class="title_restorable alignItemsBaseline">
-        <h3>Tag Management</h3>
-        <div class="flex-container alignItemsBaseline">
-            <div class="menu_button menu_button_icon tag_view_backup" title="Save your tags to a file">
-                <i class="fa-solid fa-file-export"></i>
-                <span data-i18n="Backup">Backup</span>
-            </div>
-            <div class="menu_button menu_button_icon tag_view_restore" title="Restore tags from a file">
-                <i class="fa-solid fa-file-import"></i>
-                <span data-i18n="Restore">Restore</span>
-            </div>
-            <div class="menu_button menu_button_icon tag_view_create" title="Create a new tag">
-                <i class="fa-solid fa-plus"></i>
-                <span data-i18n="Create">Create</span>
-            </div>
-            <input type="file" id="tag_view_restore_input" hidden accept=".json">
-        </div>
-    </div>
-    <div class="justifyLeft m-b-1">
-        <small>
-            Drag handle to reorder. Click name to rename. Click color to change display.<br>
-            ${(power_user.bogus_folders ? 'Click on the folder icon to use this tag as a folder.<br>' : '')}
-            <label class="checkbox flex-container alignitemscenter flexNoGap m-t-1" for="auto_sort_tags">
-                <input type="checkbox" id="auto_sort_tags" name="auto_sort_tags" ${power_user.auto_sort_tags ? ' checked' : ''} />
-                <span data-i18n="Use alphabetical sorting">
-                    Use alphabetical sorting
-                    <div class="fa-solid fa-circle-info opacity50p" data-i18n="[title]If enabled, tags will automatically be sorted alphabetically on creation or rename.\nIf disabled, new tags will be appended at the end.\n\nIf a tag is manually reordered by dragging, automatic sorting will be disabled."
-                        title="If enabled, tags will automatically be sorted alphabetically on creation or rename.\nIf disabled, new tags will be appended at the end.\n\nIf a tag is manually reordered by dragging, automatic sorting will be disabled.">
-                    </div>
-                </span>
-            </label>
-        </small>
-    </div>`);
+    html.append(await renderTemplateAsync('tagManagement', { bogus_folders: power_user.bogus_folders, auto_sort_tags: power_user.auto_sort_tags }));
 
     const tagContainer = $('<div class="tag_view_list_tags ui-sortable"></div>');
     html.append(tagContainer);

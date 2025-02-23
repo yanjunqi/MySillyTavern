@@ -39,8 +39,8 @@
     "proxy_password": "",
     "max_context_unlocked": false,
     "wi_format": "{0}",
-    "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
-    "personality_format": "[{{char}}'s personality: {{personality}}]",
+    "scenario_format": "{{scenario}}",
+    "personality_format": "{{personality}}",
     "group_nudge_prompt": "[Write the next reply only as {{char}}.]",
     "stream_openai": true,
     "prompts": [
@@ -230,7 +230,6 @@
     "show_external_models": false,
     "assistant_prefill": "",
     "assistant_impersonation": "",
-    "human_sysprompt_message": "Let's get started. Please generate your response based on the information and instructions provided above.",
     "claude_use_sysprompt": false,
     "use_alt_scale": false,
     "squash_system_messages": false,

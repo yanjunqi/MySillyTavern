@@ -277,7 +277,7 @@ function makeMovable(id = 'gallery') {
     const newElement = $(template);
     newElement.css('background-color', 'var(--SmartThemeBlurTintColor)');
     newElement.attr('forChar', id);
-    newElement.attr('id', `${id}`);
+    newElement.attr('id', id);
     newElement.find('.drag-grabber').attr('id', `${id}header`);
     newElement.find('.dragTitle').text('Image Gallery');
     //add a div for the gallery
@@ -441,7 +441,6 @@ SlashCommandParser.addCommandObject(SlashCommand.fromProps({
             description: 'character name',
             typeList: [ARGUMENT_TYPE.STRING],
             enumProvider: commonEnumProviders.characters('character'),
-            forceEnum: true,
         }),
         SlashCommandNamedArgument.fromProps({
             name: 'group',

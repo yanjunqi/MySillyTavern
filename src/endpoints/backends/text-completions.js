@@ -13,9 +13,11 @@ import {
     VLLM_KEYS,
     DREAMGEN_KEYS,
     FEATHERLESS_KEYS,
+    OPENAI_KEYS,
 } from '../../constants.js';
 import { forwardFetchResponse, trimV1, getConfigValue } from '../../util.js';
 import { setAdditionalHeaders } from '../../additional-headers.js';
+import { createHash } from 'node:crypto';
 
 export const router = express.Router();
 
@@ -56,12 +58,12 @@ async function parseOllamaStream(jsonStream, request, response) {
         });
 
         jsonStream.body.on('end', () => {
-            console.log('Streaming request finished');
+            console.info('Streaming request finished');
             response.write('data: [DONE]\n\n');
             response.end();
         });
     } catch (error) {
-        console.log('Error forwarding streaming response:', error);
+        console.error('Error forwarding streaming response:', error);
         if (!response.headersSent) {
             return response.status(500).send({ error: true });
         } else {
@@ -77,16 +79,16 @@ async function parseOllamaStream(jsonStream, request, response) {
  */
 async function abortKoboldCppRequest(url) {
     try {
-        console.log('Aborting Kobold generation...');
+        console.info('Aborting Kobold generation...');
         const abortResponse = await fetch(`${url}/api/extra/abort`, {
             method: 'POST',
         });
 
         if (!abortResponse.ok) {
-            console.log('Error sending abort request to Kobold:', abortResponse.status, abortResponse.statusText);
+            console.error('Error sending abort request to Kobold:', abortResponse.status, abortResponse.statusText);
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -99,7 +101,7 @@ router.post('/status', jsonParser, async function (request, response) {
             request.body.api_server = request.body.api_server.replace('localhost', '127.0.0.1');
         }
 
-        console.log('Trying to connect to API:', request.body);
+        console.debug('Trying to connect to API', request.body);
         const baseUrl = trimV1(request.body.api_server);
 
         const args = {
@@ -112,8 +114,8 @@ router.post('/status', jsonParser, async function (request, response) {
         let url = baseUrl;
         let result = '';
 
-
         switch (apiType) {
+            case TEXTGEN_TYPES.GENERIC:
             case TEXTGEN_TYPES.OOBA:
             case TEXTGEN_TYPES.VLLM:
             case TEXTGEN_TYPES.APHRODITE:
@@ -121,6 +123,7 @@ router.post('/status', jsonParser, async function (request, response) {
             case TEXTGEN_TYPES.LLAMACPP:
             case TEXTGEN_TYPES.INFERMATICAI:
             case TEXTGEN_TYPES.OPENROUTER:
+            case TEXTGEN_TYPES.FEATHERLESS:
                 url += '/v1/models';
                 break;
             case TEXTGEN_TYPES.DREAMGEN:
@@ -138,9 +141,6 @@ router.post('/status', jsonParser, async function (request, response) {
             case TEXTGEN_TYPES.OLLAMA:
                 url += '/api/tags';
                 break;
-            case TEXTGEN_TYPES.FEATHERLESS:
-                url += '/v1/models';
-                break;
             case TEXTGEN_TYPES.HUGGINGFACE:
                 url += '/info';
                 break;
@@ -150,8 +150,8 @@ router.post('/status', jsonParser, async function (request, response) {
         const isPossiblyLmStudio = modelsReply.headers.get('x-powered-by') === 'Express';
 
         if (!modelsReply.ok) {
-            console.log('Models endpoint is offline.');
-            return response.status(400);
+            console.error('Models endpoint is offline.');
+            return response.sendStatus(400);
         }
 
         /** @type {any} */
@@ -171,12 +171,12 @@ router.post('/status', jsonParser, async function (request, response) {
         }
 
         if (!Array.isArray(data.data)) {
-            console.log('Models response is not an array.');
-            return response.status(400);
+            console.error('Models response is not an array.');
+            return response.sendStatus(400);
         }
 
         const modelIds = data.data.map(x => x.id);
-        console.log('Models available:', modelIds);
+        console.info('Models available:', modelIds);
 
         // Set result to the first model ID
         result = modelIds[0] || 'Valid';
@@ -189,7 +189,7 @@ router.post('/status', jsonParser, async function (request, response) {
                 if (modelInfoReply.ok) {
                     /** @type {any} */
                     const modelInfo = await modelInfoReply.json();
-                    console.log('Ooba model info:', modelInfo);
+                    console.debug('Ooba model info:', modelInfo);
 
                     const modelName = modelInfo?.model_name;
                     result = modelName || result;
@@ -206,7 +206,7 @@ router.post('/status', jsonParser, async function (request, response) {
                 if (modelInfoReply.ok) {
                     /** @type {any} */
                     const modelInfo = await modelInfoReply.json();
-                    console.log('Tabby model info:', modelInfo);
+                    console.debug('Tabby model info:', modelInfo);
 
                     const modelName = modelInfo?.id;
                     result = modelName || result;
@@ -223,7 +223,41 @@ router.post('/status', jsonParser, async function (request, response) {
         return response.send({ result, data: data.data });
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
+    }
+});
+
+router.post('/props', jsonParser, async function (request, response) {
+    if (!request.body.api_server) return response.sendStatus(400);
+
+    try {
+        const baseUrl = trimV1(request.body.api_server);
+        const args = {
+            headers: {},
+        };
+
+        setAdditionalHeaders(request, args, baseUrl);
+
+        const apiType = request.body.api_type;
+        const propsUrl = baseUrl + '/props';
+        const propsReply = await fetch(propsUrl, args);
+
+        if (!propsReply.ok) {
+            return response.sendStatus(400);
+        }
+
+        /** @type {any} */
+        const props = await propsReply.json();
+        // TEMPORARY: llama.cpp's /props endpoint has a bug which replaces the last newline with a \0
+        if (apiType === TEXTGEN_TYPES.LLAMACPP && props['chat_template'].endsWith('\u0000')) {
+            props['chat_template'] = props['chat_template'].slice(0, -1) + '\n';
+        }
+        props['chat_template_hash'] = createHash('sha256').update(props['chat_template']).digest('hex');
+        console.debug(`Model properties: ${JSON.stringify(props)}`);
+        return response.send(props);
+    } catch (error) {
+        console.error(error);
+        return response.sendStatus(500);
     }
 });
 
@@ -237,7 +271,7 @@ router.post('/generate', jsonParser, async function (request, response) {
 
         const apiType = request.body.api_type;
         const baseUrl = request.body.api_server;
-        console.log(request.body);
+        console.debug(request.body);
 
         const controller = new AbortController();
         request.socket.removeAllListeners('close');
@@ -252,6 +286,7 @@ router.post('/generate', jsonParser, async function (request, response) {
         let url = trimV1(baseUrl);
 
         switch (request.body.api_type) {
+            case TEXTGEN_TYPES.GENERIC:
             case TEXTGEN_TYPES.VLLM:
             case TEXTGEN_TYPES.FEATHERLESS:
             case TEXTGEN_TYPES.APHRODITE:
@@ -312,6 +347,12 @@ router.post('/generate', jsonParser, async function (request, response) {
             args.body = JSON.stringify(request.body);
         }
 
+        if (request.body.api_type === TEXTGEN_TYPES.GENERIC) {
+            request.body = _.pickBy(request.body, (_, key) => OPENAI_KEYS.includes(key));
+            if (Array.isArray(request.body.stop)) { request.body.stop = request.body.stop.slice(0, 4); }
+            args.body = JSON.stringify(request.body);
+        }
+
         if (request.body.api_type === TEXTGEN_TYPES.OPENROUTER) {
             if (Array.isArray(request.body.provider) && request.body.provider.length > 0) {
                 request.body.provider = {
@@ -332,6 +373,10 @@ router.post('/generate', jsonParser, async function (request, response) {
 
         if (request.body.api_type === TEXTGEN_TYPES.OLLAMA) {
             const keepAlive = getConfigValue('ollama.keepAlive', -1);
+            const numBatch = getConfigValue('ollama.batchSize', -1);
+            if (numBatch > 0) {
+                request.body['num_batch'] = numBatch;
+            }
             args.body = JSON.stringify({
                 model: request.body.model,
                 prompt: request.body.prompt,
@@ -356,7 +401,7 @@ router.post('/generate', jsonParser, async function (request, response) {
             if (completionsReply.ok) {
                 /** @type {any} */
                 const data = await completionsReply.json();
-                console.log('Endpoint response:', data);
+                console.debug('Endpoint response:', data);
 
                 // Map InfermaticAI response to OAI completions format
                 if (apiType === TEXTGEN_TYPES.INFERMATICAI) {
@@ -368,24 +413,20 @@ router.post('/generate', jsonParser, async function (request, response) {
                 const text = await completionsReply.text();
                 const errorBody = { error: true, status: completionsReply.status, response: text };
 
-                if (!response.headersSent) {
-                    return response.send(errorBody);
-                }
-
-                return response.end();
+                return !response.headersSent
+                    ? response.send(errorBody)
+                    : response.end();
             }
         }
     } catch (error) {
         const status = error?.status ?? error?.code ?? 'UNKNOWN';
         const text = error?.error ?? error?.statusText ?? error?.message ?? 'Unknown error on /generate endpoint';
         let value = { error: true, status: status, response: text };
-        console.log('Endpoint error:', error);
+        console.error('Endpoint error:', error);
 
-        if (!response.headersSent) {
-            return response.send(value);
-        }
-
-        return response.end();
+        return !response.headersSent
+            ? response.send(value)
+            : response.end();
     }
 });
 
@@ -408,14 +449,14 @@ ollama.post('/download', jsonParser, async function (request, response) {
         });
 
         if (!fetchResponse.ok) {
-            console.log('Download error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('Download error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(fetchResponse.status).send({ error: true });
         }
 
         return response.send({ ok: true });
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 
@@ -425,7 +466,7 @@ ollama.post('/caption-image', jsonParser, async function (request, response) {
             return response.sendStatus(400);
         }
 
-        console.log('Ollama caption request:', request.body);
+        console.debug('Ollama caption request:', request.body);
         const baseUrl = trimV1(request.body.server_url);
 
         const fetchResponse = await fetch(`${baseUrl}/api/generate`, {
@@ -440,25 +481,25 @@ ollama.post('/caption-image', jsonParser, async function (request, response) {
         });
 
         if (!fetchResponse.ok) {
-            console.log('Ollama caption error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('Ollama caption error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(500).send({ error: true });
         }
 
         /** @type {any} */
         const data = await fetchResponse.json();
-        console.log('Ollama caption response:', data);
+        console.debug('Ollama caption response:', data);
 
         const caption = data?.response || '';
 
         if (!caption) {
-            console.log('Ollama caption is empty.');
+            console.error('Ollama caption is empty.');
             return response.status(500).send({ error: true });
         }
 
         return response.send({ caption });
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 
@@ -470,7 +511,7 @@ llamacpp.post('/caption-image', jsonParser, async function (request, response) {
             return response.sendStatus(400);
         }
 
-        console.log('LlamaCpp caption request:', request.body);
+        console.debug('LlamaCpp caption request:', request.body);
         const baseUrl = trimV1(request.body.server_url);
 
         const fetchResponse = await fetch(`${baseUrl}/completion`, {
@@ -486,18 +527,18 @@ llamacpp.post('/caption-image', jsonParser, async function (request, response) {
         });
 
         if (!fetchResponse.ok) {
-            console.log('LlamaCpp caption error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('LlamaCpp caption error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(500).send({ error: true });
         }
 
         /** @type {any} */
         const data = await fetchResponse.json();
-        console.log('LlamaCpp caption response:', data);
+        console.debug('LlamaCpp caption response:', data);
 
         const caption = data?.content || '';
 
         if (!caption) {
-            console.log('LlamaCpp caption is empty.');
+            console.error('LlamaCpp caption is empty.');
             return response.status(500).send({ error: true });
         }
 
@@ -505,7 +546,7 @@ llamacpp.post('/caption-image', jsonParser, async function (request, response) {
 
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 
@@ -515,7 +556,7 @@ llamacpp.post('/props', jsonParser, async function (request, response) {
             return response.sendStatus(400);
         }
 
-        console.log('LlamaCpp props request:', request.body);
+        console.debug('LlamaCpp props request:', request.body);
         const baseUrl = trimV1(request.body.server_url);
 
         const fetchResponse = await fetch(`${baseUrl}/props`, {
@@ -523,18 +564,18 @@ llamacpp.post('/props', jsonParser, async function (request, response) {
         });
 
         if (!fetchResponse.ok) {
-            console.log('LlamaCpp props error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('LlamaCpp props error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(500).send({ error: true });
         }
 
         const data = await fetchResponse.json();
-        console.log('LlamaCpp props response:', data);
+        console.debug('LlamaCpp props response:', data);
 
         return response.send(data);
 
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 
@@ -547,7 +588,7 @@ llamacpp.post('/slots', jsonParser, async function (request, response) {
             return response.sendStatus(400);
         }
 
-        console.log('LlamaCpp slots request:', request.body);
+        console.debug('LlamaCpp slots request:', request.body);
         const baseUrl = trimV1(request.body.server_url);
 
         let fetchResponse;
@@ -573,18 +614,18 @@ llamacpp.post('/slots', jsonParser, async function (request, response) {
         }
 
         if (!fetchResponse.ok) {
-            console.log('LlamaCpp slots error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('LlamaCpp slots error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(500).send({ error: true });
         }
 
         const data = await fetchResponse.json();
-        console.log('LlamaCpp slots response:', data);
+        console.debug('LlamaCpp slots response:', data);
 
         return response.send(data);
 
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 
@@ -616,21 +657,21 @@ tabby.post('/download', jsonParser, async function (request, response) {
                 return response.status(403).send({ error: true });
             }
         } else {
-            console.log('API Permission error:', permissionResponse.status, permissionResponse.statusText);
+            console.error('API Permission error:', permissionResponse.status, permissionResponse.statusText);
             return response.status(permissionResponse.status).send({ error: true });
         }
 
         const fetchResponse = await fetch(`${baseUrl}/v1/download`, args);
 
         if (!fetchResponse.ok) {
-            console.log('Download error:', fetchResponse.status, fetchResponse.statusText);
+            console.error('Download error:', fetchResponse.status, fetchResponse.statusText);
             return response.status(fetchResponse.status).send({ error: true });
         }
 
         return response.send({ ok: true });
     } catch (error) {
         console.error(error);
-        return response.status(500);
+        return response.sendStatus(500);
     }
 });
 

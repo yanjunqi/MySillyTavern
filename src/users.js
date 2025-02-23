@@ -141,7 +141,7 @@ export async function migrateUserData() {
 
     console.log();
     console.log(color.magenta('Preparing to migrate user data...'));
-    console.log(`All public data will be moved to the ${global.DATA_ROOT} directory.`);
+    console.log(`All public data will be moved to the ${globalThis.DATA_ROOT} directory.`);
     console.log('This process may take a while depending on the amount of data to move.');
     console.log(`Backups will be placed in the ${PUBLIC_DIRECTORIES.backups} directory.`);
     console.log(`The process will start in ${TIMEOUT} seconds. Press Ctrl+C to cancel.`);
@@ -412,11 +412,11 @@ export function toAvatarKey(handle) {
  * @returns {Promise<void>}
  */
 export async function initUserStorage(dataRoot) {
-    global.DATA_ROOT = dataRoot;
-    console.log('Using data root:', color.green(global.DATA_ROOT));
+    globalThis.DATA_ROOT = dataRoot;
+    console.log('Using data root:', color.green(globalThis.DATA_ROOT));
     console.log();
     await storage.init({
-        dir: path.join(global.DATA_ROOT, '_storage'),
+        dir: path.join(globalThis.DATA_ROOT, '_storage'),
         ttl: false, // Never expire
     });
 
@@ -458,7 +458,8 @@ export function getPasswordSalt() {
  */
 export function getCookieSessionName() {
     // Get server hostname and hash it to generate a session suffix
-    const suffix = crypto.createHash('sha256').update(os.hostname()).digest('hex').slice(0, 8);
+    const hostname = os.hostname() || 'localhost';
+    const suffix = crypto.createHash('sha256').update(hostname).digest('hex').slice(0, 8);
     return `session-${suffix}`;
 }
 
@@ -517,7 +518,7 @@ export function getUserDirectories(handle) {
 
     const directories = structuredClone(USER_DIRECTORY_TEMPLATE);
     for (const key in directories) {
-        directories[key] = path.join(global.DATA_ROOT, handle, USER_DIRECTORY_TEMPLATE[key]);
+        directories[key] = path.join(globalThis.DATA_ROOT, handle, USER_DIRECTORY_TEMPLATE[key]);
     }
     DIRECTORIES_CACHE.set(handle, directories);
     return directories;
@@ -783,6 +784,34 @@ function createRouteHandler(directoryFn) {
 }
 
 /**
+ * Creates a route handler for serving extensions.
+ * @param {(req: import('express').Request) => string} directoryFn A function that returns the directory path to serve files from
+ * @returns {import('express').RequestHandler}
+ */
+function createExtensionsRouteHandler(directoryFn) {
+    return async (req, res) => {
+        try {
+            const directory = directoryFn(req);
+            const filePath = decodeURIComponent(req.params[0]);
+
+            const existsLocal = fs.existsSync(path.join(directory, filePath));
+            if (existsLocal) {
+                return res.sendFile(filePath, { root: directory });
+            }
+
+            const existsGlobal = fs.existsSync(path.join(PUBLIC_DIRECTORIES.globalExtensions, filePath));
+            if (existsGlobal) {
+                return res.sendFile(filePath, { root: PUBLIC_DIRECTORIES.globalExtensions });
+            }
+
+            return res.sendStatus(404);
+        } catch (error) {
+            return res.sendStatus(500);
+        }
+    };
+}
+
+/**
  * Verifies that the current user is an admin.
  * @param {import('express').Request} request Request object
  * @param {import('express').Response} response Response object
@@ -811,7 +840,7 @@ export function requireAdminMiddleware(request, response, next) {
 export async function createBackupArchive(handle, response) {
     const directories = getUserDirectories(handle);
 
-    console.log('Backup requested for', handle);
+    console.info('Backup requested for', handle);
     const archive = archiver('zip');
 
     archive.on('error', function (err) {
@@ -820,7 +849,7 @@ export async function createBackupArchive(handle, response) {
 
     // On stream closed we can end the request
     archive.on('end', function () {
-        console.log('Archive wrote %d bytes', archive.pointer());
+        console.info('Archive wrote %d bytes', archive.pointer());
         response.end(); // End the Express response
     });
 
@@ -872,4 +901,4 @@ router.use('/User%20Avatars/*', createRouteHandler(req => req.user.directories.a
 router.use('/assets/*', createRouteHandler(req => req.user.directories.assets));
 router.use('/user/images/*', createRouteHandler(req => req.user.directories.userImages));
 router.use('/user/files/*', createRouteHandler(req => req.user.directories.files));
-router.use('/scripts/extensions/third-party/*', createRouteHandler(req => req.user.directories.extensions));
+router.use('/scripts/extensions/third-party/*', createExtensionsRouteHandler(req => req.user.directories.extensions));

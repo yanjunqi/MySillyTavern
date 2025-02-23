@@ -3,6 +3,7 @@
 * By CncAnon (@CncAnon1)
 * https://github.com/CncAnon1/TavernAITurbo
 */
+import { Fuse, DOMPurify } from '../lib.js';
 
 import {
     abortStatusCheck,
@@ -32,7 +33,7 @@ import {
     system_message_types,
     this_chid,
 } from '../script.js';
-import { selected_group } from './group-chats.js';
+import { getGroupNames, selected_group } from './group-chats.js';
 
 import {
     chatCompletionDefaultPrompts,
@@ -59,6 +60,7 @@ import {
     parseJsonFile,
     resetScrollHeight,
     stringFormat,
+    uuidv4,
 } from './utils.js';
 import { countTokensOpenAIAsync, getTokenizerModel } from './tokenizers.js';
 import { isMobile } from './RossAscends-mods.js';
@@ -71,6 +73,7 @@ import { SlashCommandEnumValue } from './slash-commands/SlashCommandEnumValue.js
 import { Popup, POPUP_RESULT } from './popup.js';
 import { t } from './i18n.js';
 import { ToolManager } from './tool-calling.js';
+import { accountStorage } from './util/AccountStorage.js';
 
 export {
     openai_messages_count,
@@ -80,7 +83,6 @@ export {
     setOpenAIMessageExamples,
     setupChatCompletionPromptManager,
     sendOpenAIRequest,
-    getChatCompletionModel,
     TokenHandler,
     IdentifierNotFoundError,
     Message,
@@ -98,19 +100,18 @@ const default_wi_format = '{0}';
 const default_new_chat_prompt = '[Start a new Chat]';
 const default_new_group_chat_prompt = '[Start a new group chat. Group members: {{group}}]';
 const default_new_example_chat_prompt = '[Example Chat]';
-const default_claude_human_sysprompt_message = 'Let\'s get started. Please generate your response based on the information and instructions provided above.';
 const default_continue_nudge_prompt = '[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]';
 const default_bias = 'Default (none)';
-const default_personality_format = '[{{char}}\'s personality: {{personality}}]';
-const default_scenario_format = '[Circumstances and context of the dialogue: {{scenario}}]';
+const default_personality_format = '{{personality}}';
+const default_scenario_format = '{{scenario}}';
 const default_group_nudge_prompt = '[Write the next reply only as {{char}}.]';
 const default_bias_presets = {
     [default_bias]: [],
     'Anti-bond': [
-        { text: ' bond', value: -50 },
-        { text: ' future', value: -50 },
-        { text: ' bonding', value: -50 },
-        { text: ' connection', value: -25 },
+        { id: '22154f79-dd98-41bc-8e34-87015d6a0eaf', text: ' bond', value: -50 },
+        { id: '8ad2d5c4-d8ef-49e4-bc5e-13e7f4690e0f', text: ' future', value: -50 },
+        { id: '52a4b280-0956-4940-ac52-4111f83e4046', text: ' bonding', value: -50 },
+        { id: 'e63037c7-c9d1-4724-ab2d-7756008b433b', text: ' connection', value: -25 },
     ],
 };
 
@@ -181,6 +182,8 @@ export const chat_completion_sources = {
     GROQ: 'groq',
     ZEROONEAI: '01ai',
     BLOCKENTROPY: 'blockentropy',
+    NANOGPT: 'nanogpt',
+    DEEPSEEK: 'deepseek',
 };
 
 const character_names_behavior = {
@@ -202,7 +205,14 @@ const custom_prompt_post_processing_types = {
     /** @deprecated Use MERGE instead. */
     CLAUDE: 'claude',
     MERGE: 'merge',
+    SEMI: 'semi',
     STRICT: 'strict',
+};
+
+const openrouter_middleout_types = {
+    AUTO: 'auto',
+    ON: 'on',
+    OFF: 'off',
 };
 
 const sensitiveFields = [
@@ -248,10 +258,12 @@ const default_settings = {
     ai21_model: 'jamba-1.5-large',
     mistralai_model: 'mistral-large-latest',
     cohere_model: 'command-r-plus',
-    perplexity_model: 'llama-3.1-70b-instruct',
-    groq_model: 'llama-3.1-70b-versatile',
+    perplexity_model: 'sonar-pro',
+    groq_model: 'llama-3.3-70b-versatile',
+    nanogpt_model: 'gpt-4o-mini',
     zerooneai_model: 'yi-large',
     blockentropy_model: 'be-70b-base-llama3.1',
+    deepseek_model: 'deepseek-chat',
     custom_model: '',
     custom_url: '',
     custom_include_body: '',
@@ -264,6 +276,7 @@ const default_settings = {
     openrouter_sort_models: 'alphabetically',
     openrouter_providers: [],
     openrouter_allow_fallbacks: true,
+    openrouter_middleout: openrouter_middleout_types.ON,
     jailbreak_system: false,
     reverse_proxy: '',
     chat_completion_source: chat_completion_sources.OPENAI,
@@ -273,7 +286,6 @@ const default_settings = {
     proxy_password: '',
     assistant_prefill: '',
     assistant_impersonation: '',
-    human_sysprompt_message: default_claude_human_sysprompt_message,
     claude_use_sysprompt: false,
     use_makersuite_sysprompt: true,
     use_alt_scale: false,
@@ -286,6 +298,8 @@ const default_settings = {
     names_behavior: character_names_behavior.DEFAULT,
     continue_postfix: continue_postfix_types.SPACE,
     custom_prompt_post_processing: custom_prompt_post_processing_types.NONE,
+    show_thoughts: true,
+    reasoning_effort: 'medium',
     seed: -1,
     n: 1,
 };
@@ -324,10 +338,12 @@ const oai_settings = {
     ai21_model: 'jamba-1.5-large',
     mistralai_model: 'mistral-large-latest',
     cohere_model: 'command-r-plus',
-    perplexity_model: 'llama-3.1-70b-instruct',
+    perplexity_model: 'sonar-pro',
     groq_model: 'llama-3.1-70b-versatile',
+    nanogpt_model: 'gpt-4o-mini',
     zerooneai_model: 'yi-large',
     blockentropy_model: 'be-70b-base-llama3.1',
+    deepseek_model: 'deepseek-chat',
     custom_model: '',
     custom_url: '',
     custom_include_body: '',
@@ -340,6 +356,7 @@ const oai_settings = {
     openrouter_sort_models: 'alphabetically',
     openrouter_providers: [],
     openrouter_allow_fallbacks: true,
+    openrouter_middleout: openrouter_middleout_types.ON,
     jailbreak_system: false,
     reverse_proxy: '',
     chat_completion_source: chat_completion_sources.OPENAI,
@@ -349,7 +366,6 @@ const oai_settings = {
     proxy_password: '',
     assistant_prefill: '',
     assistant_impersonation: '',
-    human_sysprompt_message: default_claude_human_sysprompt_message,
     claude_use_sysprompt: false,
     use_makersuite_sysprompt: true,
     use_alt_scale: false,
@@ -362,6 +378,8 @@ const oai_settings = {
     names_behavior: character_names_behavior.DEFAULT,
     continue_postfix: continue_postfix_types.SPACE,
     custom_prompt_post_processing: custom_prompt_post_processing_types.NONE,
+    show_thoughts: true,
+    reasoning_effort: 'medium',
     seed: -1,
     n: 1,
 };
@@ -378,8 +396,8 @@ export let selected_proxy = proxies[0];
 let openai_setting_names;
 let openai_settings;
 
-
-let promptManager = null;
+/** @type {import('./PromptManager.js').PromptManager} */
+export let promptManager = null;
 
 async function validateReverseProxy() {
     if (!oai_settings.reverse_proxy) {
@@ -396,7 +414,7 @@ async function validateReverseProxy() {
         throw err;
     }
     const rememberKey = `Proxy_SkipConfirm_${getStringHash(oai_settings.reverse_proxy)}`;
-    const skipConfirm = localStorage.getItem(rememberKey) === 'true';
+    const skipConfirm = accountStorage.getItem(rememberKey) === 'true';
 
     const confirmation = skipConfirm || await Popup.show.confirm(t`Connecting To Proxy`, await renderTemplateAsync('proxyConnectionWarning', { proxyURL: DOMPurify.sanitize(oai_settings.reverse_proxy) }));
 
@@ -407,7 +425,7 @@ async function validateReverseProxy() {
         throw new Error('Proxy connection denied.');
     }
 
-    localStorage.setItem(rememberKey, String(true));
+    accountStorage.setItem(rememberKey, String(true));
 }
 
 /**
@@ -542,11 +560,15 @@ function setupChatCompletionPromptManager(openAiSettings) {
  * @returns {Message[]} Array of message objects
  */
 export function parseExampleIntoIndividual(messageExampleString, appendNamesForGroup = true) {
+    const groupBotNames = getGroupNames().map(name => `${name}:`);
+
     let result = []; // array of msgs
     let tmp = messageExampleString.split('\n');
     let cur_msg_lines = [];
     let in_user = false;
     let in_bot = false;
+    let botName = name2;
+
     // DRY my cock and balls :)
     function add_msg(name, role, system_name) {
         // join different newlines (we split them by \n and join by \n)
@@ -570,10 +592,14 @@ export function parseExampleIntoIndividual(messageExampleString, appendNamesForG
             in_user = true;
             // we were in the bot mode previously, add the message
             if (in_bot) {
-                add_msg(name2, 'system', 'example_assistant');
+                add_msg(botName, 'system', 'example_assistant');
             }
             in_bot = false;
-        } else if (cur_str.startsWith(name2 + ':')) {
+        } else if (cur_str.startsWith(name2 + ':') || groupBotNames.some(n => cur_str.startsWith(n))) {
+            if (!cur_str.startsWith(name2 + ':') && groupBotNames.length) {
+                botName = cur_str.split(':')[0];
+            }
+
             in_bot = true;
             // we were in the user mode previously, add the message
             if (in_user) {
@@ -588,7 +614,7 @@ export function parseExampleIntoIndividual(messageExampleString, appendNamesForG
     if (in_user) {
         add_msg(name1, 'system', 'example_user');
     } else if (in_bot) {
-        add_msg(name2, 'system', 'example_assistant');
+        add_msg(botName, 'system', 'example_assistant');
     }
     return result;
 }
@@ -610,8 +636,9 @@ function formatWorldInfo(value) {
  *
  * @param {Prompt[]} prompts - Array containing injection prompts.
  * @param {Object[]} messages - Array containing all messages.
+ * @returns {Promise<Object[]>} - Array containing all messages with injections.
  */
-function populationInjectionPrompts(prompts, messages) {
+async function populationInjectionPrompts(prompts, messages) {
     let totalInsertedMessages = 0;
 
     const roleTypes = {
@@ -634,7 +661,7 @@ function populationInjectionPrompts(prompts, messages) {
             // Get prompts for current role
             const rolePrompts = depthPrompts.filter(prompt => prompt.role === role).map(x => x.content).join(separator);
             // Get extension prompt
-            const extensionPrompt = getExtensionPrompt(extension_prompt_types.IN_CHAT, i, separator, roleTypes[role], wrap);
+            const extensionPrompt = await getExtensionPrompt(extension_prompt_types.IN_CHAT, i, separator, roleTypes[role], wrap);
 
             const jointPrompt = [rolePrompts, extensionPrompt].filter(x => x).map(x => x.trim()).join(separator);
 
@@ -748,7 +775,10 @@ async function populateChatHistory(messages, prompts, chatCompletion, type = nul
             if (type === 'continue' && oai_settings.continue_prefill && chatPrompt === firstNonInjected) {
                 // in case we are using continue_prefill and the latest message is an assistant message, we want to prepend the users assistant prefill on the message
                 if (chatPrompt.role === 'assistant') {
-                    const continueMessage = await Message.createAsync(chatMessage.role, substituteParams(oai_settings.assistant_prefill + '\n\n') + chatMessage.content, chatMessage.identifier);
+                    const supportsAssistantPrefill = oai_settings.chat_completion_source === chat_completion_sources.CLAUDE;
+                    const assistantPrefill = supportsAssistantPrefill ? substituteParams(oai_settings.assistant_prefill) : '';
+                    const messageContent = [assistantPrefill, chatMessage.content].filter(x => x).join('\n\n');
+                    const continueMessage = await Message.createAsync(chatMessage.role, messageContent, chatMessage.identifier);
                     const collection = new MessageCollection('continuePrefill', continueMessage);
                     chatCompletion.add(collection, -1);
                     continue;
@@ -1018,7 +1048,7 @@ async function populateChatCompletion(prompts, chatCompletion, { bias, quietProm
     }
 
     // Add in-chat injections
-    messages = populationInjectionPrompts(absolutePrompts, messages);
+    messages = await populationInjectionPrompts(absolutePrompts, messages);
 
     // Decide whether dialogue examples should always be added
     if (power_user.pin_examples) {
@@ -1049,9 +1079,9 @@ async function populateChatCompletion(prompts, chatCompletion, { bias, quietProm
  * @param {string} options.systemPromptOverride
  * @param {string} options.jailbreakPromptOverride
  * @param {string} options.personaDescription
- * @returns {Object} prompts - The prepared and merged system and user-defined prompts.
+ * @returns {Promise<Object>} prompts - The prepared and merged system and user-defined prompts.
  */
-function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, worldInfoBefore, worldInfoAfter, charDescription, quietPrompt, bias, extensionPrompts, systemPromptOverride, jailbreakPromptOverride, personaDescription }) {
+async function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, worldInfoBefore, worldInfoAfter, charDescription, quietPrompt, bias, extensionPrompts, systemPromptOverride, jailbreakPromptOverride, personaDescription }) {
     const scenarioText = Scenario && oai_settings.scenario_format ? substituteParams(oai_settings.scenario_format) : '';
     const charPersonalityText = charPersonality && oai_settings.personality_format ? substituteParams(oai_settings.personality_format) : '';
     const groupNudge = substituteParams(oai_settings.group_nudge_prompt);
@@ -1068,8 +1098,8 @@ function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, wor
         // Unordered prompts without marker
         { role: 'system', content: impersonationPrompt, identifier: 'impersonate' },
         { role: 'system', content: quietPrompt, identifier: 'quietPrompt' },
-        { role: 'system', content: bias, identifier: 'bias' },
         { role: 'system', content: groupNudge, identifier: 'groupNudge' },
+        { role: 'assistant', content: bias, identifier: 'bias' },
     ];
 
     // Tavern Extras - Summary
@@ -1140,6 +1170,9 @@ function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, wor
             if (!extensionPrompts[key].value) continue;
             if (![extension_prompt_types.BEFORE_PROMPT, extension_prompt_types.IN_PROMPT].includes(prompt.position)) continue;
 
+            const hasFilter = typeof prompt.filter === 'function';
+            if (hasFilter && !await prompt.filter()) continue;
+
             systemPrompts.push({
                 identifier: key.replace(/\W/g, '_'),
                 position: getPromptPosition(prompt.position),
@@ -1176,7 +1209,8 @@ function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, wor
 
     // Apply character-specific main prompt
     const systemPrompt = prompts.get('main') ?? null;
-    if (systemPromptOverride && systemPrompt && systemPrompt.forbid_overrides !== true) {
+    const isSystemPromptDisabled = promptManager.isPromptDisabledForActiveCharacter('main');
+    if (systemPromptOverride && systemPrompt && systemPrompt.forbid_overrides !== true && !isSystemPromptDisabled) {
         const mainOriginalContent = systemPrompt.content;
         systemPrompt.content = systemPromptOverride;
         const mainReplacement = promptManager.preparePrompt(systemPrompt, mainOriginalContent);
@@ -1185,7 +1219,8 @@ function preparePromptsForChatCompletion({ Scenario, charPersonality, name2, wor
 
     // Apply character-specific jailbreak
     const jailbreakPrompt = prompts.get('jailbreak') ?? null;
-    if (jailbreakPromptOverride && jailbreakPrompt && jailbreakPrompt.forbid_overrides !== true) {
+    const isJailbreakPromptDisabled = promptManager.isPromptDisabledForActiveCharacter('jailbreak');
+    if (jailbreakPromptOverride && jailbreakPrompt && jailbreakPrompt.forbid_overrides !== true && !isJailbreakPromptDisabled) {
         const jbOriginalContent = jailbreakPrompt.content;
         jailbreakPrompt.content = jailbreakPromptOverride;
         const jbReplacement = promptManager.preparePrompt(jailbreakPrompt, jbOriginalContent);
@@ -1250,7 +1285,7 @@ export async function prepareOpenAIMessages({
 
     try {
         // Merge markers and ordered user prompts with system prompts
-        const prompts = preparePromptsForChatCompletion({
+        const prompts = await preparePromptsForChatCompletion({
             Scenario,
             charPersonality,
             name2,
@@ -1308,6 +1343,11 @@ export async function prepareOpenAIMessages({
     return [chat, promptManager.tokenHandler.counts];
 }
 
+/**
+ * Handles errors during streaming requests.
+ * @param {Response} response
+ * @param {string} decoded - response text or decoded stream data
+ */
 function tryParseStreamingError(response, decoded) {
     try {
         const data = JSON.parse(decoded);
@@ -1318,6 +1358,9 @@ function tryParseStreamingError(response, decoded) {
 
         checkQuotaError(data);
         checkModerationError(data);
+
+        // these do not throw correctly (equiv to Error("[object Object]"))
+        // if trying to fix "[object Object]" displayed to users, start here
 
         if (data.error) {
             toastr.error(data.error.message || response.statusText, 'Chat Completion API');
@@ -1334,15 +1377,22 @@ function tryParseStreamingError(response, decoded) {
     }
 }
 
-async function checkQuotaError(data) {
-    const errorText = await renderTemplateAsync('quotaError');
-
+/**
+ * Checks if the response contains a quota error and displays a popup if it does.
+ * @param data
+ * @returns {void}
+ * @throws {object} - response JSON
+ */
+function checkQuotaError(data) {
     if (!data) {
         return;
     }
 
     if (data.quota_error) {
-        callPopup(errorText, 'text');
+        renderTemplateAsync('quotaError').then((html) => Popup.show.text('Quota Error', html));
+
+        // this does not throw correctly (equiv to Error("[object Object]"))
+        // if trying to fix "[object Object]" displayed to users, start here
         throw new Error(data);
     }
 }
@@ -1395,9 +1445,7 @@ async function sendWindowAIRequest(messages, signal, stream) {
     }
 
     const onStreamResult = (res, err) => {
-        if (err) {
-            return;
-        }
+        if (err) return;
 
         const thisContent = res?.message?.content;
 
@@ -1449,7 +1497,7 @@ async function sendWindowAIRequest(messages, signal, stream) {
     }
 }
 
-function getChatCompletionModel() {
+export function getChatCompletionModel() {
     switch (oai_settings.chat_completion_source) {
         case chat_completion_sources.CLAUDE:
             return oai_settings.claude_model;
@@ -1479,6 +1527,10 @@ function getChatCompletionModel() {
             return oai_settings.zerooneai_model;
         case chat_completion_sources.BLOCKENTROPY:
             return oai_settings.blockentropy_model;
+        case chat_completion_sources.NANOGPT:
+            return oai_settings.nanogpt_model;
+        case chat_completion_sources.DEEPSEEK:
+            return oai_settings.deepseek_model;
         default:
             throw new Error(`Unknown chat completion source: ${oai_settings.chat_completion_source}`);
     }
@@ -1636,6 +1688,42 @@ function saveModelList(data) {
             }
         }
     }
+
+    if (oai_settings.chat_completion_source == chat_completion_sources.NANOGPT) {
+        $('#model_nanogpt_select').empty();
+        model_list.forEach((model) => {
+            $('#model_nanogpt_select').append(
+                $('<option>', {
+                    value: model.id,
+                    text: model.id,
+                }));
+        });
+
+        const selectedModel = model_list.find(model => model.id === oai_settings.nanogpt_model);
+        if (model_list.length > 0 && (!selectedModel || !oai_settings.nanogpt_model)) {
+            oai_settings.nanogpt_model = model_list[0].id;
+        }
+
+        $('#model_nanogpt_select').val(oai_settings.nanogpt_model).trigger('change');
+    }
+
+    if (oai_settings.chat_completion_source == chat_completion_sources.DEEPSEEK) {
+        $('#model_deepseek_select').empty();
+        model_list.forEach((model) => {
+            $('#model_deepseek_select').append(
+                $('<option>', {
+                    value: model.id,
+                    text: model.id,
+                }));
+        });
+
+        const selectedModel = model_list.find(model => model.id === oai_settings.deepseek_model);
+        if (model_list.length > 0 && (!selectedModel || !oai_settings.deepseek_model)) {
+            oai_settings.deepseek_model = model_list[0].id;
+        }
+
+        $('#model_deepseek_select').val(oai_settings.deepseek_model).trigger('change');
+    }
 }
 
 function appendOpenRouterOptions(model_list, groupModels = false, sort = false) {
@@ -1741,6 +1829,15 @@ async function sendAltScaleRequest(messages, logit_bias, signal, type) {
     return data.output;
 }
 
+/**
+ * Send a chat completion request to backend
+ * @param {string} type (impersonate, quiet, continue, etc)
+ * @param {Array} messages
+ * @param {AbortSignal?} signal
+ * @returns {Promise<unknown>}
+ * @throws {Error}
+ */
+
 async function sendOpenAIRequest(type, messages, signal) {
     // Provide default abort signal
     if (!signal) {
@@ -1766,11 +1863,13 @@ async function sendOpenAIRequest(type, messages, signal) {
     const isPerplexity = oai_settings.chat_completion_source == chat_completion_sources.PERPLEXITY;
     const isGroq = oai_settings.chat_completion_source == chat_completion_sources.GROQ;
     const is01AI = oai_settings.chat_completion_source == chat_completion_sources.ZEROONEAI;
+    const isNano = oai_settings.chat_completion_source == chat_completion_sources.NANOGPT;
+    const isDeepSeek = oai_settings.chat_completion_source == chat_completion_sources.DEEPSEEK;
     const isTextCompletion = isOAI && textCompletionModels.includes(oai_settings.openai_model);
     const isQuiet = type === 'quiet';
     const isImpersonate = type === 'impersonate';
     const isContinue = type === 'continue';
-    const stream = oai_settings.stream_openai && !isQuiet && !isScale && !(isGoogle && oai_settings.google_model.includes('bison')) && !(isOAI && oai_settings.openai_model.startsWith('o1-'));
+    const stream = oai_settings.stream_openai && !isQuiet && !isScale && !(isOAI && ['o1-2024-12-17', 'o1'].includes(oai_settings.openai_model));
     const useLogprobs = !!power_user.request_token_probabilities;
     const canMultiSwipe = oai_settings.n > 1 && !isContinue && !isImpersonate && !isQuiet && (isOAI || isCustom);
 
@@ -1787,6 +1886,10 @@ async function sendOpenAIRequest(type, messages, signal) {
         && oai_settings.bias_presets[oai_settings.bias_preset_selected].length) {
         logit_bias = biasCache || await calculateLogitBias();
         biasCache = logit_bias;
+    }
+
+    if (Object.keys(logit_bias).length === 0) {
+        logit_bias = undefined;
     }
 
     if (isScale && oai_settings.use_alt_scale) {
@@ -1809,7 +1912,14 @@ async function sendOpenAIRequest(type, messages, signal) {
         'n': canMultiSwipe ? oai_settings.n : undefined,
         'user_name': name1,
         'char_name': name2,
+        'group_names': getGroupNames(),
+        'include_reasoning': Boolean(oai_settings.show_thoughts),
+        'reasoning_effort': String(oai_settings.reasoning_effort),
     };
+
+    if (!canMultiSwipe && ToolManager.canPerformToolCalls(type)) {
+        await ToolManager.registerFunctionToolsOpenAI(generate_data);
+    }
 
     // Empty array will produce a validation error
     if (!Array.isArray(generate_data.stop) || !generate_data.stop.length) {
@@ -1817,14 +1927,14 @@ async function sendOpenAIRequest(type, messages, signal) {
     }
 
     // Proxy is only supported for Claude, OpenAI, Mistral, and Google MakerSuite
-    if (oai_settings.reverse_proxy && [chat_completion_sources.CLAUDE, chat_completion_sources.OPENAI, chat_completion_sources.MISTRALAI, chat_completion_sources.MAKERSUITE].includes(oai_settings.chat_completion_source)) {
+    if (oai_settings.reverse_proxy && [chat_completion_sources.CLAUDE, chat_completion_sources.OPENAI, chat_completion_sources.MISTRALAI, chat_completion_sources.MAKERSUITE, chat_completion_sources.DEEPSEEK].includes(oai_settings.chat_completion_source)) {
         await validateReverseProxy();
         generate_data['reverse_proxy'] = oai_settings.reverse_proxy;
         generate_data['proxy_password'] = oai_settings.proxy_password;
     }
 
     // Add logprobs request (currently OpenAI only, max 5 on their side)
-    if (useLogprobs && (isOAI || isCustom)) {
+    if (useLogprobs && (isOAI || isCustom || isDeepSeek)) {
         generate_data['logprobs'] = 5;
     }
 
@@ -1839,7 +1949,6 @@ async function sendOpenAIRequest(type, messages, signal) {
         generate_data['top_k'] = Number(oai_settings.top_k_openai);
         generate_data['claude_use_sysprompt'] = oai_settings.claude_use_sysprompt;
         generate_data['stop'] = getCustomStoppingStrings(); // Claude shouldn't have limits on stop strings.
-        generate_data['human_sysprompt_message'] = substituteParams(oai_settings.human_sysprompt_message);
         // Don't add a prefill on quiet gens (summarization) and when using continue prefill.
         if (!isQuiet && !(isContinue && oai_settings.continue_prefill)) {
             generate_data['assistant_prefill'] = isImpersonate ? substituteParams(oai_settings.assistant_impersonation) : substituteParams(oai_settings.assistant_prefill);
@@ -1854,6 +1963,7 @@ async function sendOpenAIRequest(type, messages, signal) {
         generate_data['use_fallback'] = oai_settings.openrouter_use_fallback;
         generate_data['provider'] = oai_settings.openrouter_providers;
         generate_data['allow_fallbacks'] = oai_settings.openrouter_allow_fallbacks;
+        generate_data['middleout'] = oai_settings.openrouter_middleout;
 
         if (isTextCompletion) {
             generate_data['stop'] = getStoppingStrings(isImpersonate, isContinue);
@@ -1922,15 +2032,28 @@ async function sendOpenAIRequest(type, messages, signal) {
         delete generate_data.stop;
     }
 
-    if ((isOAI || isOpenRouter || isMistral || isCustom || isCohere) && oai_settings.seed >= 0) {
+    // https://api-docs.deepseek.com/api/create-chat-completion
+    if (isDeepSeek) {
+        generate_data.top_p = generate_data.top_p || Number.EPSILON;
+
+        if (generate_data.model.endsWith('-reasoner')) {
+            delete generate_data.top_p;
+            delete generate_data.temperature;
+            delete generate_data.frequency_penalty;
+            delete generate_data.presence_penalty;
+            delete generate_data.top_logprobs;
+            delete generate_data.logprobs;
+            delete generate_data.logit_bias;
+            delete generate_data.tools;
+            delete generate_data.tool_choice;
+        }
+    }
+
+    if ((isOAI || isOpenRouter || isMistral || isCustom || isCohere || isNano) && oai_settings.seed >= 0) {
         generate_data['seed'] = oai_settings.seed;
     }
 
-    if (!canMultiSwipe && ToolManager.canPerformToolCalls(type)) {
-        await ToolManager.registerFunctionToolsOpenAI(generate_data);
-    }
-
-    if (isOAI && oai_settings.openai_model.startsWith('o1-')) {
+    if (isOAI && (oai_settings.openai_model.startsWith('o1') || oai_settings.openai_model.startsWith('o3'))) {
         generate_data.messages.forEach((msg) => {
             if (msg.role === 'system') {
                 msg.role = 'user';
@@ -1938,7 +2061,6 @@ async function sendOpenAIRequest(type, messages, signal) {
         });
         generate_data.max_completion_tokens = generate_data.max_tokens;
         delete generate_data.max_tokens;
-        delete generate_data.stream;
         delete generate_data.logprobs;
         delete generate_data.top_logprobs;
         delete generate_data.n;
@@ -1949,8 +2071,7 @@ async function sendOpenAIRequest(type, messages, signal) {
         delete generate_data.tools;
         delete generate_data.tool_choice;
         delete generate_data.stop;
-        // It does support logit_bias, but the tokenizer used and its effect is yet unknown.
-        // delete generate_data.logit_bias;
+        delete generate_data.logit_bias;
     }
 
     await eventSource.emit(event_types.CHAT_COMPLETION_SETTINGS_READY, generate_data);
@@ -1975,6 +2096,7 @@ async function sendOpenAIRequest(type, messages, signal) {
             let text = '';
             const swipes = [];
             const toolCalls = [];
+            const state = { reasoning: '' };
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) return;
@@ -1985,26 +2107,27 @@ async function sendOpenAIRequest(type, messages, signal) {
 
                 if (Array.isArray(parsed?.choices) && parsed?.choices?.[0]?.index > 0) {
                     const swipeIndex = parsed.choices[0].index - 1;
-                    swipes[swipeIndex] = (swipes[swipeIndex] || '') + getStreamingReply(parsed);
+                    swipes[swipeIndex] = (swipes[swipeIndex] || '') + getStreamingReply(parsed, state);
                 } else {
-                    text += getStreamingReply(parsed);
+                    text += getStreamingReply(parsed, state);
                 }
 
                 ToolManager.parseToolCalls(toolCalls, parsed);
 
-                yield { text, swipes: swipes, logprobs: parseChatCompletionLogprobs(parsed), toolCalls: toolCalls };
+                yield { text, swipes: swipes, logprobs: parseChatCompletionLogprobs(parsed), toolCalls: toolCalls, state: state };
             }
         };
     }
     else {
         const data = await response.json();
 
-        await checkQuotaError(data);
+        checkQuotaError(data);
         checkModerationError(data);
 
         if (data.error) {
-            toastr.error(data.error.message || response.statusText, t`API returned an error`);
-            throw new Error(data);
+            const message = data.error.message || response.statusText || t`Unknown error`;
+            toastr.error(message, t`API returned an error`);
+            throw new Error(message);
         }
 
         if (type !== 'quiet') {
@@ -2018,13 +2141,32 @@ async function sendOpenAIRequest(type, messages, signal) {
     }
 }
 
-function getStreamingReply(data) {
+/**
+ * Extracts the reply from the response data from a chat completions-like source
+ * @param {object} data Response data from the chat completions-like source
+ * @param {object} state Additional state to keep track of
+ * @returns {string} The reply extracted from the response data
+ */
+function getStreamingReply(data, state) {
     if (oai_settings.chat_completion_source === chat_completion_sources.CLAUDE) {
         return data?.delta?.text || '';
     } else if (oai_settings.chat_completion_source === chat_completion_sources.MAKERSUITE) {
-        return data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        if (oai_settings.show_thoughts) {
+            state.reasoning += (data?.candidates?.[0]?.content?.parts?.filter(x => x.thought)?.map(x => x.text)?.[0] || '');
+        }
+        return data?.candidates?.[0]?.content?.parts?.filter(x => !x.thought)?.map(x => x.text)?.[0] || '';
     } else if (oai_settings.chat_completion_source === chat_completion_sources.COHERE) {
         return data?.delta?.message?.content?.text || data?.delta?.message?.tool_plan || '';
+    } else if (oai_settings.chat_completion_source === chat_completion_sources.DEEPSEEK) {
+        if (oai_settings.show_thoughts) {
+            state.reasoning += (data.choices?.filter(x => x?.delta?.reasoning_content)?.[0]?.delta?.reasoning_content || '');
+        }
+        return data.choices?.[0]?.delta?.content || '';
+    } else if (oai_settings.chat_completion_source === chat_completion_sources.OPENROUTER) {
+        if (oai_settings.show_thoughts) {
+            state.reasoning += (data.choices?.filter(x => x?.delta?.reasoning)?.[0]?.delta?.reasoning || '');
+        }
+        return data.choices?.[0]?.delta?.content ?? data.choices?.[0]?.message?.content ?? data.choices?.[0]?.text ?? '';
     } else {
         return data.choices?.[0]?.delta?.content ?? data.choices?.[0]?.message?.content ?? data.choices?.[0]?.text ?? '';
     }
@@ -2034,7 +2176,7 @@ function getStreamingReply(data) {
  * parseChatCompletionLogprobs converts the response data returned from a chat
  * completions-like source into an array of TokenLogprobs found in the response.
  * @param {Object} data - response data from a chat completions-like source
- * @returns {import('logprobs.js').TokenLogprobs[] | null} converted logprobs
+ * @returns {import('./logprobs.js').TokenLogprobs[] | null} converted logprobs
  */
 function parseChatCompletionLogprobs(data) {
     if (!data) {
@@ -2043,6 +2185,7 @@ function parseChatCompletionLogprobs(data) {
 
     switch (oai_settings.chat_completion_source) {
         case chat_completion_sources.OPENAI:
+        case chat_completion_sources.DEEPSEEK:
         case chat_completion_sources.CUSTOM:
             if (!data.choices?.length) {
                 return null;
@@ -2063,7 +2206,7 @@ function parseChatCompletionLogprobs(data) {
  * completion API and converts into the structure used by the Token Probabilities
  * view.
  * @param {{content: { token: string, logprob: number, top_logprobs: { token: string, logprob: number }[] }[]}} logprobs
- * @returns {import('logprobs.js').TokenLogprobs[] | null} converted logprobs
+ * @returns {import('./logprobs.js').TokenLogprobs[] | null} converted logprobs
  */
 function parseOpenAIChatLogprobs(logprobs) {
     const { content } = logprobs ?? {};
@@ -2091,7 +2234,7 @@ function parseOpenAIChatLogprobs(logprobs) {
  * completion API and converts into the structure used by the Token Probabilities
  * view.
  * @param {{tokens: string[], token_logprobs: number[], top_logprobs: { token: string, logprob: number }[][]}} logprobs
- * @returns {import('logprobs.js').TokenLogprobs[] | null} converted logprobs
+ * @returns {import('./logprobs.js').TokenLogprobs[] | null} converted logprobs
  */
 function parseOpenAITextLogprobs(logprobs) {
     const { tokens, token_logprobs, top_logprobs } = logprobs ?? {};
@@ -2955,11 +3098,14 @@ function loadOpenAISettings(data, settings) {
     oai_settings.openrouter_sort_models = settings.openrouter_sort_models ?? default_settings.openrouter_sort_models;
     oai_settings.openrouter_use_fallback = settings.openrouter_use_fallback ?? default_settings.openrouter_use_fallback;
     oai_settings.openrouter_allow_fallbacks = settings.openrouter_allow_fallbacks ?? default_settings.openrouter_allow_fallbacks;
+    oai_settings.openrouter_middleout = settings.openrouter_middleout ?? default_settings.openrouter_middleout;
     oai_settings.ai21_model = settings.ai21_model ?? default_settings.ai21_model;
     oai_settings.mistralai_model = settings.mistralai_model ?? default_settings.mistralai_model;
     oai_settings.cohere_model = settings.cohere_model ?? default_settings.cohere_model;
     oai_settings.perplexity_model = settings.perplexity_model ?? default_settings.perplexity_model;
     oai_settings.groq_model = settings.groq_model ?? default_settings.groq_model;
+    oai_settings.nanogpt_model = settings.nanogpt_model ?? default_settings.nanogpt_model;
+    oai_settings.deepseek_model = settings.deepseek_model ?? default_settings.deepseek_model;
     oai_settings.blockentropy_model = settings.blockentropy_model ?? default_settings.blockentropy_model;
     oai_settings.zerooneai_model = settings.zerooneai_model ?? default_settings.zerooneai_model;
     oai_settings.custom_model = settings.custom_model ?? default_settings.custom_model;
@@ -2975,10 +3121,11 @@ function loadOpenAISettings(data, settings) {
     oai_settings.proxy_password = settings.proxy_password ?? default_settings.proxy_password;
     oai_settings.assistant_prefill = settings.assistant_prefill ?? default_settings.assistant_prefill;
     oai_settings.assistant_impersonation = settings.assistant_impersonation ?? default_settings.assistant_impersonation;
-    oai_settings.human_sysprompt_message = settings.human_sysprompt_message ?? default_settings.human_sysprompt_message;
     oai_settings.image_inlining = settings.image_inlining ?? default_settings.image_inlining;
     oai_settings.inline_image_quality = settings.inline_image_quality ?? default_settings.inline_image_quality;
     oai_settings.bypass_status_check = settings.bypass_status_check ?? default_settings.bypass_status_check;
+    oai_settings.show_thoughts = settings.show_thoughts ?? default_settings.show_thoughts;
+    oai_settings.reasoning_effort = settings.reasoning_effort ?? default_settings.reasoning_effort;
     oai_settings.seed = settings.seed ?? default_settings.seed;
     oai_settings.n = settings.n ?? default_settings.n;
 
@@ -3015,7 +3162,6 @@ function loadOpenAISettings(data, settings) {
     $('#openai_proxy_password').val(oai_settings.proxy_password);
     $('#claude_assistant_prefill').val(oai_settings.assistant_prefill);
     $('#claude_assistant_impersonation').val(oai_settings.assistant_impersonation);
-    $('#claude_human_sysprompt_textarea').val(oai_settings.human_sysprompt_message);
     $('#openai_image_inlining').prop('checked', oai_settings.image_inlining);
     $('#openai_bypass_status_check').prop('checked', oai_settings.bypass_status_check);
 
@@ -3040,6 +3186,10 @@ function loadOpenAISettings(data, settings) {
     $(`#model_perplexity_select option[value="${oai_settings.perplexity_model}"`).attr('selected', true);
     $('#model_groq_select').val(oai_settings.groq_model);
     $(`#model_groq_select option[value="${oai_settings.groq_model}"`).attr('selected', true);
+    $('#model_nanogpt_select').val(oai_settings.nanogpt_model);
+    $(`#model_nanogpt_select option[value="${oai_settings.nanogpt_model}"`).attr('selected', true);
+    $('#model_deepseek_select').val(oai_settings.deepseek_model);
+    $(`#model_deepseek_select option[value="${oai_settings.deepseek_model}"`).prop('selected', true);
     $('#model_01ai_select').val(oai_settings.zerooneai_model);
     $('#model_blockentropy_select').val(oai_settings.blockentropy_model);
     $('#custom_model_id').val(oai_settings.custom_model);
@@ -3062,6 +3212,7 @@ function loadOpenAISettings(data, settings) {
     $('#openrouter_group_models').prop('checked', oai_settings.openrouter_group_models);
     $('#openrouter_allow_fallbacks').prop('checked', oai_settings.openrouter_allow_fallbacks);
     $('#openrouter_providers_chat').val(oai_settings.openrouter_providers).trigger('change');
+    $('#openrouter_middleout').val(oai_settings.openrouter_middleout);
     $('#squash_system_messages').prop('checked', oai_settings.squash_system_messages);
     $('#continue_prefill').prop('checked', oai_settings.continue_prefill);
     $('#openai_function_calling').prop('checked', oai_settings.function_calling);
@@ -3102,6 +3253,10 @@ function loadOpenAISettings(data, settings) {
     $('#repetition_penalty_counter_openai').val(Number(oai_settings.repetition_penalty_openai));
     $('#seed_openai').val(oai_settings.seed);
     $('#n_openai').val(oai_settings.n);
+    $('#openai_show_thoughts').prop('checked', oai_settings.show_thoughts);
+
+    $('#openai_reasoning_effort').val(oai_settings.reasoning_effort);
+    $(`#openai_reasoning_effort option[value="${oai_settings.reasoning_effort}"]`).prop('selected', true);
 
     if (settings.reverse_proxy !== undefined) oai_settings.reverse_proxy = settings.reverse_proxy;
     $('#openai_reverse_proxy').val(oai_settings.reverse_proxy);
@@ -3110,6 +3265,14 @@ function loadOpenAISettings(data, settings) {
 
     $('#openai_logit_bias_preset').empty();
     for (const preset of Object.keys(oai_settings.bias_presets)) {
+        // Backfill missing IDs
+        if (Array.isArray(oai_settings.bias_presets[preset])) {
+            oai_settings.bias_presets[preset].forEach((bias) => {
+                if (bias && !bias.id) {
+                    bias.id = uuidv4();
+                }
+            });
+        }
         const option = document.createElement('option');
         option.innerText = preset;
         option.value = preset;
@@ -3207,7 +3370,7 @@ async function getStatusOpen() {
         chat_completion_sources.GROQ,
     ];
     if (noValidateSources.includes(oai_settings.chat_completion_source)) {
-        let status = 'Unable to verify key; press "Test Message" to validate.';
+        let status = t`Key saved; press \"Test Message\" to verify.`;
         setOnlineStatus(status);
         return resultCheckStatus();
     }
@@ -3218,7 +3381,7 @@ async function getStatusOpen() {
         chat_completion_source: oai_settings.chat_completion_source,
     };
 
-    if (oai_settings.reverse_proxy && (oai_settings.chat_completion_source === chat_completion_sources.OPENAI || oai_settings.chat_completion_source === chat_completion_sources.CLAUDE)) {
+    if (oai_settings.reverse_proxy && [chat_completion_sources.CLAUDE, chat_completion_sources.OPENAI, chat_completion_sources.MISTRALAI, chat_completion_sources.MAKERSUITE, chat_completion_sources.DEEPSEEK].includes(oai_settings.chat_completion_source)) {
         await validateReverseProxy();
     }
 
@@ -3294,6 +3457,7 @@ async function saveOpenAIPreset(name, settings, triggerUi = true) {
         openrouter_sort_models: settings.openrouter_sort_models,
         openrouter_providers: settings.openrouter_providers,
         openrouter_allow_fallbacks: settings.openrouter_allow_fallbacks,
+        openrouter_middleout: settings.openrouter_middleout,
         ai21_model: settings.ai21_model,
         mistralai_model: settings.mistralai_model,
         cohere_model: settings.cohere_model,
@@ -3343,7 +3507,6 @@ async function saveOpenAIPreset(name, settings, triggerUi = true) {
         show_external_models: settings.show_external_models,
         assistant_prefill: settings.assistant_prefill,
         assistant_impersonation: settings.assistant_impersonation,
-        human_sysprompt_message: settings.human_sysprompt_message,
         claude_use_sysprompt: settings.claude_use_sysprompt,
         use_makersuite_sysprompt: settings.use_makersuite_sysprompt,
         use_alt_scale: settings.use_alt_scale,
@@ -3354,6 +3517,8 @@ async function saveOpenAIPreset(name, settings, triggerUi = true) {
         continue_prefill: settings.continue_prefill,
         continue_postfix: settings.continue_postfix,
         function_calling: settings.function_calling,
+        show_thoughts: settings.show_thoughts,
+        reasoning_effort: settings.reasoning_effort,
         seed: settings.seed,
         n: settings.n,
     };
@@ -3399,7 +3564,8 @@ function onLogitBiasPresetChange() {
     }
 
     oai_settings.bias_preset_selected = value;
-    $('.openai_logit_bias_list').empty();
+    const list = $('.openai_logit_bias_list');
+    list.empty();
 
     for (const entry of preset) {
         if (entry) {
@@ -3407,12 +3573,33 @@ function onLogitBiasPresetChange() {
         }
     }
 
+    // Check if a sortable instance exists
+    if (list.sortable('instance') !== undefined) {
+        // Destroy the instance
+        list.sortable('destroy');
+    }
+
+    // Make the list sortable
+    list.sortable({
+        delay: getSortableDelay(),
+        handle: '.drag-handle',
+        stop: function () {
+            const order = [];
+            list.children().each(function () {
+                order.unshift($(this).data('id'));
+            });
+            preset.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+            console.log('Logit bias reordered:', preset);
+            saveSettingsDebounced();
+        },
+    });
+
     biasCache = undefined;
     saveSettingsDebounced();
 }
 
 function createNewLogitBiasEntry() {
-    const entry = { text: '', value: 0 };
+    const entry = { id: uuidv4(), text: '', value: 0 };
     oai_settings.bias_presets[oai_settings.bias_preset_selected].push(entry);
     biasCache = undefined;
     createLogitBiasListItem(entry);
@@ -3420,11 +3607,14 @@ function createNewLogitBiasEntry() {
 }
 
 function createLogitBiasListItem(entry) {
-    const id = oai_settings.bias_presets[oai_settings.bias_preset_selected].indexOf(entry);
+    if (!entry.id) {
+        entry.id = uuidv4();
+    }
+    const id = entry.id;
     const template = $('#openai_logit_bias_template .openai_logit_bias_form').clone();
     template.data('id', id);
     template.find('.openai_logit_bias_text').val(entry.text).on('input', function () {
-        oai_settings.bias_presets[oai_settings.bias_preset_selected][id].text = String($(this).val());
+        entry.text = String($(this).val());
         biasCache = undefined;
         saveSettingsDebounced();
     });
@@ -3443,13 +3633,17 @@ function createLogitBiasListItem(entry) {
             value = max;
         }
 
-        oai_settings.bias_presets[oai_settings.bias_preset_selected][id].value = value;
+        entry.value = value;
         biasCache = undefined;
         saveSettingsDebounced();
     });
     template.find('.openai_logit_bias_remove').on('click', function () {
         $(this).closest('.openai_logit_bias_form').remove();
-        oai_settings.bias_presets[oai_settings.bias_preset_selected].splice(id, 1);
+        const preset = oai_settings.bias_presets[oai_settings.bias_preset_selected];
+        const index = preset.findIndex(item => item.id === id);
+        if (index >= 0) {
+            preset.splice(index, 1);
+        }
         onLogitBiasPresetChange();
     });
     $('.openai_logit_bias_list').prepend(template);
@@ -3581,8 +3775,8 @@ async function onExportPresetClick() {
 
     const fieldValues = sensitiveFields.filter(field => preset[field]).map(field => `<b>${field}</b>: <code>${preset[field]}</code>`);
     const shouldConfirm = fieldValues.length > 0;
-    const textHeader = 'Your preset contains proxy and/or custom endpoint settings.';
-    const textMessage = `<div>Do you want to remove these fields before exporting?</div><br>${DOMPurify.sanitize(fieldValues.join('<br>'))}`;
+    const textHeader = t`Your preset contains proxy and/or custom endpoint settings.`;
+    const textMessage = '<div>' + t`Do you want to remove these fields before exporting?` + `</div><br>${DOMPurify.sanitize(fieldValues.join('<br>'))}`;
     const cancelButton = { text: 'Cancel', result: POPUP_RESULT.CANCELLED, appendAtEnd: true };
     const popupOptions = { customButtons: [cancelButton] };
     const popupResult = await Popup.show.confirm(textHeader, textMessage, popupOptions);
@@ -3629,6 +3823,9 @@ async function onLogitBiasPresetImportFileChange(e) {
         if (typeof entry == 'object' && entry !== null) {
             if (Object.hasOwn(entry, 'text') &&
                 Object.hasOwn(entry, 'value')) {
+                if (!entry.id) {
+                    entry.id = uuidv4();
+                }
                 validEntries.push(entry);
             }
         }
@@ -3652,7 +3849,7 @@ function onLogitBiasPresetExportClick() {
 }
 
 async function onDeletePresetClick() {
-    const confirm = await callPopup('Delete the preset? This action is irreversible and your current settings will be overwritten.', 'confirm');
+    const confirm = await callPopup(t`Delete the preset? This action is irreversible and your current settings will be overwritten.`, 'confirm');
 
     if (!confirm) {
         return;
@@ -3729,11 +3926,14 @@ function onSettingsPresetChange() {
         openrouter_sort_models: ['#openrouter_sort_models', 'openrouter_sort_models', false],
         openrouter_providers: ['#openrouter_providers_chat', 'openrouter_providers', false],
         openrouter_allow_fallbacks: ['#openrouter_allow_fallbacks', 'openrouter_allow_fallbacks', true],
+        openrouter_middleout: ['#openrouter_middleout', 'openrouter_middleout', false],
         ai21_model: ['#model_ai21_select', 'ai21_model', false],
         mistralai_model: ['#model_mistralai_select', 'mistralai_model', false],
         cohere_model: ['#model_cohere_select', 'cohere_model', false],
         perplexity_model: ['#model_perplexity_select', 'perplexity_model', false],
         groq_model: ['#model_groq_select', 'groq_model', false],
+        nanogpt_model: ['#model_nanogpt_select', 'nanogpt_model', false],
+        deepseek_model: ['#model_deepseek_select', 'deepseek_model', false],
         zerooneai_model: ['#model_01ai_select', 'zerooneai_model', false],
         blockentropy_model: ['#model_blockentropy_select', 'blockentropy_model', false],
         custom_model: ['#custom_model_id', 'custom_model', false],
@@ -3767,7 +3967,6 @@ function onSettingsPresetChange() {
         proxy_password: ['#openai_proxy_password', 'proxy_password', false],
         assistant_prefill: ['#claude_assistant_prefill', 'assistant_prefill', false],
         assistant_impersonation: ['#claude_assistant_impersonation', 'assistant_impersonation', false],
-        human_sysprompt_message: ['#claude_human_sysprompt_textarea', 'human_sysprompt_message', false],
         claude_use_sysprompt: ['#claude_use_sysprompt', 'claude_use_sysprompt', true],
         use_makersuite_sysprompt: ['#use_makersuite_sysprompt', 'use_makersuite_sysprompt', true],
         use_alt_scale: ['#use_alt_scale', 'use_alt_scale', true],
@@ -3777,6 +3976,8 @@ function onSettingsPresetChange() {
         continue_prefill: ['#continue_prefill', 'continue_prefill', true],
         continue_postfix: ['#continue_postfix', 'continue_postfix', false],
         function_calling: ['#openai_function_calling', 'function_calling', true],
+        show_thoughts: ['#openai_show_thoughts', 'show_thoughts', true],
+        reasoning_effort: ['#openai_reasoning_effort', 'reasoning_effort', false],
         seed: ['#seed_openai', 'seed', false],
         n: ['#n_openai', 'n', false],
     };
@@ -3807,6 +4008,8 @@ function onSettingsPresetChange() {
         settings: oai_settings,
         savePreset: saveOpenAIPreset,
     }).finally(r => {
+        $('.model_custom_select').empty();
+
         for (const [key, [selector, setting, isCheckbox]] of Object.entries(settingsToUpdate)) {
             if (preset[key] !== undefined) {
                 if (isCheckbox) {
@@ -3831,7 +4034,7 @@ function getMaxContextOpenAI(value) {
     if (oai_settings.max_context_unlocked) {
         return unlocked_max;
     }
-    else if (value.startsWith('o1-')) {
+    else if (value.startsWith('o1') || value.startsWith('o3')) {
         return max_128k;
     }
     else if (value.includes('chatgpt-4o-latest') || value.includes('gpt-4-turbo') || value.includes('gpt-4o') || value.includes('gpt-4-1106') || value.includes('gpt-4-0125') || value.includes('gpt-4-vision')) {
@@ -3983,6 +4186,26 @@ async function onModelChange() {
         oai_settings.groq_model = value;
     }
 
+    if ($(this).is('#model_nanogpt_select')) {
+        if (!value) {
+            console.debug('Null NanoGPT model selected. Ignoring.');
+            return;
+        }
+
+        console.log('NanoGPT model changed to', value);
+        oai_settings.nanogpt_model = value;
+    }
+
+    if ($(this).is('#model_deepseek_select')) {
+        if (!value) {
+            console.debug('Null DeepSeek model selected. Ignoring.');
+            return;
+        }
+
+        console.log('DeepSeek model changed to', value);
+        oai_settings.deepseek_model = value;
+    }
+
     if (value && $(this).is('#model_01ai_select')) {
         console.log('01.AI model changed to', value);
         oai_settings.zerooneai_model = value;
@@ -4014,17 +4237,14 @@ async function onModelChange() {
     if (oai_settings.chat_completion_source == chat_completion_sources.MAKERSUITE) {
         if (oai_settings.max_context_unlocked) {
             $('#openai_max_context').attr('max', max_2mil);
-        } else if (value.includes('gemini-1.5-pro')) {
+        } else if (value.includes('gemini-exp-1114') || value.includes('gemini-exp-1121') || value.includes('gemini-2.0-flash-thinking-exp-1219')) {
+            $('#openai_max_context').attr('max', max_32k);
+        } else if (value.includes('gemini-1.5-pro') || value.includes('gemini-exp-1206') || value.includes('gemini-2.0-pro')) {
             $('#openai_max_context').attr('max', max_2mil);
-        } else if (value.includes('gemini-1.5-flash')) {
+        } else if (value.includes('gemini-1.5-flash') || value.includes('gemini-2.0-flash')) {
             $('#openai_max_context').attr('max', max_1mil);
-        } else if (value.includes('gemini-1.0-pro-vision') || value === 'gemini-pro-vision') {
-            $('#openai_max_context').attr('max', max_16k);
         } else if (value.includes('gemini-1.0-pro') || value === 'gemini-pro') {
             $('#openai_max_context').attr('max', max_32k);
-        } else if (value === 'text-bison-001') {
-            $('#openai_max_context').attr('max', max_8k);
-            // The ultra endpoints are possibly dead:
         } else if (value.includes('gemini-1.0-ultra') || value === 'gemini-ultra') {
             $('#openai_max_context').attr('max', max_32k);
         } else {
@@ -4121,7 +4341,7 @@ async function onModelChange() {
             $('#openai_max_context').attr('max', unlocked_max);
         } else if (oai_settings.mistralai_model.includes('codestral-mamba')) {
             $('#openai_max_context').attr('max', max_256k);
-        } else if (['mistral-large-2407', 'mistral-large-latest'].includes(oai_settings.mistralai_model)) {
+        } else if (['mistral-large-2407', 'mistral-large-2411', 'mistral-large-latest'].includes(oai_settings.mistralai_model)) {
             $('#openai_max_context').attr('max', max_128k);
         } else if (oai_settings.mistralai_model.includes('mistral-nemo')) {
             $('#openai_max_context').attr('max', max_128k);
@@ -4146,16 +4366,13 @@ async function onModelChange() {
         if (oai_settings.max_context_unlocked) {
             $('#openai_max_context').attr('max', unlocked_max);
         }
-        else if (['command-light', 'command'].includes(oai_settings.cohere_model)) {
+        else if (['command-light-nightly', 'command-light', 'command'].includes(oai_settings.cohere_model)) {
             $('#openai_max_context').attr('max', max_4k);
         }
-        else if (['command-light-nightly', 'command-nightly'].includes(oai_settings.cohere_model)) {
-            $('#openai_max_context').attr('max', max_8k);
-        }
-        else if (oai_settings.cohere_model.includes('command-r')) {
+        else if (oai_settings.cohere_model.includes('command-r') || ['c4ai-aya-23', 'c4ai-aya-expanse-32b', 'command-nightly'].includes(oai_settings.cohere_model)) {
             $('#openai_max_context').attr('max', max_128k);
         }
-        else if (['c4ai-aya-23'].includes(oai_settings.cohere_model)) {
+        else if (['c4ai-aya-23-8b', 'c4ai-aya-expanse-8b'].includes(oai_settings.cohere_model)) {
             $('#openai_max_context').attr('max', max_8k);
         }
         else {
@@ -4170,28 +4387,19 @@ async function onModelChange() {
         if (oai_settings.max_context_unlocked) {
             $('#openai_max_context').attr('max', unlocked_max);
         }
+        else if (['sonar', 'sonar-reasoning'].includes(oai_settings.perplexity_model)) {
+            $('#openai_max_context').attr('max', 127000);
+        }
+        else if (['sonar-pro'].includes(oai_settings.perplexity_model)) {
+            $('#openai_max_context').attr('max', 200000);
+        }
         else if (oai_settings.perplexity_model.includes('llama-3.1')) {
             const isOnline = oai_settings.perplexity_model.includes('online');
             const contextSize = isOnline ? 128 * 1024 - 4000 : 128 * 1024;
             $('#openai_max_context').attr('max', contextSize);
         }
-        else if (['llama-3-sonar-small-32k-chat', 'llama-3-sonar-large-32k-chat'].includes(oai_settings.perplexity_model)) {
-            $('#openai_max_context').attr('max', max_32k);
-        }
-        else if (['llama-3-sonar-small-32k-online', 'llama-3-sonar-large-32k-online'].includes(oai_settings.perplexity_model)) {
-            $('#openai_max_context').attr('max', 28000);
-        }
-        else if (['sonar-small-chat', 'sonar-medium-chat', 'codellama-70b-instruct', 'mistral-7b-instruct', 'mixtral-8x7b-instruct', 'mixtral-8x22b-instruct'].includes(oai_settings.perplexity_model)) {
-            $('#openai_max_context').attr('max', max_16k);
-        }
-        else if (['llama-3-8b-instruct', 'llama-3-70b-instruct'].includes(oai_settings.perplexity_model)) {
-            $('#openai_max_context').attr('max', max_8k);
-        }
-        else if (['sonar-small-online', 'sonar-medium-online'].includes(oai_settings.perplexity_model)) {
-            $('#openai_max_context').attr('max', 12000);
-        }
         else {
-            $('#openai_max_context').attr('max', max_4k);
+            $('#openai_max_context').attr('max', max_128k);
         }
         oai_settings.openai_max_context = Math.min(Number($('#openai_max_context').attr('max')), oai_settings.openai_max_context);
         $('#openai_max_context').val(oai_settings.openai_max_context).trigger('input');
@@ -4202,24 +4410,30 @@ async function onModelChange() {
     if (oai_settings.chat_completion_source == chat_completion_sources.GROQ) {
         if (oai_settings.max_context_unlocked) {
             $('#openai_max_context').attr('max', unlocked_max);
-        }
-        else if (oai_settings.groq_model.includes('llama-3.2') && oai_settings.groq_model.includes('-preview')) {
+        } else if (oai_settings.groq_model.includes('gemma2-9b-it')) {
             $('#openai_max_context').attr('max', max_8k);
-        }
-        else if (oai_settings.groq_model.includes('llama-3.2') || oai_settings.groq_model.includes('llama-3.1')) {
+        } else if (oai_settings.groq_model.includes('llama-3.3-70b-versatile')) {
             $('#openai_max_context').attr('max', max_128k);
-        }
-        else if (oai_settings.groq_model.includes('llama3-groq')) {
+        } else if (oai_settings.groq_model.includes('llama-3.1-8b-instant')) {
+            $('#openai_max_context').attr('max', max_128k);
+        } else if (oai_settings.groq_model.includes('llama3-70b-8192')) {
             $('#openai_max_context').attr('max', max_8k);
-        }
-        else if (['llama3-8b-8192', 'llama3-70b-8192', 'gemma-7b-it', 'gemma2-9b-it'].includes(oai_settings.groq_model)) {
+        } else if (oai_settings.groq_model.includes('llama3-8b-8192')) {
             $('#openai_max_context').attr('max', max_8k);
-        }
-        else if (['mixtral-8x7b-32768'].includes(oai_settings.groq_model)) {
+        } else if (oai_settings.groq_model.includes('mixtral-8x7b-32768')) {
             $('#openai_max_context').attr('max', max_32k);
-        }
-        else {
-            $('#openai_max_context').attr('max', max_4k);
+        } else if (oai_settings.groq_model.includes('deepseek-r1-distill-llama-70b')) {
+            $('#openai_max_context').attr('max', max_128k);
+        } else if (oai_settings.groq_model.includes('llama-3.3-70b-specdec')) {
+            $('#openai_max_context').attr('max', max_8k);
+        } else if (oai_settings.groq_model.includes('llama-3.2-1b-preview')) {
+            $('#openai_max_context').attr('max', max_128k);
+        } else if (oai_settings.groq_model.includes('llama-3.2-3b-preview')) {
+            $('#openai_max_context').attr('max', max_128k);
+        } else if (oai_settings.groq_model.includes('llama-3.2-11b-vision-preview')) {
+            $('#openai_max_context').attr('max', max_128k);
+        } else if (oai_settings.groq_model.includes('llama-3.2-90b-vision-preview')) {
+            $('#openai_max_context').attr('max', max_128k);
         }
         oai_settings.openai_max_context = Math.min(Number($('#openai_max_context').attr('max')), oai_settings.openai_max_context);
         $('#openai_max_context').val(oai_settings.openai_max_context).trigger('input');
@@ -4293,6 +4507,34 @@ async function onModelChange() {
         $('#temp_openai').attr('max', oai_max_temp).val(oai_settings.temp_openai).trigger('input');
     }
 
+    if (oai_settings.chat_completion_source === chat_completion_sources.NANOGPT) {
+        if (oai_settings.max_context_unlocked) {
+            $('#openai_max_context').attr('max', unlocked_max);
+        } else {
+            $('#openai_max_context').attr('max', max_128k);
+        }
+
+        oai_settings.openai_max_context = Math.min(Number($('#openai_max_context').attr('max')), oai_settings.openai_max_context);
+        $('#openai_max_context').val(oai_settings.openai_max_context).trigger('input');
+        $('#temp_openai').attr('max', oai_max_temp).val(oai_settings.temp_openai).trigger('input');
+    }
+
+    if (oai_settings.chat_completion_source === chat_completion_sources.DEEPSEEK) {
+        if (oai_settings.max_context_unlocked) {
+            $('#openai_max_context').attr('max', unlocked_max);
+        } else if (['deepseek-reasoner', 'deepseek-chat'].includes(oai_settings.deepseek_model)) {
+            $('#openai_max_context').attr('max', max_64k);
+        } else if (oai_settings.deepseek_model == 'deepseek-coder') {
+            $('#openai_max_context').attr('max', max_16k);
+        } else {
+            $('#openai_max_context').attr('max', max_64k);
+        }
+
+        oai_settings.openai_max_context = Math.min(Number($('#openai_max_context').attr('max')), oai_settings.openai_max_context);
+        $('#openai_max_context').val(oai_settings.openai_max_context).trigger('input');
+        $('#temp_openai').attr('max', oai_max_temp).val(oai_settings.temp_openai).trigger('input');
+    }
+
     if (oai_settings.chat_completion_source === chat_completion_sources.COHERE) {
         oai_settings.pres_pen_openai = Math.min(Math.max(0, oai_settings.pres_pen_openai), 1);
         $('#pres_pen_openai').attr('max', 1).attr('min', 0).val(oai_settings.pres_pen_openai).trigger('input');
@@ -4315,8 +4557,8 @@ async function onOpenrouterModelSortChange() {
 
 async function onNewPresetClick() {
     const popupText = `
-        <h3>Preset name:</h3>
-        <h4>Hint: Use a character/group name to bind preset to a specific chat.</h4>`;
+        <h3>` + t`Preset name:` + `</h3>
+        <h4>` + t`Hint: Use a character/group name to bind preset to a specific chat.` + '</h4>';
     const name = await callPopup(popupText, 'input', oai_settings.preset_settings_openai);
 
     if (!name) {
@@ -4497,6 +4739,32 @@ async function onConnectButtonClick(e) {
         }
     }
 
+    if (oai_settings.chat_completion_source == chat_completion_sources.NANOGPT) {
+        const api_key_nanogpt = String($('#api_key_nanogpt').val()).trim();
+
+        if (api_key_nanogpt.length) {
+            await writeSecret(SECRET_KEYS.NANOGPT, api_key_nanogpt);
+        }
+
+        if (!secret_state[SECRET_KEYS.NANOGPT]) {
+            console.log('No secret key saved for NanoGPT');
+            return;
+        }
+    }
+
+    if (oai_settings.chat_completion_source == chat_completion_sources.DEEPSEEK) {
+        const api_key_deepseek = String($('#api_key_deepseek').val()).trim();
+
+        if (api_key_deepseek.length) {
+            await writeSecret(SECRET_KEYS.DEEPSEEK, api_key_deepseek);
+        }
+
+        if (!secret_state[SECRET_KEYS.DEEPSEEK] && !oai_settings.reverse_proxy) {
+            console.log('No secret key saved for DeepSeek');
+            return;
+        }
+    }
+
     if (oai_settings.chat_completion_source == chat_completion_sources.ZEROONEAI) {
         const api_key_01ai = String($('#api_key_01ai').val()).trim();
 
@@ -4566,6 +4834,9 @@ function toggleChatCompletionForms() {
     else if (oai_settings.chat_completion_source == chat_completion_sources.GROQ) {
         $('#model_groq_select').trigger('change');
     }
+    else if (oai_settings.chat_completion_source == chat_completion_sources.NANOGPT) {
+        $('#model_nanogpt_select').trigger('change');
+    }
     else if (oai_settings.chat_completion_source == chat_completion_sources.ZEROONEAI) {
         $('#model_01ai_select').trigger('change');
     }
@@ -4575,14 +4846,13 @@ function toggleChatCompletionForms() {
     else if (oai_settings.chat_completion_source == chat_completion_sources.BLOCKENTROPY) {
         $('#model_blockentropy_select').trigger('change');
     }
+    else if (oai_settings.chat_completion_source == chat_completion_sources.DEEPSEEK) {
+        $('#model_deepseek_select').trigger('change');
+    }
     $('[data-source]').each(function () {
         const validSources = $(this).data('source').split(',');
         $(this).toggle(validSources.includes(oai_settings.chat_completion_source));
     });
-
-    if (chat_completion_sources.CLAUDE == oai_settings.chat_completion_source) {
-        $('#claude_human_sysprompt_message_block').toggle(oai_settings.claude_use_sysprompt);
-    }
 }
 
 async function testApiConnection() {
@@ -4664,6 +4934,16 @@ export function isImageInliningSupported() {
     // gultra just isn't being offered as multimodal, thanks google.
     const visionSupportedModels = [
         'gpt-4-vision',
+        'gemini-2.0-pro-exp',
+        'gemini-2.0-pro-exp-02-05',
+        'gemini-2.0-flash-lite-preview',
+        'gemini-2.0-flash-lite-preview-02-05',
+        'gemini-2.0-flash',
+        'gemini-2.0-flash-001',
+        'gemini-2.0-flash-thinking-exp-1219',
+        'gemini-2.0-flash-thinking-exp-01-21',
+        'gemini-2.0-flash-thinking-exp',
+        'gemini-2.0-flash-exp',
         'gemini-1.5-flash',
         'gemini-1.5-flash-latest',
         'gemini-1.5-flash-001',
@@ -4672,6 +4952,9 @@ export function isImageInliningSupported() {
         'gemini-1.5-flash-8b',
         'gemini-1.5-flash-8b-exp-0827',
         'gemini-1.5-flash-8b-exp-0924',
+        'gemini-exp-1114',
+        'gemini-exp-1121',
+        'gemini-exp-1206',
         'gemini-1.0-pro-vision-latest',
         'gemini-1.5-pro',
         'gemini-1.5-pro-latest',
@@ -4679,18 +4962,21 @@ export function isImageInliningSupported() {
         'gemini-1.5-pro-002',
         'gemini-1.5-pro-exp-0801',
         'gemini-1.5-pro-exp-0827',
-        'gemini-pro-vision',
         'claude-3',
         'claude-3-5',
         'gpt-4-turbo',
         'gpt-4o',
         'gpt-4o-mini',
+        'o1',
+        'o1-2024-12-17',
         'chatgpt-4o-latest',
         'yi-vision',
         'pixtral-latest',
         'pixtral-12b-latest',
         'pixtral-12b',
         'pixtral-12b-2409',
+        'pixtral-large-latest',
+        'pixtral-large-2411',
     ];
 
     switch (oai_settings.chat_completion_source) {
@@ -4934,7 +5220,6 @@ export function initOpenAI() {
 
     $('#claude_use_sysprompt').on('change', function () {
         oai_settings.claude_use_sysprompt = !!$('#claude_use_sysprompt').prop('checked');
-        $('#claude_human_sysprompt_message_block').toggle(oai_settings.claude_use_sysprompt);
         saveSettingsDebounced();
     });
 
@@ -5008,12 +5293,6 @@ export function initOpenAI() {
     $('#newchat_prompt_restore').on('click', function () {
         oai_settings.new_chat_prompt = default_new_chat_prompt;
         $('#newchat_prompt_textarea').val(oai_settings.new_chat_prompt);
-        saveSettingsDebounced();
-    });
-
-    $('#claude_human_sysprompt_message_restore').on('click', function () {
-        oai_settings.human_sysprompt_message = default_claude_human_sysprompt_message;
-        $('#claude_human_sysprompt_textarea').val(oai_settings.human_sysprompt_message);
         saveSettingsDebounced();
     });
 
@@ -5108,11 +5387,6 @@ export function initOpenAI() {
         saveSettingsDebounced();
     });
 
-    $('#claude_human_sysprompt_textarea').on('input', function () {
-        oai_settings.human_sysprompt_message = String($('#claude_human_sysprompt_textarea').val());
-        saveSettingsDebounced();
-    });
-
     $('#openrouter_use_fallback').on('input', function () {
         oai_settings.openrouter_use_fallback = !!$(this).prop('checked');
         saveSettingsDebounced();
@@ -5130,6 +5404,11 @@ export function initOpenAI() {
 
     $('#openrouter_allow_fallbacks').on('input', function () {
         oai_settings.openrouter_allow_fallbacks = !!$(this).prop('checked');
+        saveSettingsDebounced();
+    });
+
+    $('#openrouter_middleout').on('input', function () {
+        oai_settings.openrouter_middleout = String($(this).val());
         saveSettingsDebounced();
     });
 
@@ -5243,6 +5522,16 @@ export function initOpenAI() {
         saveSettingsDebounced();
     });
 
+    $('#openai_show_thoughts').on('input', function () {
+        oai_settings.show_thoughts = !!$(this).prop('checked');
+        saveSettingsDebounced();
+    });
+
+    $('#openai_reasoning_effort').on('input', function () {
+        oai_settings.reasoning_effort = String($(this).val());
+        saveSettingsDebounced();
+    });
+
     if (!CSS.supports('field-sizing', 'content')) {
         $(document).on('input', '#openai_settings .autoSetHeight', function () {
             resetScrollHeight($(this));
@@ -5251,8 +5540,8 @@ export function initOpenAI() {
 
     if (!isMobile()) {
         $('#model_openrouter_select').select2({
-            placeholder: 'Select a model',
-            searchInputPlaceholder: 'Search models...',
+            placeholder: t`Select a model`,
+            searchInputPlaceholder: t`Search models...`,
             searchInputCssClass: 'text_pole',
             width: '100%',
             templateResult: getOpenRouterModelTemplate,
@@ -5287,6 +5576,8 @@ export function initOpenAI() {
     $('#model_cohere_select').on('change', onModelChange);
     $('#model_perplexity_select').on('change', onModelChange);
     $('#model_groq_select').on('change', onModelChange);
+    $('#model_nanogpt_select').on('change', onModelChange);
+    $('#model_deepseek_select').on('change', onModelChange);
     $('#model_01ai_select').on('change', onModelChange);
     $('#model_blockentropy_select').on('change', onModelChange);
     $('#model_custom_select').on('change', onModelChange);
