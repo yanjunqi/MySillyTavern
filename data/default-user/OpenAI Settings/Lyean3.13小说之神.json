@@ -1,6 +1,6 @@
 {
-    "chat_completion_source": "custom",
-    "openai_model": "claude-3-5-sonnet-20241022",
+    "chat_completion_source": "openai",
+    "openai_model": "claude-3-7-sonnet-20250219",
     "claude_model": "claude-3-opus-20240229",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
@@ -653,11 +653,11 @@
                 },
                 {
                     "identifier": "d606dcd6-8ec5-4166-930b-3057d31ac830",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "67ce76b6-dbf6-4bc6-b928-9e290f389916",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "52c236ce-5298-4989-a1ef-a6e6dd9f23eb",
@@ -732,7 +732,7 @@
     "squash_system_messages": true,
     "image_inlining": false,
     "inline_image_quality": "low",
-    "bypass_status_check": false,
+    "bypass_status_check": true,
     "continue_prefill": true,
     "continue_postfix": "\n",
     "function_calling": true,
