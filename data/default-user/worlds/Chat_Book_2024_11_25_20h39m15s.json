@@ -1,0 +1,38 @@
+{
+    "entries": {
+        "0": {
+            "uid": 0,
+            "key": [],
+            "keysecondary": [],
+            "comment": "聊天记录缓存",
+            "content": "[All Test Messages Rejected]\n[前情提要]\n在野原家门前，Alec来到了野原家拜访。美伢热情迎接，夸赞Alec高大帅气。\n小新跑出来见到了表哥Alec。美伢给大家泡了咖啡。\nAlec夸赞美伢比美国大姐姐漂亮。小新说起妈妈身材，美伢害羞生气。\n在给Alec介绍房间时，美伢慌乱中差点摔倒，被Alec及时抱住。两人有了第一次身体接触。美伢心跳加速。\nAlec展示肌肉，提出帮忙干重活。小新提议让表哥帮忙修理家里的各种家具。美伢因小新提到的私密话题而害羞。\n在浴室修理置物架时，小新闯入开启淋浴喷头，导致所有人全身湿透。美伢追逐小新时滑倒，再次被Alec搂住。\n因为大家都湿透了，小新提议一起洗澡。美伢考虑到省水问题，以日本家庭共浴习俗为理由同意了。此时美伢正站在浴缸边，等待接下来的发展。",
+            "constant": true,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 1,
+            "disable": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "displayIndex": 0
+        }
+    }
+}
