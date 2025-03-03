@@ -32,7 +32,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 30000,
+    "openai_max_context": 50000,
     "openai_max_tokens": 10000,
     "wrap_in_quotes": false,
     "names_behavior": -1,
@@ -561,11 +561,11 @@
                 },
                 {
                     "identifier": "main",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "enhanceDefinitions",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "eebf3d1b-e097-4891-887a-37cf22273d22",

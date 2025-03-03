@@ -2126,7 +2126,7 @@
         "top_a_openai": 1,
         "repetition_penalty_openai": 1,
         "stream_openai": true,
-        "openai_max_context": 30000,
+        "openai_max_context": 50000,
         "openai_max_tokens": 10000,
         "wrap_in_quotes": false,
         "prompts": [
@@ -2638,11 +2638,11 @@
                     },
                     {
                         "identifier": "main",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "enhanceDefinitions",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "eebf3d1b-e097-4891-887a-37cf22273d22",
@@ -2836,7 +2836,7 @@
         "group_nudge_prompt": "[Write the next reply only as {{char}}.]",
         "scenario_format": "[Circumstances of the novel: {{scenario}}]",
         "personality_format": "[{{char}}'s personality: {{personality}}]",
-        "openai_model": "claude-3-opus-20240229",
+        "openai_model": "claude-3-7-sonnet-20250219",
         "claude_model": "claude-3-opus-20240229",
         "google_model": "gemini-1.5-pro-exp-0827",
         "ai21_model": "jamba-1.5-large",
@@ -2849,7 +2849,7 @@
         "blockentropy_model": "be-70b-base-llama3.1",
         "deepseek_model": "deepseek-chat",
         "custom_model": "grok-3",
-        "custom_url": "http://127.0.0.1:3333/v1",
+        "custom_url": "http://grok.yousebaby.com/v1",
         "custom_include_body": "",
         "custom_exclude_body": "",
         "custom_include_headers": "",
