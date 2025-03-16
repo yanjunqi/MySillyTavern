@@ -924,6 +924,18 @@
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
+        },
+        {
+            "identifier": "0c434cf2-632f-481d-9ac4-baa42859c800",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "新状态栏",
+            "role": "system",
+            "content": "<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n<details><summary>---{{character name}}状态栏---</summary>\n```\n『{{年-月-日}} {{时-分}} | {{日出/正午/日落/深夜}} | {{天气现象}}』\n角色: {{character name}}\n地点:『{{具体地点}} - {{周边环境详细描述}}』\n▶角色信息\n年龄: {{age}}岁 \n关系: {{Relationship with {user}}}\n💓【{{character name}}的好感度】:{{Favorability  for {user}}}/100(Reason for change)\n🔥【性欲值】:{{Sexual desire value}}/100(Reason for change)\n▶着装状态\n【上身:{{Upper body clothing condition}}】【胸罩:{{bra status}}】\n【下身:{{Condition of lower body clothing}}】【内裤:{{panty status}}】【丝袜:{{stockings status}}】\n【鞋子:{{Posture state}}】【配饰:{{Accessories}}】\n▶行动状态\n【日程:{{Subsequent schedule}}】\n✨当前行动:{{Describe the current character's posture and behavior in 30 words}}\n▶身体状态\n👙胸部状态: {{Describe current breast condition in detail in 30 words or less}}\n💗小穴状态: {{Describe the current vaginal condition in detail in 30 words or less}}\n🏵️肛门状态: {{Describe the current anal condition in detail within 30 words}}\n🫦口腔状态: {{Describe the current oral condition in detail within 30 words}}\n🎂子宫状态: {{Describe the current uterine condition in 30 words or less}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n```\n</details>\n</StatusBlocks>\n<!-- Note: 不要生成{{user}}的状态栏;如果有多个女角色,用<details></details>分开依次生成。如果当前没有合适的女角色,则显示空白。 -->",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1168,6 +1180,10 @@
                 },
                 {
                     "identifier": "630cadb6-e7c6-4979-8c1f-2ab44e3fa227",
+                    "enabled": true
+                },
+                {
+                    "identifier": "0c434cf2-632f-481d-9ac4-baa42859c800",
                     "enabled": true
                 },
                 {
