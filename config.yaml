@@ -87,9 +87,20 @@ extensions:
     embedding: Cohee/jina-embeddings-v2-base-en
     speechToText: Xenova/whisper-small
     textToSpeech: Xenova/speecht5_tts
-cardsCacheCapacity: 100
 listenAddress:
   ipv4: 0.0.0.0
   ipv6: "[::]"
-minLogLevel: 0
 enableServerPluginsAutoUpdate: true
+logging:
+  minLogLevel: 0
+  enableAccessLog: true
+performance:
+  memoryCacheCapacity: 100mb
+  lazyLoadCharacters: false
+ssl:
+  enabled: false
+  certPath: ./certs/cert.pem
+  keyPath: ./certs/privkey.pem
+whitelistDockerHosts: true
+rateLimiting:
+  preferRealIpHeader: false
