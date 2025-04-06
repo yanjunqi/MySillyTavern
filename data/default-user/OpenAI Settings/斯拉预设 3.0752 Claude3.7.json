@@ -2392,7 +2392,7 @@
                 },
                 {
                     "identifier": "jailbreak",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "63d67a8a-7d56-4f49-a566-60d6aa272ab2",
