@@ -1,7 +1,7 @@
 {
-    "chat_completion_source": "openai",
+    "chat_completion_source": "claude",
     "openai_model": "claude-3-7-sonnet-20250219",
-    "claude_model": "claude-3-5-sonnet-20240620",
+    "claude_model": "claude-3-7-sonnet-latest",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": false,
@@ -43,8 +43,8 @@
     "new_example_chat_prompt": "[Example Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "http://127.0.0.1:8444/v1",
-    "proxy_password": "",
+    "reverse_proxy": "http://127.0.0.1:8484/v1",
+    "proxy_password": "4U`QE;8H0&Kz?06G+^)mvDh+-)Wl>`GC",
     "max_context_unlocked": true,
     "wi_format": "{0}",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -2128,11 +2128,11 @@
                 },
                 {
                     "identifier": "6d6e266c-e612-49a6-9ccc-78107c439a42",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "ce3c483c-3357-45de-a472-3312ca2438b0",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "6e114f6a-0a9c-479f-afa6-887fc8391ee8",
@@ -2380,7 +2380,7 @@
                 },
                 {
                     "identifier": "123c7943-cb9e-4de6-8ba3-29509601b952",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "9bb0e0b0-ac0e-45d7-ab66-79f737366541",
@@ -2404,11 +2404,11 @@
                 },
                 {
                     "identifier": "daba9204-1c85-441b-b9f9-01ce045d2e5a",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "a0e79c49-dc91-4682-aaf1-0e35d29503a6",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "07bdc27b-23f7-4cf5-af17-d4b3300a3b2b",
