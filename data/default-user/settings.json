@@ -31,7 +31,7 @@
         "SelectedNavTab": "rm_button_characters",
         "AlertWI_死对头附身了自己的青梅竹马.png": "true",
         "AlertWI_W.png": "true",
-        "NavLockOn": "true",
+        "NavLockOn": "false",
         "AlertWI_神雕外传.png": "true",
         "AlertWI_Dean Winchester.png": "true",
         "AlertWI_黍.png": "true",
@@ -99,15 +99,17 @@
         "Proxy_SkipConfirm_4238796917440370": "true",
         "Proxy_SkipConfirm_8250393106980554": "true",
         "AlertWI_顾氏家族.png": "true",
-        "AlertWI_古风全家捅-雏鹰起飞.png": "true"
+        "AlertWI_古风全家捅-雏鹰起飞.png": "true",
+        "AlertWI_重生之在韩国当财阀.png": "true",
+        "AlertWI_顾雨妍.png": "true"
     },
     "currentVersion": "1.12.13",
-    "username": "王钢",
-    "active_character": "古风全家捅-雏鹰起飞.png",
+    "username": "Alec",
+    "active_character": "陈淑兰.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "legat.png",
+    "user_avatar": "1691725210145.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
@@ -379,7 +381,7 @@
         "timestamps_enabled": true,
         "timestamp_model_icon": false,
         "mesIDDisplay_enabled": true,
-        "hideChatAvatars_enabled": false,
+        "hideChatAvatars_enabled": true,
         "max_context_unlocked": false,
         "message_token_count_enabled": false,
         "expand_message_actions": true,
@@ -536,8 +538,8 @@
                 ]
             }
         },
-        "persona_description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。",
-        "persona_description_position": 3,
+        "persona_description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
         "persona_description_lorebook": "",
@@ -1532,6 +1534,57 @@
                 "substituteRegex": false,
                 "minDepth": null,
                 "maxDepth": null
+            },
+            {
+                "id": "dd83b40d-ee5f-4168-9919-9652cc8218d8",
+                "scriptName": "精简用户输入",
+                "findRegex": "/^([\\s\\S]*?)$/",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 2,
+                "maxDepth": null
+            },
+            {
+                "id": "b7812ca3-1aff-422f-97f6-ceb77db8af3e",
+                "scriptName": "【Lyean】[不发送]5楼以下摘要文本",
+                "findRegex": "/<details><summary>摘要</summary>([\\s\\S]*?)</details>/gm",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": 5
+            },
+            {
+                "id": "a864c6b5-9bd8-4774-a685-ffb10a748632",
+                "scriptName": "【Lyean】[不发送]5楼以上除摘要外文本",
+                "findRegex": "/([\\s\\S]*?<details><summary>摘要</summary>|</details>[\\s\\S]*?$)/gs",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": true,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 5,
+                "maxDepth": null
             }
         ],
         "character_allowed_regex": [
@@ -1887,9 +1940,9 @@
         "muyoo_dataTable": {
             "injection_mode": "deep_system",
             "deep": 2,
-            "isExtensionAble": false,
+            "isExtensionAble": true,
             "isAiReadTable": true,
-            "isAiWriteTable": false,
+            "isAiWriteTable": true,
             "isTableToChat": false,
             "enableHistory": true,
             "use_main_api": true,
@@ -2371,7 +2424,10 @@
         "超能力.png": [],
         "顾氏家族.png": [],
         "織部 静奈.png": [],
-        "古风全家捅-雏鹰起飞.png": []
+        "古风全家捅-雏鹰起飞.png": [],
+        "default_Seraphina.png": [],
+        "重生之在韩国当财阀.png": [],
+        "顾雨妍.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -3570,7 +3626,7 @@
                     },
                     {
                         "identifier": "0c434cf2-632f-481d-9ac4-baa42859c800",
-                        "enabled": true
+                        "enabled": false
                     },
                     {
                         "identifier": "a3f3f7bd-0581-483e-bea1-0edbd79819fd",
@@ -3578,7 +3634,7 @@
                     },
                     {
                         "identifier": "71ce8571-e750-44e1-a21d-55a86c947ebc",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "90c4768d-3fb4-47dc-9140-40e6a400b43c",
