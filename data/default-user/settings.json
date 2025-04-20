@@ -646,7 +646,9 @@
         "apiKey": "",
         "autoConnect": false,
         "notifyUpdates": false,
-        "disabledExtensions": [],
+        "disabledExtensions": [
+            "tts"
+        ],
         "expressionOverrides": [],
         "memory": {
             "minLongMemory": 16,

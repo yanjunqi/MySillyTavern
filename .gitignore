@@ -46,3 +46,4 @@ backups/
 # /cache/
 # public/css/user.css
 # /plugins/
+data/access.log
