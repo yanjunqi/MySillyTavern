@@ -1,7 +1,7 @@
 {
-    "chat_completion_source": "openai",
+    "chat_completion_source": "claude",
     "openai_model": "claude-3-7-sonnet-20250219",
-    "claude_model": "claude-3-5-sonnet-20240620",
+    "claude_model": "claude-3-7-sonnet-20250219",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": false,
@@ -32,20 +32,19 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 50000,
+    "openai_max_context": 51000,
     "openai_max_tokens": 32768,
     "wrap_in_quotes": false,
     "names_behavior": -1,
     "send_if_empty": "",
-    "jailbreak_system": false,
     "impersonation_prompt": "[Write your next reply from the point of view of {{user}}, using the preceding context so far as references.]",
     "new_chat_prompt": "",
     "new_group_chat_prompt": "[Start a new group chat. Group members: {{group}}]",
     "new_example_chat_prompt": "[Chat Example Start Point]",
     "continue_nudge_prompt": "[Continue the story. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "http://127.0.0.1:8444/v1",
-    "proxy_password": "",
+    "reverse_proxy": "http://127.0.0.1:8484/v1",
+    "proxy_password": "4U`QE;8H0&Kz?06G+^)mvDh+-)Wl>`GC",
     "max_context_unlocked": true,
     "wi_format": "{0}\n",
     "scenario_format": "[Circumstances of the novel: {{scenario}}]",
@@ -272,7 +271,7 @@
             "marker": false,
             "name": "🗳️简易状态栏",
             "role": "system",
-            "content": "## 按要求输出 `<TimeFormat>`，将其用于注明本次剧情的时间、地点、天气信息。\n<Time>\n<TimeFormat>\n\n『星期–00,00-地点-天气』\n\n</TimeFormat>\n    每次输出应把重置后的TimeFormat置于输出最前端/剧情开始之前，以作为环境背景提示，最先直接输出TimeFormat是必须的；\n    TimeFormat中只能出现时间-地点-天气的信息；\n    根据上文时空逻辑，保持逻辑连贯性，参考上次TimeFormat的信息，并根据当前状况更新TimeFormat全部内容，确保衔接顺畅；\n    每次更新都需要根据剧情内容推进TimeFormat时间和日期，更新时间时不能出现过大的时间跨度(time-skips)，而应该根据每次剧情发生所需要的时间，合理地根据剧情所需要的时间长短，推进时间；\n    当时间在接近24:00时，切换到下一天的凌晨;\n    TimeFormat中提供的时间、空间逻辑，作为剧情的提示和描述，需要与剧情吻合;\n    地点需要遵循剧情逻辑，根据剧情内容填写；“天气”处根据剧情逻辑写明所处位置的天色，室内场所不受天气影响；\n    确保TimeFormat中出现的只有时间、天气、地点三种信息。\n</Time>\n## 以TimeFormat作为本次输出的第一项内容；输出TimeFormat是开始输出剧情的前提。\n\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n『{{weekday,中文输出}} - {{data,中文输出}} - {{time periods,中文输出}}-{{time,中文输出}} - {{location,中文输出}} - {{weather,中文输出}} - {{temperature,中文输出}}   』\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n╘═════\n```\n</StatusBlocks>",
+            "content": "\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，胸和臀，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n╘═════\n```\n</StatusBlocks>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
@@ -1188,11 +1187,11 @@
                 },
                 {
                     "identifier": "a3f3f7bd-0581-483e-bea1-0edbd79819fd",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "71ce8571-e750-44e1-a21d-55a86c947ebc",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "90c4768d-3fb4-47dc-9140-40e6a400b43c",
@@ -1241,6 +1240,8 @@
     "function_calling": false,
     "show_thoughts": false,
     "reasoning_effort": "low",
+    "enable_web_search": false,
+    "request_images": false,
     "seed": -1,
     "n": 1
 }
