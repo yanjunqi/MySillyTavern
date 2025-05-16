@@ -26,13 +26,13 @@ dataRoot: ./data
 enableForwardedWhitelist: true
 enableUserAccounts: false
 enableDiscreetLogin: false
-cookieSecret: ybBYQhrYnwJGwgV9uzHfq5bxw9BBe4IMAOcBfCyUlNU5fk5vtgtPuHQuDPkE0CTK0hAEqeYoKuwbgPoRzAohJg==
 disableCsrfProtection: false
 whitelistImportDomains:
   - localhost
   - cdn.discordapp.com
   - files.catbox.moe
   - raw.githubusercontent.com
+  - char-archive.evulid.cc
 mistral:
   enablePrefix: false
 sessionTimeout: 86400
@@ -75,6 +75,7 @@ backups:
     enabled: false
     throttleInterval: 10000
     maxTotalBackups: -1
+    checkIntegrity: true
   common:
     numberOfBackups: 50
 extensions:
@@ -97,6 +98,7 @@ logging:
 performance:
   memoryCacheCapacity: 100mb
   lazyLoadCharacters: false
+  useDiskCache: true
 ssl:
   enabled: false
   certPath: ./certs/cert.pem
