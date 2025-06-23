@@ -1,7 +1,7 @@
 {
     "chat_completion_source": "claude",
     "openai_model": "claude-3-7-sonnet-20250219",
-    "claude_model": "claude-3-7-sonnet-latest",
+    "claude_model": "claude-3-7-sonnet-20250219",
     "windowai_model": "",
     "openrouter_model": "OR_Website",
     "openrouter_use_fallback": false,
@@ -1098,7 +1098,7 @@
             "marker": false,
             "name": "☑️状态栏",
             "role": "system",
-            "content": "\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，胸和臀，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n╘═════\n```\n</StatusBlocks>",
+            "content": "\nSystem:你必须在回复最末尾插入角色的<StatusBlock>,并进行详细介绍,<StatusBlock>里的介绍描写必须详细\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，胸和臀，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 子宫: {{womb}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n╘═════\n```\n</StatusBlocks>",
             "injection_position": 0,
             "injection_depth": 4,
             "forbid_overrides": false
