@@ -10,7 +10,6 @@
     "example_separator": "***",
     "chat_start": "***",
     "use_stop_strings": false,
-    "allow_jailbreak": false,
     "always_force_name2": true,
 >>>>>>> b8ea75f79fa274165190a567ebae59bc0d607262:default/content/presets/context/Default.json
     "trim_sentences": false,

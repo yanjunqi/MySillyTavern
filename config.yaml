@@ -10,7 +10,6 @@ basicAuthUser:
   password: password
 enableCorsProxy: false
 securityOverride: false
-autorun: true
 allowKeysExposure: false
 skipContentCheck: false
 requestOverrides: []
@@ -40,8 +39,6 @@ protocol:
   ipv4: true
   ipv6: false
 dnsPreferIPv6: false
-autorunHostname: auto
-autorunPortOverride: -1
 requestProxy:
   enabled: false
   url: socks5://username:password@example.com:1080
@@ -50,7 +47,6 @@ requestProxy:
     - 127.0.0.1
 autheliaAuth: false
 perUserBasicAuth: false
-avoidLocalhost: false
 enableDownloadableTokenizers: true
 promptPlaceholder: "[Start a new chat]"
 ollama:
@@ -59,6 +55,7 @@ ollama:
 claude:
   enableSystemPromptCache: false
   cachingAtDepth: -1
+  extendedTTL: false
 thumbnails:
   enabled: true
   quality: 95
@@ -106,3 +103,11 @@ ssl:
 whitelistDockerHosts: true
 rateLimiting:
   preferRealIpHeader: false
+browserLaunch:
+  enabled: true
+  hostname: auto
+  port: -1
+  avoidLocalhost: false
+  browser: default
+gemini:
+  apiVersion: v1beta

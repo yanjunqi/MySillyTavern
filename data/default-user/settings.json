@@ -63,7 +63,6 @@
         "AlertWI_熟女小镇传阅板.png": "true",
         "AlertWI_Gazelle.png": "true",
         "AlertWI_夕.png": "true",
-        "AlertWI_塞拉.png": "1",
         "AlertWI_柚木凛＆秋山蓝.png": "true",
         "AlertWI_素霞双修录5.01.png": "true",
         "AlertWI_七大姑.png": "true",
@@ -119,11 +118,14 @@
         "AlertRegex_月光下的银铃.png": "true",
         "AlertWI_淫悅假期.png": "true",
         "AlertWI_动物城(beta1.0).png": "true",
-        "Proxy_SkipConfirm_616809572282132": "true"
+        "Proxy_SkipConfirm_616809572282132": "true",
+        "Proxy_SkipConfirm_8315976245353988": "true",
+        "Proxy_SkipConfirm_5814162850782870": "true",
+        "AlertWI_[都市]-【熟妇狩猎者】.png": "true"
     },
-    "currentVersion": "1.12.14",
+    "currentVersion": "1.13.1",
     "username": "Alec",
-    "active_character": "沈桂华1.png",
+    "active_character": "小百合.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
@@ -249,8 +251,11 @@
             "no_repeat_ngram"
         ],
         "samplers": [
+            "penalties",
             "dry",
+            "top_n_sigma",
             "top_k",
+            "typ_p",
             "tfs_z",
             "typical_p",
             "top_p",
@@ -313,6 +318,7 @@
         "xtc_threshold": 0.1,
         "xtc_probability": 0,
         "nsigma": 0,
+        "min_keep": 0,
         "featherless_model": "",
         "generic_model": "",
         "truncation_length": 2048,
@@ -353,6 +359,7 @@
         "fast_ui_mode": true,
         "avatar_style": 0,
         "chat_display": 0,
+        "toastr_position": "toast-top-center",
         "chat_width": 50,
         "never_resize_avatars": false,
         "show_card_avatar_urls": false,
@@ -479,7 +486,8 @@
             "1726641944597-.png": "王钢",
             "1738416494521-.png": "郑太",
             "user-default.png": "唐",
-            "1744187098724-.png": "空"
+            "1744187098724-.png": "空",
+            "1750954687374-.png": "王钢"
         },
         "default_persona": "legat.png",
         "persona_descriptions": {
@@ -566,6 +574,13 @@
                         "id": "default_CodingSensei.png"
                     }
                 ]
+            },
+            "1750954687374-.png": {
+                "description": "{{user}}，男，长相英俊，肉棒异常的大，体力充沛。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力。\n性格特征：十分的好色，幽默风趣，爱开玩笑，随心所欲，胆大，脸皮厚",
+                "position": 0,
+                "depth": 2,
+                "role": 0,
+                "lorebook": ""
             }
         },
         "persona_description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
@@ -632,7 +647,8 @@
                     "left": 1,
                     "right": 1
                 },
-                "select": 3
+                "select": 3,
+                "state": 2
             },
             "parser": {
                 "flags": {}
@@ -647,6 +663,8 @@
         "forbid_external_media": false,
         "external_media_allowed_overrides": [],
         "external_media_forbidden_overrides": [],
+        "pin_styles": true,
+        "click_to_edit": false,
         "render_formulas": false,
         "include_newline": false,
         "ui_mode": 1,
@@ -1561,7 +1579,8 @@
             "custom": [],
             "api": 1,
             "llmPrompt": "Pause your roleplay. Classify the emotion of the last message. Output just one word, e.g. \"joy\" or \"anger\". Choose only one of the following labels: {{labels}}",
-            "allowMultiple": true
+            "allowMultiple": true,
+            "promptType": "raw"
         },
         "connectionManager": {
             "selectedProfile": "e8db0966-0c4f-45f8-8518-26f6653dd4a5",
@@ -1570,14 +1589,16 @@
                     "id": "e8db0966-0c4f-45f8-8518-26f6653dd4a5",
                     "mode": "cc",
                     "exclude": [],
-                    "api": "claude",
-                    "preset": "Lyean3.18.2_Nyarlathotep(1)",
-                    "model": "claude-3-7-sonnet-20250219",
-                    "proxy": "clewdr",
+                    "api": "google",
+                    "preset": "斯拉预设 4.03 Gemini",
+                    "model": "gemini-2.5-pro",
+                    "proxy": "None",
                     "stop-strings": "[]",
                     "start-reply-with": "",
                     "reasoning-template": "DeepSeek",
-                    "name": "aistudio"
+                    "name": "aistudio",
+                    "prompt-post-processing": "strict",
+                    "secret-id": "33925f4f-1b2e-4599-ba5c-eacddd9d9a9d"
                 },
                 {
                     "id": "1ee60c54-a1aa-41e3-a7a4-f01aa0f72b66",
@@ -1649,6 +1670,23 @@
                 "runOnEdit": false,
                 "substituteRegex": false,
                 "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "a864c6b5-9bd8-4774-a685-ffb10a748632",
+                "scriptName": "【Lyean】[不发送]5楼以上除摘要外文本",
+                "findRegex": "/([\\s\\S]*?<details><summary>摘要</summary>|</details>[\\s\\S]*?$)/gs",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 12,
                 "maxDepth": null
             },
             {
@@ -2378,23 +2416,6 @@
                 "substituteRegex": 0,
                 "minDepth": null,
                 "maxDepth": 9
-            },
-            {
-                "id": "a864c6b5-9bd8-4774-a685-ffb10a748632",
-                "scriptName": "【Lyean】[不发送]5楼以上除摘要外文本",
-                "findRegex": "/([\\s\\S]*?<details><summary>摘要</summary>|</details>[\\s\\S]*?$)/gs",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": true,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": 5,
-                "maxDepth": null
             }
         ],
         "character_allowed_regex": [
@@ -2538,7 +2559,9 @@
             "adetailer_face": false,
             "function_tool": false,
             "tool_visible": false,
-            "bfl_upsampling": false
+            "bfl_upsampling": false,
+            "google_api": "makersuite",
+            "google_enhance": true
         },
         "chromadb": {},
         "translate": {
@@ -2917,7 +2940,15 @@
             "refresh_user_message_template": "根据以下规则整理表格：\n<整理规则>\n    1. 修正格式错误，删除所有data[0]为空的行，此操作只允许整行操作！\n    2. 补全空白/未知内容，但禁止捏造信息\n    3. 当\"重要事件历史表格\"(tableIndex: 4)超过10行时，检查是否有重复或内容相近的行，适当合并或删除多余的行，此操作只允许整行操作！\n    4. \"角色与User社交表格\"(tableIndex: 2)中角色名禁止重复，有重复的需要整行删除，此操作只允许整行操作！\n    5. \"时空表格\"(tableIndex: 0）只允许有一行，删除所有旧的内容，此操作只允许整行操作！\n    6. 如果一个格子中超过15个字，则进行简化使之不超过15个字；如果一个格子中斜杠分隔的内容超过4个，则简化后只保留不超过4个\n    7. 时间格式统一为YYYY-MM-DD HH：MM   (时间中的冒号应当用中文冒号，未知的部分可以省略，例如：2023-10-01 12：00 或 2023-10-01 或 12：00)\n    8. 地点格式为 大陆>国家>城市>具体地点 (未知的部分可以省略，例如：大陆>中国>北京>故宫 或 异世界>酒馆)\n    9. 单元格中禁止使用逗号，语义分割应使用 /\n    10. 单元格内的string中禁止出现双引号\n    11. 禁止插入与现有表格内容完全相同的行，检查现有表格数据后再决定是否插入\n</整理规则>\n\n<聊天记录>\n    $1\n</聊天记录>\n\n<当前表格>\n    $0\n</当前表格>\n\n请用纯JSON格式回复操作列表，确保：\n    1. 所有键名必须使用双引号包裹，例如 \"action\" 而非 action\n    2. 数值键名必须加双引号，例如 \"0\" 而非 0\n    3. 使用双引号而非单引号，例如 \"value\" 而非 'value'\n    4. 斜杠（/）必须转义为 /\n    5. 不要包含注释或多余的Markdown标记\n    6. 将所有删除操作放在最后发送，并且删除的时候先发送row值较大的操作\n    7. 有效的格式：\n        [{\n            \"action\": \"insert/update/delete\",\n            \"tableIndex\": 数字,\n            \"rowIndex\": 数字（delete/update时需要）,\n            \"data\": {列索引: \"值\"}（insert/update时需要）\n        }]\n    8. 强调：delete操作不包含\"data\"，insert操作不包含\"rowIndex\"\n    9. 强调：tableIndex和rowIndex的值为数字，不加双引号，例如 0 而非 \"0\"\n\n<正确回复示例>\n    [\n        {\n            \"action\": \"update\",\n            \"tableIndex\": 0,\n            \"rowIndex\": 0,\n            \"data\": {\n            \"0\": \"2023-10-01\",\n            \"1\": \"12：00\",\n            \"2\": \"大陆>中国>北京>故宫\"\n            }\n        }，\n        {\n            \"action\": \"insert\",\",\n            \"tableIndex\": 0,\n            \"data\": {\n            \"0\": \"2023-10-01\",\n            \"1\": \"12：00\",\n            \"2\": \"大陆>中国>北京>故宫\"\n            }\n        },\n        {\n            \"action\": \"delete\",\n            \"tableIndex\": 0,\n            \"rowIndex\": 0,\n        }\n    ]\n</正确格式示例>",
             "updateIndex": 3
         },
-        "IMPORTANT_USER_PRIVACY_DATA": {}
+        "IMPORTANT_USER_PRIVACY_DATA": {},
+        "customModels": {
+            "provider": {
+                "claude": [],
+                "openai": [],
+                "google": []
+            },
+            "google_model": "gemini-2.5-pro"
+        }
     },
     "tags": [
         {
@@ -3076,7 +3107,6 @@
         "美玲.png": [],
         "1707754573998": [],
         "蒂法.png": [],
-        "塞拉.png": [],
         "Umeko_2.png": [],
         "Rio Morales.png": [],
         "Chiyo.png": [],
@@ -3251,7 +3281,9 @@
         "月光下的银铃.png": [],
         "淫悅假期.png": [],
         "动物城(beta1.0).png": [],
-        "隐欲1.png": []
+        "隐欲1.png": [],
+        "default_Seraphina.png": [],
+        "[都市]-【熟妇狩猎者】.png": []
     },
     "nai_settings": {
         "top_k": 0,
@@ -3314,9 +3346,9 @@
         "min_p_openai": 0,
         "top_a_openai": 1,
         "repetition_penalty_openai": 1,
-        "stream_openai": true,
+        "stream_openai": false,
         "openai_max_context": 2000000,
-        "openai_max_tokens": 20000,
+        "openai_max_tokens": 40000,
         "wrap_in_quotes": false,
         "prompts": [
             {
@@ -4393,7 +4425,7 @@
                 "marker": false,
                 "name": "☑️状态栏",
                 "role": "system",
-                "content": "<TimeRequirement>\n# TimeRequirement\n**TimeRequirement:**按要求输出 `<TimeFormat>`，将其用于注明本次剧情的时间、地点、天气信息。\n\n## TimeFormat\n<TimeFormat>\n\n『星期–00,00-地点-天气』\n\n</TimeFormat>\n\n## TimeFormat输出要求\n    每次输出应把重置后的TimeFormat置于输出最前端/剧情开始之前，以作为环境背景提示，最先直接输出TimeFormat是必须的；\n\n    TimeFormat中只能出现时间-地点-天气的信息；\n\n    根据上文时空逻辑，保持逻辑连贯性，参考上次TimeFormat的信息，并根据当前状况更新TimeFormat全部内容，确保衔接顺畅；\n\n    每次更新都需要根据剧情内容推进TimeFormat时间和日期，更新时间时不能出现过大的时间跨度(time-skips)，而应该根据每次剧情发生所需要的时间，合理地根据剧情所需要的时间长短，推进时间；\n\n    当时间在接近24:00时，切换到下一天的凌晨;\n\n    TimeFormat中提供的时间、空间逻辑，作为剧情的提示和描述，需要与剧情吻合;\n\n    地点需要遵循剧情逻辑，根据剧情内容填写；“天气”处根据剧情逻辑写明所处位置的天色，室内场所不受天气影响；\n\n    确保TimeFormat中出现的只有时间、天气、地点三种信息。\n\n## 备注\n以TimeFormat作为本次输出的第一项内容；输出TimeFormat是开始输出剧情的前提。\n</TimeRequirement>\n\n<StatusBlockRequirement>\n# StatusBlockRequirement\n**StatusBlock Requirement:** 你必须按照StatusBlockFormat在回复最末尾插入女性角色的<StatusBlock>,<StatusBlock>里的介绍描写必须详细\n\n<StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. \n\n## StatusBlockFormat\n<StatusBlocks>\n```\n『{{weekday,中文输出}} - {{data,中文输出}} - {{time periods,中文输出}}-{{time,中文输出}} - {{location,中文输出}} - {{weather,中文输出}} - {{temperature,中文输出}}   』\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 肛门: {{Anus}}\n╘═════\n```\n</StatusBlocks>\n\n</StatusBlockRequirement>",
+                "content": "rule:\n    - 你必须在每次回复的最底部，输出<StatusBlock>包裹的状态栏，根据互动实时更新状态栏中的内容\n    - <CharacterStatus>要列出<user>正在交流的女角色，禁止列出当前没有交流的角色和男角色\n\n<!-- <StatusBlock> is a fenced code block (```) . You must follow the following format exactly, including tabular symbols. You must provide a complete and detailed description. Prohibit brief descriptions. 文字必须为简体中文. 深度描写{{char}}设定的外貌特征和身体部位的状态,尤其是女性角色的身体以及性器官的状态和外观需要深度详细描写. -->\n\n<!-- Insert <StatusBlocks> at the end -->\n<StatusBlocks>\n```\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，胸和臀，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 子宫: {{womb}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n╘═════\n```\n</StatusBlocks>",
                 "injection_position": 0,
                 "injection_depth": 4,
                 "forbid_overrides": false,
@@ -5910,7 +5942,7 @@
                     },
                     {
                         "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                        "enabled": false
+                        "enabled": true
                     },
                     {
                         "identifier": "79eabeb9-ec24-4c61-9346-5c07c829df82",
@@ -6018,7 +6050,8 @@
         "personality_format": "[{{char}}'s personality: {{personality}}]",
         "openai_model": "claude-3-7-sonnet-20250219",
         "claude_model": "claude-3-7-sonnet-20250219",
-        "google_model": "gemini-2.0-pro-exp",
+        "google_model": "gemini-2.5-pro",
+        "vertexai_model": "gemini-2.0-flash-001",
         "ai21_model": "jamba-1.5-large",
         "mistralai_model": "mistral-medium",
         "cohere_model": "command-r",
@@ -6027,7 +6060,9 @@
         "nanogpt_model": "gpt-4o-mini",
         "zerooneai_model": "yi-large",
         "deepseek_model": "deepseek-chat",
+        "aimlapi_model": "gpt-4o-mini-2024-07-18",
         "xai_model": "grok-3-beta",
+        "pollinations_model": "openai",
         "custom_model": "claude-3-7-sonnet-20250219",
         "custom_url": "https://aistudio.google.com/apikey",
         "custom_include_body": "",
@@ -6041,20 +6076,24 @@
         "openrouter_providers": [],
         "openrouter_allow_fallbacks": true,
         "openrouter_middleout": "on",
-        "reverse_proxy": "http://127.0.0.1:8889/",
+        "reverse_proxy": "https://ALec007-buildserver.hf.space",
         "chat_completion_source": "makersuite",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
-        "proxy_password": "",
+        "proxy_password": "NN7V9R3gDfFD1efjMgXU",
         "assistant_prefill": "",
         "assistant_impersonation": "",
         "claude_use_sysprompt": false,
         "use_makersuite_sysprompt": false,
+        "vertexai_auth_mode": "express",
+        "vertexai_region": "us-central1",
+        "vertexai_express_project_id": "",
         "use_alt_scale": false,
         "squash_system_messages": false,
         "image_inlining": false,
         "inline_image_quality": "low",
+        "video_inlining": false,
         "bypass_status_check": true,
         "continue_prefill": false,
         "function_calling": false,
@@ -6066,18 +6105,20 @@
         "enable_web_search": false,
         "request_images": false,
         "seed": -1,
-        "n": 1
+        "n": 1,
+        "bind_preset_to_connection": true
     },
     "background": {
         "name": "__transparent.png",
         "url": "url(\"backgrounds/__transparent.png\")",
-        "fitting": "classic"
+        "fitting": "classic",
+        "animation": false
     },
     "proxies": [
         {
             "name": "None",
-            "url": "http://127.0.0.1:8889/",
-            "password": ""
+            "url": "https://ALec007-buildserver.hf.space",
+            "password": "NN7V9R3gDfFD1efjMgXU"
         },
         {
             "name": "claude",
@@ -6112,7 +6153,7 @@
     ],
     "selected_proxy": {
         "name": "None",
-        "url": "http://127.0.0.1:8889/",
-        "password": ""
+        "url": "https://ALec007-buildserver.hf.space",
+        "password": "NN7V9R3gDfFD1efjMgXU"
     }
 }

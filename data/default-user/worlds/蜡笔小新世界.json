@@ -4,7 +4,7 @@
             "key": [],
             "keysecondary": [],
             "comment": "蜡笔小新 - 玩家状态栏（跟高级只能存在一个）",
-            "content": "1.Assistant必须在每次回复的开头生成‘<Crayon Shin-chan>’\n2.Assistant必须在每次回复的结尾生成<StatusBlock>,而且内容用（```）包裹.\n3.格式参考：\n<StatusBlock>\n```\n══════════════════\n【基本信息】\n姓名: {{user}}\n身份: {实时更新}\n年龄: {实时更新}\n当前位置: {实时更新}\n游戏时间: {实时更新}\n【社交关系】\n附近NPC好感度:\n{NPC_NAME}: {❤️□□□□} ({AFFECTION}/5)\n{动态更新...}\n【任务系统】\n主线任务: {待更新}\n支线任务: {待更新}\n每日任务: {待更新}\n【特殊状态】\n{STATUS_NAME}: {STATUS_DESCRIPTION}\n{动态更新...}\n【背包物品】\n- {实时更新}\n══════════════════\n```\n```\n角色: {{character name}}\n地点:『{{具体地点}} - {{周边环境详细描述}}』\n▶角色信息\n年龄: {{age}}岁 \n关系: {{Relationship with {user}}}\n💓【{{character name}}的好感度】:{{Favorability  for {user}}}/100(Reason for change)\n🔥【性欲值】:{{Sexual desire value}}/100(Reason for change)\n▶着装状态\n【上身:{{Upper body clothing condition}}】【胸罩:{{bra status}}】\n【下身:{{Condition of lower body clothing}}】【内裤:{{panty status}}】【丝袜:{{stockings status}}】\n【鞋子:{{Posture state}}】【配饰:{{Accessories}}】\n▶行动状态\n【日程:{{Subsequent schedule}}】\n✨当前行动:{{Describe the current character's posture and behavior in 30 words}}\n▶身体状态\n👙胸部状态: {{Describe current breast condition in detail in 30 words or less}}\n💗小穴状态: {{Describe the current vaginal condition in detail in 30 words or less}}\n🏵️肛门状态: {{Describe the current anal condition in detail within 30 words}}\n🫦口腔状态: {{Describe the current oral condition in detail within 30 words}}\n🎂子宫状态: {{Describe the current uterine condition in 30 words or less}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n```\n<StatusBlock>\n",
+            "content": "1.Assistant必须在每次回复的开头生成‘<Crayon Shin-chan>’\n2.Assistant必须在每次回复的结尾生成<StatusBlock>,而且内容用（```）包裹.\n3 <CharacterStatus>要列出<user>正在交流的女角色，禁止列出当前没有交流的角色和男角色\n4.格式参考：\n<StatusBlock>\n```\n══════════════════\n【基本信息】\n姓名: {{user}}\n身份: {实时更新}\n年龄: {实时更新}\n当前位置: {实时更新}\n游戏时间: {实时更新}\n【社交关系】\n附近NPC好感度:\n{NPC_NAME}: {❤️□□□□} ({AFFECTION}/5)\n{动态更新...}\n【任务系统】\n主线任务: {待更新}\n支线任务: {待更新}\n每日任务: {待更新}\n【特殊状态】\n{STATUS_NAME}: {STATUS_DESCRIPTION}\n{动态更新...}\n【背包物品】\n- {实时更新}\n══════════════════\n```\n```\n#{{character name,中文输出}} {{gender,中文输出}} {{color of skin and race and country,中文输出}}\n╒═════\n👚服装: {{clothing，像游戏CG一样详细描述,必须完整且具体的描写角色当前身上穿着的所有服装并且需要随着剧情变化而变换}}\n🙋‍♀️ 姿势: {{姿势以及当前肢体动作，像游戏CG一样详细描述}}\n🏌 身材: {{身材，胸和臀，像游戏CG一样详细描述}}\n🦵 腿与脚: {{Legs and feet以及袜子等装饰品}}\n🧡 阴道: {{vagina}}\n🌼 子宫: {{womb}}\n▶心理状态\n💕情绪: 『{{emotion_1}}』『{{emotion_2}}』『{{emotion_3}}』\n💌心里话: 『{{Describe the true feelings of the current role in less than 30 words}}』\n╘═════\n```\n<StatusBlock>\n",
             "constant": true,
             "vectorized": false,
             "selective": true,
@@ -56,7 +56,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "1": {
             "key": [],
@@ -182,7 +188,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "3": {
             "key": [
@@ -610,7 +622,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "10": {
             "key": [
@@ -743,7 +761,7 @@
             "addMemo": true,
             "order": 1,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "preventRecursion": false,
             "delayUntilRecursion": false,
@@ -787,7 +805,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         }
     },
     "originalData": {
