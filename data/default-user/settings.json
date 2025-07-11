@@ -22,7 +22,6 @@
         "AlertWI_媚华世界交换生.png": "true",
         "AlertWI_同学的妈妈是我的女佣2.0.png": "true",
         "AlertWI_妻子的秘密生活.png": "true",
-        "AlertWI_世界调制模式-正式版（3.8）.png": "true",
         "AlertWI_伊札里斯三魔女1.png": "true",
         "AlertWI_椿野毬絵（恋爱活动中）.png": "true",
         "AlertWI_申鹤＆甘雨.png": "true",
@@ -50,10 +49,9 @@
         "AlertWI_佐藤母女.png": "true",
         "AlertWI_林墨1.png": "true",
         "AlertWI_被老总调教的妈妈6.6.png": "true",
-        "AlertRegex_世界调制模式-正式版（3.8）.png": "true",
         "AlertRegex_子承父业帮操妈.png": "true",
         "AlertWI_女友让母亲代替自己解决性欲.png": "true",
-        "NavOpened": "true",
+        "NavOpened": "false",
         "AlertWI_乡村大乱交.png": "true",
         "AlertRegex_步非烟.png": "true",
         "AlertRegex_素霞双修录5.0.png": "true",
@@ -74,7 +72,6 @@
         "AlertWI_蜡笔小新世界.png": "true",
         "AlertRegex_蜡笔小新世界.png": "true",
         "__migrated": "1",
-        "AlertRegex_世界调制模式-新年版（3.83）.png": "true",
         "AlertRegex_催眠眼镜1.png": "true",
         "AlertWI_催眠眼镜1.png": "true",
         "AlertWI_云夜.png": "true",
@@ -106,8 +103,6 @@
         "AlertWI_陈蓉1.png": "true",
         "AlertRegex_陈蓉1.png": "true",
         "AlertWI_赵梦与宋玉舒.png": "true",
-        "AlertWI_被程明催眠的淫乱世界.png": "true",
-        "AlertRegex_被程明催眠的淫乱世界.png": "true",
         "AlertWI_这还用催眠嘛.png": "true",
         "AlertWI_娘.png": "true",
         "AlertWI_林优子-重置.png": "true",
@@ -121,21 +116,30 @@
         "Proxy_SkipConfirm_616809572282132": "true",
         "Proxy_SkipConfirm_8315976245353988": "true",
         "Proxy_SkipConfirm_5814162850782870": "true",
-        "AlertWI_[都市]-【熟妇狩猎者】.png": "true"
+        "AlertWI_[都市]-【熟妇狩猎者】.png": "true",
+        "AlertWI_世界调制模式·重制版.png": "true",
+        "AlertRegex_世界调制模式·重制版.png": "true",
+        "AlertWI_小欢喜.png": "true",
+        "AlertWI_母子义务化教育世界.png": "true",
+        "AlertRegex_母子义务化教育世界.png": "true",
+        "AlertWI_青梅和妈妈们.png": "true"
     },
     "currentVersion": "1.13.1",
-    "username": "Alec",
-    "active_character": "小百合.png",
+    "username": "郑太",
+    "active_character": "青梅和妈妈们.png",
     "active_group": null,
     "api_server": "http://localhost:5004/api",
     "preset_settings": "Ace of Spades",
-    "user_avatar": "1691725210145.png",
+    "user_avatar": "1738416494521-.png",
     "amount_gen": 100,
     "max_context": 2048,
     "main_api": "openai",
     "world_info_settings": {
         "world_info": {
             "globalSelect": [
+                "服装随机化",
+                "衣物库世界书一百套情趣制服+情趣内衣",
+                "衣物库世界书一百套性感外出便服版",
                 "DLC - 家庭关系表"
             ],
             "charLore": [
@@ -159,16 +163,16 @@
                 }
             ]
         },
-        "world_info_depth": 2,
+        "world_info_depth": 1,
         "world_info_min_activations": 0,
         "world_info_min_activations_depth_max": 0,
         "world_info_budget": 25,
-        "world_info_include_names": true,
+        "world_info_include_names": false,
         "world_info_recursive": false,
         "world_info_overflow_alert": false,
         "world_info_case_sensitive": false,
         "world_info_match_whole_words": false,
-        "world_info_character_strategy": 1,
+        "world_info_character_strategy": 2,
         "world_info_budget_cap": 0,
         "world_info_use_group_scoring": false,
         "world_info_max_recursion_steps": 0
@@ -583,7 +587,7 @@
                 "lorebook": ""
             }
         },
-        "persona_description": "[角色设定：{{user}}，白人，身材高大，体型健壮，长相英俊。他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格。两个拳头大小的沉甸甸的睾丸显露出无与伦比的生育活力]",
+        "persona_description": "<user>\n有着英俊惹人怜爱的外表。令人意想不到的是，他的肉棒十分粗长，比成人男性的小臂还长些许,粗壮得超过男性的手腕,表面布满狰狞突起的青筋.它随着主人的呼吸微微跳动着,龟头部分已经完全暴露在外,深红色、形状可怖,正冒着透明的前液.整个鸡巴散发着腥膻的雄性气息,仿佛野兽一般充满了原始与兽性的风格,和{{user}}可爱稚嫩的外貌形成巨大反差.\n</user>",
         "persona_description_position": 0,
         "persona_description_role": 0,
         "persona_description_depth": 2,
@@ -687,7 +691,7 @@
             "forceHidden": [],
             "forceShown": []
         },
-        "wi_key_input_plaintext": true,
+        "wi_key_input_plaintext": false,
         "muyoo_dataTable": {
             "updateIndex": 4,
             "tableStructure": [
@@ -1673,6 +1677,24 @@
                 "maxDepth": null
             },
             {
+                "id": "d8c1a390-5b84-470d-8984-7feb6e343253",
+                "scriptName": "状态栏去除1",
+                "findRegex": "<StatusBlocks>[\\s\\S]+</StatusBlocks>",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1,
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 2,
+                "maxDepth": null
+            },
+            {
                 "id": "a864c6b5-9bd8-4774-a685-ffb10a748632",
                 "scriptName": "【Lyean】[不发送]5楼以上除摘要外文本",
                 "findRegex": "/([\\s\\S]*?<details><summary>摘要</summary>|</details>[\\s\\S]*?$)/gs",
@@ -1774,24 +1796,6 @@
                 "runOnEdit": true,
                 "substituteRegex": false,
                 "minDepth": null,
-                "maxDepth": null
-            },
-            {
-                "id": "d8c1a390-5b84-470d-8984-7feb6e343253",
-                "scriptName": "状态栏去除1",
-                "findRegex": "<StatusBlocks>[\\s\\S]+</StatusBlocks>",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": 1,
                 "maxDepth": null
             },
             {
@@ -2392,7 +2396,7 @@
                 "placement": [
                     1
                 ],
-                "disabled": false,
+                "disabled": true,
                 "markdownOnly": true,
                 "promptOnly": false,
                 "runOnEdit": true,
@@ -2428,7 +2432,6 @@
             "柚木凛＆秋山蓝.png",
             "引子_1.png",
             "瑟拉斯.png",
-            "世界调制模式-正式版（3.8）.png",
             "乡村狂操曲.png",
             "Stella Greenray.png",
             "陆婉瑶.png",
@@ -2438,14 +2441,14 @@
             "高贵典雅的妈妈姐姐们变成了勇者大人的淫乱性奴.png",
             "乡村狂操曲1.png",
             "色情的魔法少女世界.png",
-            "世界调制模式-新年版（3.83）.png",
             "催眠眼镜1.png",
             "乡村狂操曲2.png",
             "仙帝冷清雪.png",
             "陈皮皮的斗争.png",
             "陈蓉1.png",
-            "被程明催眠的淫乱世界.png",
-            "月光下的银铃.png"
+            "月光下的银铃.png",
+            "世界调制模式·重制版.png",
+            "母子义务化教育世界.png"
         ],
         "tts": {
             "voiceMap": "",
@@ -3135,7 +3138,6 @@
         "雅佩.png": [],
         "吴桃.png": [],
         "《笑傲歪传》.png": [],
-        "世界调制模式-极简版.png": [],
         "null": [],
         "1714986511033": [],
         "沈桂华_1.png": [],
@@ -3205,7 +3207,6 @@
         "半人马娘.png": [],
         "黒人転校生にNTRる.png": [],
         "《仙媳攻略》.png": [],
-        "世界调制模式-正式版（3.8）.png": [],
         "呪いのせいでMPが足りません.png": [],
         "好兄弟的痴女女友.png": [],
         "稚子.png": [],
@@ -3241,7 +3242,6 @@
         "色情的魔法少女世界.png": [],
         "隐欲.png": [],
         "結月.png": [],
-        "世界调制模式-新年版（3.83）.png": [],
         "催眠眼镜1.png": [],
         "云夜.png": [],
         "乡村狂操曲2.png": [],
@@ -3269,7 +3269,6 @@
         "陈皮皮的斗争.png": [],
         "陈蓉1.png": [],
         "赵梦与宋玉舒.png": [],
-        "被程明催眠的淫乱世界.png": [],
         "这还用催眠嘛.png": [],
         "纲手.png": [],
         "娘.png": [],
@@ -3283,7 +3282,11 @@
         "动物城(beta1.0).png": [],
         "隐欲1.png": [],
         "default_Seraphina.png": [],
-        "[都市]-【熟妇狩猎者】.png": []
+        "[都市]-【熟妇狩猎者】.png": [],
+        "世界调制模式·重制版.png": [],
+        "小欢喜.png": [],
+        "母子义务化教育世界.png": [],
+        "青梅和妈妈们.png": []
     },
     "nai_settings": {
         "top_k": 0,
