@@ -20,7 +20,7 @@ openai:
   captionSystemPrompt: ""
 deepl:
   formality: default
-enableServerPlugins: false
+enableServerPlugins: true
 dataRoot: ./data
 enableForwardedWhitelist: true
 enableUserAccounts: false
@@ -88,7 +88,7 @@ extensions:
 listenAddress:
   ipv4: 0.0.0.0
   ipv6: "[::]"
-enableServerPluginsAutoUpdate: true
+enableServerPluginsAutoUpdate: false
 logging:
   minLogLevel: 0
   enableAccessLog: true
