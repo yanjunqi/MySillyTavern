@@ -1865,7 +1865,7 @@
             "keysecondary": [],
             "comment": "情趣制服 - 套装 446: 蓝色紧身警花连身裙",
             "content": " 情趣制服 - 蓝色紧身警花连身裙\n\n- **主体**: 一件式的紧身警察制服连身裙。\n- **上装**: 连身裙的上半部分，通常是深蓝色，短袖或无袖，翻领设计，胸前有警徽装饰，可能有拉链开合。\n- **下装**: 连身裙的下半部分，超短包臀裙设计，紧紧包裹臀部。\n- **内搭**: 无。\n- **内衣**: 黑色或蓝色丁字裤。\n- **腿部**: 黑色或肉色丝袜。\n- **脚部**: 黑色高跟鞋或高跟短靴。\n- **饰品**: 警帽，腰间系黑色皮带（可挂手铐、警棍等道具），玩具手枪。\n- **整体感觉**: 干练与性感并存的警花形象。深蓝色带来职业感，连身裙的紧身和超短设计则充满诱惑。警徽、警帽和腰带道具强化角色。整体风格既有制服的权威感，又不失女性的性感魅力。",
-            "constant": false,
+            "constant": true,
             "vectorized": false,
             "selective": true,
             "selectiveLogic": 0,
@@ -1891,7 +1891,13 @@
             "sticky": 0,
             "cooldown": 0,
             "delay": 0,
-            "displayIndex": 445
+            "displayIndex": 445,
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "446": {
             "uid": 446,
@@ -3959,7 +3965,7 @@
             "addMemo": true,
             "order": 100,
             "position": 0,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": true,
             "preventRecursion": true,
             "delayUntilRecursion": false,
