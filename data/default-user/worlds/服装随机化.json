@@ -3,7 +3,7 @@
         "0": {
             "uid": 0,
             "key": [
-                "选衣服"
+                "选择什么衣服"
             ],
             "keysecondary": [],
             "comment": "日常类",
@@ -15,7 +15,7 @@
             "addMemo": true,
             "order": 100,
             "position": 4,
-            "disable": true,
+            "disable": false,
             "excludeRecursion": false,
             "preventRecursion": false,
             "delayUntilRecursion": false,

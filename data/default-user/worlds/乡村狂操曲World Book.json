@@ -11122,7 +11122,7 @@
             "addMemo": true,
             "order": 951,
             "position": 4,
-            "disable": false,
+            "disable": true,
             "excludeRecursion": false,
             "preventRecursion": false,
             "delayUntilRecursion": false,
@@ -11166,7 +11166,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "183": {
             "key": [
@@ -13413,7 +13419,13 @@
                 "sticky": 0,
                 "cooldown": 0,
                 "delay": 0
-            }
+            },
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false
         },
         "219": {
             "key": [],
