@@ -19,8 +19,8 @@
     "xai_model": "grok-3-beta",
     "pollinations_model": "openai",
     "aimlapi_model": "gpt-4o-mini-2024-07-18",
-    "custom_model": "claude-3-7-sonnet-20250219",
-    "custom_url": "https://aistudio.google.com/apikey",
+    "custom_model": "gemini-2.5-flash",
+    "custom_url": "http://127.0.0.1:8080/v1",
     "custom_include_body": "",
     "custom_exclude_body": "",
     "custom_include_headers": "",
@@ -47,7 +47,7 @@
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
     "reverse_proxy": "http://127.0.0.1:8484/v1",
-    "proxy_password": "jGZFj6XCABnTmTTuST7m4BW9UeE8hqywUczbghzEERNLexu7ydLkHN4B6vX3j5sK",
+    "proxy_password": "gg24vUWjhajX59BrhaGvYyg63Pjv4WEu3t3csRgJHRKg3at2nqwZK6cC76YUBkQb",
     "max_context_unlocked": true,
     "wi_format": "{0}",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -2688,7 +2688,7 @@
                 },
                 {
                     "identifier": "d6aecf09-9f85-4b82-b60a-4df13f1edcb6",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "24071d00-49f1-4533-9ca7-809ada76766d",
