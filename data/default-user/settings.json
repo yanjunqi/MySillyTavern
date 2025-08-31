@@ -134,7 +134,7 @@
         "AlertWI_儿子你老婆真棒 - 无美化版1.0.png": "true",
         "AlertRegex_儿子你老婆真棒 - 无美化版1.0.png": "true",
         "Proxy_SkipConfirm_3656198494390334": "true",
-        "extension_update_nag": "Fri Aug 22 2025",
+        "extension_update_nag": "Sun Aug 31 2025",
         "Proxy_SkipConfirm_4719797195651333": "true",
         "mediaWarningShown:儿子你老婆真棒 - 美化版1.0.png": "true",
         "AlertWI_萧谴写卡助手版V3.0.png": "true",
@@ -1665,7 +1665,7 @@
             "promptType": "raw"
         },
         "connectionManager": {
-            "selectedProfile": "0469596b-37ad-4c45-9db7-26a2cd6ed945",
+            "selectedProfile": "53379c51-4c56-4f7d-81e4-a7f0c8a5e837",
             "profiles": [
                 {
                     "id": "e8db0966-0c4f-45f8-8518-26f6653dd4a5",
@@ -5936,11 +5936,11 @@
         "openrouter_allow_fallbacks": true,
         "openrouter_middleout": "on",
         "reverse_proxy": "http://127.0.0.1:8484/v1",
-        "chat_completion_source": "custom",
+        "chat_completion_source": "makersuite",
         "max_context_unlocked": true,
         "api_url_scale": "",
         "show_external_models": true,
-        "proxy_password": "jGZFj6XCABnTmTTuST7m4BW9UeE8hqywUczbghzEERNLexu7ydLkHN4B6vX3j5sK",
+        "proxy_password": "gg24vUWjhajX59BrhaGvYyg63Pjv4WEu3t3csRgJHRKg3at2nqwZK6cC76YUBkQb",
         "assistant_prefill": "",
         "assistant_impersonation": "",
         "claude_use_sysprompt": false,
@@ -6011,8 +6011,8 @@
         }
     ],
     "selected_proxy": {
-        "name": "GPT",
+        "name": "clewdr",
         "url": "http://127.0.0.1:8484/v1",
-        "password": "jGZFj6XCABnTmTTuST7m4BW9UeE8hqywUczbghzEERNLexu7ydLkHN4B6vX3j5sK"
+        "password": "gg24vUWjhajX59BrhaGvYyg63Pjv4WEu3t3csRgJHRKg3at2nqwZK6cC76YUBkQb"
     }
 }
