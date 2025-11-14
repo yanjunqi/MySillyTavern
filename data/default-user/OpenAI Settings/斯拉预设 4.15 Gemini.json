@@ -20,7 +20,7 @@
     "pollinations_model": "openai",
     "aimlapi_model": "gpt-4o-mini-2024-07-18",
     "custom_model": "gemini-2.5-pro",
-    "custom_url": "http://127.0.0.1:8080/v1",
+    "custom_url": "http://127.0.0.1:7861/v1",
     "custom_include_body": "",
     "custom_exclude_body": "",
     "custom_include_headers": "",
@@ -46,8 +46,8 @@
     "new_example_chat_prompt": "[Example Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "http://127.0.0.1:8484/v1",
-    "proxy_password": "gg24vUWjhajX59BrhaGvYyg63Pjv4WEu3t3csRgJHRKg3at2nqwZK6cC76YUBkQb",
+    "reverse_proxy": "http://127.0.0.1:7861",
+    "proxy_password": "pwd",
     "max_context_unlocked": true,
     "wi_format": "{0}",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -2740,7 +2740,7 @@
                 },
                 {
                     "identifier": "feb3ed74-b88a-4d66-8617-bf178371eb6f",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "53bc9753-2e90-48b1-a8c0-14c0bb47b970",
