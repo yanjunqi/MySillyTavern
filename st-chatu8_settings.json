@@ -1,0 +1,399 @@
+{
+    "theme_id": "默认-白天",
+    "themes": {
+        "默认-白天": {
+            "--st-chatu8-bg-primary": "#f5f5f5",
+            "--st-chatu8-bg-secondary": "#eeeeee",
+            "--st-chatu8-bg-tertiary": "#e9e9e9",
+            "--st-chatu8-text-primary": "#212529",
+            "--st-chatu8-text-secondary": "#6c757d",
+            "--st-chatu8-accent-primary": "#007bff",
+            "--st-chatu8-accent-secondary": "#0056b3",
+            "--st-chatu8-danger-primary": "#dc3545",
+            "--st-chatu8-danger-secondary": "#c82333",
+            "--st-chatu8-danger-text": "#ffffff",
+            "--st-chatu8-border-color": "#dee2e6",
+            "--st-chatu8-dropdown-bg": "#eeeeee",
+            "--st-chatu8-dropdown-text": "#212529",
+            "--st-chatu8-dropdown-list-bg": "#ffffff",
+            "--st-chatu8-text-highlight": "#ffffff"
+        },
+        "默认-夜间": {
+            "--st-chatu8-bg-primary": "#0a192f",
+            "--st-chatu8-bg-secondary": "#172a45",
+            "--st-chatu8-bg-tertiary": "#233554",
+            "--st-chatu8-text-primary": "#ff8c00",
+            "--st-chatu8-text-secondary": "#8892b0",
+            "--st-chatu8-accent-primary": "#ff8c00",
+            "--st-chatu8-accent-secondary": "#e67e00",
+            "--st-chatu8-danger-primary": "#dc3545",
+            "--st-chatu8-danger-secondary": "#c82333",
+            "--st-chatu8-danger-text": "#ffffff",
+            "--st-chatu8-border-color": "#233554",
+            "--st-chatu8-dropdown-bg": "#172a45",
+            "--st-chatu8-dropdown-text": "#ff8c00",
+            "--st-chatu8-dropdown-list-bg": "#233554",
+            "--st-chatu8-text-highlight": "#ffffff"
+        }
+    },
+    "scriptEnabled": "true",
+    "characterAI": {
+        "model": "mistral",
+        "temperature": 0.8,
+        "systemPrompt": "",
+        "lastPrompt": ""
+    },
+    "outfitAI": {
+        "model": "mistral",
+        "temperature": 0.8,
+        "systemPrompt": "",
+        "lastPrompt": ""
+    },
+    "newlineFixEnabled": "true",
+    "yushe": {
+        "默认": {
+            "fixedPrompt": "",
+            "fixedPrompt_end": "",
+            "negativePrompt": ""
+        },
+        "小马模型默认": {
+            "fixedPrompt": "score_9,score_8_up,score_7_up,anime",
+            "fixedPrompt_end": "",
+            "negativePrompt": "score_4,score_3,score_2,score_1,score_5"
+        }
+    },
+    "yusheid_sd": "默认",
+    "yusheid_novelai": "默认",
+    "yusheid_comfyui": "默认",
+    "prompt_replace": {
+        "默认": {
+            "text": "触发词1=前置前|插入词1\n触发词2=前置后|插入词2\n触发词3=替换|替换词3\n触发词4=替换|\n触发词5=替换分角色|替换词5\n触发词6=后置前|插入词6\n触发词7=后置后|插入词7\n触发词8=最后置|插入词8"
+        }
+    },
+    "prompt_replace_id": "默认",
+    "mode": "novelai",
+    "client": "browser",
+    "cache": "1",
+    "sdUrl": "http://localhost:7860",
+    "st_chatu8_sd_auth": "",
+    "comfyuiUrl": "http://localhost:8188",
+    "novelaiApi": "pst-DemITb38jeg7TKSlIqjpiUtY0t3tZaZ17AETc659JdjHJT5GLgSMuLgqoldgHL3B",
+    "novelaiApi_id": "000000",
+    "startTag": "image###",
+    "endTag": "###",
+    "nai3Scale": "10",
+    "sdCfgScale": "7",
+    "sm": "true",
+    "dyn": "true",
+    "cfg_rescale": "0.18",
+    "AQT_sd": "best quality, amazing quality, very aesthetic, absurdres",
+    "UCP_sd": "bad proportions, out of focus, username, text, bad anatomy, lowres, worstquality, watermark, cropped, bad body, deformed, mutated, disfigured, poorly drawn face, malformed hands, extra arms, extra limb, missing limb, too many fingers, extra legs, bad feet, missing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap",
+    "AQT_novelai": "best quality, amazing quality, very aesthetic, absurdres",
+    "UCP_novelai": "Heavy",
+    "addFurryDataset": "false",
+    "AQT_comfyui": "best quality, amazing quality, very aesthetic, absurdres",
+    "UCP_comfyui": "bad proportions, out of focus, username, text, bad anatomy, lowres, worstquality, watermark, cropped, bad body, deformed, mutated, disfigured, poorly drawn face, malformed hands, extra arms, extra limb, missing limb, too many fingers, extra legs, bad feet, missing fingers, fused fingers, acnes, floating limbs, disconnected limbs, long neck, long body, mutation, ugly, blurry, low quality, sketches, normal quality, monochrome, grayscale, signature, logo, jpeg artifacts, unfinished, displeasing, chromatic aberration, extra digits, artistic error, scan, abstract, photo, realism, screencap",
+    "sd_csteps": "28",
+    "sd_cwidth": "1024",
+    "sd_cheight": "1024",
+    "sd_cseed": "-1",
+    "novelai_steps": "28",
+    "novelai_width": "1024",
+    "novelai_height": "1024",
+    "novelai_seed": "0",
+    "comfyui_steps": "28",
+    "comfyui_width": "1024",
+    "comfyui_height": "1024",
+    "comfyui_seed": "0",
+    "cfg_comfyui": "6",
+    "sd_cchatu_8_model": "连接后选择",
+    "sd_cchatu_8_vae": "Automatic",
+    "sd_cchatu_8_scheduler": "连接后选择",
+    "sd_cchatu_8_upscaler": "Latent",
+    "sd_cupscale_factor": "1",
+    "sd_chires_fix": "false",
+    "sd_chires_steps": "0",
+    "sd_cdenoising_strength": "0.7",
+    "sd_cclip_skip": "2",
+    "sd_cadetailer": "false",
+    "restoreFaces": "false",
+    "sd_cchatu_8_samplerName": "DPM++ 2M",
+    "comfyuisamplerName": "连接后选择",
+    "comfyui_scheduler": "连接后选择",
+    "comfyui_vae": "连接后选择",
+    "novelai_sampler": "k_euler",
+    "zidongdianji": "true",
+    "longPressToEdit": "true",
+    "clickToPreview": "true",
+    "nai3VibeTransfer": "false",
+    "nai3CharRef": "false",
+    "nai3StylePerception": "false",
+    "InformationExtracted": "0.3",
+    "ReferenceStrength": "0.6",
+    "nai3Deceisp": "true",
+    "nai3Variety": "true",
+    "Schedule": null,
+    "MODEL_NAME": "连接后选择",
+    "c_fenwei": "0.8",
+    "c_xijie": "0.8",
+    "c_idquanzhong": "1.10",
+    "c_quanzhong": "0.8",
+    "ipa": "STANDARD (medium strength)",
+    "dbclike": "false",
+    "workers": {
+        "默认": "{\n    \"2\": {\n      \"inputs\": {\n        \"stop_at_clip_layer\": -2,\n        \"clip\": [\n          \"20\",\n          1\n        ]\n      },\n      \"class_type\": \"CLIPSetLastLayer\",\n      \"_meta\": {\n        \"title\": \"CLIP设置停止层\"\n      }\n    },\n    \"5\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"158\",\n          0\n        ],\n        \"positive\": [\n          \"158\",\n          1\n        ],\n        \"negative\": [\n          \"59\",\n          0\n        ],\n        \"latent_image\": [\n          \"6\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"6\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"20\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"31\": {\n      \"inputs\": {\n        \"samples\": [\n          \"5\",\n          0\n        ],\n        \"vae\": [\n          \"20\",\n          2\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"59\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"2\",\n          0\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"122\": {\n      \"inputs\": {\n        \"filename_prefix\": \"lowres_MANGURI\",\n        \"images\": [\n          \"31\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"158\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"打开可视化PromptUI\": \"\",\n        \"speak_and_recognation\": true,\n        \"model\": [\n          \"20\",\n          0\n        ],\n        \"clip\": [\n          \"2\",\n          0\n        ]\n      },\n      \"class_type\": \"WeiLinComfyUIPromptToLorasOnly\",\n      \"_meta\": {\n        \"title\": \"WeiLin 正向提示词Lora自动加载\"\n      }\n    }\n  }",
+        "默认-独立VAE": "{\n    \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"20\",\n          0\n        ],\n        \"positive\": [\n          \"20\",\n          1\n        ],\n        \"negative\": [\n          \"7\",\n          0\n        ],\n        \"latent_image\": [\n          \"19\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"4\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"7\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"4\",\n          1\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"8\": {\n      \"inputs\": {\n        \"samples\": [\n          \"3\",\n          0\n        ],\n        \"vae\": [\n          \"25\",\n          0\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"19\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"20\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"打开可视化PromptUI\": \"\",\n        \"speak_and_recognation\": true,\n        \"model\": [\n          \"4\",\n          0\n        ],\n        \"clip\": [\n          \"4\",\n          1\n        ]\n      },\n      \"class_type\": \"WeiLinComfyUIPromptToLorasOnly\",\n      \"_meta\": {\n        \"title\": \"WeiLin 正向提示词Lora自动加载\"\n      }\n    },\n    \"23\": {\n      \"inputs\": {\n        \"filename_prefix\": \"ComfyUI\",\n        \"images\": [\n          \"8\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"25\": {\n      \"inputs\": {\n        \"vae_name\": \"%vae%\"\n      },\n      \"class_type\": \"VAELoader\",\n      \"_meta\": {\n        \"title\": \"加载VAE\"\n      }\n    }\n  }",
+        "默认人物一致": "{\n    \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"15\",\n          0\n        ],\n        \"positive\": [\n          \"20\",\n          1\n        ],\n        \"negative\": [\n          \"7\",\n          0\n        ],\n        \"latent_image\": [\n          \"19\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"4\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"7\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"4\",\n          1\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"8\": {\n      \"inputs\": {\n        \"samples\": [\n          \"3\",\n          0\n        ],\n        \"vae\": [\n          \"4\",\n          2\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"23\": {\n      \"inputs\": {\n        \"filename_prefix\": \"ComfyUI\",\n        \"images\": [\n          \"8\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"13\": {\n      \"inputs\": {\n        \"preset\": \"%ipa%\",\n        \"model\": [\n          \"20\",\n          0\n        ]\n      },\n      \"class_type\": \"IPAdapterUnifiedLoader\",\n      \"_meta\": {\n        \"title\": \"IPAdapter加载器\"\n      }\n    },\n    \"14\": {\n      \"inputs\": {\n        \"image\": \"%comfyuicankaotupian%\",\n        \"upload\": \"image\"\n      },\n      \"class_type\": \"LoadImage\",\n      \"_meta\": {\n        \"title\": \"加载图像\"\n      }\n    },\n    \"15\": {\n      \"inputs\": {\n        \"weight\": \"%c_quanzhong%\",\n        \"weight_faceidv2\": \"%c_idquanzhong%\",\n        \"weight_type\": \"style and composition\",\n        \"combine_embeds\": \"concat\",\n        \"start_at\": 0,\n        \"end_at\": 1,\n        \"embeds_scaling\": \"K+mean(V) w/ C penalty\",\n        \"layer_weights\": \"0:0, 1:0, 2:0, 3:\"%c_xijie%\", 4:0, 5:0, 6:\"%c_fenwei%\", 7:0, 8:0, 9:0, 10:0\",\n        \"speak_and_recognation\": true,\n        \"model\": [\n          \"13\",\n          0\n        ],\n        \"ipadapter\": [\n          \"13\",\n          1\n        ],\n        \"image\": [\n          \"14\",\n          0\n        ]\n      },\n      \"class_type\": \"IPAdapterMS\",\n      \"_meta\": {\n        \"title\": \"应用IPAdapter Mad Scientist\"\n      }\n    },\n    \"19\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"20\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"打开可视化PromptUI\": \"\",\n        \"speak_and_recognation\": true,\n        \"model\": [\n          \"4\",\n          0\n        ],\n        \"clip\": [\n          \"4\",\n          1\n        ]\n      },\n      \"class_type\": \"WeiLinComfyUIPromptToLorasOnly\",\n      \"_meta\": {\n        \"title\": \"WeiLin 正向提示词Lora自动加载\"\n      }\n    }\n  }",
+        "面部细化": "{\n      \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"39\",\n            0\n          ],\n          \"positive\": [\n            \"39\",\n            1\n          ],\n          \"negative\": [\n            \"7\",\n            0\n          ],\n          \"latent_image\": [\n            \"5\",\n            0\n          ]\n        },\n        \"class_type\": \"KSampler\",\n        \"_meta\": {\n          \"title\": \"K采样器\"\n        }\n      },\n      \"5\": {\n        \"inputs\": {\n          \"width\": \"%width%\",\n          \"height\": \"%height%\",\n          \"batch_size\": 1\n        },\n        \"class_type\": \"EmptyLatentImage\",\n        \"_meta\": {\n          \"title\": \"空Latent\"\n        }\n      },\n      \"7\": {\n        \"inputs\": {\n          \"text\": \"%negative_prompt%\",\n          \"speak_and_recognation\": true,\n          \"clip\": [\n            \"14\",\n            1\n          ]\n        },\n        \"class_type\": \"CLIPTextEncode\",\n        \"_meta\": {\n          \"title\": \"CLIP文本编码器\"\n        }\n      },\n      \"8\": {\n        \"inputs\": {\n          \"samples\": [\n            \"3\",\n            0\n          ],\n          \"vae\": [\n            \"14\",\n            2\n          ]\n        },\n        \"class_type\": \"VAEDecode\",\n        \"_meta\": {\n          \"title\": \"VAE解码\"\n        }\n      },\n      \"14\": {\n        \"inputs\": {\n          \"ckpt_name\": \"%MODEL_NAME%\"\n        },\n        \"class_type\": \"CheckpointLoaderSimple\",\n        \"_meta\": {\n          \"title\": \"Checkpoint加载器(简易)\"\n        }\n      },\n      \"23\": {\n        \"inputs\": {\n          \"model_name\": \"bbox/face_yolov8m.pt\"\n        },\n        \"class_type\": \"UltralyticsDetectorProvider\",\n        \"_meta\": {\n          \"title\": \"检测加载器\"\n        }\n      },\n      \"25\": {\n        \"inputs\": {\n          \"model_name\": \"sam_vit_b_01ec64.pth\",\n          \"device_mode\": \"AUTO\"\n        },\n        \"class_type\": \"SAMLoader\",\n        \"_meta\": {\n          \"title\": \"SAM加载器\"\n        }\n      },\n      \"26\": {\n        \"inputs\": {\n          \"model_name\": \"segm/person_yolov8m-seg.pt\"\n        },\n        \"class_type\": \"UltralyticsDetectorProvider\",\n        \"_meta\": {\n          \"title\": \"检测加载器\"\n        }\n      },\n      \"30\": {\n        \"inputs\": {\n          \"filename_prefix\": \"ComfyUI\",\n          \"images\": [\n            \"35\",\n            0\n          ]\n        },\n        \"class_type\": \"SaveImage\",\n        \"_meta\": {\n          \"title\": \"保存图像\"\n        }\n      },\n      \"35\": {\n        \"inputs\": {\n          \"guide_size\": 512,\n          \"guide_size_for\": true,\n          \"max_size\": 1024,\n          \"seed\": \"%seed%\",\n          \"steps\": \"%steps%\",\n          \"cfg\": \"%cfg_scale%\",\n          \"sampler_name\": \"%sampler_name%\",\n          \"scheduler\": \"%scheduler%\",\n          \"denoise\": 0.5,\n          \"feather\": 5,\n          \"noise_mask\": true,\n          \"force_inpaint\": true,\n          \"bbox_threshold\": 0.5,\n          \"bbox_dilation\": 10,\n          \"bbox_crop_factor\": 3,\n          \"sam_detection_hint\": \"center-1\",\n          \"sam_dilation\": 0,\n          \"sam_threshold\": 0.93,\n          \"sam_bbox_expansion\": 0,\n          \"sam_mask_hint_threshold\": 0.7000000000000001,\n          \"sam_mask_hint_use_negative\": \"False\",\n          \"drop_size\": 10,\n          \"wildcard\": \"\",\n          \"cycle\": 1,\n          \"inpaint_model\": false,\n          \"noise_mask_feather\": 20,\n          \"speak_and_recognation\": true,\n          \"image\": [\n            \"8\",\n            0\n          ],\n          \"model\": [\n            \"39\",\n            0\n          ],\n          \"clip\": [\n            \"14\",\n            1\n          ],\n          \"vae\": [\n            \"14\",\n            2\n          ],\n          \"positive\": [\n            \"39\",\n            1\n          ],\n          \"negative\": [\n            \"7\",\n            0\n          ],\n          \"bbox_detector\": [\n            \"23\",\n            0\n          ],\n          \"sam_model_opt\": [\n            \"25\",\n            0\n          ],\n          \"segm_detector_opt\": [\n            \"26\",\n            1\n          ]\n        },\n        \"class_type\": \"FaceDetailer\",\n        \"_meta\": {\n          \"title\": \"面部细化\"\n        }\n      },\n      \"39\": {\n        \"inputs\": {\n          \"positive\": \"%prompt%\",\n          \"打开可视化PromptUI\": \"\",\n          \"speak_and_recognation\": true,\n          \"model\": [\n            \"14\",\n            0\n          ],\n          \"clip\": [\n            \"14\",\n            1\n          ]\n        },\n        \"class_type\": \"WeiLinComfyUIPromptToLorasOnly\",\n        \"_meta\": {\n          \"title\": \"WeiLin 正向提示词Lora自动加载\"\n        }\n    }\n  }",
+        "新版默认": "{\n    \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"27\",\n          3\n        ],\n        \"positive\": [\n          \"27\",\n          1\n        ],\n        \"negative\": [\n          \"7\",\n          0\n        ],\n        \"latent_image\": [\n          \"19\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"4\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"7\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"27\",\n          2\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"8\": {\n      \"inputs\": {\n        \"samples\": [\n          \"3\",\n          0\n        ],\n        \"vae\": [\n          \"4\",\n          2\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"19\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"23\": {\n      \"inputs\": {\n        \"filename_prefix\": \"ComfyUI\",\n        \"images\": [\n          \"8\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"27\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"auto_random\": false,\n        \"lora_str\": \"\",\n        \"temp_str\": \"\",\n        \"temp_lora_str\": \"\",\n        \"random_template\": \"\",\n        \"打开提示词编辑器\": \"\",\n        \"打开Lora堆\": \"\",\n        \"speak_and_recognation\": {\n          \"__value__\": [\n            false,\n            true\n          ]\n        },\n        \"opt_clip\": [\n          \"4\",\n          1\n        ],\n        \"opt_model\": [\n          \"4\",\n          0\n        ]\n      },\n      \"class_type\": \"WeiLinPromptUI\",\n      \"_meta\": {\n        \"title\": \"WeiLin 全能提示词编辑器\"\n      }\n    }\n  }",
+        "新weilin-vae": "{\n    \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"27\",\n          3\n        ],\n        \"positive\": [\n          \"27\",\n          1\n        ],\n        \"negative\": [\n          \"7\",\n          0\n        ],\n        \"latent_image\": [\n          \"19\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"4\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"7\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"27\",\n          2\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"8\": {\n      \"inputs\": {\n        \"samples\": [\n          \"3\",\n          0\n        ],\n        \"vae\": [\n          \"31\",\n          0\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"19\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"23\": {\n      \"inputs\": {\n        \"filename_prefix\": \"ComfyUI\",\n        \"images\": [\n          \"8\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"27\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"auto_random\": false,\n        \"lora_str\": \"\",\n        \"temp_str\": \"\",\n        \"temp_lora_str\": \"\",\n        \"random_template\": \"\",\n        \"打开提示词编辑器\": \"\",\n        \"打开Lora堆\": \"\",\n        \"speak_and_recognation\": {\n          \"__value__\": [\n            false,\n            true\n          ]\n        },\n        \"opt_clip\": [\n          \"4\",\n          1\n        ],\n        \"opt_model\": [\n          \"4\",\n          0\n        ]\n      },\n      \"class_type\": \"WeiLinPromptUI\",\n      \"_meta\": {\n        \"title\": \"WeiLin 全能提示词编辑器\"\n      }\n    },\n    \"31\": {\n      \"inputs\": {\n        \"vae_name\": \"%vae%\"\n      },\n      \"class_type\": \"VAELoader\",\n      \"_meta\": {\n        \"title\": \"加载VAE\"\n      }\n    }\n  }"
+    },
+    "workerid": "新版默认",
+    "worker": "{\n    \"3\": {\n      \"inputs\": {\n        \"seed\": \"%seed%\",\n        \"steps\": \"%steps%\",\n        \"cfg\": \"%cfg_scale%\",\n        \"sampler_name\": \"%sampler_name%\",\n        \"scheduler\": \"%scheduler%\",\n        \"denoise\": 1,\n        \"model\": [\n          \"27\",\n          3\n        ],\n        \"positive\": [\n          \"27\",\n          1\n        ],\n        \"negative\": [\n          \"7\",\n          0\n        ],\n        \"latent_image\": [\n          \"19\",\n          0\n        ]\n      },\n      \"class_type\": \"KSampler\",\n      \"_meta\": {\n        \"title\": \"K采样器\"\n      }\n    },\n    \"4\": {\n      \"inputs\": {\n        \"ckpt_name\": \"%MODEL_NAME%\"\n      },\n      \"class_type\": \"CheckpointLoaderSimple\",\n      \"_meta\": {\n        \"title\": \"Checkpoint加载器(简易)\"\n      }\n    },\n    \"7\": {\n      \"inputs\": {\n        \"text\": \"%negative_prompt%\",\n        \"speak_and_recognation\": true,\n        \"clip\": [\n          \"27\",\n          2\n        ]\n      },\n      \"class_type\": \"CLIPTextEncode\",\n      \"_meta\": {\n        \"title\": \"CLIP文本编码器\"\n      }\n    },\n    \"8\": {\n      \"inputs\": {\n        \"samples\": [\n          \"3\",\n          0\n        ],\n        \"vae\": [\n          \"4\",\n          2\n        ]\n      },\n      \"class_type\": \"VAEDecode\",\n      \"_meta\": {\n        \"title\": \"VAE解码\"\n      }\n    },\n    \"19\": {\n      \"inputs\": {\n        \"width\": \"%width%\",\n        \"height\": \"%height%\",\n        \"batch_size\": 1\n      },\n      \"class_type\": \"EmptyLatentImage\",\n      \"_meta\": {\n        \"title\": \"空Latent\"\n      }\n    },\n    \"23\": {\n      \"inputs\": {\n        \"filename_prefix\": \"ComfyUI\",\n        \"images\": [\n          \"8\",\n          0\n        ]\n      },\n      \"class_type\": \"SaveImage\",\n      \"_meta\": {\n        \"title\": \"保存图像\"\n      }\n    },\n    \"27\": {\n      \"inputs\": {\n        \"positive\": \"%prompt%\",\n        \"auto_random\": false,\n        \"lora_str\": \"\",\n        \"temp_str\": \"\",\n        \"temp_lora_str\": \"\",\n        \"random_template\": \"\",\n        \"打开提示词编辑器\": \"\",\n        \"打开Lora堆\": \"\",\n        \"speak_and_recognation\": {\n          \"__value__\": [\n            false,\n            true\n          ]\n        },\n        \"opt_clip\": [\n          \"4\",\n          1\n        ],\n        \"opt_model\": [\n          \"4\",\n          0\n        ]\n      },\n      \"class_type\": \"WeiLinPromptUI\",\n      \"_meta\": {\n        \"title\": \"WeiLin 全能提示词编辑器\"\n      }\n    }\n  }",
+    "novelaimode": "nai-diffusion-4-5-full",
+    "novelaisite": "官网",
+    "novelaiOtherSite": "http://localhost:9696/get-new-token",
+    "displayMode": "默认",
+    "heavyFrontendMode": "false",
+    "enablePregen": "false",
+    "ai_model": "mistral",
+    "ai_temperature": 1,
+    "ai_top_p": 1,
+    "ai_presence_penalty": 0,
+    "ai_frequency_penalty": 0,
+    "ai_stream": "false",
+    "ai_private": "true",
+    "ai_token": "",
+    "ai_test_system": "",
+    "ai_test_user": "What is the capital of France?",
+    "ai_test_output": "The capital of France is Paris. It is known for iconic landmarks such as the Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral, among many others. Paris is also the country's largest city and a major global hub for art, culture, fashion, and gastronomy.",
+    "translation_model": "mistral",
+    "translation_system_prompt": "你是一个翻译官，会直接帮我翻译英文单词。会直接给我答复，不会废话，直接给出答案。我会给出以\",\"英文逗号分割的英语单词，而你需要返回英文单词和中文翻译。单词使用”,“英文逗号分割，翻译使用”\\“分割。\n例如翻译:\"1girl,1boy\" 你需要返回  ”1girl\\一个女孩,1boy\\一个男孩“；现在开始帮我翻译！",
+    "AI_use_coords": "true",
+    "enable_chatu8_fab": "true",
+    "chatu8_fab_bg_color": "#ADD8E6",
+    "chatu8_fab_icon_color": "#FFFFFF",
+    "chatu8_fab_opacity": 1,
+    "chatu8_fab_size": 40,
+    "chatu8_fab_position": {
+        "desktop": {
+            "top": "87px",
+            "left": "1472px"
+        },
+        "mobile": {
+            "top": "80vh",
+            "left": "10px"
+        }
+    },
+    "lastTab": "main",
+    "comfyuiCache": {
+        "models": [],
+        "samplers": [],
+        "vaes": [],
+        "schedulers": [],
+        "loras": []
+    },
+    "sdCache": {
+        "models": [],
+        "samplers": [],
+        "vaes": [],
+        "schedulers": [],
+        "upscalers": [],
+        "loras": []
+    },
+    "worldBookEnabled": "false",
+    "worldBookList": {
+        "默认添加末尾": {
+            "content": ""
+        }
+    },
+    "ai_test_system_prompt": "",
+    "worldBookList_id": "默认添加末尾",
+    "vocabulary_search_startswith": "false",
+    "vocabulary_search_limit": 100,
+    "vocabulary_search_sort": "hot_desc",
+    "jiuguanchucun": "false",
+    "jiuguanStorage": {},
+    "characterPresets": {
+        "默认角色": {
+            "nameCN": "",
+            "nameEN": "",
+            "facialFeatures": "",
+            "facialFeaturesBack": "",
+            "upperBodySFW": "",
+            "upperBodySFWBack": "",
+            "fullBodySFW": "",
+            "fullBodySFWBack": "",
+            "upperBodyNSFW": "",
+            "upperBodyNSFWBack": "",
+            "fullBodyNSFW": "",
+            "fullBodyNSFWBack": "",
+            "outfits": []
+        },
+        "灶门葵枝": {
+            "nameCN": "灶门葵枝",
+            "nameEN": "kamado kie",
+            "facialFeatures": "black hair bun（黑色发髻）, gentle almond eyes（温柔的杏眼）, dark red pupils（暗红色瞳孔）, fair pale skin（白皙苍白的皮肤）, small horn（小巧的鬼角）, mature female（成熟女性）",
+            "facialFeaturesBack": "black hair bun（黑色发髻）, pale nape（苍白的后颈）, small horn（小巧的鬼角）, mature female（成熟女性）",
+            "upperBodySFW": "gigantic breasts（巨乳）, f-cup（F罩杯）, full figure（丰腴的身材）, narrow waist（纤细的腰肢）",
+            "upperBodySFWBack": "broad shoulders（宽阔的肩膀）, slender waist（纤细的腰肢）, graceful back curve（优雅的背部曲线）",
+            "fullBodySFW": "wide hips（宽大的臀部）, thick thighs（丰满的大腿）, child-bearing hips（安产型臀部）",
+            "fullBodySFWBack": "plump buttocks（丰满的臀部）, rounded hips（圆润的臀型）, well-defined waist-to-hip ratio（清晰的腰臀比）",
+            "upperBodyNSFW": "huge areolas（巨大的乳晕）, pink erect nipples（粉色挺立的乳头）, lactating（泌乳）, heavy breasts（沉甸甸的乳房）",
+            "upperBodyNSFWBack": "smooth bare back（光滑的裸背）, defined shoulder blades（清晰的肩胛骨）, seductive back dimples（诱人的腰窝）",
+            "fullBodyNSFW": "pink labia（粉色的阴唇）, shaved pussy（剃毛的阴部）, wet vagina（湿润的阴道）, prominent clitoris（突出的阴蒂）",
+            "fullBodyNSFWBack": "plump round ass（丰满圆润的屁股）, pink anus（粉色的肛门）, spread buttocks（分开的臀瓣）, deep anal cleft（深深的股沟）",
+            "outfits": [
+                "灶门葵枝的靛蓝印花和服"
+            ]
+        },
+        "童文洁": {
+            "nameCN": "童文洁",
+            "nameEN": "tong wenjie",
+            "facialFeatures": "milf（成熟女性）, tired face（疲惫的脸）, dark circles under eyes（黑眼圈）, short hair（短发）, neat hair（整洁的头发）, black hair（黑发）, large eyes（大眼睛）, thin lips（薄唇）",
+            "facialFeaturesBack": "milf（成熟女性）, short hair（短发）, black hair（黑发）, neat hair（整洁的头发）, slender neck（修长的脖子）",
+            "upperBodySFW": "b+ cup breasts（B+罩杯）, slightly sagging breasts（微微下垂的乳房）, slender waist（纤细的腰肢）, good posture（良好的体态）",
+            "upperBodySFWBack": "narrow shoulders（窄肩）, defined shoulder blades（清晰的肩胛骨）, slender back（纤细的背部）",
+            "fullBodySFW": "long legs（长腿）, straight legs（笔直的腿）, slender calves（纤细的小腿）, slim hips（苗条的臀部）",
+            "fullBodySFWBack": "flat buttocks（扁平的臀部）, high hip line（高臀线）, long legs（长腿）",
+            "upperBodyNSFW": "b+ cup breasts（B+罩杯）, slightly sagging breasts（微微下垂的乳房）, light brown nipples（浅棕色乳头）, slightly large areolas（偏大的乳晕）, stretch marks on breasts（乳房上的妊娠纹）",
+            "upperBodyNSFWBack": "smooth back skin（光滑的背部皮肤）, slender waist（纤細的腰）, defined spine（清晰的脊柱线条）",
+            "fullBodyNSFW": "dark brown labia majora（深褐色大阴唇）, pinkish-brown labia minora（粉褐色小阴唇）, small clitoris（小巧的阴蒂）, dense black pubic hair（浓密的黑色阴毛）",
+            "fullBodyNSFWBack": "flat buttocks（扁平的臀部）, soft flesh（柔软的臀肉）, light brown anus（浅褐色肛门）, dense pubic hair（浓密的阴毛）",
+            "outfits": [
+                "童文洁的干练职场套装"
+            ]
+        },
+        "野原美伢": {
+            "nameCN": "野原美伢",
+            "nameEN": "nohara misae",
+            "facialFeatures": "short curly brown hair（棕色短卷发）,brown eyes（棕色眼睛）,milf（成熟女性）,light smile（淡淡的微笑）,mole under eye（眼下痣）",
+            "facialFeaturesBack": "short curly brown hair（棕色短卷发）,back of head（后脑勺）,neck（脖子）,milf（成熟女性）",
+            "upperBodySFW": "large breasts（大胸）,D-cup（D罩杯）,wide hips（宽臀）",
+            "upperBodySFWBack": "broad shoulders（宽阔的肩膀）,soft back（柔软的背部）,slim waist（纤细的腰肢）",
+            "fullBodySFW": "plump thighs（丰满的大腿）",
+            "fullBodySFWBack": "large buttocks（丰满的臀部）,wide hips（宽臀）",
+            "upperBodyNSFW": "large breasts（大胸）,D-cup（D罩杯）,areola（乳晕）,dark nipples（深色乳头）,sagging breasts（下垂的乳房）",
+            "upperBodyNSFWBack": "bare back（裸背）,shoulder blades（肩胛骨）,soft back fat（柔软的背部脂肪）",
+            "fullBodyNSFW": "pubic hair（阴毛）,pink pussy（粉色小穴）,plump labia（丰满的阴唇）",
+            "fullBodyNSFWBack": "plump buttocks（丰满的臀部）,ass cheeks（臀瓣）,anus（肛门）",
+            "outfits": [
+                "美伢的宽松居家服",
+                "美伢的性感蕾丝内衣裙"
+            ]
+        }
+    },
+    "characterPresetId": "野原美伢",
+    "outfitPresets": {
+        "默认服装": {
+            "nameCN": "",
+            "nameEN": "",
+            "upperBody": "",
+            "upperBodyBack": "",
+            "fullBody": "",
+            "fullBodyBack": ""
+        },
+        "灶门葵枝的靛蓝印花和服": {
+            "nameCN": "灶门葵枝的靛蓝印花和服",
+            "nameEN": "kamado kie's indigo print kimono",
+            "upperBody": "indigo kimono with white cross pattern（带白色十字图案的靛蓝色和服）, tight fit（紧身剪裁）, wide-open collar（宽开的领口）, fuji purple headscarf with kikyo flower embroidery（带桔梗花刺绣的藤紫色头巾）",
+            "upperBodyBack": "kimono showing nape（露出后颈的和服）, neat hair bun visible（可见整洁的发髻）, fuji purple headscarf tied at back（在脑后系结的藤紫色头巾）",
+            "fullBody": "long kimono skirt（长和服裙摆）, outlines wide hips（勾勒出宽臀轮廓）, simple zori sandals（朴素的草履凉鞋）, white tabi socks（白色分趾袜）",
+            "fullBodyBack": "kimono tightly wrapping buttocks（紧紧包裹臀部的和服）, slight sway while walking（行走时轻微摇曳）, zori sandals heel visible（可见草履凉鞋的后跟）"
+        },
+        "童文洁的干练职场套装": {
+            "nameCN": "童文洁的干练职场套装",
+            "nameEN": "Tong Wenjie's Professional Office Suit",
+            "upperBody": "plaid blazer（格纹西装外套）, single button（单粒扣）, silk shirt（丝质衬衫）, v-neck（V字领）, long sleeves（长袖）, small lapels（小翻领）",
+            "upperBodyBack": "plaid blazer（格纹西装外套）, fitted back（修身的背部剪裁）, straight shoulder line（平直的肩线）",
+            "fullBody": "high-waisted pencil skirt（高腰铅笔裙）, above the knee length（膝上长度）, black color（黑色）",
+            "fullBodyBack": "pencil skirt（铅笔裙）, back slit（后开叉）, hidden zipper（隐藏式拉链）"
+        },
+        "童文洁的成熟美背连体瑜伽服": {
+            "nameCN": "童文洁的成熟美背连体瑜伽服",
+            "nameEN": "Tong Wenjie's Matured Backless Yoga Jumpsuit",
+            "upperBody": "dark gray color（深灰色）, ribbed texture（螺纹质感）, U-neckline（U型领口）, thick shoulder straps（宽肩带）, sleeveless（无袖）, form-fitting（贴身剪裁）",
+            "upperBodyBack": "deep V-backless design（深V露背设计）, criss-cross straps（交叉细带）, exposed back（裸露的背部）, tight-fitting（紧身）",
+            "fullBody": "full-length leggings（全长紧身裤）, high-waisted design（高腰设计）, seamless construction（无缝工艺）, flared cuffs（微喇叭裤脚）",
+            "fullBodyBack": "sculpting butt seam（提臀缝线）, form-fitting silhouette（贴合的轮廓）, plain design（简洁设计）, covers the ankles（覆盖脚踝）"
+        },
+        "美伢的舒适居家套装": {
+            "nameCN": "美伢的舒适居家套装",
+            "nameEN": "misae's cozy homewear set",
+            "upperBody": "pink knit sweater（粉色针织毛衣）,loose fit（宽松款式）,long sleeves（长袖）,round neck（圆领）",
+            "upperBodyBack": "plain back design（简约后背设计）,soft fabric texture（柔软面料质感）",
+            "fullBody": "dark grey yoga pants（深灰色瑜伽裤）,tight fit（紧身款式）,high waist（高腰）",
+            "fullBodyBack": "stretchy fabric（弹力面料）,outlines the buttocks（勾勒臀部线条）"
+        },
+        "美伢的秘密性感蕾丝内衣": {
+            "nameCN": "美伢的秘密性感蕾丝内衣",
+            "nameEN": "misae's secret sexy lace lingerie",
+            "upperBody": "{{black lace bra}}（黑色蕾丝文胸）,{{half-cup bra}}（半杯式文胸）,{{underwire bra}}（钢圈文胸）,{{red gemstone decor}}（红色宝石装饰）,{{thin shoulder straps}}（细肩带）",
+            "upperBodyBack": "{{bra clasp}}（文胸背扣）,{{adjustable straps}}（可调节肩带）,{{sheer lace back}}（透明蕾丝后背）",
+            "fullBody": "{{black thong}}（黑色丁字裤）,{{low-rise thong}}（低腰丁字裤）,{{sheer lace panties}}（透明蕾丝内裤）,{{see-through}}（透视）",
+            "fullBodyBack": "{{t-back}}（T字裤后部）,{{minimal coverage}}（极少布料）,{{scalloped lace edge}}（扇形蕾丝边缘）"
+        },
+        "少妇居家休闲服": {
+            "nameCN": "少妇居家休闲服",
+            "nameEN": "housewife casual wear",
+            "upperBody": "loose white t-shirt（宽松的白色T恤）, tight on chest（胸部紧绷）, soft cotton（柔软的棉质）",
+            "upperBodyBack": "plain back（朴素的背面）, slightly see-through（微微透视）",
+            "fullBody": "gray hot pants（灰色热裤）, snug fit（贴身）, short length（超短长度）",
+            "fullBodyBack": "showing hipline（露出臀线）, tight on butt（紧包臀部）"
+        },
+        "少妇性感白色丝绸内衣裙": {
+            "nameCN": "少妇性感白色丝绸内衣裙",
+            "nameEN": "sexy white silk lingerie dress",
+            "upperBody": "white silk slip（白色丝绸吊带）, deep v-neck（深V领）, thin spaghetti straps（细肩带）",
+            "upperBodyBack": "low back design（露背设计）, smooth silk fabric（光滑的丝绸面料）",
+            "fullBody": "high slit on side（侧面高开叉）, mid-thigh length（大腿中部长）, delicate lace trim（精致蕾丝边）",
+            "fullBodyBack": "flowing skirt（飘逸的裙摆）, revealing legs（展露双腿）"
+        },
+        "粉色棉质居家服套装": {
+            "nameCN": "粉色棉质居家服套装",
+            "nameEN": "pink cotton loungewear set",
+            "upperBody": "{{pink t-shirt（粉色T恤）}}, {{short sleeves（短袖）}}, {{frilled collar（荷叶边领口）}}, {{loose fit（宽松版型）}}",
+            "upperBodyBack": "{{pink t-shirt（粉色T恤）}}, {{plain back（素色背面）}}",
+            "fullBody": "{{grey shorts（灰色短裤）}}, {{loose shorts（宽松短裤）}}, {{elastic waistband（松紧腰带）}}",
+            "fullBodyBack": "{{grey shorts（灰色短裤）}}, {{plain back（素色背面）}}"
+        },
+        "美伢的性感蕾丝内衣裙": {
+            "nameCN": "美伢的性感蕾丝内衣裙",
+            "nameEN": "misae's sexy lace lingerie dress",
+            "upperBody": "black lace teddy（黑色蕾丝连体内衣）,deep v-neck（深V领口）,spaghetti straps（细吊带）,see-through lace（透视蕾丝）",
+            "upperBodyBack": "criss-cross straps（交叉绑带设计）,open back（露背设计）",
+            "fullBody": "short lace skirt（蕾丝短裙边）,frilly hem（荷叶边裙摆）,matching lace panties（配套蕾丝内裤）,garter belts（吊袜带）",
+            "fullBodyBack": "cheeky cut panties（半包臀内裤）,thigh-high stockings connector（连接大腿袜的扣带）"
+        },
+        "美伢的宽松居家服": {
+            "nameCN": "美伢的宽松居家服",
+            "nameEN": "misae's loose homewear",
+            "upperBody": "loose white t-shirt（宽松的白色T恤）,off-shoulder（露肩）,worn-out（破旧的）,thin fabric（轻薄面料）",
+            "upperBodyBack": "loose back（宽松的背部）,back collar（后领）",
+            "fullBody": "blue denim hotpants（蓝色牛仔热裤）,unbuttoned（未扣扣子）,frayed hem（磨损的裤边）",
+            "fullBodyBack": "back pockets（后口袋）,short length（超短长度）"
+        }
+    },
+    "outfitPresetId": "默认服装",
+    "characterEnablePresets": {
+        "默认启用列表": {
+            "characters": [
+                "野原美伢"
+            ]
+        }
+    },
+    "characterEnablePresetId": "默认启用列表",
+    "outfitEnablePresets": {
+        "默认服装列表": {
+            "outfits": []
+        }
+    },
+    "outfitEnablePresetId": "默认服装列表",
+    "characterCommonPresets": {
+        "默认通用角色列表": {
+            "characters": []
+        }
+    },
+    "characterCommonPresetId": "默认通用角色列表",
+    "log": "[2025/11/16 23:43:49] 开始 NovelAI 生图流程...客户端为browser\n[2025/11/16 23:43:49] 请求尺寸: 宽度 - 默认, 高度 - 默认\n[2025/11/16 23:43:49] 发出图像生成请求 (ID: chatu8-id-9d6klb)\n[2025/11/16 23:43:49] 用于生成的Tag: Scene Composition:1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind;Character 1 Prompt:nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}|centers:c3;Character 1 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;Character 2 Prompt:faceless male,male hand,hand on hip,{source#hand on hip}|centers:c3;Character 2 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;\n[2025/11/16 23:43:49] 是否启用分角色模式 (Divide_roles): true\n[2025/11/16 23:43:49] AQT (质量标签) 设置: very aesthetic, masterpiece, no text\n[2025/11/16 23:43:49] 分角色模式: 解析带坐标的提示词字符串。\n[2025/11/16 23:43:49] 解析场景构图字符串: Scene Composition:1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind;Character 1 Prompt:nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}|centers:c3;Character 1 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;Character 2 Prompt:faceless male,male hand,hand on hip,{source#hand on hip}|centers:c3;Character 2 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;\n[2025/11/16 23:43:49] 解析结果: {\n  \"Scene Composition\": \"1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind\",\n  \"Character 1 Prompt\": \"nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}\",\n  \"Character 1 UC\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\",\n  \"Character 2 Prompt\": \"faceless male,male hand,hand on hip,{source#hand on hip}\",\n  \"Character 2 UC\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\",\n  \"Character 3 Prompt\": \"\",\n  \"Character 3 UC\": \"\",\n  \"Character 4 Prompt\": \"\",\n  \"Character 4 UC\": \"\",\n  \"Character 1 centers\": \"c3\",\n  \"Character 2 centers\": \"c3\",\n  \"Character 3 centers\": \"\",\n  \"Character 4 centers\": \"\",\n  \"Character 1 coordinates\": {\n    \"x\": 0.5,\n    \"y\": 0.5\n  },\n  \"Character 2 coordinates\": {\n    \"x\": 0.5,\n    \"y\": 0.5\n  },\n  \"Character 3 coordinates\": {},\n  \"Character 4 coordinates\": {}\n}\n[2025/11/16 23:43:49] 原始 Prompt (用于替换): 1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind\n[2025/11/16 23:43:49] 使用的替换规则内容:\n触发词1=前置前|插入词1\n触发词2=前置后|插入词2\n触发词3=替换|替换词3\n触发词4=替换|\n触发词5=替换分角色|替换词5\n触发词6=后置前|插入词6\n触发词7=后置后|插入词7\n触发词8=最后置|插入词8\n[2025/11/16 23:43:49] 替换/删除后的 Prompt: 1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind\n[2025/11/16 23:43:49] 解析出的插入内容: {\"前置前\":\"\",\"前置后\":\"\",\"后置前\":\"\",\"后置后\":\"\",\"最后置\":\"\"}\n[2025/11/16 23:43:49] 组合正面提示词 (复杂规则):\n[2025/11/16 23:43:49]   - 前置前: \n[2025/11/16 23:43:49]   - 固定提示词 (前): \n[2025/11/16 23:43:49]   - 前置后: \n[2025/11/16 23:43:49]   - 主要提示词: 1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind\n[2025/11/16 23:43:49]   - 后置前: \n[2025/11/16 23:43:49]   - 固定提示词 (后): \n[2025/11/16 23:43:49]   - 后置后: \n[2025/11/16 23:43:49]   - 质量标签 (AQT): very aesthetic, masterpiece, no text\n[2025/11/16 23:43:49]   - 最后置: \n[2025/11/16 23:43:49] 组合后的正面提示词: 1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind, very aesthetic, masterpiece, no text\n[2025/11/16 23:43:49] 正在根据模型 (nai-diffusion-4-5-full) 和 UCP 预设 (Heavy) 选择负面提示词...\n[2025/11/16 23:43:49] 组合负面提示词:\n[2025/11/16 23:43:49]   - 固定负面提示词: \n[2025/11/16 23:43:49]   - UCP 负面提示词: lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page\n[2025/11/16 23:43:49] 组合后的负面提示词: lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page\n[2025/11/16 23:43:49] 原始角色 Prompt (用于分角色替换): nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}\n[2025/11/16 23:43:49] 使用的替换规则内容 (分角色):\n触发词1=前置前|插入词1\n触发词2=前置后|插入词2\n触发词3=替换|替换词3\n触发词4=替换|\n触发词5=替换分角色|替换词5\n触发词6=后置前|插入词6\n触发词7=后置后|插入词7\n触发词8=最后置|插入词8\n[2025/11/16 23:43:49] 分角色替换后的 Prompt: nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}\n[2025/11/16 23:43:49] 原始角色 Prompt (用于分角色替换): faceless male,male hand,hand on hip,{source#hand on hip}\n[2025/11/16 23:43:49] 使用的替换规则内容 (分角色):\n触发词1=前置前|插入词1\n触发词2=前置后|插入词2\n触发词3=替换|替换词3\n触发词4=替换|\n触发词5=替换分角色|替换词5\n触发词6=后置前|插入词6\n触发词7=后置后|插入词7\n触发词8=最后置|插入词8\n[2025/11/16 23:43:49] 分角色替换后的 Prompt: faceless male,male hand,hand on hip,{source#hand on hip}\n[2025/11/16 23:43:49] 计算 skip_cfg_above_sigma... 宽度: 1024, 高度: 1024, 模型: nai-diffusion-4-5-full\n[2025/11/16 23:43:49] 使用的 magicConstant: 58\n[2025/11/16 23:43:49] 像素: 1048576, 比例: 1.0364\n[2025/11/16 23:43:49] 计算结果 skip_cfg_above_sigma: 59.04722600415217\n[2025/11/16 23:43:49] 最终生图参数 (payload): {\n  \"autoSmea\": false,\n  \"normalize_reference_strength_multiple\": false,\n  \"inpaintImg2ImgStrength\": 1,\n  \"params_version\": 3,\n  \"width\": 1024,\n  \"height\": 1024,\n  \"scale\": 10,\n  \"sampler\": \"k_euler\",\n  \"steps\": 28,\n  \"n_samples\": 1,\n  \"ucPreset\": 3,\n  \"qualityToggle\": true,\n  \"dynamic_thresholding\": false,\n  \"controlnet_strength\": 1,\n  \"legacy\": false,\n  \"legacy_uc\": false,\n  \"add_original_image\": true,\n  \"cfg_rescale\": 0.18,\n  \"noise_schedule\": null,\n  \"skip_cfg_above_sigma\": 59.04722600415217,\n  \"legacy_v3_extend\": false,\n  \"seed\": 1955993817,\n  \"negative_prompt\": \"lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page\",\n  \"use_coords\": false,\n  \"stream\": \"msgpack\",\n  \"characterPrompts\": [\n    {\n      \"enabled\": true,\n      \"prompt\": \"nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}\",\n      \"center\": {\n        \"x\": 0.5,\n        \"y\": 0.5\n      },\n      \"uc\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\"\n    },\n    {\n      \"enabled\": true,\n      \"prompt\": \"faceless male,male hand,hand on hip,{source#hand on hip}\",\n      \"center\": {\n        \"x\": 0.5,\n        \"y\": 0.5\n      },\n      \"uc\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\"\n    }\n  ],\n  \"v4_prompt\": {\n    \"caption\": {\n      \"base_caption\": \"1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind, very aesthetic, masterpiece, no text\",\n      \"char_captions\": [\n        {\n          \"char_caption\": \"nohara misae,milf,scared,nervous,worried expression,sweat,short curly brown hair,back of head,neck,milf, bare back,shoulder blades,soft back fat, plump buttocks,ass cheeks,anus,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}\",\n          \"centers\": [\n            {\n              \"x\": 0.5,\n              \"y\": 0.5\n            }\n          ]\n        },\n        {\n          \"char_caption\": \"faceless male,male hand,hand on hip,{source#hand on hip}\",\n          \"centers\": [\n            {\n              \"x\": 0.5,\n              \"y\": 0.5\n            }\n          ]\n        }\n      ]\n    },\n    \"use_coords\": false,\n    \"use_order\": true\n  },\n  \"v4_negative_prompt\": {\n    \"caption\": {\n      \"base_caption\": \"lowres, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, dithering, halftone, screentone, multiple views, logo, too many watermarks, negative space, blank page\",\n      \"char_captions\": [\n        {\n          \"char_caption\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\",\n          \"centers\": [\n            {\n              \"x\": 0.5,\n              \"y\": 0.5\n            }\n          ]\n        },\n        {\n          \"char_caption\": \"lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry\",\n          \"centers\": [\n            {\n              \"x\": 0.5,\n              \"y\": 0.5\n            }\n          ]\n        }\n      ]\n    },\n    \"legacy_uc\": false\n  }\n}\n[2025/11/16 23:43:58] 开始解压 ZIP 文件...\n[2025/11/16 23:43:58] ZIP 文件加载成功\n[2025/11/16 23:43:58] 在 ZIP 中找到文件: image_0.png\n[2025/11/16 23:43:58] 文件 image_0.png 解压为 Base64，大小: 1770328\n[2025/11/16 23:43:58] 图像已成功获取并格式化为 data URL。\n[2025/11/16 23:43:59] 图像已存入数据库 for prompt: Scene Composition:1milf,1male hand,nsfw,indoor,bedroom,night,soft light,peeking through shoji screen,from behind;Character 1 Prompt:nohara misae,milf,scared,nervous,worried expression,sweat,$nohara misae-from behind-nsfw-upperBody-nsfw-LowerBody$,$misae's sexy black lingerie-upperBody-lowerBody$,bodystocking,bent over,peeking,looking back,hand on hip,{target#hand on hip}|centers:c3;Character 1 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;Character 2 Prompt:faceless male,male hand,hand on hip,{source#hand on hip}|centers:c3;Character 2 UC:lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry;\n[2025/11/16 23:43:59] 图像响应监听器已销毁 (ID: chatu8-id-9d6klb)\n[2025/11/16 23:43:59] 图像生成成功 (ID: chatu8-id-9d6klb), targeting 1 element(s).\n[2025/11/16 23:43:59] 发送生图成功响应 (ID: chatu8-id-9d6klb)\n"
+}
